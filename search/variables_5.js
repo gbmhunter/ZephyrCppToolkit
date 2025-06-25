@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['period_5fticks_0',['period_ticks',['../classzct_1_1Timer.html#a95bb9224c4269cf011d4f656f1083a2d',1,'zct::Timer']]]
+  ['thread_5fpriority_0',['thread_priority',['../classzct_1_1EventThread.html#aaf7e9bd4d9ab977fb4ea1930cb6b3950',1,'zct::EventThread::THREAD_PRIORITY'],['../classzct_1_1EventThreadv2.html#a80645df0214e8d76e824c836012cbaf9',1,'zct::EventThreadv2::THREAD_PRIORITY']]]
 ];

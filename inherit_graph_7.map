@@ -1,7 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classzct_1_1IGpio.html" title=" " alt="" coords="5,31,88,56"/>
-<area shape="rect" id="Node000001" href="$classzct_1_1GpioMock.html" title=" " alt="" coords="136,5,251,31"/>
-<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="101,31,135,25,136,30,102,37"/>
-<area shape="rect" id="Node000002" href="$classzct_1_1GpioReal.html" title=" " alt="" coords="139,55,247,80"/>
-<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="102,50,140,56,139,61,101,55"/>
+<area shape="rect" id="Node000000" href="$classzct_1_1Timer.html" title=" " alt="" coords="5,5,189,31"/>
 </map>

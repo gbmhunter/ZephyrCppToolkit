@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../classzct_1_1MutexLockGuard.html#a48285d5709dc5f89e207360f4289a61a',1,'zct::MutexLockGuard::operator=(const MutexLockGuard &amp;)=delete'],['../classzct_1_1MutexLockGuard.html#aabc412425b5fe3eb4c80eed8bf7ed4e8',1,'zct::MutexLockGuard::operator=(MutexLockGuard &amp;&amp;)=delete']]],
-  ['output_1',['Output',['../classzct_1_1IGpio.html#af8c2b6d47d04aa64950a2b4467653ff2a29c2c02a361c9d7028472e5d92cd4a54',1,'zct::IGpio']]]
+  ['period_5fticks_0',['period_ticks',['../classzct_1_1Timer.html#a95bb9224c4269cf011d4f656f1083a2d',1,'zct::Timer']]],
+  ['pwmreal_1',['pwmreal',['../classzct_1_1PwmReal.html',1,'zct::PwmReal'],['../classzct_1_1PwmReal.html#a010264b1cd91834e51bb73ea15ac290d',1,'zct::PwmReal::PwmReal()']]],
+  ['pwmreal_2ecpp_2',['PwmReal.cpp',['../PwmReal_8cpp.html',1,'']]],
+  ['pwmreal_2ehpp_3',['PwmReal.hpp',['../PwmReal_8hpp.html',1,'']]]
 ];

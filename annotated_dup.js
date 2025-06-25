@@ -1,10 +1,5 @@
 var annotated_dup =
 [
-    [ "Events", "namespaceEvents.html", [
-      [ "Exit", "structEvents_1_1Exit.html", null ],
-      [ "LedFlashing", "structEvents_1_1LedFlashing.html", "structEvents_1_1LedFlashing" ],
-      [ "MyTimerExpiry", "structEvents_1_1MyTimerExpiry.html", null ]
-    ] ],
     [ "zct", "namespacezct.html", [
       [ "EventThread", "classzct_1_1EventThread.html", "classzct_1_1EventThread" ],
       [ "EventThreadv2", "classzct_1_1EventThreadv2.html", "classzct_1_1EventThreadv2" ],
@@ -18,6 +13,5 @@ var annotated_dup =
       [ "PwmReal", "classzct_1_1PwmReal.html", "classzct_1_1PwmReal" ],
       [ "Timer", "classzct_1_1Timer.html", "classzct_1_1Timer" ],
       [ "TimerManager", "classzct_1_1TimerManager.html", "classzct_1_1TimerManager" ]
-    ] ],
-    [ "Led", "classLed.html", "classLed" ]
+    ] ]
 ];

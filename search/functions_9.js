@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pwmreal_0',['PwmReal',['../classzct_1_1PwmReal.html#a010264b1cd91834e51bb73ea15ac290d',1,'zct::PwmReal']]]
+  ['registertimer_0',['registerTimer',['../classzct_1_1TimerManager.html#a0273876163c7411b2ecde92140412239',1,'zct::TimerManager']]]
 ];
