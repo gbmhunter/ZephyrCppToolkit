@@ -1,0 +1,226 @@
+\doxysection{zct\+::Timer\texorpdfstring{$<$}{<} Event\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classzct_1_1Timer}{}\label{classzct_1_1Timer}\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+
+
+{\ttfamily \#include $<$Timer.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758}{Timer}} (const Event\+Type \&event)
+\item 
+void \mbox{\hyperlink{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be}{start}} (int64\+\_\+t period\+\_\+ms)
+\item 
+void \mbox{\hyperlink{classzct_1_1Timer_ad0d94d71b5c4df5e07732b96dfd30cfa}{start}} (int64\+\_\+t start\+Duration\+\_\+ms, int64\+\_\+t period\+\_\+ms)
+\item 
+void \mbox{\hyperlink{classzct_1_1Timer_aaf970a68d8eeac56c760313eced4a721}{stop}} ()
+\item 
+bool \mbox{\hyperlink{classzct_1_1Timer_af9d7393aec6f58883189dc57c8e9f6c2}{is\+Running}} () const
+\item 
+void \mbox{\hyperlink{classzct_1_1Timer_abaf35854363b0076f582174780b92b95}{update\+After\+Expiry}} ()
+\item 
+const Event\+Type \& \mbox{\hyperlink{classzct_1_1Timer_aba740daadf6150547a8704a57d5bcd92}{get\+Event}} () const
+\item 
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1Timer_a0ac28656c9426876c597728f66a2cbdc}{get\+Next\+Expiry\+Time\+Ticks}} () const
+\item 
+void \mbox{\hyperlink{classzct_1_1Timer_a1ce3b5751d0e93503233d23106da5f0d}{set\+Is\+Registered}} (bool is\+Registered)
+\item 
+bool \mbox{\hyperlink{classzct_1_1Timer_ad43282ff100f909aa76e315b052143b0}{get\+Is\+Registered}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\+\_\+ticks}} = 0
+\item 
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{start\+Time\+\_\+ticks}} = 0
+\item 
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{next\+Expiry\+Time\+\_\+ticks}} = 0
+\item 
+bool \mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\+\_\+is\+Running}} = false
+\item 
+Event\+Type \mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}{m\+\_\+event}}
+\item 
+bool \mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\+\_\+is\+Registered}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758}\label{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!Timer@{Timer}}
+\index{Timer@{Timer}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::\+Timer (\begin{DoxyParamCaption}\item[{const Event\+Type \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Create a new timer.
+
+The timer will not be running after creation. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1Timer_aba740daadf6150547a8704a57d5bcd92}\label{classzct_1_1Timer_aba740daadf6150547a8704a57d5bcd92} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!getEvent@{getEvent}}
+\index{getEvent@{getEvent}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{getEvent()}{getEvent()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+const Event\+Type \& \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::get\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Gets a pointer to the event which is saved in the timer. Needs to be cast by the user back to the correct type. \Hypertarget{classzct_1_1Timer_ad43282ff100f909aa76e315b052143b0}\label{classzct_1_1Timer_ad43282ff100f909aa76e315b052143b0} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!getIsRegistered@{getIsRegistered}}
+\index{getIsRegistered@{getIsRegistered}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{getIsRegistered()}{getIsRegistered()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+bool \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::get\+Is\+Registered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the is\+Registered flag.
+
+\begin{DoxyReturn}{Returns}
+The value of the is\+Registered flag. 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1Timer_a0ac28656c9426876c597728f66a2cbdc}\label{classzct_1_1Timer_a0ac28656c9426876c597728f66a2cbdc} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!getNextExpiryTimeTicks@{getNextExpiryTimeTicks}}
+\index{getNextExpiryTimeTicks@{getNextExpiryTimeTicks}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{getNextExpiryTimeTicks()}{getNextExpiryTimeTicks()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::get\+Next\+Expiry\+Time\+Ticks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the next expiry time of the timer.
+
+\begin{DoxyReturn}{Returns}
+The next expiry time of the timer in ticks. 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1Timer_af9d7393aec6f58883189dc57c8e9f6c2}\label{classzct_1_1Timer_af9d7393aec6f58883189dc57c8e9f6c2} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!isRunning@{isRunning}}
+\index{isRunning@{isRunning}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{isRunning()}{isRunning()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+bool \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Check if the timer is running.
+
+\begin{DoxyReturn}{Returns}
+true if the timer is running, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1Timer_a1ce3b5751d0e93503233d23106da5f0d}\label{classzct_1_1Timer_a1ce3b5751d0e93503233d23106da5f0d} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!setIsRegistered@{setIsRegistered}}
+\index{setIsRegistered@{setIsRegistered}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{setIsRegistered()}{setIsRegistered()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::set\+Is\+Registered (\begin{DoxyParamCaption}\item[{bool}]{is\+Registered }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the is\+Registered flag. Used to log warnings if a timer is started when it is not registered with any timer managers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Registered} & The value to set the is\+Registered flag to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be}\label{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!start@{start}}
+\index{start@{start}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::start (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{period\+\_\+ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Start the timer in reoccurring mode. The timer will expire for the first time after period\+\_\+ms from when this is called, and then period\+\_\+ms after that.
+
+
+\begin{DoxyParams}{Parameters}
+{\em period\+\_\+ms} & The period of the timer. Set to -\/1 for a one-\/shot timer, or 0/positive for a recurring timer. \\
+\hline
+{\em event\+Raw} & The event to fire when the timer expires. This is copied into the timer, so the lifetime of the event does not need to be longer than the timer. \\
+\hline
+{\em event\+Raw\+Size} & The size of the event in bytes, i.\+e. sizeof(\+My\+Event\+Type). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1Timer_ad0d94d71b5c4df5e07732b96dfd30cfa}\label{classzct_1_1Timer_ad0d94d71b5c4df5e07732b96dfd30cfa} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!start@{start}}
+\index{start@{start}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::start (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{start\+Duration\+\_\+ms,  }\item[{int64\+\_\+t}]{period\+\_\+ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Start the timer in either one-\/shot or reoccurring mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Duration\+\_\+ms} & The time to wait before the first expiry. Must either be 0 (no-\/wait) or positive. \\
+\hline
+{\em period\+\_\+ms} & The period of the timer. Set to -\/1 for a one-\/shot timer, or 0/positive for a recurring timer. \\
+\hline
+{\em event} & Pointer to the event to fire when the timer expires. \\
+\hline
+{\em event\+Size} & The size of the event in bytes, i.\+e. sizeof(\+My\+Event\+Type). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1Timer_aaf970a68d8eeac56c760313eced4a721}\label{classzct_1_1Timer_aaf970a68d8eeac56c760313eced4a721} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!stop@{stop}}
+\index{stop@{stop}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Stop the timer. This will prevent the timer from expiring until \doxylink{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be}{start()} is called again.
+
+This does not deregister the timer from the timer manager (if registered), nor does this clear the event that is saved in the timer for when it expires. \Hypertarget{classzct_1_1Timer_abaf35854363b0076f582174780b92b95}\label{classzct_1_1Timer_abaf35854363b0076f582174780b92b95} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!updateAfterExpiry@{updateAfterExpiry}}
+\index{updateAfterExpiry@{updateAfterExpiry}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{updateAfterExpiry()}{updateAfterExpiry()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::update\+After\+Expiry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Designed to be called by the state machine when the timer expires.
+
+This will either\+:
+\begin{DoxyEnumerate}
+\item Stop the timer if it is a one-\/shot timer.
+\item Update the next expiry time if it is a recurring timer. 
+\end{DoxyEnumerate}
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}\label{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!m\_event@{m\_event}}
+\index{m\_event@{m\_event}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_event}{m\_event}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+Event\+Type \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::m\+\_\+event\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}\label{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!m\_isRegistered@{m\_isRegistered}}
+\index{m\_isRegistered@{m\_isRegistered}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_isRegistered}{m\_isRegistered}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+bool \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::m\+\_\+is\+Registered = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}\label{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!m\_isRunning@{m\_isRunning}}
+\index{m\_isRunning@{m\_isRunning}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_isRunning}{m\_isRunning}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+bool \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::m\+\_\+is\+Running = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}\label{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!nextExpiryTime\_ticks@{nextExpiryTime\_ticks}}
+\index{nextExpiryTime\_ticks@{nextExpiryTime\_ticks}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{nextExpiryTime\_ticks}{nextExpiryTime\_ticks}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::next\+Expiry\+Time\+\_\+ticks = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}\label{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!period\_ticks@{period\_ticks}}
+\index{period\_ticks@{period\_ticks}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{period\_ticks}{period\_ticks}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::period\+\_\+ticks = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}\label{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!startTime\_ticks@{startTime\_ticks}}
+\index{startTime\_ticks@{startTime\_ticks}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{startTime\_ticks}{startTime\_ticks}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::start\+Time\+\_\+ticks = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zephyr\+Cpp\+Toolkit/\mbox{\hyperlink{Timer_8hpp}{Timer.\+hpp}}\end{DoxyCompactItemize}

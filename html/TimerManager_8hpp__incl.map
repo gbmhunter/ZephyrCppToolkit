@@ -1,0 +1,16 @@
+<map id="include/ZephyrCppToolkit/TimerManager.hpp" name="include/ZephyrCppToolkit/TimerManager.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,5,207,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,76,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,47,63,85,59,81,94,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="34,167,157,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="114,46,101,153,96,153,109,46"/>
+<area shape="rect" id="Node000004" href="$Timer_8hpp.html" title=" " alt="" coords="171,93,257,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="140,43,190,82,187,87,137,48"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="196,121,128,162,125,157,194,116"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="181,167,247,192"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="217,119,217,153,211,153,211,119"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="272,167,343,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="231,117,283,156,280,160,227,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="367,167,522,192"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="252,116,395,160,394,165,250,121"/>
+</map>

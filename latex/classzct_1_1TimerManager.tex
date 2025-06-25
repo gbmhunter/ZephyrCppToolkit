@@ -1,0 +1,111 @@
+\doxysection{zct\+::Timer\+Manager\texorpdfstring{$<$}{<} Event\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classzct_1_1TimerManager}{}\label{classzct_1_1TimerManager}\index{zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}}
+
+
+{\ttfamily \#include $<$Timer\+Manager.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Expiry\+Info}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1TimerManager_a01ef01927e0a0b58211fb0355a6f47a9}{Timer\+Manager}} (uint32\+\_\+t max\+Num\+Timers)
+\item 
+\mbox{\hyperlink{classzct_1_1TimerManager_a994c5c91135dd8565d82f754cdd51c46}{\texorpdfstring{$\sim$}{\string~}\+Timer\+Manager}} ()
+\item 
+void \mbox{\hyperlink{classzct_1_1TimerManager_a0273876163c7411b2ecde92140412239}{register\+Timer}} (\mbox{\hyperlink{classzct_1_1Timer}{Timer}}$<$ Event\+Type $>$ \&timer)
+\item 
+\mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Expiry\+Info}} \mbox{\hyperlink{classzct_1_1TimerManager_a8de14b3ba770157083af1bb2cafae86e}{get\+Next\+Expiring\+Timer}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1Timer}{Timer}}$<$ Event\+Type $>$ \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1TimerManager_acfa07451d5454f3162bc0b5812d3675c}{m\+\_\+timers}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classzct_1_1TimerManager_a3739ee26d5c713b1a7bba282c3893266}{m\+\_\+num\+Timers}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{classzct_1_1TimerManager_a5fdccca5dff86f3821cf14aede0c40ee}{m\+\_\+max\+Num\+Timers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1TimerManager_a01ef01927e0a0b58211fb0355a6f47a9}\label{classzct_1_1TimerManager_a01ef01927e0a0b58211fb0355a6f47a9} 
+\index{zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}!TimerManager@{TimerManager}}
+\index{TimerManager@{TimerManager}!zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{TimerManager()}{TimerManager()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::\+Timer\+Manager (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{max\+Num\+Timers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Create a new timer manager.
+
+Dynamically allocates memory for max\+Num\+Timers pointers to timers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Num\+Timers} & The maximum number of timers that can be registered with the timer manager. Space for this many pointers to timers will be allocated on the heap. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1TimerManager_a994c5c91135dd8565d82f754cdd51c46}\label{classzct_1_1TimerManager_a994c5c91135dd8565d82f754cdd51c46} 
+\index{zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}!````~TimerManager@{\texorpdfstring{$\sim$}{\string~}TimerManager}}
+\index{````~TimerManager@{\texorpdfstring{$\sim$}{\string~}TimerManager}!zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TimerManager()}{\string~TimerManager()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1TimerManager_a8de14b3ba770157083af1bb2cafae86e}\label{classzct_1_1TimerManager_a8de14b3ba770157083af1bb2cafae86e} 
+\index{zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}!getNextExpiringTimer@{getNextExpiringTimer}}
+\index{getNextExpiringTimer@{getNextExpiringTimer}!zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{getNextExpiringTimer()}{getNextExpiringTimer()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Expiry\+Info}} \mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::get\+Next\+Expiring\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Iterates over all registered timers and returns the expiry time of the timer that expires next. If no timer is found, the \textquotesingle{}timer\textquotesingle{} member of the returned struct will be nullptr. timer is guaranteed to not be nullptr if duration\+To\+Wait\+Us is not UINT64\+\_\+\+MAX. \begin{DoxyReturn}{Returns}
+A struct containing the timer that expires next and the duration to wait until that timer expires. 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1TimerManager_a0273876163c7411b2ecde92140412239}\label{classzct_1_1TimerManager_a0273876163c7411b2ecde92140412239} 
+\index{zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}!registerTimer@{registerTimer}}
+\index{registerTimer@{registerTimer}!zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{registerTimer()}{registerTimer()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void \mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::register\+Timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1Timer}{Timer}}$<$ Event\+Type $>$ \&}]{timer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Registers a timer with the timer manager. The provided timer needs to exist for the duration of the registration. 
+\begin{DoxyParams}{Parameters}
+{\em timer} & The timer to register. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1TimerManager_a5fdccca5dff86f3821cf14aede0c40ee}\label{classzct_1_1TimerManager_a5fdccca5dff86f3821cf14aede0c40ee} 
+\index{zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}!m\_maxNumTimers@{m\_maxNumTimers}}
+\index{m\_maxNumTimers@{m\_maxNumTimers}!zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_maxNumTimers}{m\_maxNumTimers}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+uint32\+\_\+t \mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::m\+\_\+max\+Num\+Timers\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1TimerManager_a3739ee26d5c713b1a7bba282c3893266}\label{classzct_1_1TimerManager_a3739ee26d5c713b1a7bba282c3893266} 
+\index{zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}!m\_numTimers@{m\_numTimers}}
+\index{m\_numTimers@{m\_numTimers}!zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_numTimers}{m\_numTimers}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+uint32\+\_\+t \mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::m\+\_\+num\+Timers = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1TimerManager_acfa07451d5454f3162bc0b5812d3675c}\label{classzct_1_1TimerManager_acfa07451d5454f3162bc0b5812d3675c} 
+\index{zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}!m\_timers@{m\_timers}}
+\index{m\_timers@{m\_timers}!zct::TimerManager$<$ EventType $>$@{zct::TimerManager$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_timers}{m\_timers}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1Timer}{Timer}}$<$Event\+Type$>$\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::m\+\_\+timers\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zephyr\+Cpp\+Toolkit/\mbox{\hyperlink{TimerManager_8hpp}{Timer\+Manager.\+hpp}}\end{DoxyCompactItemize}

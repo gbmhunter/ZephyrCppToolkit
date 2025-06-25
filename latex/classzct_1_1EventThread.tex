@@ -1,0 +1,203 @@
+\doxysection{zct\+::Event\+Thread\texorpdfstring{$<$}{<} Event\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classzct_1_1EventThread}{}\label{classzct_1_1EventThread}\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+
+
+{\ttfamily \#include $<$Event\+Thread.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1EventThread_a90ce6a50d324f20746fff44fbc1a40a6}{Event\+Thread}} (const char \texorpdfstring{$\ast$}{*}name, k\+\_\+thread\+\_\+stack\+\_\+t \texorpdfstring{$\ast$}{*}thread\+Stack, size\+\_\+t thread\+Stack\+Size, size\+\_\+t event\+Queue\+Buffer\+Num\+Items)
+\item 
+\mbox{\hyperlink{classzct_1_1EventThread_a904626047be03e08a6563cdafb3582c0}{\texorpdfstring{$\sim$}{\string~}\+Event\+Thread}} ()
+\item 
+Event\+Type \mbox{\hyperlink{classzct_1_1EventThread_a2607651cb659eb7d0c1beb81a7690293}{wait\+For\+Event}} ()
+\item 
+void \mbox{\hyperlink{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73}{send\+Event}} (const Event\+Type \&event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{classzct_1_1EventThread_a6e6c343a4937576390c02eed40d28180}{LOG\+\_\+\+LEVEL}} = LOG\+\_\+\+LEVEL\+\_\+\+DBG
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classzct_1_1EventThread_a86fdbdff169e49558bfd1a1643d179a7}{thread\+Main}} ()=0
+\item 
+\mbox{\hyperlink{classzct_1_1EventThread_af7dacfce4655bf15e91564630256e5f5}{K\+\_\+\+KERNEL\+\_\+\+STACK\+\_\+\+MEMBER}} (m\+\_\+thread\+Stack, \mbox{\hyperlink{classzct_1_1EventThread_aa30814d4ac562393c08ee9db0aad6e4f}{STACK\+\_\+\+SIZE}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classzct_1_1EventThread_aeaf6126b8b334fc0858576da8ab22964}{thread\+Function}} (void \texorpdfstring{$\ast$}{*}arg1, void \texorpdfstring{$\ast$}{*}arg2, void \texorpdfstring{$\ast$}{*}arg3)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\+\_\+name}} = nullptr
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\+\_\+event\+Queue\+Buffer}} = nullptr
+\item 
+struct k\+\_\+thread \mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\+\_\+thread}}
+\item 
+struct k\+\_\+msgq \mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\+\_\+thread\+Msg\+Queue}}
+\item 
+\mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}}$<$ Event\+Type $>$ \mbox{\hyperlink{classzct_1_1EventThread_ac7f6b59b51793ee17b868ea32a3ae63d}{m\+\_\+timer\+Manager}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr size\+\_\+t \mbox{\hyperlink{classzct_1_1EventThread_aa30814d4ac562393c08ee9db0aad6e4f}{STACK\+\_\+\+SIZE}} = 1024
+\item 
+static constexpr int \mbox{\hyperlink{classzct_1_1EventThread_aaf7e9bd4d9ab977fb4ea1930cb6b3950}{THREAD\+\_\+\+PRIORITY}} = 7
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1EventThread_a90ce6a50d324f20746fff44fbc1a40a6}\label{classzct_1_1EventThread_a90ce6a50d324f20746fff44fbc1a40a6} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!EventThread@{EventThread}}
+\index{EventThread@{EventThread}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{EventThread()}{EventThread()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::\+Event\+Thread (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{k\+\_\+thread\+\_\+stack\+\_\+t \texorpdfstring{$\ast$}{*}}]{thread\+Stack,  }\item[{size\+\_\+t}]{thread\+Stack\+Size,  }\item[{size\+\_\+t}]{event\+Queue\+Buffer\+Num\+Items }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Create a new event thread.
+
+Dynamically allocates memory for the event queue buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the thread. Used for logging purposes. \\
+\hline
+{\em thread\+Stack} & The stack to use for the thread. \\
+\hline
+{\em thread\+Stack\+Size} & The size of the stack provided. \\
+\hline
+{\em event\+Queue\+Buffer\+Num\+Items} & The number of items in the event queue. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1EventThread_a904626047be03e08a6563cdafb3582c0}\label{classzct_1_1EventThread_a904626047be03e08a6563cdafb3582c0} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!````~EventThread@{\texorpdfstring{$\sim$}{\string~}EventThread}}
+\index{````~EventThread@{\texorpdfstring{$\sim$}{\string~}EventThread}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}EventThread()}{\string~EventThread()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classzct_1_1EventThread}{Event\+Thread}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1EventThread_af7dacfce4655bf15e91564630256e5f5}\label{classzct_1_1EventThread_af7dacfce4655bf15e91564630256e5f5} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!K\_KERNEL\_STACK\_MEMBER@{K\_KERNEL\_STACK\_MEMBER}}
+\index{K\_KERNEL\_STACK\_MEMBER@{K\_KERNEL\_STACK\_MEMBER}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{K\_KERNEL\_STACK\_MEMBER()}{K\_KERNEL\_STACK\_MEMBER()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::\+K\+\_\+\+KERNEL\+\_\+\+STACK\+\_\+\+MEMBER (\begin{DoxyParamCaption}\item[{m\+\_\+thread\+Stack}]{,  }\item[{\mbox{\hyperlink{classzct_1_1EventThread_aa30814d4ac562393c08ee9db0aad6e4f}{STACK\+\_\+\+SIZE}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73}\label{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!sendEvent@{sendEvent}}
+\index{sendEvent@{sendEvent}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{sendEvent()}{sendEvent()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::send\+Event (\begin{DoxyParamCaption}\item[{const Event\+Type \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send an event to this event thread.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event to send. It is copied into the event queue so it\textquotesingle{}s lifetime only needs to be as long as this function call. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1EventThread_aeaf6126b8b334fc0858576da8ab22964}\label{classzct_1_1EventThread_aeaf6126b8b334fc0858576da8ab22964} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!threadFunction@{threadFunction}}
+\index{threadFunction@{threadFunction}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{threadFunction()}{threadFunction()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+static void \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::thread\+Function (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg1,  }\item[{void \texorpdfstring{$\ast$}{*}}]{arg2,  }\item[{void \texorpdfstring{$\ast$}{*}}]{arg3 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
+
+The function needed by pass to Zephyr\textquotesingle{}s thread API \Hypertarget{classzct_1_1EventThread_a86fdbdff169e49558bfd1a1643d179a7}\label{classzct_1_1EventThread_a86fdbdff169e49558bfd1a1643d179a7} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!threadMain@{threadMain}}
+\index{threadMain@{threadMain}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{threadMain()}{threadMain()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+virtual void \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::thread\+Main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+To be implemented by the derived class 
+
+Implemented in \mbox{\hyperlink{classLed_a8cd9626bc81afc737fafa01b68092743}{Led}}.
+
+\Hypertarget{classzct_1_1EventThread_a2607651cb659eb7d0c1beb81a7690293}\label{classzct_1_1EventThread_a2607651cb659eb7d0c1beb81a7690293} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!waitForEvent@{waitForEvent}}
+\index{waitForEvent@{waitForEvent}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{waitForEvent()}{waitForEvent()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+Event\+Type \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::wait\+For\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Call to block and wait for an event. An event can either be\+:
+\begin{DoxyItemize}
+\item A internal timer timeout event.
+\item An external event (sent from another thread). 
+\end{DoxyItemize}
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1EventThread_a6e6c343a4937576390c02eed40d28180}\label{classzct_1_1EventThread_a6e6c343a4937576390c02eed40d28180} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!LOG\_LEVEL@{LOG\_LEVEL}}
+\index{LOG\_LEVEL@{LOG\_LEVEL}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{LOG\_LEVEL}{LOG\_LEVEL}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+constexpr int \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::\+LOG\+\_\+\+LEVEL = LOG\+\_\+\+LEVEL\+\_\+\+DBG\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}\label{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_eventQueueBuffer@{m\_eventQueueBuffer}}
+\index{m\_eventQueueBuffer@{m\_eventQueueBuffer}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_eventQueueBuffer}{m\_eventQueueBuffer}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::m\+\_\+event\+Queue\+Buffer = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}\label{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+const char\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::m\+\_\+name = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}\label{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_thread@{m\_thread}}
+\index{m\_thread@{m\_thread}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_thread}{m\_thread}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+struct k\+\_\+thread \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::m\+\_\+thread\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}\label{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_threadMsgQueue@{m\_threadMsgQueue}}
+\index{m\_threadMsgQueue@{m\_threadMsgQueue}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_threadMsgQueue}{m\_threadMsgQueue}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+struct k\+\_\+msgq \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::m\+\_\+thread\+Msg\+Queue\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1EventThread_ac7f6b59b51793ee17b868ea32a3ae63d}\label{classzct_1_1EventThread_ac7f6b59b51793ee17b868ea32a3ae63d} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_timerManager@{m\_timerManager}}
+\index{m\_timerManager@{m\_timerManager}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_timerManager}{m\_timerManager}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}}$<$Event\+Type$>$ \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::m\+\_\+timer\+Manager\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1EventThread_aa30814d4ac562393c08ee9db0aad6e4f}\label{classzct_1_1EventThread_aa30814d4ac562393c08ee9db0aad6e4f} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!STACK\_SIZE@{STACK\_SIZE}}
+\index{STACK\_SIZE@{STACK\_SIZE}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{STACK\_SIZE}{STACK\_SIZE}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+constexpr size\+\_\+t \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::\+STACK\+\_\+\+SIZE = 1024\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1EventThread_aaf7e9bd4d9ab977fb4ea1930cb6b3950}\label{classzct_1_1EventThread_aaf7e9bd4d9ab977fb4ea1930cb6b3950} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!THREAD\_PRIORITY@{THREAD\_PRIORITY}}
+\index{THREAD\_PRIORITY@{THREAD\_PRIORITY}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{THREAD\_PRIORITY}{THREAD\_PRIORITY}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+constexpr int \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::\+THREAD\+\_\+\+PRIORITY = 7\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zephyr\+Cpp\+Toolkit/\mbox{\hyperlink{EventThread_8hpp}{Event\+Thread.\+hpp}}\end{DoxyCompactItemize}

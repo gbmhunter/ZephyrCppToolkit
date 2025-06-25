@@ -1,0 +1,84 @@
+\doxysection{zct\+::Mutex Class Reference}
+\hypertarget{classzct_1_1Mutex}{}\label{classzct_1_1Mutex}\index{zct::Mutex@{zct::Mutex}}
+
+
+{\ttfamily \#include $<$Mutex.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1Mutex_aa8216e98e46d77adb683dfcf7b73a130}{Mutex}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new mutex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classzct_1_1Mutex_a2fc33e343bc88b9ef1cd1ba43d610e05}{\texorpdfstring{$\sim$}{\string~}\+Mutex}} ()
+\item 
+struct k\+\_\+mutex \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1Mutex_a50bd814d4db1cc8d41c8a556c5c0064e}{get\+Zephyr\+Mutex}} ()
+\begin{DoxyCompactList}\small\item\em Create a lock guard for the mutex which locks the mutex when constructed and unlocks it when destroyed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct k\+\_\+mutex \mbox{\hyperlink{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b856c738a9d}{m\+\_\+zephyr\+Mutex}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1Mutex_aa8216e98e46d77adb683dfcf7b73a130}\label{classzct_1_1Mutex_aa8216e98e46d77adb683dfcf7b73a130} 
+\index{zct::Mutex@{zct::Mutex}!Mutex@{Mutex}}
+\index{Mutex@{Mutex}!zct::Mutex@{zct::Mutex}}
+\doxysubsubsection{\texorpdfstring{Mutex()}{Mutex()}}
+{\footnotesize\ttfamily zct\+::\+Mutex\+::\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new mutex. 
+
+The mutex starts of in an unlocked state. Call lock\+Guard() to lock the mutex. \Hypertarget{classzct_1_1Mutex_a2fc33e343bc88b9ef1cd1ba43d610e05}\label{classzct_1_1Mutex_a2fc33e343bc88b9ef1cd1ba43d610e05} 
+\index{zct::Mutex@{zct::Mutex}!````~Mutex@{\texorpdfstring{$\sim$}{\string~}Mutex}}
+\index{````~Mutex@{\texorpdfstring{$\sim$}{\string~}Mutex}!zct::Mutex@{zct::Mutex}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Mutex()}{\string~Mutex()}}
+{\footnotesize\ttfamily zct\+::\+Mutex\+::\texorpdfstring{$\sim$}{\string~}\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1Mutex_a50bd814d4db1cc8d41c8a556c5c0064e}\label{classzct_1_1Mutex_a50bd814d4db1cc8d41c8a556c5c0064e} 
+\index{zct::Mutex@{zct::Mutex}!getZephyrMutex@{getZephyrMutex}}
+\index{getZephyrMutex@{getZephyrMutex}!zct::Mutex@{zct::Mutex}}
+\doxysubsubsection{\texorpdfstring{getZephyrMutex()}{getZephyrMutex()}}
+{\footnotesize\ttfamily struct k\+\_\+mutex \texorpdfstring{$\ast$}{*} zct\+::\+Mutex\+::get\+Zephyr\+Mutex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create a lock guard for the mutex which locks the mutex when constructed and unlocks it when destroyed. 
+
+This is a RAII class that ensures the mutex is unlocked when it goes out of scope. You don\textquotesingle{}t normally need to unlock the mutex manually.
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & The max. time to wait to lock the mutex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard} The lock guard for the mutex.
+\end{DoxyReturn}
+Get the underlying Zephyr mutex object.
+
+It is not recommended to use this function. Only use as an escape hatch.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the Zephyr mutex object. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b856c738a9d}\label{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b856c738a9d} 
+\index{zct::Mutex@{zct::Mutex}!m\_zephyrMutex@{m\_zephyrMutex}}
+\index{m\_zephyrMutex@{m\_zephyrMutex}!zct::Mutex@{zct::Mutex}}
+\doxysubsubsection{\texorpdfstring{m\_zephyrMutex}{m\_zephyrMutex}}
+{\footnotesize\ttfamily struct k\+\_\+mutex zct\+::\+Mutex\+::m\+\_\+zephyr\+Mutex\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Zephyr\+Cpp\+Toolkit/\mbox{\hyperlink{Mutex_8hpp}{Mutex.\+hpp}}\item 
+src/\mbox{\hyperlink{Mutex_8cpp}{Mutex.\+cpp}}\end{DoxyCompactItemize}
