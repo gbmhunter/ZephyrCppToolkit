@@ -8,7 +8,7 @@ var indexSectionsWithContent =
   5: "lmnpst",
   6: "dil",
   7: "adeilo",
-  8: "t"
+  8: "tz"
 };
 
 var indexSectionNames =

@@ -15,11 +15,6 @@ Event\+Type \mbox{\hyperlink{classzct_1_1EventThreadv2_a3616964ded83539ab1a9caa6
 \item 
 void \mbox{\hyperlink{classzct_1_1EventThreadv2_a88b73d4120e4db21a6837d835ea9a9cc}{send\+Event}} (const Event\+Type \&event)
 \end{DoxyCompactItemize}
-\doxysubsubsection*{Static Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-static constexpr int \mbox{\hyperlink{classzct_1_1EventThreadv2_a61b64156eca6c2383d037c73e214ee2d}{LOG\+\_\+\+LEVEL}} = LOG\+\_\+\+LEVEL\+\_\+\+DBG
-\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -69,12 +64,6 @@ Dynamically allocates memory for the event queue buffer.
 
 \begin{DoxyParams}{Parameters}
 {\em name} & The name of the thread. Used for logging purposes. \\
-\hline
-{\em thread\+Stack} & The stack to use for the thread. \\
-\hline
-{\em thread\+Stack\+Size} & The size of the stack provided. \\
-\hline
-{\em event\+Queue\+Buffer\+Num\+Items} & The number of items in the event queue. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classzct_1_1EventThreadv2_aaff79180a581c7bd048835c691ceba10}\label{classzct_1_1EventThreadv2_aaff79180a581c7bd048835c691ceba10} 
@@ -129,13 +118,6 @@ Call to block and wait for an event. An event can either be\+:
 \end{DoxyItemize}
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classzct_1_1EventThreadv2_a61b64156eca6c2383d037c73e214ee2d}\label{classzct_1_1EventThreadv2_a61b64156eca6c2383d037c73e214ee2d} 
-\index{zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}!LOG\_LEVEL@{LOG\_LEVEL}}
-\index{LOG\_LEVEL@{LOG\_LEVEL}!zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}}
-\doxysubsubsection{\texorpdfstring{LOG\_LEVEL}{LOG\_LEVEL}}
-{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
-constexpr int \mbox{\hyperlink{classzct_1_1EventThreadv2}{zct\+::\+Event\+Threadv2}}$<$ Event\+Type $>$\+::\+LOG\+\_\+\+LEVEL = LOG\+\_\+\+LEVEL\+\_\+\+DBG\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
-
 \Hypertarget{classzct_1_1EventThreadv2_ae1842b71ebce6fae282f8b0a79206998}\label{classzct_1_1EventThreadv2_ae1842b71ebce6fae282f8b0a79206998} 
 \index{zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}!m\_eventQueueBuffer@{m\_eventQueueBuffer}}
 \index{m\_eventQueueBuffer@{m\_eventQueueBuffer}!zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}}

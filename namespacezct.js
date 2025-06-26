@@ -14,9 +14,10 @@ var namespacezct =
     [ "Timer", "classzct_1_1Timer.html", "classzct_1_1Timer" ],
     [ "TimerManager", "classzct_1_1TimerManager.html", "classzct_1_1TimerManager" ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#a03e785beb455af4012d3a57e19c99d13", null ],
+    [ "LOG_MODULE_REGISTER", "namespacezct.html#a725268dca9114cfa598bdc449e4d706b", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#abf625d69ae2176b0fcba4b1c82596e03", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#afbc9e7692ac4e586af47062f1e1fa428", null ],
-    [ "LOG_MODULE_REGISTER", "namespacezct.html#a51f5b7f6d6cfcceba5bb5f61668e6262", null ],
+    [ "LOG_MODULE_REGISTER", "namespacezct.html#adcf3308409ec88b5afd4026eff3744b8", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#ae20b7f8274467dfc7cdba0e65f3186dc", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#af6f24df2bde6bea753a70352e6171cdd", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#a0ce845244f34bad5962f8600b1f843f4", null ]
