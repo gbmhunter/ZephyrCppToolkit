@@ -63,7 +63,15 @@ Dynamically allocates memory for the event queue buffer.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & The name of the thread. Used for logging purposes. \\
+{\em name} & The name of the thread. Used for logging purposes.\+jsj \\
+\hline
+{\em thread\+Stack} & The stack to use for the thread. \\
+\hline
+{\em thread\+Stack\+Size} & The size of the stack provided. \\
+\hline
+{\em event\+Queue\+Buffer\+Num\+Items} & The number of items in the event queue. \\
+\hline
+{\em thread\+Function} & The function to call when the thread is started. This should do whatever setup you need and then call \doxylink{classzct_1_1EventThreadv2_a3616964ded83539ab1a9caa683e9445d}{wait\+For\+Event()}. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classzct_1_1EventThreadv2_aaff79180a581c7bd048835c691ceba10}\label{classzct_1_1EventThreadv2_aaff79180a581c7bd048835c691ceba10} 
@@ -178,4 +186,4 @@ constexpr int \mbox{\hyperlink{classzct_1_1EventThreadv2}{zct\+::\+Event\+Thread
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/\+Zephyr\+Cpp\+Toolkit/\mbox{\hyperlink{EventThreadv2_8hpp}{Event\+Threadv2.\+hpp}}\end{DoxyCompactItemize}
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\mbox{\hyperlink{EventThreadv2_8hpp}{Event\+Threadv2.\+hpp}}\end{DoxyCompactItemize}

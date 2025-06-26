@@ -1,0 +1,48 @@
+\doxysection{Gpio\+Real.\+hpp}
+\hypertarget{GpioReal_8hpp_source}{}\label{GpioReal_8hpp_source}\index{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/GpioReal.hpp@{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/GpioReal.hpp}}
+\mbox{\hyperlink{GpioReal_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <zephyr/drivers/gpio.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{IGpio_8hpp}{IGpio.hpp}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Forward\ declaration\ of\ the\ GpioReal\ class.}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }GpioReal;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structzct_1_1GpioCallbackDataAndObject}{GpioCallbackDataAndObject}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{classzct_1_1GpioReal}{GpioReal}}*\ \mbox{\hyperlink{structzct_1_1GpioCallbackDataAndObject_a1fc6b409fabc890a0b3eb19d8eaa06b0}{m\_obj}};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{struct\ }gpio\_callback\ \mbox{\hyperlink{structzct_1_1GpioCallbackDataAndObject_a661b07b46cd0dddaa7ec70665816bd69}{m\_gpioCallbackData}};}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1GpioReal}{GpioReal}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classzct_1_1IGpio}{IGpio}}\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classzct_1_1GpioReal}{GpioReal}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ gpio\_dt\_spec*\ spec,\ \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}}\ direction\ =\ \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction::Input}},\ \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{LogicMode}}\ logicMode\ =\ \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9a5d51eb090a6bb620cf3aa90c6e5b0797}{LogicMode::ActiveHigh}});}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classzct_1_1GpioReal_a1914f2a0ec282fc7052cee36455ca823}{\string~GpioReal}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1GpioReal_a3b84410f890ce9e7f30636d14256a62e}{setPhysical}}(\textcolor{keywordtype}{bool}\ value)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1GpioReal_a9c95f439b7469b45ca8cbb8e94cc6ee2}{getPhysical}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1GpioReal_a935538432f72cfda263c77e73b423fe7}{configureInterrupt}}(\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{InterruptMode}}\ interruptMode,\ std::function<\textcolor{keywordtype}{void}()>\ callback)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1GpioReal_a794272d4ed5690ba6487d95e0a537c9f}{configurePinBasedOnSettings}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1GpioReal_a6303df6f76ec397518a8e54f98f4d8df}{interruptCallback}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ device*\ dev,\ \textcolor{keyword}{struct}\ gpio\_callback*\ cb,\ gpio\_port\_pins\_t\ pins);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }gpio\_dt\_spec*\ \mbox{\hyperlink{classzct_1_1GpioReal_a7fa94ad99ab2bf6a3908af0a34fcede0}{m\_spec}};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{structzct_1_1GpioCallbackDataAndObject}{GpioCallbackDataAndObject}}\ \mbox{\hyperlink{classzct_1_1GpioReal_a006887a681d6a13a03d1489a3544d7a3}{m\_gpioCallbackDataAndObject}};}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+
+\end{DoxyCode}

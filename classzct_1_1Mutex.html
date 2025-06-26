@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('classzct_1_1Mutex.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="">Mutex.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Mutex_8hpp_source.html">Mutex.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -105,9 +105,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa8216e98e46d77adb683dfcf7b73a130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new mutex.  <br /></td></tr>
 <tr class="separator:aa8216e98e46d77adb683dfcf7b73a130"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fc33e343bc88b9ef1cd1ba43d610e05" id="r_a2fc33e343bc88b9ef1cd1ba43d610e05"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Mutex.html#a2fc33e343bc88b9ef1cd1ba43d610e05">~Mutex</a> ()</td></tr>
+<tr class="memdesc:a2fc33e343bc88b9ef1cd1ba43d610e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the mutex.  <br /></td></tr>
 <tr class="separator:a2fc33e343bc88b9ef1cd1ba43d610e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50bd814d4db1cc8d41c8a556c5c0064e" id="r_a50bd814d4db1cc8d41c8a556c5c0064e"><td class="memItemLeft" align="right" valign="top">struct k_mutex *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Mutex.html#a50bd814d4db1cc8d41c8a556c5c0064e">getZephyrMutex</a> ()</td></tr>
-<tr class="memdesc:a50bd814d4db1cc8d41c8a556c5c0064e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a lock guard for the mutex which locks the mutex when constructed and unlocks it when destroyed.  <br /></td></tr>
+<tr class="memdesc:a50bd814d4db1cc8d41c8a556c5c0064e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the underlying Zephyr mutex object.  <br /></td></tr>
 <tr class="separator:a50bd814d4db1cc8d41c8a556c5c0064e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -115,7 +116,11 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a943f7abb30c6cc14af4d4b856c738a9d" id="r_a943f7abb30c6cc14af4d4b856c738a9d"><td class="memItemLeft" align="right" valign="top">struct k_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Mutex.html#a943f7abb30c6cc14af4d4b856c738a9d">m_zephyrMutex</a></td></tr>
 <tr class="separator:a943f7abb30c6cc14af4d4b856c738a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classzct_1_1Mutex.html">Mutex</a> is a C++ wrapper around a Zephyr mutex.</p>
+<p>The recommended way to lock a mutex is to use the <a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a> class.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa8216e98e46d77adb683dfcf7b73a130" name="aa8216e98e46d77adb683dfcf7b73a130"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8216e98e46d77adb683dfcf7b73a130">&#9670;&#160;</a></span>Mutex()</h2>
 
@@ -132,7 +137,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Construct a new mutex. </p>
-<p>The mutex starts of in an unlocked state. Call lockGuard() to lock the mutex. </p>
+<p>The mutex starts of in an unlocked state. Use a <a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a> to lock the mutex. </p>
 
 </div>
 </div>
@@ -150,6 +155,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destroy the mutex. </p>
 
 </div>
 </div>
@@ -169,17 +176,8 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Create a lock guard for the mutex which locks the mutex when constructed and unlocks it when destroyed. </p>
-<p>This is a RAII class that ensures the mutex is unlocked when it goes out of scope. You don't normally need to unlock the mutex manually.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">timeout</td><td>The max. time to wait to lock the mutex. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a> The lock guard for the mutex.</dd></dl>
-<p>Get the underlying Zephyr mutex object.</p>
-<p>It is not recommended to use this function. Only use as an escape hatch.</p>
+<p>Get the underlying Zephyr mutex object. </p>
+<p>It is not recommended to use this function. Only use as an escape hatch if the provided C++ API is not sufficient.</p>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the Zephyr mutex object. </dd></dl>
 
 </div>
@@ -204,12 +202,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The underlying Zephyr mutex object. Get access to this by calling <a class="el" href="classzct_1_1Mutex.html#a50bd814d4db1cc8d41c8a556c5c0064e" title="Get the underlying Zephyr mutex object.">getZephyrMutex()</a>. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>include/ZephyrCppToolkit/<a class="el" href="">Mutex.hpp</a></li>
-<li>src/<a class="el" href="Mutex_8cpp.html">Mutex.cpp</a></li>
+<li>/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/<a class="el" href="Mutex_8hpp_source.html">Mutex.hpp</a></li>
+<li>/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src/<a class="el" href="Mutex_8cpp.html">Mutex.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

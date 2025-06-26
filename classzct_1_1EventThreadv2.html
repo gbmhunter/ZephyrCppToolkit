@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('classzct_1_1EventThreadv2.html',''); i
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="">EventThreadv2.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="EventThreadv2_8hpp_source.html">EventThreadv2.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -203,7 +203,11 @@ template&lt;typename EventType &gt; </div>
 <p>Dynamically allocates memory for the event queue buffer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the thread. Used for logging purposes. </td></tr>
+    <tr><td class="paramname">name</td><td>The name of the thread. Used for logging purposes.jsj </td></tr>
+    <tr><td class="paramname">threadStack</td><td>The stack to use for the thread. </td></tr>
+    <tr><td class="paramname">threadStackSize</td><td>The size of the stack provided. </td></tr>
+    <tr><td class="paramname">eventQueueBufferNumItems</td><td>The number of items in the event queue. </td></tr>
+    <tr><td class="paramname">threadFunction</td><td>The function to call when the thread is started. This should do whatever setup you need and then call <a class="el" href="classzct_1_1EventThreadv2.html#a3616964ded83539ab1a9caa683e9445d">waitForEvent()</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -581,7 +585,7 @@ template&lt;typename EventType &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/ZephyrCppToolkit/<a class="el" href="">EventThreadv2.hpp</a></li>
+<li>/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/<a class="el" href="EventThreadv2_8hpp_source.html">EventThreadv2.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

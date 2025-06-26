@@ -1,0 +1,48 @@
+\doxysection{Mutex.\+hpp}
+\hypertarget{Mutex_8hpp_source}{}\label{Mutex_8hpp_source}\index{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Mutex.hpp@{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Mutex.hpp}}
+\mbox{\hyperlink{Mutex_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Forward\ declarations}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }Mutex;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}(\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\&\ mutex,\ k\_timeout\_t\ timeout,\ \textcolor{keywordtype}{int}\&\ mutexRc);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_adf75f621c477e7d62c025156bc19f264}{\string~MutexLockGuard}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Prevent\ copying\ and\ moving}}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_afa9cfaf14cdfadb75af8f9e963f4595d}{MutexLockGuard}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a48285d5709dc5f89e207360f4289a61a}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_abde6f5ee779b73875ad915043a0b7e6c}{MutexLockGuard}}(\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_aabc412425b5fe3eb4c80eed8bf7ed4e8}{operator=}}(\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00027\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ The\ mutex\ this\ guard\ is\ locking/unlocking.}}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a5f9b42de1cf5916106cbcfdccb9c9aac}{m\_mutex}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a0dda7073c7ac76bce9dd47af10c0f768}{m\_didGetLock}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex_aa8216e98e46d77adb683dfcf7b73a130}{Mutex}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex_a2fc33e343bc88b9ef1cd1ba43d610e05}{\string~Mutex}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{struct\ }k\_mutex*\ \mbox{\hyperlink{classzct_1_1Mutex_a50bd814d4db1cc8d41c8a556c5c0064e}{getZephyrMutex}}();}
+\DoxyCodeLine{00066\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{struct\ }k\_mutex\ \mbox{\hyperlink{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b856c738a9d}{m\_zephyrMutex}};}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+
+\end{DoxyCode}

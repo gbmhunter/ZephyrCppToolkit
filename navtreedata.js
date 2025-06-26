@@ -57,7 +57,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "EventThread_8cpp.html",
-"classzct_1_1Timer.html#a0ac28656c9426876c597728f66a2cbdc"
+"classzct_1_1PwmReal.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

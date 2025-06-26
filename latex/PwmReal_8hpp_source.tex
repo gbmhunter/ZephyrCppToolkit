@@ -1,0 +1,25 @@
+\doxysection{Pwm\+Real.\+hpp}
+\hypertarget{PwmReal_8hpp_source}{}\label{PwmReal_8hpp_source}\index{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/PwmReal.hpp@{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/PwmReal.hpp}}
+\mbox{\hyperlink{PwmReal_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{IPwm_8hpp}{IPwm.hpp}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1PwmReal}{PwmReal}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classzct_1_1IPwm}{IPwm}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{classzct_1_1PwmReal}{PwmReal}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ pwm\_dt\_spec\&\ pwmDtSpec);}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classzct_1_1PwmReal_a5ccb7ab9576a2585f7aa0bd0b02f7a0e}{\string~PwmReal}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1PwmReal_aaefa783908bb0ca5bbd39c954d0d1f08}{set}}(uint32\_t\ periodNs,\ uint32\_t\ pulseWidthNs)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }pwm\_dt\_spec\&\ \mbox{\hyperlink{classzct_1_1PwmReal_a9dd8fc9cf12dcc76b4ba9395acd0b7a5}{m\_pwmDtSpec}};}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+
+\end{DoxyCode}
