@@ -32,13 +32,17 @@ Collaboration diagram for zct\+::Gpio\+Mock\+:
 \mbox{\hyperlink{classzct_1_1GpioMock_acebf98f7ba4814c1cc5c698cfb9fc009}{\texorpdfstring{$\sim$}{\string~}\+Gpio\+Mock}} ()
 \begin{DoxyCompactList}\small\item\em Destroy the GPIO. Does nothing. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classzct_1_1GpioMock_ad4e19640bafe02ce0f8b9dafa4899ec3}{set\+Physical}} (bool value) override
-\item 
+\begin{DoxyCompactList}\small\item\em Set the physical value of the GPIO. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classzct_1_1GpioMock_a91f0b529fbd4e0ba543f591581c35133}{get\+Physical}} () const override
-\item 
+\begin{DoxyCompactList}\small\item\em Get the physical value of the GPIO. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classzct_1_1GpioMock_acff562446a20169f8e197757a205b77b}{configure\+Interrupt}} (\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}} interrupt\+Mode, std\+::function$<$ void()$>$ callback) override
-\item 
-void \mbox{\hyperlink{classzct_1_1GpioMock_a6f8eb9a5593b537edf6dbc133db6f2d1}{mock\+Set\+Input}} (bool value)
-\begin{DoxyCompactList}\small\item\em Use this to pretend to be an external signal changing the state of an input GPIO. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Configure an interrupt on the GPIO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzct_1_1GpioMock_a4a0ecd4aa0b2c355ceb57f862a059c78}{set\+Logic\+Mode}} (\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} logic\+Mode) override
+\begin{DoxyCompactList}\small\item\em Set the logic mode of the GPIO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzct_1_1GpioMock_a678ce17833ba6a9726c2d8aaa9e6ec48}{mock\+Set\+Input}} (bool logical\+Value)
+\begin{DoxyCompactList}\small\item\em Use this to pretend to be an external signal changing the state of an input GPIO. This sets the logical value of the GPIO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzct_1_1GpioMock_a1f16a29e060d2319936c106db0018c84}{mock\+Set\+Input\+Physical}} (bool physical\+Value)
+\begin{DoxyCompactList}\small\item\em Use this to pretend to be an external signal changing the state of an input GPIO. This sets the physical value of the GPIO. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classzct_1_1IGpio}{zct\+::\+IGpio}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,14 +55,14 @@ virtual void \mbox{\hyperlink{classzct_1_1IGpio_a842346ef624df42aedb51646b8f1058
 virtual bool \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{get}} () const
 \item 
 virtual void \mbox{\hyperlink{classzct_1_1IGpio_a0405bb3fa9638b69cc0d5fee38a8c18d}{set\+Direction}} (\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} direction)
-\item 
-virtual void \mbox{\hyperlink{classzct_1_1IGpio_aede6f2be760508b9d178b8f126dda251}{set\+Logic\+Mode}} (\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} logic\+Mode)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classzct_1_1GpioMock_a36b0a65afcd2c3e448de6b145c5f3eeb}{configure\+Pin\+Based\+On\+Settings}} () override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Configure the pin based on the current settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzct_1_1GpioMock_a51d8773f28db55c7fdedc2345564df34}{call\+Interrupt\+Handler\+If\+Needed}} (bool old\+Logical\+Value, bool old\+Physical\+Value, bool new\+Logical\+Value, bool new\+Physical\+Value)
+\begin{DoxyCompactList}\small\item\em Helper function to determine and call the interrupt handler if needed. Calculates if it needs to be called based on the old and new GPIO values. In the real GPIO this would be done by the Zephyr GPIO driver. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -140,15 +144,40 @@ Destroy the GPIO. Does nothing.
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1GpioMock_a51d8773f28db55c7fdedc2345564df34}\label{classzct_1_1GpioMock_a51d8773f28db55c7fdedc2345564df34} 
+\index{zct::GpioMock@{zct::GpioMock}!callInterruptHandlerIfNeeded@{callInterruptHandlerIfNeeded}}
+\index{callInterruptHandlerIfNeeded@{callInterruptHandlerIfNeeded}!zct::GpioMock@{zct::GpioMock}}
+\doxysubsubsection{\texorpdfstring{callInterruptHandlerIfNeeded()}{callInterruptHandlerIfNeeded()}}
+{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::call\+Interrupt\+Handler\+If\+Needed (\begin{DoxyParamCaption}\item[{bool}]{old\+Logical\+Value,  }\item[{bool}]{old\+Physical\+Value,  }\item[{bool}]{new\+Logical\+Value,  }\item[{bool}]{new\+Physical\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Helper function to determine and call the interrupt handler if needed. Calculates if it needs to be called based on the old and new GPIO values. In the real GPIO this would be done by the Zephyr GPIO driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+Logical\+Value} & The old logical value of the GPIO. \\
+\hline
+{\em old\+Physical\+Value} & The old physical value of the GPIO. \\
+\hline
+{\em new\+Logical\+Value} & The new logical value of the GPIO. \\
+\hline
+{\em new\+Physical\+Value} & The new physical value of the GPIO. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classzct_1_1GpioMock_acff562446a20169f8e197757a205b77b}\label{classzct_1_1GpioMock_acff562446a20169f8e197757a205b77b} 
 \index{zct::GpioMock@{zct::GpioMock}!configureInterrupt@{configureInterrupt}}
 \index{configureInterrupt@{configureInterrupt}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{configureInterrupt()}{configureInterrupt()}}
 {\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::configure\+Interrupt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}}}]{interrupt\+Mode,  }\item[{std\+::function$<$ void()$>$}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Configure an interrupt on the GPIO.
+
+
+Configure an interrupt on the GPIO. 
 
 The mock implementation of this just stores the interrupt mode and callback into the member variables.
+
+Due to mock limitations, when the GPIO is an input the callback will be called correctly for edge based interrupt modes (it will be called when \doxylink{classzct_1_1GpioMock_a678ce17833ba6a9726c2d8aaa9e6ec48}{mock\+Set\+Input()} or \doxylink{classzct_1_1GpioMock_a1f16a29e060d2319936c106db0018c84}{mock\+Set\+Input\+Physical()} are called), but not for level based interrupt modes.
 
 
 \begin{DoxyParams}{Parameters}
@@ -167,7 +196,11 @@ Implements \mbox{\hyperlink{classzct_1_1IGpio_a8532a63ce41b6a92324c06d045d2f456}
 \doxysubsubsection{\texorpdfstring{configurePinBasedOnSettings()}{configurePinBasedOnSettings()}}
 {\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::configure\+Pin\+Based\+On\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
 
-Configure the pin based on the current settings. The real GPIO will call the Zephyr gpio\+\_\+pin\+\_\+configure\+\_\+dt() function. The mock GPIO will do nothing. 
+
+
+Configure the pin based on the current settings. 
+
+The real GPIO will call the Zephyr gpio\+\_\+pin\+\_\+configure\+\_\+dt() function. The mock GPIO will do nothing. 
 
 Implements \mbox{\hyperlink{classzct_1_1IGpio_a9d062bbdcfc45f1edb5c36d8acfc021d}{zct\+::\+IGpio}}.
 
@@ -177,7 +210,9 @@ Implements \mbox{\hyperlink{classzct_1_1IGpio_a9d062bbdcfc45f1edb5c36d8acfc021d}
 \doxysubsubsection{\texorpdfstring{getPhysical()}{getPhysical()}}
 {\footnotesize\ttfamily bool zct\+::\+Gpio\+Mock\+::get\+Physical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Get the physical value of the GPIO.
+
+
+Get the physical value of the GPIO. 
 
 This ignores the logic mode of the GPIO and returns the physical value directly.
 
@@ -188,30 +223,78 @@ The physical value of the GPIO.
 
 Implements \mbox{\hyperlink{classzct_1_1IGpio_a001870bd58daa2dc70cbeb28af06c00a}{zct\+::\+IGpio}}.
 
-\Hypertarget{classzct_1_1GpioMock_a6f8eb9a5593b537edf6dbc133db6f2d1}\label{classzct_1_1GpioMock_a6f8eb9a5593b537edf6dbc133db6f2d1} 
+\Hypertarget{classzct_1_1GpioMock_a678ce17833ba6a9726c2d8aaa9e6ec48}\label{classzct_1_1GpioMock_a678ce17833ba6a9726c2d8aaa9e6ec48} 
 \index{zct::GpioMock@{zct::GpioMock}!mockSetInput@{mockSetInput}}
 \index{mockSetInput@{mockSetInput}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{mockSetInput()}{mockSetInput()}}
-{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::mock\+Set\+Input (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::mock\+Set\+Input (\begin{DoxyParamCaption}\item[{bool}]{logical\+Value }\end{DoxyParamCaption})}
 
 
 
-Use this to pretend to be an external signal changing the state of an input GPIO. 
+Use this to pretend to be an external signal changing the state of an input GPIO. This sets the logical value of the GPIO. 
 
 Has no effect if the GPIO is configured as an output.
 
+\begin{DoxySeeAlso}{See also}
+\doxylink{classzct_1_1GpioMock_a1f16a29e060d2319936c106db0018c84}{mock\+Set\+Input\+Physical()}
+\end{DoxySeeAlso}
 
 \begin{DoxyParams}{Parameters}
-{\em value} & The value to set the GPIO to. \\
+{\em logical\+Value} & The logical value to set the GPIO to. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classzct_1_1GpioMock_a1f16a29e060d2319936c106db0018c84}\label{classzct_1_1GpioMock_a1f16a29e060d2319936c106db0018c84} 
+\index{zct::GpioMock@{zct::GpioMock}!mockSetInputPhysical@{mockSetInputPhysical}}
+\index{mockSetInputPhysical@{mockSetInputPhysical}!zct::GpioMock@{zct::GpioMock}}
+\doxysubsubsection{\texorpdfstring{mockSetInputPhysical()}{mockSetInputPhysical()}}
+{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::mock\+Set\+Input\+Physical (\begin{DoxyParamCaption}\item[{bool}]{physical\+Value }\end{DoxyParamCaption})}
+
+
+
+Use this to pretend to be an external signal changing the state of an input GPIO. This sets the physical value of the GPIO. 
+
+Has no effect if the GPIO is configured as an output.
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{classzct_1_1GpioMock_a678ce17833ba6a9726c2d8aaa9e6ec48}{mock\+Set\+Input()}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em physical\+Value} & The physical value to set the GPIO to. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1GpioMock_a4a0ecd4aa0b2c355ceb57f862a059c78}\label{classzct_1_1GpioMock_a4a0ecd4aa0b2c355ceb57f862a059c78} 
+\index{zct::GpioMock@{zct::GpioMock}!setLogicMode@{setLogicMode}}
+\index{setLogicMode@{setLogicMode}!zct::GpioMock@{zct::GpioMock}}
+\doxysubsubsection{\texorpdfstring{setLogicMode()}{setLogicMode()}}
+{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::set\+Logic\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}}}]{logic\+Mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set the logic mode of the GPIO. 
+
+We override this in the mock because if we change the logic mode we need to preserve the current physical value, not logical. For example, a GPIO input starts of at 0V, inactive. If we change the logic mode to active low, the physical value will still be 0V, but the logical value will be active.
+
+This could also cause logical level interrupts to be triggered.
+
+
+\begin{DoxyParams}{Parameters}
+{\em logic\+Mode} & The logic mode to set. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classzct_1_1IGpio_aede6f2be760508b9d178b8f126dda251}{zct\+::\+IGpio}}.
+
 \Hypertarget{classzct_1_1GpioMock_ad4e19640bafe02ce0f8b9dafa4899ec3}\label{classzct_1_1GpioMock_ad4e19640bafe02ce0f8b9dafa4899ec3} 
 \index{zct::GpioMock@{zct::GpioMock}!setPhysical@{setPhysical}}
 \index{setPhysical@{setPhysical}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{setPhysical()}{setPhysical()}}
 {\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::set\+Physical (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
-Set the physical value of the GPIO.
+
+
+Set the physical value of the GPIO. 
 
 This ignores the logic mode of the GPIO and sets the physical value directly.
 
