@@ -8,6 +8,7 @@ var hierarchy =
       [ "zct::GpioReal", "classzct_1_1GpioReal.html", null ]
     ] ],
     [ "zct::IPwm", "classzct_1_1IPwm.html", [
+      [ "zct::PwmMock", "classzct_1_1PwmMock.html", null ],
       [ "zct::PwmReal", "classzct_1_1PwmReal.html", null ]
     ] ],
     [ "zct::Mutex", "classzct_1_1Mutex.html", null ],

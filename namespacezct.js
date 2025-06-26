@@ -9,6 +9,7 @@ var namespacezct =
     [ "IPwm", "classzct_1_1IPwm.html", "classzct_1_1IPwm" ],
     [ "Mutex", "classzct_1_1Mutex.html", "classzct_1_1Mutex" ],
     [ "MutexLockGuard", "classzct_1_1MutexLockGuard.html", "classzct_1_1MutexLockGuard" ],
+    [ "PwmMock", "classzct_1_1PwmMock.html", "classzct_1_1PwmMock" ],
     [ "PwmReal", "classzct_1_1PwmReal.html", "classzct_1_1PwmReal" ],
     [ "Timer", "classzct_1_1Timer.html", "classzct_1_1Timer" ],
     [ "TimerManager", "classzct_1_1TimerManager.html", "classzct_1_1TimerManager" ],
@@ -16,6 +17,7 @@ var namespacezct =
     [ "LOG_MODULE_REGISTER", "namespacezct.html#abf625d69ae2176b0fcba4b1c82596e03", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#afbc9e7692ac4e586af47062f1e1fa428", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#a51f5b7f6d6cfcceba5bb5f61668e6262", null ],
+    [ "LOG_MODULE_REGISTER", "namespacezct.html#ae20b7f8274467dfc7cdba0e65f3186dc", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#af6f24df2bde6bea753a70352e6171cdd", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#a0ce845244f34bad5962f8600b1f843f4", null ]
 ];

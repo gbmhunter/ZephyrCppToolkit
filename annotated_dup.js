@@ -10,6 +10,7 @@ var annotated_dup =
       [ "IPwm", "classzct_1_1IPwm.html", "classzct_1_1IPwm" ],
       [ "Mutex", "classzct_1_1Mutex.html", "classzct_1_1Mutex" ],
       [ "MutexLockGuard", "classzct_1_1MutexLockGuard.html", "classzct_1_1MutexLockGuard" ],
+      [ "PwmMock", "classzct_1_1PwmMock.html", "classzct_1_1PwmMock" ],
       [ "PwmReal", "classzct_1_1PwmReal.html", "classzct_1_1PwmReal" ],
       [ "Timer", "classzct_1_1Timer.html", "classzct_1_1Timer" ],
       [ "TimerManager", "classzct_1_1TimerManager.html", "classzct_1_1TimerManager" ]

@@ -8,6 +8,7 @@ var searchData=
   ['_7eipwm_5',['~IPwm',['../classzct_1_1IPwm.html#ac842d67f38eca0fce1430719c05c1f5f',1,'zct::IPwm']]],
   ['_7emutex_6',['~Mutex',['../classzct_1_1Mutex.html#a2fc33e343bc88b9ef1cd1ba43d610e05',1,'zct::Mutex']]],
   ['_7emutexlockguard_7',['~MutexLockGuard',['../classzct_1_1MutexLockGuard.html#adf75f621c477e7d62c025156bc19f264',1,'zct::MutexLockGuard']]],
-  ['_7epwmreal_8',['~PwmReal',['../classzct_1_1PwmReal.html#a5ccb7ab9576a2585f7aa0bd0b02f7a0e',1,'zct::PwmReal']]],
-  ['_7etimermanager_9',['~TimerManager',['../classzct_1_1TimerManager.html#a994c5c91135dd8565d82f754cdd51c46',1,'zct::TimerManager']]]
+  ['_7epwmmock_8',['~PwmMock',['../classzct_1_1PwmMock.html#aa4c615fe8ac00fcc66dd71a7fc9208df',1,'zct::PwmMock']]],
+  ['_7epwmreal_9',['~PwmReal',['../classzct_1_1PwmReal.html#a5ccb7ab9576a2585f7aa0bd0b02f7a0e',1,'zct::PwmReal']]],
+  ['_7etimermanager_10',['~TimerManager',['../classzct_1_1TimerManager.html#a994c5c91135dd8565d82f754cdd51c46',1,'zct::TimerManager']]]
 ];
