@@ -76,3 +76,20 @@ class MyEventThread : public zct::EventThread {
     }
 }
 ```
+
+## Tests
+
+To run the tests:
+
+```bash
+cd test
+west build -b native_sim
+./build/test/zephyr/zephyr.exe
+```
+
+To run a specific test, e.g. all tests in the `EventThreadTests` suite:
+
+```bash
+cd test
+west build -b native_sim && ./build/test/zephyr/zephyr.exe --test="EventThreadTests::*"
+```

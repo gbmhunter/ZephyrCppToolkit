@@ -12,22 +12,26 @@ template <typename EventType>
 class EventThread {
 
 public:
+
+    static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;
+
     /**
-     * Create a new event thread.EventThread
+     * Create a new event thread.
+     * 
+     * Dynamically allocates memory for the event queue buffer.
+     *
      * @param threadStack The stack to use for the thread.
-     * @param threadStackSize The size of the stack to use for the thread.
-     * @param eventQueueBuffer The event queue to use for the thread.
+     * @param threadStackSize The size of the stack provided.
      * @param eventQueueBufferNumItems The number of items in the event queue.
      */
-    EventThread(k_thread_stack_t* threadStack, size_t threadStackSize, EventType* eventQueueBuffer, size_t eventQueueBufferNumItems) :
+    EventThread(k_thread_stack_t* threadStack, size_t threadStackSize, size_t eventQueueBufferNumItems) :
         m_timerManager(10)
     {
-        LOG_MODULE_DECLARE(EventThread);
-        // Create message queue
-
-        // void* msgqStorage = k_malloc(sizeof(EventType)*eventQueueNumItems);
-        // __ASSERT_NO_MSG(msgqStorage != nullptr);
-        k_msgq_init(&m_threadMsgQueue, (char*)eventQueueBuffer, sizeof(EventType), eventQueueBufferNumItems);
+        LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
+        // Create event queue buffer and then init queue with it
+        m_eventQueueBuffer = new EventType[eventQueueBufferNumItems];
+        __ASSERT_NO_MSG(m_eventQueueBuffer != nullptr);
+        k_msgq_init(&m_threadMsgQueue, (char*)m_eventQueueBuffer, sizeof(EventType), eventQueueBufferNumItems);
 
         LOG_DBG("Initializing threaded state machine...");
         // Start the thread
@@ -48,7 +52,7 @@ public:
     };
 
     ~EventThread() {
-        LOG_MODULE_DECLARE(EventThread);
+        LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
         LOG_DBG("%s() called.", __FUNCTION__);
         k_thread_join(&m_thread, K_FOREVER);
     }
@@ -59,17 +63,19 @@ public:
      * - An external event (sent from another thread).
      */
     EventType waitForEvent() {
-        LOG_MODULE_DECLARE(EventThread);
+        LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
         LOG_DBG("%s() called.", __FUNCTION__);
 
         // Get the next timer to expire
         auto nextTimerInfo = m_timerManager.getNextExpiringTimer();
 
-        // Handle all expired timers
+        // See if there is an already expired timer, is so, there is no need to block
+        // on the event queue.
         if (nextTimerInfo.m_timer != nullptr && nextTimerInfo.m_durationToWaitUs == 0) {
             nextTimerInfo = m_timerManager.getNextExpiringTimer();
             LOG_DBG("Timer expired. Timer: %p.", nextTimerInfo.m_timer);
             // Get the timer event
+            nextTimerInfo.m_timer->updateAfterExpiry();
             return nextTimerInfo.m_timer->getEvent();
         }
 
@@ -92,6 +98,7 @@ public:
         } else if (queueRc == -EAGAIN) {
             // Queue timed out, which means we need to handle the timer expiry
             LOG_DBG("Queue timed out, which means we need to handle the timer expiry.");
+            nextTimerInfo.m_timer->updateAfterExpiry();
             return nextTimerInfo.m_timer->getEvent();
         } else if (queueRc == -ENOMSG) {
             // This means the queue must have been purged
@@ -110,12 +117,12 @@ public:
         k_msgq_put(&m_threadMsgQueue, &event, K_NO_WAIT);
     }
 
-private:
+protected:
 
     /** The function needed by pass to Zephyr's thread API */
     static void threadFunction(void* arg1, void* arg2, void* arg3)
     {
-        LOG_MODULE_DECLARE(EventThread);
+        LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
 
         // First passed in argument is the instance of the class
         EventThread* obj = static_cast<EventThread*>(arg1);
@@ -129,7 +136,7 @@ private:
     /** To be implemented by the derived class */
     virtual void threadMain() = 0;
 
-    
+    void* m_eventQueueBuffer = nullptr;
 
     struct k_thread m_thread;
     static constexpr size_t STACK_SIZE = 1024;

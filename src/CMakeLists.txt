@@ -27,10 +27,10 @@ target_compile_options(zephyr_cpp_toolkit PRIVATE -std=c++20)
 target_sources(
     zephyr_cpp_toolkit
     PRIVATE
-    EventThread.cpp
+    EventThread/EventThread.cpp
+    EventThread/Timer.cpp
+    EventThread/TimerManager.cpp
     Mutex.cpp
-    Timer.cpp
-    TimerManager.cpp
 )
 
 # Link against Zephyr interface library to get include paths and other settings

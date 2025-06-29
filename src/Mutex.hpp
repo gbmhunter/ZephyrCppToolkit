@@ -3,7 +3,7 @@
 // #include <expected>
 #include <zephyr/kernel.h>
 
-#include <tl/expected.hpp>
+// #include <tl/expected.hpp>
 
 namespace zephyr_cpp_toolkit {
 
@@ -21,16 +21,13 @@ public:
     MutexLockGuard(Mutex& mutex, k_timeout_t timeout, int& mutexRc);
 
     ~MutexLockGuard();
-
-    /**
-     * Since we can't return an error code from the constructor, to create a lock guard use this static function.
-     */
-    static tl::expected<MutexLockGuard, int> create(Mutex& mutex, k_timeout_t timeout = K_FOREVER);
 protected:
     
 
     // The mutex this guard is locking/unlocking.
     Mutex& m_mutex;
+
+    bool m_didGetLock = false;
 };
 
 class Mutex {

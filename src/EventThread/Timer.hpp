@@ -32,9 +32,12 @@ public:
      * 
      * The timer will not be running after creation.
      */
-    Timer(EventType& event);
+    Timer() :
+        m_event()
+    {
+    }
 
-    ~Timer();
+    // ~Timer() = default;
 
     /**
      * Start the timer in reoccurring mode. The timer will expire for the first time

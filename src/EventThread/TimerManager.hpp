@@ -26,6 +26,9 @@ public:
 
     /**
      * Create a new timer manager.
+     * 
+     * Dynamically allocates memory for maxNumTimers pointers to timers.
+     * 
      * @param maxNumTimers The maximum number of timers that can be registered with the timer manager. Space for
      *                     this many pointers to timers will be allocated on the heap.
      */
@@ -37,13 +40,18 @@ public:
         m_maxNumTimers = maxNumTimers;
     }
 
+    ~TimerManager() {
+        // Free the memory allocated in constructor.
+        delete[] m_timers;
+    }
+
     /** Used as a return type for getNextExpiringTimer(). */
     struct TimerExpiryInfo {
-        const Timer<EventType>* m_timer = nullptr;
+        Timer<EventType>* m_timer = nullptr;
         uint64_t m_durationToWaitUs = 0;
 
         // Explicit constructor
-        TimerExpiryInfo(const Timer<EventType>* timer, uint64_t durationToWaitUs) : m_timer(timer), m_durationToWaitUs(durationToWaitUs) {}
+        TimerExpiryInfo(Timer<EventType>* timer, uint64_t durationToWaitUs) : m_timer(timer), m_durationToWaitUs(durationToWaitUs) {}
     };
 
 

@@ -3,8 +3,9 @@
 
 void test_main(void)
 {
-    struct k_mutex m_mutex;
-    k_mutex_init(&m_mutex);
     // Run all tests once
     ztest_run_all(NULL, false, 1, 1);
+    printk("Hello, world!\n");
+    struct k_mutex m_mutex;
+    k_mutex_init(&m_mutex);
 }
