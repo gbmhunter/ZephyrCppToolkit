@@ -1,21 +1,38 @@
+#include <variant>
+
+#include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
 
 #include "EventThread.hpp"
 
 namespace zct = zephyr_cpp_toolkit;
 
+LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
+
 ZTEST_SUITE(EventThreadTests, NULL, NULL, NULL, NULL, NULL);
 
-class Event {
-    public:
-        enum class Id {
-            TIMER_EXPIRED,
-            EXTERNAL_EVENT
-        };
+// class Event {
+//     public:
+//         enum class Id {
+//             TIMER_EXPIRED,
+//             EXTERNAL_EVENT
+//         };
 
-        Id id;
-        int data;
+//         Id id;
+//         int data;
+// };
+
+
+struct MyTimerTimeoutEvent {
 };
+
+struct ExitEvent {};
+
+struct LedFlashingEvent {
+    uint32_t flashRateMs;
+};
+
+typedef std::variant<MyTimerTimeoutEvent, LedFlashingEvent, ExitEvent> Event;
 
 class MyEventThread : public zct::EventThread<Event> {
     public:
@@ -33,13 +50,34 @@ class MyEventThread : public zct::EventThread<Event> {
         void threadMain() override {
             while (1) {
                 Event event = zct::EventThread<Event>::waitForEvent();
-                printk("Event received: %d\n", event.id);
+                LOG_DBG("Event received: %d.", event.index());
+                if (std::holds_alternative<MyTimerTimeoutEvent>(event)) {
+                    LOG_DBG("Got MyTimerTimeoutEvent.");
+                } else if (std::holds_alternative<LedFlashingEvent>(event)) {
+                    LOG_DBG("Got LedFlashingEvent.");
+                } else if (std::holds_alternative<ExitEvent>(event)) {
+                    LOG_DBG("Got ExitEvent.");
+                    break;
+                }
             }
         }
 };
 
-void test_event_thread_create(void)
+ZTEST(EventThreadTests, testEventThreadCreate)
 {
     MyEventThread eventThread;
     zassert_true(true, "Event thread created");
+
+    // Send a LED on event
+    LedFlashingEvent ledFlashingEvent = { .flashRateMs = 1000 }; // Create an Event lvalue directly
+    eventThread.sendEvent(ledFlashingEvent);
+
+    k_sleep(K_SECONDS(1));
+
+    // Send an exit event
+    ExitEvent exitEvent;
+    eventThread.sendEvent(exitEvent);
+
+    k_sleep(K_SECONDS(1));
+
 }

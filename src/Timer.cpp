@@ -1,7 +1,3 @@
-//================================================================================================//
-// FORWARD DECLARATIONS
-//================================================================================================//
-
 
 //================================================================================================//
 // INCLUDES
@@ -9,13 +5,12 @@
 
 #include "Timer.hpp"
 
-#include "TimerManager.hpp"
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
 namespace zephyr_cpp_toolkit {
 
-LOG_MODULE_REGISTER(TimerManager, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(Timer, LOG_LEVEL_DBG);
 
 } // namespace zephyr_cpp_toolkit

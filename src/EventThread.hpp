@@ -47,6 +47,12 @@ public:
         LOG_DBG("Threaded state machine initialized.");
     };
 
+    ~EventThread() {
+        LOG_MODULE_DECLARE(EventThread);
+        LOG_DBG("%s() called.", __FUNCTION__);
+        k_thread_join(&m_thread, K_FOREVER);
+    }
+
     /**
      * Call to block and wait for an event. An event can either be:
      * - A internal timer timeout event.
@@ -54,8 +60,7 @@ public:
      */
     EventType waitForEvent() {
         LOG_MODULE_DECLARE(EventThread);
-
-        LOG_DBG("Threaded state machine thread started.");
+        LOG_DBG("%s() called.", __FUNCTION__);
 
         // Get the next timer to expire
         auto nextTimerInfo = m_timerManager.getNextExpiringTimer();
@@ -96,6 +101,15 @@ public:
         }
     }
 
+    /**
+     * Send an event to this event thread.
+     * 
+     * @param event The event to send. It is copied into the event queue so it's lifetime only needs to be as long as this function call.
+     */
+    void sendEvent(const EventType& event) {
+        k_msgq_put(&m_threadMsgQueue, &event, K_NO_WAIT);
+    }
+
 private:
 
     /** The function needed by pass to Zephyr's thread API */
@@ -107,6 +121,8 @@ private:
         EventThread* obj = static_cast<EventThread*>(arg1);
         // Call the derived class's threadMain function
         obj->threadMain();
+
+        // If we get here, the user decided to exit the thread
     }
 
 

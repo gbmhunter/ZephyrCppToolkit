@@ -13,6 +13,9 @@ class Timer;
 #include <cstdint>
 #include <cstddef>
 
+#include <zephyr/kernel.h>
+#include <zephyr/logging/log.h>
+
 namespace zephyr_cpp_toolkit {
 
 

@@ -16,10 +16,8 @@ void threadMain(void* arg1, void* arg2, void* arg3)
     bool* lock_result = static_cast<bool*>(arg2);
     struct k_sem* completion_sem = static_cast<struct k_sem*>(arg3);
 
-    printk("Thread attempting to lock mutex\n");
     int mutexRc;
     auto thread_lock_guard = zct::MutexLockGuard(*mutex, K_NO_WAIT, mutexRc);
-    printk("Thread lock result: %d\n", mutexRc);
     *lock_result = mutexRc == 0;
     k_sem_give(completion_sem);
 }
