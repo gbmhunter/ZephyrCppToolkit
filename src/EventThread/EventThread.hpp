@@ -20,14 +20,16 @@ public:
      * 
      * Dynamically allocates memory for the event queue buffer.
      *
+     * @param name The name of the thread. Used for logging purposes.
      * @param threadStack The stack to use for the thread.
      * @param threadStackSize The size of the stack provided.
      * @param eventQueueBufferNumItems The number of items in the event queue.
      */
-    EventThread(k_thread_stack_t* threadStack, size_t threadStackSize, size_t eventQueueBufferNumItems) :
+    EventThread(const char* name, k_thread_stack_t* threadStack, size_t threadStackSize, size_t eventQueueBufferNumItems) :
         m_timerManager(10)
     {
         LOG_MODULE_DECLARE(zct_EventThread);
+        m_name = name;
         // Create event queue buffer and then init queue with it
         m_eventQueueBuffer = new EventType[eventQueueBufferNumItems];
         __ASSERT_NO_MSG(m_eventQueueBuffer != nullptr);
@@ -46,8 +48,8 @@ public:
             THREAD_PRIORITY,
             0,
             K_NO_WAIT);
-        // Name the thread for easier debugging
-        k_thread_name_set(&m_thread, "ThreadedSM");
+        // Name the thread for easier debugging/logging
+        k_thread_name_set(&m_thread, m_name);
         LOG_DBG("Threaded state machine initialized.");
     };
 
@@ -137,6 +139,7 @@ protected:
     /** To be implemented by the derived class */
     virtual void threadMain() = 0;
 
+    const char* m_name = nullptr;
     void* m_eventQueueBuffer = nullptr;
 
     struct k_thread m_thread;

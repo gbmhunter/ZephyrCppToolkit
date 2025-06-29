@@ -18,6 +18,7 @@ class Timer;
 
 namespace zct {
 
+#define TIMER_LOG_LEVEL LOG_LEVEL_WRN
 
 //================================================================================================//
 // CLASS DECLARATION
@@ -62,7 +63,7 @@ public:
      * @param eventSize The size of the event in bytes, i.e. sizeof(MyEventType).
     */
     void start(int64_t startDuration_ms, int64_t period_ms) {
-        LOG_MODULE_DECLARE(zct_Timer);
+        LOG_MODULE_DECLARE(zct_Timer, TIMER_LOG_LEVEL);
         __ASSERT_NO_MSG(startDuration_ms >= 0); // Start time can be 0, which means the timer will fire immediately. Can't be negative!
         __ASSERT_NO_MSG(period_ms >= -1); // Period can be -1, which means the timer will not repeat
         
@@ -96,7 +97,7 @@ public:
      * 2. Update the next expiry time if it is a recurring timer.
     */
     void updateAfterExpiry() {
-        LOG_MODULE_DECLARE(zct_Timer, LOG_LEVEL_DBG);
+        LOG_MODULE_DECLARE(zct_Timer, TIMER_LOG_LEVEL);
         if (this->period_ticks == -1)
         {
             // Timer was one-shot, so stop it

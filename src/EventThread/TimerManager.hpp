@@ -14,6 +14,9 @@
 
 #include "Timer.hpp"
 
+
+#define TIMER_MANAGER_LOG_LEVEL LOG_LEVEL_DBG
+
 //================================================================================================//
 // CLASS DECLARATION
 //================================================================================================//
@@ -75,8 +78,8 @@ public:
      * @return A struct containing the timer that expires next and the duration to wait until that timer expires.
      */
     TimerExpiryInfo getNextExpiringTimer() {
-        LOG_MODULE_DECLARE(TimerManager, LOG_LEVEL_DBG);
-        LOG_DBG("getNextExpiringTimer() called.");
+        LOG_MODULE_DECLARE(TimerManager, TIMER_MANAGER_LOG_LEVEL);
+        LOG_DBG("getNextExpiringTimer() called. this: %p, m_numTimers: %u.", this, m_numTimers);
 
         // Set output to null in case no timer expired
         Timer<EventType>* expiredTimer = nullptr;
