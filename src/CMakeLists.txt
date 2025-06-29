@@ -12,37 +12,69 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
 # Create the library target
-add_library(ZephyrCppToolkit INTERFACE)
+# add_library(ZephyrCppToolkit INTERFACE)
+
+# Define two library targets, one for real and one for mock implementations.
+add_library(ZephyrCppToolkit_Real INTERFACE)
+add_library(ZephyrCppToolkit_Mock INTERFACE)
 
 # Explicitly set the library language to C++
-set_target_properties(ZephyrCppToolkit PROPERTIES
-    LINKER_LANGUAGE CXX)
+# set_target_properties(ZephyrCppToolkit PROPERTIES
+#     LINKER_LANGUAGE CXX)
 
-target_compile_options(ZephyrCppToolkit INTERFACE -std=c++20)
+# target_compile_options(ZephyrCppToolkit INTERFACE -std=c++20)
+
+# Define sources which are common to both real and mock implementations.
+set(COMMON_SRC_FILES
+    "EventThread/EventThread.cpp"
+    "EventThread/Timer.cpp"
+    "EventThread/TimerManager.cpp"
+    "Gpio/IGpio.cpp"
+    "Mutex.cpp"
+)
 
 # Add sources to the library
+# target_sources(
+#     ZephyrCppToolkit
+#     INTERFACE
+#     ${COMMON_SRC_FILES}
+# )
+
 target_sources(
-    ZephyrCppToolkit
+    ZephyrCppToolkit_Real
     INTERFACE
-    EventThread/EventThread.cpp
-    EventThread/Timer.cpp
-    EventThread/TimerManager.cpp
+    ${COMMON_SRC_FILES}
     Gpio/GpioReal.cpp
+)
+
+target_sources(
+    ZephyrCppToolkit_Mock
+    INTERFACE
+    ${COMMON_SRC_FILES}
     Gpio/GpioMock.cpp
-    Gpio/IGpio.cpp
-    Mutex.cpp
-    Pwm/IPwm.cpp
 )
 
 # Link against Zephyr interface library to get include paths and other settings
-target_link_libraries(ZephyrCppToolkit INTERFACE zephyr_interface)
+# target_link_libraries(ZephyrCppToolkit INTERFACE zephyr_interface)
+target_link_libraries(ZephyrCppToolkit_Real INTERFACE zephyr_interface)
+target_link_libraries(ZephyrCppToolkit_Mock INTERFACE zephyr_interface)
 
 # Add compiler option to suppress "warning: structured bindings only available with '-std=c++17' or '-std=gnu++17' [-Wc++17-extensions]"
 # target_compile_options(ZephyrCppToolkit PRIVATE -Wno-c++17-extensions)
 # target_compile_options(ZephyrCppToolkit PRIVATE -Wno-c++17-extensions)
 
 # Make the library headers available to other targets
-target_include_directories(ZephyrCppToolkit
+# target_include_directories(ZephyrCppToolkit
+#     INTERFACE
+#     ${CMAKE_CURRENT_SOURCE_DIR}
+# )
+
+target_include_directories(ZephyrCppToolkit_Real
+    INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_include_directories(ZephyrCppToolkit_Mock
     INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
@@ -61,19 +93,6 @@ FetchContent_MakeAvailable(TlExpected)
 
 # The target 'expected' (aliased as tl::expected) is now configured.
 # Link against the alias provided by the library.
-target_link_libraries(ZephyrCppToolkit INTERFACE tl::expected)
-
-
-# include(FetchContent)
-# set(NINJAHSM_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-# FetchContent_Declare(NinjaHSM
-#     GIT_REPOSITORY https://github.com/gbmhunter/NinjaHSM.git
-#     GIT_TAG 85146685c89a17f14be2b86734413a755b7c9218 # This can be a hash, tag or branch.
-# )
-# FetchContent_MakeAvailable(NinjaHSM)
-
-# target_link_libraries(app PUBLIC NinjaHsm)
-# target_include_directories(app PUBLIC ${NinjaHSM_SOURCE_DIR}/include)
-
-# Add src/ as an include directory
-# target_include_directories(app PUBLIC src)
+# target_link_libraries(ZephyrCppToolkit INTERFACE tl::expected)
+target_link_libraries(ZephyrCppToolkit_Real INTERFACE tl::expected)
+target_link_libraries(ZephyrCppToolkit_Mock INTERFACE tl::expected)

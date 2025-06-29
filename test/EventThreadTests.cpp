@@ -27,8 +27,8 @@ typedef std::variant<MyTimerTimeoutEvent, LedFlashingEvent, ExitEvent> Event;
 class Led : public zct::EventThread<Event> {
     public:
         Led() :
-            zct::EventThread<Event>(threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
-            m_flashingTimer()
+            zct::EventThread<Event>("Led", threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
+            m_flashingTimer(MyTimerTimeoutEvent())
         {
             // Register timers
             m_timerManager.registerTimer(m_flashingTimer);

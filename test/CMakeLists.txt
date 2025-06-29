@@ -18,6 +18,16 @@ target_sources(
     GpioTests.cpp
     MutexTests.cpp
 )
-    
-# Link against the library
-target_link_libraries(app PRIVATE ZephyrCppToolkit)
+
+# Link against the library. We link against both mock and real implementations to test both.
+# Typically you would only link against one.
+if(NOT TARGET ZephyrCppToolkit_Mock)
+    message(FATAL_ERROR "CMake target 'ZephyrCppToolkit_Mock' not found. Cannot link to 'app'. Check src/CMakeLists.txt and the add_subdirectory call.")
+endif()
+if(NOT TARGET ZephyrCppToolkit_Real)
+    message(FATAL_ERROR "CMake target 'ZephyrCppToolkit_Real' not found. Cannot link to 'app'. Check src/CMakeLists.txt and the add_subdirectory call.")
+endif()
+target_link_libraries(app PRIVATE ZephyrCppToolkit_Mock ZephyrCppToolkit_Real)
+
+# Make the compiler stop at the first error.
+target_compile_options(app PRIVATE -Wfatal-errors)
