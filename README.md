@@ -78,9 +78,25 @@ This pattern is intended to be used as follows:
 
 If you have many peripherals the number of individual peripherals passed in can get unweildy. In this case you can create a `IPeripherals` class which wraps all the individual peripherals. Then your `main.cpp` creates either a `PeripheralsReal` or `PeripheralsMock` class and passes that into your `App` class.
 
-### GPIO
+### GPIO 
 
-TODO: Add example.
+The `zct::Gpio` class provides a C++ interface to Zephyr GPIOs. It is designed to be used as follows:
+
+```c++
+#include "ZephyrCppToolkit.h"
+
+static const struct gpio_dt_spec l_myGpioSpec = GPIO_DT_SPEC_GET(DT_PATH(my_gpios, gpio1), gpios);
+
+int main() {
+    // When creating a GPIO object, pass in the Zephyr DT spec
+    zct::Gpio gpio(l_myGpioSpec);
+
+    // Set the logical value to high
+    gpio.set(true);
+
+    return 0;
+}
+```
 
 ## Event Thread
 
