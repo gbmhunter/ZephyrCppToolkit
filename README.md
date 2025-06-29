@@ -19,6 +19,23 @@ This toolkit uses dynamic memory allocation, but only for initialization. This a
 
 This should be acceptable for many firmware projects, since once initialization is complete you are safe from the fragmentation and non-determinisitic issues of dynamic memory allocation.
 
+## Installation
+
+This project exposes two CMake targets:
+
+* `ZephyrCppToolkit_Real`: An `INTERFACE` library that bundles the generic code + real implementations of all peripherals.
+* `ZephyrCppToolkit_Mock`: An `INTERFACE` library that bundles the generic code + mock implementations of all peripherals.
+
+You can link against either of these targets to get the functionality you need. For example, your real app would link against `ZephyrCppToolkit_Real` and your test application would link against `ZephyrCppToolkit_Mock`.
+
+You can also link against both to get both real and mock implementations.
+
+To use the library in your project, add the following to your `CMakeLists.txt`:
+
+```cmake
+target_link_libraries(app PRIVATE ZephyrCppToolkit_Real)
+```
+
 ## Mutex
 
 The Mutex class is a wrapper around the Zephyr mutex API. It provides a RAII style `MutexLockGuard` which automatically unlocks the mutex when it goes out of scope. This reduces the risk of you forgetting to unlock the mutex for all execution paths in your function.
@@ -86,7 +103,7 @@ The `zct::GpioReal` class provides a C++ interface to Zephyr GPIOs. It is design
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-#include "ZephyrCppToolkit.hpp"
+#include "ZephyrCppToolkit/Peripherals/GpioReal.hpp"
 
 LOG_MODULE_REGISTER(GpioExample, LOG_LEVEL_DBG);
 
@@ -122,40 +139,49 @@ One benefit of using this over Zephyrs native timers is that these timers run sy
 1. If you want them to interact with other threads, you need to synchonize them (typically by posting of the threads event queue).
 1. You can get race conditions in where you receive timer expiry events from another thread after you have apparently stopped it (due to the timer timeout occuring before it was stopped, yet the stopping thread has not processed the item on it's event queue).
 
+Each event thread requires a event type to be defined which is a container of all the possible events that can be sent to the thread via it's internal message queue. All passing of events is done by copy, so you don't have to worry about lifetime issues.
+
+Rather than post to the message queue directly from other modules, it's recommended to create wrapper functions (like the `flash` function below) which do the work of creating the event and posting it to the queue. These functions will be inherently thread safe.
+
 ```c++
 #include <variant>
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-#include "ZephyrCppToolkit.hpp"
+#include "ZephyrCppToolkit/EventThread.hpp"
 
-LOG_MODULE_REGISTER(EventThreadExample, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
 
 //================================================================================================//
 // EVENTS
 //================================================================================================//
 
-struct MyTimerTimeoutEvent {
+namespace Events {
+
+struct MyTimerExpiry {
 };
 
-struct ExitEvent {};
+struct Exit {};
 
-struct LedFlashingEvent {
+struct LedFlashing {
     uint32_t flashRateMs;
 };
 
-typedef std::variant<MyTimerTimeoutEvent, LedFlashingEvent, ExitEvent> Event;
+// Create a generic event type that can be anyone of the specific events above.
+typedef std::variant<MyTimerExpiry, LedFlashing, Exit> Generic;
+
+}
 
 //================================================================================================//
 // EVENT THREAD
 //================================================================================================//
 
-class Led : public zct::EventThread<Event> {
+class Led : public zct::EventThread<Events::Generic> {
 public:
     Led() :
-        zct::EventThread<Event>(threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
-        m_flashingTimer()
+        zct::EventThread<Events::Generic>("Led", threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
+        m_flashingTimer(Events::MyTimerExpiry())
     {
         // Register timers
         m_timerManager.registerTimer(m_flashingTimer);
@@ -163,7 +189,7 @@ public:
 
     ~Led() {
         // Send the exit event to the event thread
-        ExitEvent exitEvent;
+        Events::Exit exitEvent;
         sendEvent(exitEvent);
     }
 
@@ -175,7 +201,7 @@ public:
      * @param flashRateMs The rate at which to flash the LED.
      */
     void flash(uint32_t flashRateMs) {
-        LedFlashingEvent ledFlashingEvent = { .flashRateMs = flashRateMs };
+        Events::LedFlashing ledFlashingEvent = { .flashRateMs = flashRateMs };
         sendEvent(ledFlashingEvent);
     }
 
@@ -183,21 +209,21 @@ private:
     static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
     static constexpr size_t THREAD_STACK_SIZE = 512;
     K_KERNEL_STACK_MEMBER(threadStack, THREAD_STACK_SIZE);
-    zct::Timer<Event> m_flashingTimer;
+    zct::Timer<Events::Generic> m_flashingTimer;
     bool m_ledIsOn = false;
 
     void threadMain() override {
         while (1) {
-            Event event = zct::EventThread<Event>::waitForEvent();
-            if (std::holds_alternative<MyTimerTimeoutEvent>(event)) {
+            Events::Generic event = zct::EventThread<Events::Generic>::waitForEvent();
+            if (std::holds_alternative<Events::MyTimerExpiry>(event)) {
                 LOG_INF("Toggling LED to %d.", !m_ledIsOn);
                 m_ledIsOn = !m_ledIsOn;
-            } else if (std::holds_alternative<LedFlashingEvent>(event)) {
+            } else if (std::holds_alternative<Events::LedFlashing>(event)) {
                 // Start the timer to flash the LED
                 m_flashingTimer.start(1000, 1000);
                 LOG_INF("Starting flashing. Turning LED on...");
                 m_ledIsOn = true;
-            } else if (std::holds_alternative<ExitEvent>(event)) {
+            } else if (std::holds_alternative<Events::Exit>(event)) {
                 break;
             }
         }
