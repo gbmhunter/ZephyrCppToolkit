@@ -6,7 +6,7 @@
 #include "Timer.hpp"
 #include "TimerManager.hpp"
 
-namespace zephyr_cpp_toolkit {
+namespace zct {
 
 template <typename EventType>
 class EventThread {
@@ -150,4 +150,4 @@ protected:
     TimerManager<EventType> m_timerManager;
 };
 
-} // namespace zephyr_cpp_toolkit
+} // namespace zct

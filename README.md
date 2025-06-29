@@ -6,6 +6,19 @@
 
 This is a collection of classes and functions that I have found useful when developing Zephyr applications.
 
+Design goals:
+
+* Leverage C++ features to make Zephyr applications easier and safer to write (the RAII based mutex guard is a good example of this)
+* Provide an easy way to mock peripherals for testing
+* Provide common functionality ontop of what is provided by Zephyr that may be useful to applications
+
+This toolkit uses dynamic memory allocation, but only for initialization. This allows the clean and flexible use of library classes. This means you don't have to
+
+* Pass in pointers to buffers to library classes, they can make their own.
+* Use templating to allocate the memory for the buffers.
+
+This should be acceptable for many firmware projects, since once initialization is complete you are safe from the fragmentation and non-determinisitic issues of dynamic memory allocation.
+
 ## Mutex
 
 The Mutex class is a wrapper around the Zephyr mutex API. It provides a RAII style `MutexLockGuard` which automatically unlocks the mutex when it goes out of scope. This reduces the risk of you forgetting to unlock the mutex for all execution paths in your function.
@@ -14,8 +27,6 @@ The Mutex class is a wrapper around the Zephyr mutex API. It provides a RAII sty
 
 ```c++
 #include "Mutex.hpp"
-
-namespace zct = zephyr_cpp_toolkit;
 
 void myFunction() {
     // Creates a Zephyr mutex, starts of unlocked
@@ -49,6 +60,28 @@ int main() {
 }
 ```
 
+## Peripherals
+
+All peripherals are designed so they can be mocked for testing. They follow this pattern:
+
+* `I<peripheral>.hpp`: The interface for the peripheral.
+* `<peripheral>Real.hpp/cpp`: The real implementation of the peripheral.
+* `<peripheral>Mock.hpp/cpp`: The mock implementation of the peripheral.
+
+All real implementations accept Zephyr device tree structures in their constructors.
+
+This pattern is intended to be used as follows:
+
+1. Create an `App.cpp` class which contains your application logic. This accepts periperhal interface classes in it's constructor and uses them throughout the application.
+1. Your real `main.cpp` creates real peripherals and passes them into your `App` class.
+1. Your test code `main.cpp` creates mock peripherals and passes them into your `App` class.
+
+If you have many peripherals the number of individual peripherals passed in can get unweildy. In this case you can create a `IPeripherals` class which wraps all the individual peripherals. Then your `main.cpp` creates either a `PeripheralsReal` or `PeripheralsMock` class and passes that into your `App` class.
+
+### GPIO
+
+TODO: Add example.
+
 ## Event Thread
 
 EventThread is a base class for easily creating threads following a specific event driven pattern with timers.
@@ -66,9 +99,7 @@ One benefit of using this over Zephyrs native timers is that these timers run sy
 
 #include "ZephyrCppToolkit.h"
 
-namespace zct = zephyr_cpp_toolkit;
-
-LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(EventThreadExample, LOG_LEVEL_DBG);
 
 //================================================================================================//
 // EVENTS

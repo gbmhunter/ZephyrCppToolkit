@@ -16,7 +16,7 @@ class Timer;
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-namespace zephyr_cpp_toolkit {
+namespace zct {
 
 
 //================================================================================================//
@@ -128,4 +128,4 @@ protected:
     EventType m_event;
 };
 
-} // namespace zephyr_cpp_toolkit
+} // namespace zct

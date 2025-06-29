@@ -1,6 +1,6 @@
 #pragma once
 
-namespace zpt {
+namespace zct {
 
 class IGpio {
 public:
@@ -26,4 +26,4 @@ public:
     virtual bool get() = 0;
 };
 
-} // namespace zpt
+} // namespace zct

@@ -4,7 +4,7 @@
 
 #include "IGpio.hpp"
 
-namespace zpt {
+namespace zct {
 
 /**
  * Implements a real Zephyr GPIO pin.
@@ -22,4 +22,4 @@ private:
     const struct gpio_dt_spec* m_spec;
 };
 
-} // namespace zpt
+} // namespace zct

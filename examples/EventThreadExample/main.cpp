@@ -5,8 +5,6 @@
 
 #include "ZephyrCppToolkit.h"
 
-namespace zct = zephyr_cpp_toolkit;
-
 LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
 
 //================================================================================================//

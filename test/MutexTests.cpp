@@ -4,8 +4,6 @@
 
 #include "Mutex.hpp"
 
-namespace zct = zephyr_cpp_toolkit;
-
 ZTEST_SUITE(MutexTests, NULL, NULL, NULL, NULL, NULL);
 
 void test_mutex_create(void);

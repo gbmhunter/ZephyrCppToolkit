@@ -2,7 +2,7 @@
 
 #include <zephyr/logging/log.h>
 
-namespace zpt {
+namespace zct {
 
 LOG_MODULE_REGISTER(GpioReal, LOG_LEVEL_INF);
 
@@ -30,4 +30,4 @@ bool GpioReal::get() {
     return gpio_pin_get_dt(m_spec) == 1;
 }
 
-} // namespace zpt
+} // namespace zct

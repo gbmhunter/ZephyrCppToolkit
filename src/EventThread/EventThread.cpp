@@ -6,10 +6,10 @@
 #include "EventThread.hpp"
 
 
-namespace zephyr_cpp_toolkit {
+namespace zct {
 
 
 LOG_MODULE_REGISTER(EventThread, LOG_LEVEL_DBG);
 
 
-} // namespace zephyr_cpp_toolkit
+} // namespace zct

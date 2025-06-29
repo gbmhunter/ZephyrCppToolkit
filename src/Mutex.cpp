@@ -4,7 +4,7 @@
 
 LOG_MODULE_REGISTER(zct_Mutex, LOG_LEVEL_INF);
 
-namespace zephyr_cpp_toolkit {
+namespace zct {
 
 
 //================================================================================================//
@@ -62,4 +62,4 @@ struct k_mutex* Mutex::getZephyrMutex()
     return &m_zephyrMutex;
 }
 
-} // namespace zephyr_cpp_toolkit
+} // namespace zct

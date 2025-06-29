@@ -2,7 +2,7 @@
 
 #include <zephyr/kernel.h>
 
-namespace zephyr_cpp_toolkit {
+namespace zct {
 
 // Forward declarations
 class Mutex;
@@ -65,4 +65,4 @@ protected:
     struct k_mutex m_zephyrMutex;
 };
 
-} // namespace zephyr_cpp_toolkit
+} // namespace zct

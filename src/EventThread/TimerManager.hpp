@@ -18,7 +18,7 @@
 // CLASS DECLARATION
 //================================================================================================//
 
-namespace zephyr_cpp_toolkit {
+namespace zct {
 
 template <typename EventType>
 class TimerManager {
@@ -122,4 +122,4 @@ protected:
     uint32_t m_maxNumTimers;
 };
 
-} // namespace zephyr_cpp_toolkit
+} // namespace zct

@@ -11,3 +11,8 @@ cd examples/EventThreadExample
 west build -b native_sim
 ./build/EventThreadExample/zephyr/zephyr.exe
 cd ../..
+
+cd examples/Gpio
+west build -b native_sim
+./build/Gpio/zephyr/zephyr.exe
+cd ../..
