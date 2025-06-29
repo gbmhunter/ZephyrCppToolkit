@@ -24,14 +24,29 @@ public:
     ~GpioMock();
 
     /**
-     * @copydoc zct::IGpio::set(bool)
+     * Set the physical value of the GPIO.
+     * 
+     * This ignores the logic mode of the GPIO and sets the physical value directly.
+     * 
+     * @param value The physical value to set.
      */
-    void set(bool value) override;
+    void setPhysical(bool value) override;
 
     /**
-     * @copydoc zct::IGpio::get()
+     * Get the physical value of the GPIO.
+     * 
+     * This ignores the logic mode of the GPIO and returns the physical value directly.
+     * 
+     * @return The physical value of the GPIO.
      */
-    bool get() const override;
+    bool getPhysical() const override;
+
+    /**
+     * Set the direction of the GPIO.
+     * 
+     * @param direction The direction to set.
+     */
+    void setDirection(Direction direction) override;
 
     /**
      * @brief Use this to pretend to be an external
@@ -42,12 +57,14 @@ public:
      * @param value The value to set the GPIO to.
      */
     void mockSetInput(bool value);
-    
-    
 
 private:
     const char* m_name;
-    bool m_value;
+
+    /**
+     * Because it is a mock GPIO, we store the value of the GPIO here.
+     */
+    bool m_logicalValue;
 };
 
 } // namespace zct

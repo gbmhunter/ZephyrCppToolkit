@@ -41,7 +41,7 @@ public:
      * 
      * @param value The logical value to set.
      */
-    virtual void set(bool value) = 0;
+    virtual void set(bool value);
 
     /**
      * Get the logical value of the GPIO.
@@ -50,7 +50,32 @@ public:
      * 
      * @return The logical value of the GPIO.
      */
-    virtual bool get() const = 0;
+    virtual bool get() const;
+
+    /**
+     * Set the physical value of the GPIO.
+     * 
+     * This ignores the logic mode of the GPIO and sets the physical value directly.
+     * 
+     * @param value The physical value to set.
+     */
+    virtual void setPhysical(bool value) = 0;
+
+    /**
+     * Get the physical value of the GPIO.
+     * 
+     * This ignores the logic mode of the GPIO and returns the physical value directly.
+     * 
+     * @return The physical value of the GPIO.
+     */
+    virtual bool getPhysical() const = 0;
+
+    /**
+     * Set the direction of the GPIO.
+     * 
+     * @param direction The direction to set.
+     */
+    virtual void setDirection(Direction direction) = 0;
 
 protected:
     const char* m_name;

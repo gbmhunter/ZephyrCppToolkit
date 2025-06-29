@@ -27,10 +27,29 @@ public:
     ~GpioReal();
 
     /**
-     * @copydoc zct::IGpio::set(bool)
+     * Set the physical value of the GPIO.
+     * 
+     * This ignores the logic mode of the GPIO and sets the physical value directly.
+     * 
+     * @param value The physical value to set.
      */
-    void set(bool value) override;
-    bool get() const override;
+    void setPhysical(bool value) override;
+
+    /**
+     * Get the physical value of the GPIO.
+     * 
+     * This ignores the logic mode of the GPIO and returns the physical value directly.
+     * 
+     * @return The physical value of the GPIO.
+     */
+    bool getPhysical() const override;
+
+    /**
+     * Set the direction of the GPIO.
+     * 
+     * @param direction The direction to set.
+     */
+    void setDirection(Direction direction) override;
 
 private:
     const struct gpio_dt_spec* m_spec;

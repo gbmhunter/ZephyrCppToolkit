@@ -11,4 +11,27 @@ IGpio::IGpio(const char* name, Direction direction, LogicMode logicMode)
     __ASSERT_NO_MSG(name != nullptr);
 }
 
+void IGpio::set(bool value) {
+    if (m_logicMode == LogicMode::ActiveHigh) {
+        setPhysical(value);
+    } else if (m_logicMode == LogicMode::ActiveLow) {
+        // Invert logic
+        setPhysical(!value);
+    } else {
+        __ASSERT_NO_MSG(false);
+    }
+    
+}
+
+bool IGpio::get() const {
+    if (m_logicMode == LogicMode::ActiveHigh) {
+        return getPhysical();
+    } else if (m_logicMode == LogicMode::ActiveLow) {
+        // Invert logic
+        return !getPhysical();
+    } else {
+        __ASSERT_NO_MSG(false);
+    }
+}
+
 } // namespace zct
