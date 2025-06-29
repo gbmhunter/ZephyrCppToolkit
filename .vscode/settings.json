@@ -1,7 +1,7 @@
 {
     // I needed to set this to default to get C++ Tools working again
     // after installing clangd, which disabled them, and then disabling clangd
-    // "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.intelliSenseEngine": "default",
     "files.associations": {
         "functional": "cpp",
         "type_traits": "cpp"
