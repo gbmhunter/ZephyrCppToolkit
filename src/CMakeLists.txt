@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.20.0)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-project(zephyr_cpp_toolkit CXX)
+project(ZephyrCppToolkit CXX)
 
 # Enable C++23 standard
 set(CMAKE_CXX_STANDARD 20)
@@ -15,17 +15,17 @@ set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new -m32")
 
 # Create the library target
-add_library(zephyr_cpp_toolkit INTERFACE)
+add_library(ZephyrCppToolkit INTERFACE)
 
 # Explicitly set the library language to C++
-set_target_properties(zephyr_cpp_toolkit PROPERTIES
+set_target_properties(ZephyrCppToolkit PROPERTIES
     LINKER_LANGUAGE CXX)
 
-target_compile_options(zephyr_cpp_toolkit INTERFACE -std=c++20)
+target_compile_options(ZephyrCppToolkit INTERFACE -std=c++20)
 
 # Add sources to the library
 target_sources(
-    zephyr_cpp_toolkit
+    ZephyrCppToolkit
     INTERFACE
     EventThread/EventThread.cpp
     EventThread/Timer.cpp
@@ -37,14 +37,14 @@ target_sources(
 )
 
 # Link against Zephyr interface library to get include paths and other settings
-target_link_libraries(zephyr_cpp_toolkit INTERFACE zephyr_interface zephyr)
+target_link_libraries(ZephyrCppToolkit INTERFACE zephyr_interface zephyr)
 
 # Add compiler option to suppress "warning: structured bindings only available with '-std=c++17' or '-std=gnu++17' [-Wc++17-extensions]"
-# target_compile_options(zephyr_cpp_toolkit PRIVATE -Wno-c++17-extensions)
-# target_compile_options(zephyr_cpp_toolkit PRIVATE -Wno-c++17-extensions)
+# target_compile_options(ZephyrCppToolkit PRIVATE -Wno-c++17-extensions)
+# target_compile_options(ZephyrCppToolkit PRIVATE -Wno-c++17-extensions)
 
 # Make the library headers available to other targets
-target_include_directories(zephyr_cpp_toolkit
+target_include_directories(ZephyrCppToolkit
     INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
@@ -63,7 +63,7 @@ FetchContent_MakeAvailable(TlExpected)
 
 # The target 'expected' (aliased as tl::expected) is now configured.
 # Link against the alias provided by the library.
-target_link_libraries(zephyr_cpp_toolkit INTERFACE tl::expected)
+target_link_libraries(ZephyrCppToolkit INTERFACE tl::expected)
 
 
 # include(FetchContent)
