@@ -21,7 +21,7 @@ This should be acceptable for many firmware projects, since once initialization 
 
 ## Installation
 
-This project exposes two CMake targets:
+This project uses `CMake` to build. This project exposes two CMake targets for you to link against in your Zephyr application:
 
 * `ZephyrCppToolkit_Real`: An `INTERFACE` library that bundles the generic code + real implementations of all peripherals.
 * `ZephyrCppToolkit_Mock`: An `INTERFACE` library that bundles the generic code + mock implementations of all peripherals.
