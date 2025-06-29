@@ -1,3 +1,5 @@
+#include <type_traits>
+
 #include <zephyr/ztest.h>
 
 #include "Mutex.hpp"
@@ -64,3 +66,6 @@ ZTEST(MutexTests, testMutexLockGuard)
     // Now make sure the mutex has been unlocked
     zassert_false(isMutexLocked(mutex), "Mutex should be unlocked after lockGuard goes out of scope.");
 }
+
+// Make sure we can't copy or move the lock guard.
+static_assert(!std::is_copy_constructible_v<zct::MutexLockGuard>);

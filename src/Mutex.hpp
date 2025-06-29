@@ -1,9 +1,6 @@
 #pragma once
 
-// #include <expected>
 #include <zephyr/kernel.h>
-
-// #include <tl/expected.hpp>
 
 namespace zephyr_cpp_toolkit {
 
@@ -21,6 +18,12 @@ public:
     MutexLockGuard(Mutex& mutex, k_timeout_t timeout, int& mutexRc);
 
     ~MutexLockGuard();
+
+    // Prevent copying and moving
+    MutexLockGuard(const MutexLockGuard&) = delete;
+    MutexLockGuard& operator=(const MutexLockGuard&) = delete;
+    MutexLockGuard(MutexLockGuard&&) = delete;
+    MutexLockGuard& operator=(MutexLockGuard&&) = delete;
 protected:
     
 

@@ -1,3 +1,13 @@
+# Zephyr C++ Toolkit
+
+[![Zephyr CI](https://github.com/gbmhunter/zephyr-cpp-toolkit/actions/workflows/main.yml/badge.svg)](https://github.com/gbmhunter/zephyr-cpp-toolkit/actions/workflows/main.yml)
+
+## Overview
+
+This is a collection of classes and functions that I have found useful when developing Zephyr applications.
+
+## Mutex
+
 ## Mutex
 
 The Mutex class is a wrapper around the Zephyr mutex API. It provides a RAII style `MutexLockGuard` which automatically unlocks the mutex when it goes out of scope. This reduces the risk of you forgetting to unlock the mutex for all execution paths in your function.
