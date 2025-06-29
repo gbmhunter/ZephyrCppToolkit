@@ -1,7 +1,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-#include "ZephyrCppToolkit.hpp"
+#include "ZephyrCppToolkit/Peripherals/GpioReal.hpp"
 
 LOG_MODULE_REGISTER(GpioExample, LOG_LEVEL_DBG);
 

@@ -1,6 +1,6 @@
 #include <zephyr/logging/log.h>
 
-#include "Mutex.hpp"
+#include "ZephyrCppToolkit/Mutex.hpp"
 
 LOG_MODULE_REGISTER(zct_Mutex, LOG_LEVEL_INF);
 

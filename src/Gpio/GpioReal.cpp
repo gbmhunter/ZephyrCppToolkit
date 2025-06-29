@@ -1,6 +1,6 @@
-#include "GpioReal.hpp"
-
 #include <zephyr/logging/log.h>
+
+#include "ZephyrCppToolkit/Peripherals/GpioReal.hpp"
 
 namespace zct {
 

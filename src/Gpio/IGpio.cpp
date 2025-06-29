@@ -1,6 +1,6 @@
 #include <zephyr/kernel.h>
 
-#include "IGpio.hpp"
+#include "ZephyrCppToolkit/Peripherals/IGpio.hpp"
 
 namespace zct {
 

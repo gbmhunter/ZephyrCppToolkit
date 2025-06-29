@@ -1,6 +1,6 @@
 #include <zephyr/logging/log.h>
 
-#include "GpioMock.hpp"
+#include "ZephyrCppToolkit/Peripherals/GpioMock.hpp"
 
 namespace zct {
 

@@ -1,6 +1,7 @@
 #include <zephyr/ztest.h>
 
-#include "ZephyrCppToolkit.hpp"
+#include "ZephyrCppToolkit/Peripherals/GpioMock.hpp"
+#include "ZephyrCppToolkit/Peripherals/GpioReal.hpp"
 
 ZTEST_SUITE(GpioTests, NULL, NULL, NULL, NULL, NULL);
 

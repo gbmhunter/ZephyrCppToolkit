@@ -69,15 +69,9 @@ target_link_libraries(ZephyrCppToolkit_Mock INTERFACE zephyr_interface)
 #     ${CMAKE_CURRENT_SOURCE_DIR}
 # )
 
-target_include_directories(ZephyrCppToolkit_Real
-    INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-)
+target_include_directories(ZephyrCppToolkit_Real INTERFACE ../include)
+target_include_directories(ZephyrCppToolkit_Mock INTERFACE ../include)
 
-target_include_directories(ZephyrCppToolkit_Mock
-    INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-)
 
 # Disable packaging for TlExpected
 set(EXPECTED_BUILD_PACKAGE OFF CACHE BOOL "Disable TlExpected packaging" FORCE)
