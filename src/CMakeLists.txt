@@ -7,9 +7,9 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(zephyr_cpp_toolkit CXX)
 
 # Enable C++23 standard
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_EXTENSIONS ON)
 
 # Add compiler flags for architecture and alignment
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new -m32")
@@ -21,7 +21,7 @@ add_library(zephyr_cpp_toolkit STATIC)
 set_target_properties(zephyr_cpp_toolkit PROPERTIES
     LINKER_LANGUAGE CXX)
 
-target_compile_options(zephyr_cpp_toolkit PRIVATE -std=c++23)
+target_compile_options(zephyr_cpp_toolkit PRIVATE -std=c++20)
 
 # Add sources to the library
 target_sources(
@@ -34,7 +34,8 @@ target_sources(
 target_link_libraries(zephyr_cpp_toolkit PUBLIC zephyr_interface zephyr)
 
 # Add compiler option to suppress "warning: structured bindings only available with '-std=c++17' or '-std=gnu++17' [-Wc++17-extensions]"
-target_compile_options(zephyr_cpp_toolkit PRIVATE -Wno-c++17-extensions)
+# target_compile_options(zephyr_cpp_toolkit PRIVATE -Wno-c++17-extensions)
+# target_compile_options(zephyr_cpp_toolkit PRIVATE -Wno-c++17-extensions)
 
 # Make the library headers available to other targets
 target_include_directories(zephyr_cpp_toolkit
@@ -49,10 +50,14 @@ set(MAIN_PROJECT_CMAKE_CXX_EXTENSIONS ${CMAKE_CXX_EXTENSIONS})
 set(MAIN_PROJECT_CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}") # Cache existing CXX_FLAGS
 
 # Set C++ standard and flags specifically for TlExpected's configuration phase
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") # Force C++11
+set(CMAKE_CXX_EXTENSIONS ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20") # Force C++20
+
+# Disable packaging for TlExpected
+set(EXPECTED_BUILD_PACKAGE OFF CACHE BOOL "Disable TlExpected packaging" FORCE)
+set(EXPECTED_BUILD_TESTS OFF CACHE BOOL "Disable TlExpected tests" FORCE)
 
 include(FetchContent)
 FetchContent_Declare(

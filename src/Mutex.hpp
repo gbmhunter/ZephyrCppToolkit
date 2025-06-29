@@ -1,7 +1,9 @@
 #pragma once
 
-#include <expected>
+// #include <expected>
 #include <zephyr/kernel.h>
+
+#include <tl/expected.hpp>
 
 namespace zephyr_cpp_toolkit {
 
@@ -13,9 +15,19 @@ class Mutex;
  */
 class MutexLockGuard {
 public:
-    MutexLockGuard(Mutex& mutex, k_timeout_t timeout = K_FOREVER);
+
     ~MutexLockGuard();
-private:
+
+    /**
+     * Since we can't return an error code from the constructor, to create a lock guard use this static function.
+     */
+    static tl::expected<MutexLockGuard, int> create(Mutex& mutex, k_timeout_t timeout = K_FOREVER);
+protected:
+    /**
+     * Constructor is hidden since we can't return an error code from the constructor. Use create() instead.
+     */
+    MutexLockGuard(Mutex& mutex);
+
     // The mutex this guard is locking/unlocking.
     Mutex& m_mutex;
 };
@@ -38,7 +50,7 @@ public:
      * @param timeout The max. time to wait to lock the mutex.
      * @return MutexLockGuard  The lock guard for the mutex.
      */
-    std::expected<MutexLockGuard, int> lockGuard(k_timeout_t timeout = K_FOREVER);
+    tl::expected<MutexLockGuard, int> lockGuard(k_timeout_t timeout = K_FOREVER);
 
     /**
      * @brief Get the underlying Zephyr mutex object.
@@ -48,7 +60,7 @@ public:
      * @return A pointer to the Zephyr mutex object.
      */
     struct k_mutex* getZephyrMutex() const;
-private:
+protected:
     struct k_mutex m_zephyrMutex;
 };
 
