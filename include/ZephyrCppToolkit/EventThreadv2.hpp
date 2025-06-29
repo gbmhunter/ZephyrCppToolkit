@@ -10,19 +10,22 @@
 
 namespace zct {
 
+// Don't use this, it seg faults!
+// static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;
+#define ZCT_EVENT_THREAD_LOG_LEVEL LOG_LEVEL_DBG
+
 template <typename EventType>
 class EventThreadv2 {
 
 public:
 
-    static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;
 
     /**
      * Create a new event thread.
      * 
      * Dynamically allocates memory for the event queue buffer.
      *
-     * @param name The name of the thread. Used for logging purposes.jsj
+     * @param name The name of the thread. Used for logging purposes.
      * @param threadStack The stack to use for the thread.
      * @param threadStackSize The size of the stack provided.
      * @param eventQueueBufferNumItems The number of items in the event queue.
@@ -31,22 +34,24 @@ public:
      */
     EventThreadv2(
         const char* name,
-        k_thread_stack_t* threadStack,
-        size_t threadStackSize,
+        k_thread_stack_t* threadStack, // Temporarily removed
+        size_t threadStackSize,      // Temporarily removed
         size_t eventQueueBufferNumItems,
         std::function<void()> threadFunction
     ) :
         m_threadFunction(threadFunction),
         m_timerManager(10)
     {
-        LOG_MODULE_DECLARE(zct_EventThread);
+        printk("FFFFFFFFFFFJ");
+        LOG_MODULE_DECLARE(EventThreadv2, ZCT_EVENT_THREAD_LOG_LEVEL);
+        LOG_DBG("EventThreadv2 constructor called.");
         m_name = name;
         // Create event queue buffer and then init queue with it
         m_eventQueueBuffer = new EventType[eventQueueBufferNumItems];
         __ASSERT_NO_MSG(m_eventQueueBuffer != nullptr);
         k_msgq_init(&m_threadMsgQueue, (char*)m_eventQueueBuffer, sizeof(EventType), eventQueueBufferNumItems);
 
-        LOG_DBG("Initializing threaded state machine...");
+        // LOG_DBG("Initializing threaded state machine...");
         // Start the thread
         k_thread_create(
             &m_thread,
@@ -61,12 +66,12 @@ public:
             K_NO_WAIT);
         // Name the thread for easier debugging/logging
         k_thread_name_set(&m_thread, m_name);
-        LOG_DBG("Threaded state machine initialized.");
+        // LOG_DBG("Threaded state machine initialized.");
     };
 
     ~EventThreadv2() {
-        LOG_MODULE_DECLARE(zct_EventThread);
-        LOG_DBG("%s() called.", __FUNCTION__);
+        // LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
+        // LOG_DBG("%s() called.", __FUNCTION__);
         k_thread_join(&m_thread, K_FOREVER);
     }
 
@@ -76,7 +81,7 @@ public:
      * - An external event (sent from another thread).
      */
     EventType waitForEvent() {
-        LOG_MODULE_DECLARE(zct_EventThreadv2, LOG_LEVEL);
+        LOG_MODULE_DECLARE(EventThreadv2, ZCT_EVENT_THREAD_LOG_LEVEL);
         LOG_DBG("%s() called.", __FUNCTION__);
 
         // Get the next timer to expire
@@ -136,7 +141,7 @@ protected:
     /** The function needed by pass to Zephyr's thread API */
     static void staticThreadFunction(void* arg1, void* arg2, void* arg3)
     {
-        LOG_MODULE_DECLARE(zct_EventThread);
+        LOG_MODULE_DECLARE(EventThreadv2, ZCT_EVENT_THREAD_LOG_LEVEL);
 
         // First passed in argument is the instance of the class
         EventThreadv2* obj = static_cast<EventThreadv2*>(arg1);
