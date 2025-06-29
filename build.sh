@@ -1,5 +1,7 @@
 set -e
 
+source .venv/bin/activate
+
 # Build and run tests
 cd test
 west build -b native_sim
