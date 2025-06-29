@@ -36,7 +36,7 @@ jobs:
         uses: zephyrproject-rtos/action-zephyr-setup@v1
         with:
             app-path: src
-            toolchains: host
+            toolchains: arm-zephyr-eabi
         # app-path defaults to '.', which is correct as west.yml is at the root.
         # toolchains defaults to 'host', which is needed for native_sim.
 
