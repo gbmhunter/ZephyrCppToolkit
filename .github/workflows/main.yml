@@ -26,6 +26,15 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Create virtual environment
+        run: python -m venv .venv
+        shell: bash
+        working-directory: ./
+        # Update the PATH since every step is run in a new shell.
+        env:
+          VIRTUAL_ENV: .venv
+          PATH: .venv/bin:$PATH
+
       - name: Install west
         run: pip install west
 
