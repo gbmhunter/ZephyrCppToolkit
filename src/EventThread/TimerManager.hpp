@@ -63,6 +63,9 @@ public:
         __ASSERT(m_numTimers < m_maxNumTimers, "Max number of timers of %u reached.", m_maxNumTimers);
         m_timers[m_numTimers] = &timer;
         m_numTimers++;
+        // Make sure to set the isRegistered flag to true. This will prevent log warnings
+        // if the timer is started when it is not registered with any timer managers.
+        timer.setIsRegistered(true);
     }
 
     /**
@@ -72,7 +75,8 @@ public:
      * @return A struct containing the timer that expires next and the duration to wait until that timer expires.
      */
     TimerExpiryInfo getNextExpiringTimer() {
-        LOG_MODULE_DECLARE(TimerManager);
+        LOG_MODULE_DECLARE(TimerManager, LOG_LEVEL_DBG);
+        LOG_DBG("getNextExpiringTimer() called.");
 
         // Set output to null in case no timer expired
         Timer<EventType>* expiredTimer = nullptr;
@@ -87,7 +91,7 @@ public:
                 }
             }
         }
-        LOG_DBG("Expired timer: %p.", expiredTimer);
+        LOG_DBG("Expired timer: %p.\n", expiredTimer);
 
         // Convert the expiry time to a duration from now
         // Calculate time to wait for next timeout event

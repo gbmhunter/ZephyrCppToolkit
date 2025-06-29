@@ -11,6 +11,6 @@
 
 namespace zct {
 
-LOG_MODULE_REGISTER(Timer, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(zct_Timer, LOG_LEVEL_DBG);
 
 } // namespace zct

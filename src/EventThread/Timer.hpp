@@ -62,8 +62,14 @@ public:
      * @param eventSize The size of the event in bytes, i.e. sizeof(MyEventType).
     */
     void start(int64_t startDuration_ms, int64_t period_ms) {
+        LOG_MODULE_DECLARE(zct_Timer);
         __ASSERT_NO_MSG(startDuration_ms >= 0); // Start time can be 0, which means the timer will fire immediately. Can't be negative!
         __ASSERT_NO_MSG(period_ms >= -1); // Period can be -1, which means the timer will not repeat
+        
+        if (!this->m_isRegistered) {
+            LOG_WRN("Timer %p is not registered with a timer manager. Expiry events will not be handled.", this);
+        }
+
         this->startTime_ticks = k_uptime_ticks();
         // Use ceil and not floor to guarantee a minimum delay
         this->nextExpiryTime_ticks = this->startTime_ticks + k_ms_to_ticks_ceil64(startDuration_ms);
@@ -90,7 +96,7 @@ public:
      * 2. Update the next expiry time if it is a recurring timer.
     */
     void updateAfterExpiry() {
-        LOG_MODULE_DECLARE(Timer);
+        LOG_MODULE_DECLARE(zct_Timer, LOG_LEVEL_DBG);
         if (this->period_ticks == -1)
         {
             // Timer was one-shot, so stop it
@@ -118,14 +124,29 @@ public:
      */
     int64_t getNextExpiryTimeTicks() const { return this->nextExpiryTime_ticks; }
 
+    /**
+     * Set the isRegistered flag. Used to log warnings if a timer is
+     * started when it is not registered with any timer managers.
+     * 
+     * @param isRegistered The value to set the isRegistered flag to.
+     */
+    void setIsRegistered(bool isRegistered) { this->m_isRegistered = isRegistered; }
+
+    /**
+     * Get the isRegistered flag.
+     * 
+     * @return The value of the isRegistered flag.
+     */
+    bool getIsRegistered() const { return this->m_isRegistered; }
+
 protected:
     int64_t period_ticks;
     int64_t startTime_ticks;
     int64_t nextExpiryTime_ticks;
     bool m_isRunning;
     bool m_beforeFirstExpiry;
-
     EventType m_event;
+    bool m_isRegistered = false;
 };
 
 } // namespace zct
