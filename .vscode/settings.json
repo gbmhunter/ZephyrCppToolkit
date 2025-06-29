@@ -2,8 +2,5 @@
     "C_Cpp.intelliSenseEngine": "default",
     "files.associations": {
         "functional": "cpp"
-    },
-    "nrf-connect.applications": [
-        "${workspaceFolder}/app"
-    ],
+    }
 }

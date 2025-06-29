@@ -25,6 +25,7 @@ target_sources(
     app
     PRIVATE
     main.cpp
+    EventThreadTests.cpp
     MutexTests.cpp
     )
     

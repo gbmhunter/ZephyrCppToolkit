@@ -6,14 +6,11 @@ namespace zct = zephyr_cpp_toolkit;
 
 ZTEST_SUITE(MutexTests, NULL, NULL, NULL, NULL, NULL);
 
-// Forward declaration, as k_sem is used in thread_main's signature now.
-struct k_sem;
-
 void test_mutex_create(void);
 
 K_THREAD_STACK_DEFINE(thread_stack, 1024);
 
-void thread_main(void* arg1, void* arg2, void* arg3)
+void threadMain(void* arg1, void* arg2, void* arg3)
 {
     zct::Mutex* mutex = static_cast<zct::Mutex*>(arg1);
     bool* lock_result = static_cast<bool*>(arg2);
@@ -27,7 +24,7 @@ void thread_main(void* arg1, void* arg2, void* arg3)
     k_sem_give(completion_sem);
 }
 
-bool is_mutex_locked(zct::Mutex& mutex)
+bool isMutexLocked(zct::Mutex& mutex)
 {
     // To make sure the mutex is locked, we need to create another thread
     // to try and lock it
@@ -37,7 +34,7 @@ bool is_mutex_locked(zct::Mutex& mutex)
     bool thread_lock_successful;
 
     k_thread_create(&thread, thread_stack, K_THREAD_STACK_SIZEOF(thread_stack),
-                    thread_main, &mutex, &thread_lock_successful, &thread_completion_sem,
+                    threadMain, &mutex, &thread_lock_successful, &thread_completion_sem,
                     0, /* priority */
                     0, /* options */
                     K_NO_WAIT);
@@ -49,7 +46,7 @@ bool is_mutex_locked(zct::Mutex& mutex)
     return !thread_lock_successful;
 }
 
-ZTEST(MutexTests, test_mutex_create)
+ZTEST(MutexTests, testMutexLockGuard)
 {
     zct::Mutex mutex;
 
@@ -63,9 +60,9 @@ ZTEST(MutexTests, test_mutex_create)
         zassert_true(mutexRc == 0, "Failed to lock the mutex in main thread.");
 
         // Assert that the spawned thread failed to lock the mutex
-        zassert_true(is_mutex_locked(mutex), "Spawned thread should have failed to lock the mutex.");
+        zassert_true(isMutexLocked(mutex), "Spawned thread should have failed to lock the mutex.");
     } // lockGuard goes out of scope, so the mutex is unlocked
 
     // Now make sure the mutex has been unlocked
-    zassert_false(is_mutex_locked(mutex), "Mutex should be unlocked after lockGuard goes out of scope.");
+    zassert_false(isMutexLocked(mutex), "Mutex should be unlocked after lockGuard goes out of scope.");
 }
