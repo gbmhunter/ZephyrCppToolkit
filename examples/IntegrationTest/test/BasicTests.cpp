@@ -23,10 +23,20 @@ ZTEST(MyTests, realGpioOutputCanBeSet)
     // Toggle the input GPIO.
     zct::GpioMock& inputGpio = static_cast<zct::GpioMock&>(peripherals.getInputGpio());
     inputGpio.mockSetInput(true);
-    k_sleep(K_SECONDS(1));
+    k_sleep(K_MSEC(10));
 
     zct::GpioMock& outputGpio = static_cast<zct::GpioMock&>(peripherals.getOutputGpio());
     zassert_true(outputGpio.get() == true, "Output GPIO should be high.");
+
+    // Wait until almost 1 min is up to make sure the output is still active
+    k_sleep(K_SECONDS(59));
+
+    zassert_true(outputGpio.get() == true, "Output GPIO should be high.");
+
+    // Now go to the 1 min and check that output is now inactive
+    k_sleep(K_SECONDS(1));
+    zassert_true(outputGpio.get() == false, "Output GPIO should be low.");
+
 
     LOG_WRN("Test finished.");
 }
