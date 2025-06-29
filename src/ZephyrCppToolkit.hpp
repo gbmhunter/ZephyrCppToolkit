@@ -1,5 +1,6 @@
 #include "EventThread/EventThread.hpp"
 #include "EventThread/Timer.hpp"
 #include "EventThread/TimerManager.hpp"
+#include "Gpio/GpioMock.hpp"
 #include "Gpio/GpioReal.hpp"
 #include "Mutex.hpp"

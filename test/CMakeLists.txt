@@ -15,6 +15,7 @@ target_sources(
     PRIVATE
     main.cpp
     EventThreadTests.cpp
+    GpioTests.cpp
     MutexTests.cpp
 )
     

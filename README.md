@@ -88,8 +88,8 @@ The `zct::Gpio` class provides a C++ interface to Zephyr GPIOs. It is designed t
 static const struct gpio_dt_spec l_myGpioSpec = GPIO_DT_SPEC_GET(DT_PATH(my_gpios, gpio1), gpios);
 
 int main() {
-    // When creating a GPIO object, pass in the Zephyr DT spec
-    zct::Gpio gpio(l_myGpioSpec);
+    // When creating a real GPIO object, pass in the Zephyr DT spec
+    zct::GpioReal gpio(l_myGpioSpec);
 
     // Set the logical value to high
     gpio.set(true);

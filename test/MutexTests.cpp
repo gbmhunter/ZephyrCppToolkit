@@ -2,7 +2,7 @@
 
 #include <zephyr/ztest.h>
 
-#include "Mutex.hpp"
+#include "ZephyrCppToolkit.hpp"
 
 ZTEST_SUITE(MutexTests, NULL, NULL, NULL, NULL, NULL);
 
