@@ -32,8 +32,8 @@ public:
      * 
      * The timer will not be running after creation.
      */
-    Timer() :
-        m_event()
+    Timer(const EventType& event) :
+        m_event(event)
     {
     }
 

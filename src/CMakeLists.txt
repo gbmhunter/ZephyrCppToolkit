@@ -31,6 +31,7 @@ target_sources(
     Gpio/GpioMock.cpp
     Gpio/IGpio.cpp
     Mutex.cpp
+    Pwm/IPwm.cpp
 )
 
 # Link against Zephyr interface library to get include paths and other settings
