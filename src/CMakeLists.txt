@@ -21,6 +21,8 @@ add_library(zephyr_cpp_toolkit STATIC)
 set_target_properties(zephyr_cpp_toolkit PROPERTIES
     LINKER_LANGUAGE CXX)
 
+target_compile_options(zephyr_cpp_toolkit PRIVATE -std=c++23)
+
 # Add sources to the library
 target_sources(
     zephyr_cpp_toolkit
@@ -39,6 +41,37 @@ target_include_directories(zephyr_cpp_toolkit
     PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
+# Cache current CXX standard and flags settings for the main project
+set(MAIN_PROJECT_CMAKE_CXX_STANDARD ${CMAKE_CXX_STANDARD})
+set(MAIN_PROJECT_CMAKE_CXX_STANDARD_REQUIRED ${CMAKE_CXX_STANDARD_REQUIRED})
+set(MAIN_PROJECT_CMAKE_CXX_EXTENSIONS ${CMAKE_CXX_EXTENSIONS})
+set(MAIN_PROJECT_CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}") # Cache existing CXX_FLAGS
+
+# Set C++ standard and flags specifically for TlExpected's configuration phase
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") # Force C++11
+
+include(FetchContent)
+FetchContent_Declare(
+    TlExpected
+    GIT_REPOSITORY https://github.com/TartanLlama/expected
+    GIT_TAG v1.1.0
+)
+FetchContent_MakeAvailable(TlExpected)
+
+# Restore CXX standard and flags settings for the main project
+set(CMAKE_CXX_STANDARD ${MAIN_PROJECT_CMAKE_CXX_STANDARD})
+set(CMAKE_CXX_STANDARD_REQUIRED ${MAIN_PROJECT_CMAKE_CXX_STANDARD_REQUIRED})
+set(CMAKE_CXX_EXTENSIONS ${MAIN_PROJECT_CMAKE_CXX_EXTENSIONS})
+set(CMAKE_CXX_FLAGS "${MAIN_PROJECT_CMAKE_CXX_FLAGS}") # Restore CXX_FLAGS
+
+# The target 'expected' (aliased as tl::expected) is now configured.
+# Link against the alias provided by the library.
+target_link_libraries(zephyr_cpp_toolkit PUBLIC tl::expected)
+
 
 # include(FetchContent)
 # set(NINJAHSM_BUILD_TESTS OFF CACHE BOOL "" FORCE)

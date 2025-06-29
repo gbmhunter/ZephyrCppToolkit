@@ -1,5 +1,6 @@
 #pragma once
 
+#include <expected>
 #include <zephyr/kernel.h>
 
 namespace zephyr_cpp_toolkit {
@@ -21,6 +22,11 @@ private:
 
 class Mutex {
 public:
+    /**
+     * @brief Construct a new mutex.
+     * 
+     * The mutex starts of in an unlocked state. Call lockGuard() to lock the mutex.
+     */
     Mutex();
     ~Mutex();
 
@@ -32,7 +38,7 @@ public:
      * @param timeout The max. time to wait to lock the mutex.
      * @return MutexLockGuard  The lock guard for the mutex.
      */
-    MutexLockGuard lockGuard(k_timeout_t timeout = K_FOREVER);
+    std::expected<MutexLockGuard, int> lockGuard(k_timeout_t timeout = K_FOREVER);
 
     /**
      * @brief Get the underlying Zephyr mutex object.

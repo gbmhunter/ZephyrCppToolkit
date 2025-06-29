@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 3.20.0)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+zephyr_library_compile_options(-std=c++23)
+
 project(test)
 
 # Enable C++23 standard
@@ -15,7 +17,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new")
 
 # Add compiler option to suppress "warning: structured bindings only available with '-std=c++17' or '-std=gnu++17' [-Wc++17-extensions]"
-target_compile_options(app PRIVATE -Wno-c++17-extensions)
 
 # Add the library from src directory
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../src ${CMAKE_CURRENT_BINARY_DIR}/src)
@@ -25,10 +26,13 @@ target_sources(
     PRIVATE
     main.cpp
     MutexTests.cpp
-)
-
+    )
+    
 # Link against the library
 target_link_libraries(app PRIVATE zephyr_cpp_toolkit)
-
+    
+target_compile_options(app PRIVATE -Wno-c++17-extensions -std=c++23)
 # Add src/ as an include directory (not needed anymore since the library provides its include paths)
 # target_include_directories(app PUBLIC ../src)
+
+zephyr_library_compile_options(-std=c++23)
