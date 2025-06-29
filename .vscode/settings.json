@@ -5,5 +5,6 @@
     "files.associations": {
         "functional": "cpp",
         "type_traits": "cpp"
-    }
+    },
+    "python.analysis.exclude": [".venv", "external", "**/build"]
 }
