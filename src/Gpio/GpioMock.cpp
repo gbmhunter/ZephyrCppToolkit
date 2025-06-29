@@ -37,6 +37,11 @@ bool GpioMock::getPhysical() const {
     }
 }
 
+void GpioMock::configureInterrupt(InterruptMode interruptMode, std::function<void()> callback) {
+    LOG_DBG("Configuring interrupt on GPIO \"%s\" in mode %d.", m_name, interruptMode);
+    // Do nothing
+}
+
 void GpioMock::configurePinBasedOnSettings() {
     // Do nothing
 }
