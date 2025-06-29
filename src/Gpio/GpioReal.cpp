@@ -55,4 +55,54 @@ void GpioReal::configurePinBasedOnSettings() {
     __ASSERT_NO_MSG(rc == 0);
 }
 
+void GpioReal::configureInterrupt(InterruptMode interruptMode, std::function<void()> callback) {
+    gpio_flags_t flags = 0;
+
+    if (interruptMode == InterruptMode::Disable) {
+        flags = GPIO_INT_DISABLE;
+    } else if (interruptMode == InterruptMode::EdgeRising) {
+        flags = GPIO_INT_EDGE_RISING;
+    } else if (interruptMode == InterruptMode::EdgeFalling) {
+        flags = GPIO_INT_EDGE_FALLING;
+    } else if (interruptMode == InterruptMode::EdgeBoth) {
+        flags = GPIO_INT_EDGE_BOTH;
+    } else if (interruptMode == InterruptMode::LevelLow) {
+        flags = GPIO_INT_LEVEL_LOW;
+    } else if (interruptMode == InterruptMode::LevelHigh) {
+        flags = GPIO_INT_LEVEL_HIGH;
+    } else if (interruptMode == InterruptMode::LevelToInactive) {
+        flags = GPIO_INT_EDGE_TO_INACTIVE;
+    } else if (interruptMode == InterruptMode::LevelToActive) {
+        flags = GPIO_INT_EDGE_TO_ACTIVE;
+    } else if (interruptMode == InterruptMode::LevelInactive) {
+        flags = GPIO_INT_LEVEL_INACTIVE;
+    } else if (interruptMode == InterruptMode::LevelActive) {
+        flags = GPIO_INT_LEVEL_ACTIVE;
+    } else {
+        __ASSERT(false, "Got unsupported interrupt mode. Interrupt mode: %d.", static_cast<int>(interruptMode));
+    }
+    int rc = gpio_pin_interrupt_configure_dt(m_spec, flags);
+    __ASSERT_NO_MSG(rc == 0);
+
+    m_userInterruptCallback = callback;
+
+    // Populate callback data
+    m_gpioCallbackDataAndObject.m_obj = this;
+    gpio_init_callback(&m_gpioCallbackDataAndObject.m_gpioCallbackData, &interruptCallback, BIT(m_spec->pin));
+    gpio_add_callback(m_spec->port, &m_gpioCallbackDataAndObject.m_gpioCallbackData);
+}
+
+void GpioReal::interruptCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
+{
+    // WARNING: This will be called in a interrupt context.
+    GpioCallbackDataAndObject* gpioCallbackDataAndObject = CONTAINER_OF(cb, GpioCallbackDataAndObject, m_gpioCallbackData);
+    GpioReal* obj = gpioCallbackDataAndObject->m_obj;
+    // // Now we have the object, call the user provided callback function
+    if (obj->m_userInterruptCallback != nullptr) {
+        obj->m_userInterruptCallback();
+    } else {
+        LOG_WRN("User interrupt callback is null.");
+    }
+}
+
 } // namespace zct

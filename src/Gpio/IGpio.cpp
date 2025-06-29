@@ -44,4 +44,10 @@ void IGpio::setLogicMode(LogicMode logicMode) {
     configurePinBasedOnSettings();
 }
 
+// void IGpio::configureInterrupt(InterruptMode interruptMode, std::function<void()> callback) {
+//     // m_interruptMode = interruptMode;
+//     // m_interruptCallback = callback;
+//     // configurePinBasedOnSettings();
+// }
+
 } // namespace zct

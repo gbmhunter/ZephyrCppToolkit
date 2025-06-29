@@ -6,7 +6,7 @@
 
 namespace zct {
 
-LOG_MODULE_REGISTER(zct_PwmReal, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(zct_PwmReal, LOG_LEVEL_WRN);
 
 PwmReal::PwmReal(const char* name, const struct pwm_dt_spec& pwmDtSpec)
     :

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 namespace zct {
 
 class IGpio {
@@ -18,6 +20,22 @@ public:
     enum class LogicMode {
         ActiveHigh,
         ActiveLow
+    };
+
+    /**
+     * Enumerates the possible interrupt modes of a GPIO.
+     */
+    enum class InterruptMode {
+        Disable,
+        EdgeRising,
+        EdgeFalling,
+        EdgeBoth,
+        LevelLow,
+        LevelHigh,
+        LevelToInactive,
+        LevelToActive,
+        LevelInactive,
+        LevelActive
     };
 
     /**
@@ -83,6 +101,14 @@ public:
      * @param logicMode The logic mode to set.
      */
     virtual void setLogicMode(LogicMode logicMode);
+
+    /**
+     * Configure an interrupt on the GPIO.
+     * 
+     * @param interruptMode The interrupt mode to set.
+     * @param callback The callback to call when the interrupt occurs.
+     */
+    virtual void configureInterrupt(InterruptMode interruptMode, std::function<void()> callback) = 0;
 
 protected:
     const char* m_name;

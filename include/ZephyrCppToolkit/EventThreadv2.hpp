@@ -32,8 +32,8 @@ public:
         size_t eventQueueBufferNumItems,
         std::function<void()> threadFunction
     ) :
-        m_timerManager(10),
-        m_threadFunction(threadFunction)
+        m_threadFunction(threadFunction),
+        m_timerManager(10)
     {
         LOG_MODULE_DECLARE(zct_EventThread);
         m_name = name;
