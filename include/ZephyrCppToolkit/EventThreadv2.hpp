@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
@@ -20,10 +22,12 @@ public:
      * 
      * Dynamically allocates memory for the event queue buffer.
      *
-     * @param name The name of the thread. Used for logging purposes.
+     * @param name The name of the thread. Used for logging purposes.jsj
      * @param threadStack The stack to use for the thread.
      * @param threadStackSize The size of the stack provided.
      * @param eventQueueBufferNumItems The number of items in the event queue.
+     * @param threadFunction The function to call when the thread is started. This should
+     *                        do whatever setup you need and then call waitForEvent().
      */
     EventThreadv2(
         const char* name,

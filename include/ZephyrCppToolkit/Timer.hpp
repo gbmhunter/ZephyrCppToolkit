@@ -59,8 +59,6 @@ public:
      * 
      * @param startDuration_ms The time to wait before the first expiry. Must either be 0 (no-wait) or positive.
      * @param period_ms The period of the timer. Set to -1 for a one-shot timer, or 0/positive for a recurring timer.
-     * @param event Pointer to the event to fire when the timer expires.
-     * @param eventSize The size of the event in bytes, i.e. sizeof(MyEventType).
     */
     void start(int64_t startDuration_ms, int64_t period_ms) {
         LOG_MODULE_DECLARE(zct_Timer, TIMER_LOG_LEVEL);
