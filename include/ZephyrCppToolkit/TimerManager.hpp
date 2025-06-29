@@ -22,7 +22,7 @@
 // MACROS
 //================================================================================================//
 
-#define TIMER_MANAGER_LOG_LEVEL LOG_LEVEL_WRN
+#define TIMER_MANAGER_LOG_LEVEL LOG_LEVEL_DBG
 
 //================================================================================================//
 // CLASS DECLARATION
@@ -43,11 +43,14 @@ public:
      *                     this many pointers to timers will be allocated on the heap.
      */
     TimerManager(uint32_t maxNumTimers) {
+        LOG_MODULE_DECLARE(TimerManager, TIMER_MANAGER_LOG_LEVEL);
+        LOG_DBG("TimerManager constructor called.");
         m_timers = new Timer<EventType>*[maxNumTimers];
         for (uint32_t i = 0; i < maxNumTimers; i++) {
             m_timers[i] = nullptr;
         }
         m_maxNumTimers = maxNumTimers;
+        LOG_DBG("TimerManager constructor finished.");
     }
 
     ~TimerManager() {

@@ -5,7 +5,7 @@
 
 namespace zct {
 
-LOG_MODULE_REGISTER(zct_GpioMock, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(zct_GpioMock, LOG_LEVEL_DBG);
 
 GpioMock::GpioMock(const char* name, Direction direction) : IGpio(name, direction) {
     m_logicalValue = false;
@@ -95,6 +95,7 @@ void GpioMock::callInterruptHandlerIfNeeded(
     bool newLogicalValue,
     bool newPhysicalValue)
 {
+    LOG_DBG("%s: Checking if we need to call the interrupt handler.", m_name);
     //===============================================
     // Check if we need to call the interrupt handler
     //===============================================
@@ -125,6 +126,7 @@ void GpioMock::callInterruptHandlerIfNeeded(
         __ASSERT(false, "Invalid interrupt mode: %d.", static_cast<int>(m_interruptMode));
     }
 
+    LOG_DBG("%s: Call interrupt handler: %d, m_interruptUserCallback: %p.", m_name, callInterruptHandler, m_interruptUserCallback);
     if (callInterruptHandler && m_interruptUserCallback != nullptr) {
         m_interruptUserCallback();
     }

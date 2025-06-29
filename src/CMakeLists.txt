@@ -18,6 +18,7 @@ add_library(ZephyrCppToolkit_Mock INTERFACE)
 # Define sources which are common to both real and mock implementations.
 set(COMMON_SRC_FILES
     "EventThread/EventThread.cpp"
+    "EventThread/EventThreadv2.cpp"
     "EventThread/Timer.cpp"
     "EventThread/TimerManager.cpp"
     "Gpio/IGpio.cpp"
