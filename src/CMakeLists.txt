@@ -6,23 +6,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(ZephyrCppToolkit CXX)
 
-# Enable C++23 standard
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS ON)
-
-# Create the library target
-# add_library(ZephyrCppToolkit INTERFACE)
+# Enable C++20 standard
+# set(CMAKE_CXX_STANDARD 20)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_CXX_EXTENSIONS ON)
 
 # Define two library targets, one for real and one for mock implementations.
 add_library(ZephyrCppToolkit_Real INTERFACE)
 add_library(ZephyrCppToolkit_Mock INTERFACE)
-
-# Explicitly set the library language to C++
-# set_target_properties(ZephyrCppToolkit PROPERTIES
-#     LINKER_LANGUAGE CXX)
-
-# target_compile_options(ZephyrCppToolkit INTERFACE -std=c++20)
 
 # Define sources which are common to both real and mock implementations.
 set(COMMON_SRC_FILES
@@ -31,20 +22,15 @@ set(COMMON_SRC_FILES
     "EventThread/TimerManager.cpp"
     "Gpio/IGpio.cpp"
     "Mutex.cpp"
+    "Pwm/IPwm.cpp"
 )
-
-# Add sources to the library
-# target_sources(
-#     ZephyrCppToolkit
-#     INTERFACE
-#     ${COMMON_SRC_FILES}
-# )
 
 target_sources(
     ZephyrCppToolkit_Real
     INTERFACE
     ${COMMON_SRC_FILES}
     Gpio/GpioReal.cpp
+    Pwm/PwmReal.cpp
 )
 
 target_sources(
@@ -58,16 +44,6 @@ target_sources(
 # target_link_libraries(ZephyrCppToolkit INTERFACE zephyr_interface)
 target_link_libraries(ZephyrCppToolkit_Real INTERFACE zephyr_interface)
 target_link_libraries(ZephyrCppToolkit_Mock INTERFACE zephyr_interface)
-
-# Add compiler option to suppress "warning: structured bindings only available with '-std=c++17' or '-std=gnu++17' [-Wc++17-extensions]"
-# target_compile_options(ZephyrCppToolkit PRIVATE -Wno-c++17-extensions)
-# target_compile_options(ZephyrCppToolkit PRIVATE -Wno-c++17-extensions)
-
-# Make the library headers available to other targets
-# target_include_directories(ZephyrCppToolkit
-#     INTERFACE
-#     ${CMAKE_CURRENT_SOURCE_DIR}
-# )
 
 target_include_directories(ZephyrCppToolkit_Real INTERFACE ../include)
 target_include_directories(ZephyrCppToolkit_Mock INTERFACE ../include)

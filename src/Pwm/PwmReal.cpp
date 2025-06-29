@@ -2,7 +2,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-#include "PwmReal.hpp"
+#include "ZephyrCppToolkit/Peripherals/PwmReal.hpp"
 
 namespace zct {
 

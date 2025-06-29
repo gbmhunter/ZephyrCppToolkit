@@ -1,6 +1,6 @@
 #include <zephyr/kernel.h>
 
-#include "IPwm.hpp"
+#include "ZephyrCppToolkit/Peripherals/IPwm.hpp"
 
 namespace zct {
 

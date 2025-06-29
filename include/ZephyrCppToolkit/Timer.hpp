@@ -155,10 +155,10 @@ public:
     bool getIsRegistered() const { return this->m_isRegistered; }
 
 protected:
-    int64_t period_ticks;
-    int64_t startTime_ticks;
-    int64_t nextExpiryTime_ticks;
-    bool m_isRunning;
+    int64_t period_ticks = 0;
+    int64_t startTime_ticks = 0;
+    int64_t nextExpiryTime_ticks = 0;
+    bool m_isRunning = false;
     EventType m_event;
     bool m_isRegistered = false;
 };
