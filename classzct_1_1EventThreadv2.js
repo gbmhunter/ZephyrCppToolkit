@@ -4,6 +4,7 @@ var classzct_1_1EventThreadv2 =
     [ "~EventThreadv2", "classzct_1_1EventThreadv2.html#aaff79180a581c7bd048835c691ceba10", null ],
     [ "K_KERNEL_STACK_MEMBER", "classzct_1_1EventThreadv2.html#a37b1b137a595333346c04a8999512f0a", null ],
     [ "sendEvent", "classzct_1_1EventThreadv2.html#a88b73d4120e4db21a6837d835ea9a9cc", null ],
+    [ "timerManager", "classzct_1_1EventThreadv2.html#aed843f5079369de168576156eba2ce50", null ],
     [ "waitForEvent", "classzct_1_1EventThreadv2.html#a3616964ded83539ab1a9caa683e9445d", null ],
     [ "m_eventQueueBuffer", "classzct_1_1EventThreadv2.html#ae1842b71ebce6fae282f8b0a79206998", null ],
     [ "m_name", "classzct_1_1EventThreadv2.html#a56848240a022ef2390dbdf0a953f89fa", null ],

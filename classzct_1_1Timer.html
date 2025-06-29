@@ -163,8 +163,14 @@ template&lt;typename EventType &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Create a new timer.</p>
-<p>The timer will not be running after creation. </p>
+<p>Create a new timer and associate it with an event.</p>
+<p>The timer will not be running after creation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The event to fire when the timer expires. This is copied into the timer, so the lifetime of the event does not need to be longer than the timer. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

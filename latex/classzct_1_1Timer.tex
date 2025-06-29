@@ -52,9 +52,16 @@ bool \mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\+\_
 {\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
 \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::\+Timer (\begin{DoxyParamCaption}\item[{const Event\+Type \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Create a new timer.
+Create a new timer and associate it with an event.
 
-The timer will not be running after creation. 
+The timer will not be running after creation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event to fire when the timer expires. This is copied into the timer, so the lifetime of the event does not need to be longer than the timer. \\
+\hline
+\end{DoxyParams}
+
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classzct_1_1Timer_aba740daadf6150547a8704a57d5bcd92}\label{classzct_1_1Timer_aba740daadf6150547a8704a57d5bcd92} 

@@ -14,6 +14,8 @@
 Event\+Type \mbox{\hyperlink{classzct_1_1EventThreadv2_a3616964ded83539ab1a9caa683e9445d}{wait\+For\+Event}} ()
 \item 
 void \mbox{\hyperlink{classzct_1_1EventThreadv2_a88b73d4120e4db21a6837d835ea9a9cc}{send\+Event}} (const Event\+Type \&event)
+\item 
+\mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}}$<$ Event\+Type $>$ \& \mbox{\hyperlink{classzct_1_1EventThreadv2_aed843f5079369de168576156eba2ce50}{timer\+Manager}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -112,7 +114,14 @@ Send an event to this event thread.
 {\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
 static void \mbox{\hyperlink{classzct_1_1EventThreadv2}{zct\+::\+Event\+Threadv2}}$<$ Event\+Type $>$\+::static\+Thread\+Function (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg1,  }\item[{void \texorpdfstring{$\ast$}{*}}]{arg2,  }\item[{void \texorpdfstring{$\ast$}{*}}]{arg3 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}
 
-The function needed by pass to Zephyr\textquotesingle{}s thread API \Hypertarget{classzct_1_1EventThreadv2_a3616964ded83539ab1a9caa683e9445d}\label{classzct_1_1EventThreadv2_a3616964ded83539ab1a9caa683e9445d} 
+The function needed by pass to Zephyr\textquotesingle{}s thread API \Hypertarget{classzct_1_1EventThreadv2_aed843f5079369de168576156eba2ce50}\label{classzct_1_1EventThreadv2_aed843f5079369de168576156eba2ce50} 
+\index{zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}!timerManager@{timerManager}}
+\index{timerManager@{timerManager}!zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{timerManager()}{timerManager()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+\mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}}$<$ Event\+Type $>$ \& \mbox{\hyperlink{classzct_1_1EventThreadv2}{zct\+::\+Event\+Threadv2}}$<$ Event\+Type $>$\+::timer\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classzct_1_1EventThreadv2_a3616964ded83539ab1a9caa683e9445d}\label{classzct_1_1EventThreadv2_a3616964ded83539ab1a9caa683e9445d} 
 \index{zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}!waitForEvent@{waitForEvent}}
 \index{waitForEvent@{waitForEvent}!zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}}
 \doxysubsubsection{\texorpdfstring{waitForEvent()}{waitForEvent()}}
