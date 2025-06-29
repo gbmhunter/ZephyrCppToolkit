@@ -37,7 +37,7 @@ target_sources(
 )
 
 # Link against Zephyr interface library to get include paths and other settings
-target_link_libraries(ZephyrCppToolkit INTERFACE zephyr_interface zephyr)
+target_link_libraries(ZephyrCppToolkit INTERFACE zephyr_interface)
 
 # Add compiler option to suppress "warning: structured bindings only available with '-std=c++17' or '-std=gnu++17' [-Wc++17-extensions]"
 # target_compile_options(ZephyrCppToolkit PRIVATE -Wno-c++17-extensions)
