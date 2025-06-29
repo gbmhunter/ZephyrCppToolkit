@@ -84,7 +84,8 @@ void GpioReal::configureInterrupt(InterruptMode interruptMode, std::function<voi
     int rc = gpio_pin_interrupt_configure_dt(m_spec, flags);
     __ASSERT_NO_MSG(rc == 0);
 
-    m_userInterruptCallback = callback;
+    m_interruptMode = interruptMode;
+    m_interruptUserCallback = callback;
 
     // Populate callback data
     m_gpioCallbackDataAndObject.m_obj = this;
@@ -98,8 +99,8 @@ void GpioReal::interruptCallback(const struct device* dev, struct gpio_callback*
     GpioCallbackDataAndObject* gpioCallbackDataAndObject = CONTAINER_OF(cb, GpioCallbackDataAndObject, m_gpioCallbackData);
     GpioReal* obj = gpioCallbackDataAndObject->m_obj;
     // // Now we have the object, call the user provided callback function
-    if (obj->m_userInterruptCallback != nullptr) {
-        obj->m_userInterruptCallback();
+    if (obj->m_interruptUserCallback != nullptr) {
+        obj->m_interruptUserCallback();
     } else {
         LOG_WRN("User interrupt callback is null.");
     }

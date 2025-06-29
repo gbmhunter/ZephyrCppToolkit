@@ -80,8 +80,6 @@ protected:
 
     GpioCallbackDataAndObject m_gpioCallbackDataAndObject;
 
-    std::function<void()> m_userInterruptCallback;
-
     /**
      * Configure the pin based on the current settings.
      * The real GPIO will call the Zephyr gpio_pin_configure_dt() function.
@@ -98,8 +96,6 @@ protected:
      * @param pins The pins that triggered the interrupt.
      */
     static void interruptCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins);
-
-
 };
 
 } // namespace zct

@@ -44,7 +44,7 @@ public:
     /**
      * Configure an interrupt on the GPIO.
      * 
-     * This does nothing in the mock implementation.
+     * The mock implementation of this just stores the interrupt mode and callback into the member variables.
      * 
      * @param interruptMode The interrupt mode to set.
      * @param callback The callback to call when the interrupt occurs.

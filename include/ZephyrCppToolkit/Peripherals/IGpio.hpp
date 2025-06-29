@@ -114,6 +114,8 @@ protected:
     const char* m_name;
     Direction m_direction;
     LogicMode m_logicMode;
+    InterruptMode m_interruptMode;
+    std::function<void()> m_interruptUserCallback;
 
     /**
      * Configure the pin based on the current settings.
