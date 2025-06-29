@@ -53,6 +53,8 @@ public:
 
 private:
     const struct gpio_dt_spec* m_spec;
+
+    void setFlagsBasedOnSettings();
 };
 
 } // namespace zct

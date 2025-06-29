@@ -17,4 +17,4 @@ target_sources(
 )
     
 # Link against the library
-target_link_libraries(app PRIVATE zephyr_cpp_toolkit)
+target_link_libraries(app PRIVATE ZephyrCppToolkit)
