@@ -16,5 +16,11 @@ add_library(IntegrationTestExample_Lib INTERFACE)
 target_sources(
     IntegrationTestExample_Lib
     INTERFACE
-    other.cpp
+    App.cpp
+)
+
+target_include_directories(
+    IntegrationTestExample_Lib
+    INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
