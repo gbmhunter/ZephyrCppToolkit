@@ -3,9 +3,9 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/ztest.h>
 
-#include "ZephyrCppToolkit/EventThread.hpp"
-#include "ZephyrCppToolkit/Timer.hpp"
-#include "ZephyrCppToolkit/Mutex.hpp"
+#include "ZephyrCppToolkit/Events/EventThread.hpp"
+#include "ZephyrCppToolkit/Events/Timer.hpp"
+#include "ZephyrCppToolkit/Core/Mutex.hpp"
 
 LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
 

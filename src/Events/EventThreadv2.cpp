@@ -3,7 +3,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-#include "ZephyrCppToolkit/EventThreadv2.hpp"
+#include "ZephyrCppToolkit/Events/EventThreadv2.hpp"
 
 namespace zct {
 
