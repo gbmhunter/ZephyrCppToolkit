@@ -34,4 +34,14 @@ bool IGpio::get() const {
     }
 }
 
+void IGpio::setDirection(Direction direction) {
+    m_direction = direction;
+    configurePinBasedOnSettings();
+}
+
+void IGpio::setLogicMode(LogicMode logicMode) {
+    m_logicMode = logicMode;
+    configurePinBasedOnSettings();
+}
+
 } // namespace zct

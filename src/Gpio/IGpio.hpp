@@ -75,12 +75,26 @@ public:
      * 
      * @param direction The direction to set.
      */
-    virtual void setDirection(Direction direction) = 0;
+    virtual void setDirection(Direction direction);
+
+    /**
+     * Set the logic mode of the GPIO.
+     * 
+     * @param logicMode The logic mode to set.
+     */
+    virtual void setLogicMode(LogicMode logicMode);
 
 protected:
     const char* m_name;
     Direction m_direction;
     LogicMode m_logicMode;
+
+    /**
+     * Configure the pin based on the current settings.
+     * The real GPIO will call the Zephyr gpio_pin_configure_dt() function.
+     * The mock GPIO will do nothing.
+     */
+    virtual void configurePinBasedOnSettings() = 0;
 };
 
 } // namespace zct

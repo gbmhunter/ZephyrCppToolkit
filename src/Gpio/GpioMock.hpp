@@ -42,13 +42,6 @@ public:
     bool getPhysical() const override;
 
     /**
-     * Set the direction of the GPIO.
-     * 
-     * @param direction The direction to set.
-     */
-    void setDirection(Direction direction) override;
-
-    /**
      * @brief Use this to pretend to be an external
      * signal changing the state of an input GPIO.
      * 
@@ -58,13 +51,18 @@ public:
      */
     void mockSetInput(bool value);
 
-private:
-    const char* m_name;
-
+protected:
     /**
      * Because it is a mock GPIO, we store the value of the GPIO here.
      */
     bool m_logicalValue;
+
+    /**
+     * Configure the pin based on the current settings.
+     * The real GPIO will call the Zephyr gpio_pin_configure_dt() function.
+     * The mock GPIO will do nothing.
+     */
+    void configurePinBasedOnSettings() override;
 };
 
 } // namespace zct

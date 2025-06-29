@@ -14,7 +14,7 @@ GpioReal::GpioReal(const char* name, const struct gpio_dt_spec* spec, Direction 
     bool isReady = gpio_is_ready_dt(m_spec);
     __ASSERT_NO_MSG(isReady);
 
-    setFlagsBasedOnSettings();
+    configurePinBasedOnSettings();
 }
 
 GpioReal::~GpioReal() {}
@@ -32,12 +32,7 @@ bool GpioReal::getPhysical() const {
     return gpio_pin_get_dt(m_spec) == 1;
 }
 
-void GpioReal::setDirection(Direction direction) {
-    m_direction = direction;
-    setFlagsBasedOnSettings();
-}
-
-void GpioReal::setFlagsBasedOnSettings() {
+void GpioReal::configurePinBasedOnSettings() {
     gpio_flags_t flags = 0;
 
     if (m_direction == Direction::Output) {

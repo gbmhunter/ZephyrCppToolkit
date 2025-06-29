@@ -37,9 +37,8 @@ bool GpioMock::getPhysical() const {
     }
 }
 
-void GpioMock::setDirection(Direction direction) {
-    m_direction = direction;
-    LOG_DBG("Setting GPIO %s to %s.", m_name, direction == Direction::Input ? "input" : "output");
+void GpioMock::configurePinBasedOnSettings() {
+    // Do nothing
 }
 
 void GpioMock::mockSetInput(bool value) {
