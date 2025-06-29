@@ -26,7 +26,7 @@ The Mutex class is a wrapper around the Zephyr mutex API. It provides a RAII sty
 ### Usage
 
 ```c++
-#include "Mutex.hpp"
+#include "ZephyrCppToolkit.hpp"
 
 void myFunction() {
     // Creates a Zephyr mutex, starts of unlocked
@@ -128,7 +128,7 @@ One benefit of using this over Zephyrs native timers is that these timers run sy
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-#include "ZephyrCppToolkit.h"
+#include "ZephyrCppToolkit.hpp"
 
 LOG_MODULE_REGISTER(EventThreadExample, LOG_LEVEL_DBG);
 
