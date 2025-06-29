@@ -14,9 +14,14 @@ GpioReal::GpioReal(const char* name, const struct gpio_dt_spec* spec, Direction 
     bool isReady = gpio_is_ready_dt(m_spec);
     __ASSERT_NO_MSG(isReady);
 
-    // Also configure as input so that we can read the value. Without this it always returns 0!
-    int isConfigured = gpio_pin_configure_dt(m_spec, GPIO_OUTPUT_INACTIVE | GPIO_INPUT);
-    __ASSERT_NO_MSG(isConfigured == 0);
+    if (direction == Direction::Output) {
+        // Also configure as input so that we can read the value. Without this it always returns 0!
+        int isConfigured = gpio_pin_configure_dt(m_spec, GPIO_OUTPUT_INACTIVE | GPIO_INPUT);
+        __ASSERT_NO_MSG(isConfigured == 0);
+    } else {
+        int isConfigured = gpio_pin_configure_dt(m_spec, GPIO_INPUT);
+        __ASSERT_NO_MSG(isConfigured == 0);
+    }
 }
 
 GpioReal::~GpioReal() {}

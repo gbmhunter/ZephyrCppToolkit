@@ -11,12 +11,23 @@ public:
     };
 
     /**
+     * Enumerates the possible logic modes of a GPIO.
+     * - Active high means that true is equal to a high voltage, false is 0V.
+     * - Active low means that true is equal to 0V, false is high voltage.
+     */
+    enum class LogicMode {
+        ActiveHigh,
+        ActiveLow
+    };
+
+    /**
      * @brief Create a new GPIO.
      * 
      * @param name The name of the GPIO. Used for logging purposes.
      * @param direction The direction of the GPIO.
+     * @param logicMode The logic mode of the GPIO.
      */
-    IGpio(const char* name, Direction direction = Direction::Input);
+    IGpio(const char* name, Direction direction = Direction::Input, LogicMode logicMode = LogicMode::ActiveHigh);
 
     /**
      * @brief Destroy the GPIO.
@@ -44,6 +55,7 @@ public:
 protected:
     const char* m_name;
     Direction m_direction;
+    LogicMode m_logicMode;
 };
 
 } // namespace zct
