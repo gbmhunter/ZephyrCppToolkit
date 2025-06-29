@@ -1,0 +1,3 @@
+void callMe() {
+    // Do something
+}

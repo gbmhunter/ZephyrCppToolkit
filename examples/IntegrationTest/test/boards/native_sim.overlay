@@ -1,0 +1,18 @@
+/ {
+    example_gpios {
+        compatible = "gpio-leds";
+        input_gpio {
+            gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+            label = "INPUT-GPIO";
+        };
+        output_gpio {
+            gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+            label = "OUTPUT-GPIO";
+        };
+    };
+};
+
+// By default, native_sim has 2 GPIOs. Add 2 more for testing.
+&gpio0 {
+    ngpios = <4>;
+};
