@@ -2,6 +2,11 @@
 \hypertarget{classzct_1_1EventThreadv2}{}\label{classzct_1_1EventThreadv2}\index{zct::EventThreadv2$<$ EventType $>$@{zct::EventThreadv2$<$ EventType $>$}}
 
 
+Use this class in your objects to create a thread that can wait for events.  
+
+
+
+
 {\ttfamily \#include $<$Event\+Threadv2.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -50,6 +55,22 @@ static constexpr size\+\_\+t \mbox{\hyperlink{classzct_1_1EventThreadv2_a6cb49c1
 static constexpr int \mbox{\hyperlink{classzct_1_1EventThreadv2_a80645df0214e8d76e824c836012cbaf9}{THREAD\+\_\+\+PRIORITY}} = 7
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Event\+Type$>$\newline
+class zct\+::\+Event\+Threadv2$<$ Event\+Type $>$}
+Use this class in your objects to create a thread that can wait for events. 
+
+This class spawns a new Zephyr thread.
+
+The user is responsible for implementing an Exit event, and returning from the thread function when this event is received.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }ExitCmd\ \{\};}
+
+\end{DoxyCode}
+ 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classzct_1_1EventThreadv2_a4df99efaeae70ecc20f68f76a75bfdb8}\label{classzct_1_1EventThreadv2_a4df99efaeae70ecc20f68f76a75bfdb8} 

@@ -1,0 +1,72 @@
+\doxysection{/examples/\+Integration\+Test/src/\+App.\+cpp}
+\hypertarget{_2examples_2IntegrationTest_2src_2App_8cpp-example}{}\label{_2examples_2IntegrationTest_2src_2App_8cpp-example}This is an example of how to use the \doxylink{classzct_1_1EventThreadv2}{zct\+::\+Event\+Threadv2} class to create a thread that can wait for events.
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <zephyr/logging/log.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{IGpio_8hpp}{ZephyrCppToolkit/Peripherals/IGpio.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{EventThreadv2_8hpp}{ZephyrCppToolkit/EventThreadv2.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}App.hpp"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{Mutex_8cpp_a41a38ce3f874900533c412d405d34e00}{LOG\_MODULE\_REGISTER}}(App,\ LOG\_LEVEL\_DBG);}
+\DoxyCodeLine{}
+\DoxyCodeLine{App::App(IPeripherals\&\ peripherals)}
+\DoxyCodeLine{\ \ \ \ :\ }
+\DoxyCodeLine{\ \ \ \ m\_peripherals(peripherals),}
+\DoxyCodeLine{\ \ \ \ m\_eventThread(\textcolor{stringliteral}{"{}App"{}},\ threadStack,\ THREAD\_STACK\_SIZE,\ EVENT\_QUEUE\_NUM\_ITEMS,\ [this]()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ threadFunction();}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ \ \ m\_gpioTimer(AppEvents::GpioTimerExpired())}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ m\_eventThread.timerManager().registerTimer(m\_gpioTimer);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{App::\string~App()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ m\_eventThread.sendEvent(AppEvents::ExitCmd());}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ App::threadFunction()}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Configure\ output\ GPIO}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classzct_1_1IGpio}{zct::IGpio}}\&\ outputGpio\ =\ m\_peripherals.getOutputGpio();}
+\DoxyCodeLine{\ \ \ \ outputGpio.\mbox{\hyperlink{classzct_1_1IGpio_a0405bb3fa9638b69cc0d5fee38a8c18d}{setDirection}}(\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a29c2c02a361c9d7028472e5d92cd4a54}{zct::IGpio::Direction::Output}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Grab\ the\ input\ GPIO}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classzct_1_1IGpio}{zct::IGpio}}\&\ inputGpio\ =\ m\_peripherals.getInputGpio();}
+\DoxyCodeLine{\ \ \ \ inputGpio.\mbox{\hyperlink{classzct_1_1IGpio_a8532a63ce41b6a92324c06d045d2f456}{configureInterrupt}}(\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543aea4ce5d6c11380cc0049ed3de9922d3f43}{zct::IGpio::InterruptMode::LevelToActive}},\ [\textcolor{keyword}{this}]()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ LOG\_WRN(\textcolor{stringliteral}{"{}GPIO\ interrupt\ called."{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ WARNING:\ Called\ from\ interrupt\ context!}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ AppEvents::InputGpioWentActive\ event;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_eventThread.sendEvent(event);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \textcolor{keyword}{event}\ =\ m\_eventThread.waitForEvent();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<AppEvents::InputGpioWentActive>(event))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ LOG\_INF(\textcolor{stringliteral}{"{}Input\ GPIO\ went\ active"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ output\ GPIO\ high.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ outputGpio.\mbox{\hyperlink{classzct_1_1IGpio_a842346ef624df42aedb51646b8f10588}{set}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ timer\ to\ make\ GPIO\ inactive\ after\ 1\ minute}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ m\_gpioTimer.start(1000*60,\ -\/1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::holds\_alternative<AppEvents::GpioTimerExpired>(event))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ LOG\_INF(\textcolor{stringliteral}{"{}GPIO\ timer\ expired"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ output\ GPIO\ low.}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ outputGpio.\mbox{\hyperlink{classzct_1_1IGpio_a842346ef624df42aedb51646b8f10588}{set}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::holds\_alternative<AppEvents::ExitCmd>(event))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ LOG\_INF(\textcolor{stringliteral}{"{}Exit\ command\ received"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

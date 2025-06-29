@@ -2,6 +2,11 @@
 \hypertarget{classzct_1_1Timer}{}\label{classzct_1_1Timer}\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
 
 
+A timer that can be used to fire events at a regular interval in an event driven application.  
+
+
+
+
 {\ttfamily \#include $<$Timer.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -43,6 +48,15 @@ Event\+Type \mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75
 bool \mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\+\_\+is\+Registered}} = false
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Event\+Type$>$\newline
+class zct\+::\+Timer$<$ Event\+Type $>$}
+A timer that can be used to fire events at a regular interval in an event driven application. 
+
+This class is designed to be used with the \doxylink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager} class. The timer manager monitors a list of timers and fires events when the timers expire.
+
+This class is also designed to be used with the \doxylink{classzct_1_1EventThreadv2}{zct\+::\+Event\+Threadv2} class. The event thread can block until either a timer expires or an external event is received. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758}\label{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758} 
@@ -132,11 +146,7 @@ Start the timer in reoccurring mode. The timer will expire for the first time af
 
 
 \begin{DoxyParams}{Parameters}
-{\em period\+\_\+ms} & The period of the timer. Set to -\/1 for a one-\/shot timer, or 0/positive for a recurring timer. \\
-\hline
-{\em event\+Raw} & The event to fire when the timer expires. This is copied into the timer, so the lifetime of the event does not need to be longer than the timer. \\
-\hline
-{\em event\+Raw\+Size} & The size of the event in bytes, i.\+e. sizeof(\+My\+Event\+Type). \\
+{\em period\+\_\+ms} & The period of the timer. Should be a positive integer. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classzct_1_1Timer_ad0d94d71b5c4df5e07732b96dfd30cfa}\label{classzct_1_1Timer_ad0d94d71b5c4df5e07732b96dfd30cfa} 

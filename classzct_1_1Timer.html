@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('classzct_1_1Timer.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
+<p>A timer that can be used to fire events at a regular interval in an event driven application.  
+ <a href="classzct_1_1Timer.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -137,7 +140,12 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a9d680964ebe923a190efa66345f19071" id="r_a9d680964ebe923a190efa66345f19071"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#a9d680964ebe923a190efa66345f19071">m_isRegistered</a> = false</td></tr>
 <tr class="separator:a9d680964ebe923a190efa66345f19071"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename EventType&gt;<br />
+class zct::Timer&lt; EventType &gt;</div><p>A timer that can be used to fire events at a regular interval in an event driven application. </p>
+<p>This class is designed to be used with the <a class="el" href="classzct_1_1TimerManager.html">zct::TimerManager</a> class. The timer manager monitors a list of timers and fires events when the timers expire.</p>
+<p>This class is also designed to be used with the <a class="el" href="classzct_1_1EventThreadv2.html" title="Use this class in your objects to create a thread that can wait for events.">zct::EventThreadv2</a> class. The event thread can block until either a timer expires or an external event is received. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6c64f6c722af612556843d92b6c29758" name="a6c64f6c722af612556843d92b6c29758"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c64f6c722af612556843d92b6c29758">&#9670;&#160;</a></span>Timer()</h2>
 
@@ -353,9 +361,7 @@ template&lt;typename EventType &gt; </div>
 <p>Start the timer in reoccurring mode. The timer will expire for the first time after period_ms from when this is called, and then period_ms after that.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">period_ms</td><td>The period of the timer. Set to -1 for a one-shot timer, or 0/positive for a recurring timer. </td></tr>
-    <tr><td class="paramname">eventRaw</td><td>The event to fire when the timer expires. This is copied into the timer, so the lifetime of the event does not need to be longer than the timer. </td></tr>
-    <tr><td class="paramname">eventRawSize</td><td>The size of the event in bytes, i.e. sizeof(MyEventType). </td></tr>
+    <tr><td class="paramname">period_ms</td><td>The period of the timer. Should be a positive integer. </td></tr>
   </table>
   </dd>
 </dl>
