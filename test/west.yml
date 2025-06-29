@@ -1,0 +1,16 @@
+manifest:
+  self:
+    path: test
+  remotes:
+    - name: nrf
+      url-base: https://github.com/nrfconnect
+  projects:
+    - name: sdk-nrf
+      remote: nrf
+      # url: git@gitlab.com:betasolutions/common/firmware-packages/sdk-nrf.git
+      path: nrf
+      revision: v3.0.1
+      # revision: v2.7.0-smf-bug-fix # Need recent version of sdk-nrf so Zephyr is updated with SMF module. sdk-zephyr=v3.6.99-ncs2
+      import:
+        path-prefix: external
+      clone-depth: 1
