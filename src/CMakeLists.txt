@@ -28,6 +28,9 @@ target_sources(
     Mutex.cpp
 )
 
+# Link against Zephyr interface library to get include paths and other settings
+target_link_libraries(zephyr_cpp_toolkit PUBLIC zephyr_interface zephyr)
+
 # Add compiler option to suppress "warning: structured bindings only available with '-std=c++17' or '-std=gnu++17' [-Wc++17-extensions]"
 target_compile_options(zephyr_cpp_toolkit PRIVATE -Wno-c++17-extensions)
 
