@@ -14,6 +14,18 @@ namespace zct {
 // static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;
 #define ZCT_EVENT_THREAD_LOG_LEVEL LOG_LEVEL_DBG
 
+/**
+ * \brief Use this class in your objects to create a thread that can wait for events.
+ * 
+ * This class spawns a new Zephyr thread.
+ * 
+ * The user is responsible for implementing an Exit event, and returning from the thread function
+ * when this event is received.
+ * 
+ * \code
+ * struct ExitCmd {};
+ * \endcode
+ */
 template <typename EventType>
 class EventThreadv2 {
 
@@ -169,5 +181,10 @@ protected:
     std::function<void()> m_threadFunction;
     TimerManager<EventType> m_timerManager;
 };
+
+/**
+ * \example ../examples/IntegrationTest/src/App.cpp
+ * This is an example of how to use the \ref zct::EventThreadv2 class to create a thread that can wait for events.
+ */
 
 } // namespace zct

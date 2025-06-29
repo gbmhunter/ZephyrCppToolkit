@@ -24,6 +24,15 @@ namespace zct {
 // CLASS DECLARATION
 //================================================================================================//
 
+/**
+ * \brief A timer that can be used to fire events at a regular interval in an event driven application.
+ * 
+ * This class is designed to be used with the zct::TimerManager class. The timer manager
+ * monitors a list of timers and fires events when the timers expire.
+ * 
+ * This class is also designed to be used with the zct::EventThreadv2 class. The event thread
+ * can block until either a timer expires or an external event is received.
+ */
 template <typename EventType>
 class Timer {
 public:
@@ -45,10 +54,7 @@ public:
      * Start the timer in reoccurring mode. The timer will expire for the first time
      * after period_ms from when this is called, and then period_ms after that.
      * 
-     * @param period_ms The period of the timer. Set to -1 for a one-shot timer, or 0/positive for a recurring timer.
-     * @param eventRaw The event to fire when the timer expires. This is copied into the timer, so the lifetime of the
-     *                 event does not need to be longer than the timer.
-     * @param eventRawSize The size of the event in bytes, i.e. sizeof(MyEventType).
+     * @param period_ms The period of the timer. Should be a positive integer.
     */
     void start(int64_t period_ms) {
         // Convert ms to ticks

@@ -34,6 +34,7 @@ public:
      * @param name The name of the GPIO. Used for logging purposes.
      * @param spec The Zephyr GPIO DT spec struct.
      * @param direction The direction of the GPIO.
+     * @param logicMode The logic mode of the GPIO. LogicMode::ActiveHigh is the default (0V is inactive, +VCC is active).
      */
     GpioReal(const char* name, const struct gpio_dt_spec* spec, Direction direction = Direction::Input, LogicMode logicMode = LogicMode::ActiveHigh);
 
