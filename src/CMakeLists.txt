@@ -38,6 +38,7 @@ target_sources(
     INTERFACE
     ${COMMON_SRC_FILES}
     Gpio/GpioMock.cpp
+    Pwm/PwmMock.cpp
 )
 
 # Link against Zephyr interface library to get include paths and other settings

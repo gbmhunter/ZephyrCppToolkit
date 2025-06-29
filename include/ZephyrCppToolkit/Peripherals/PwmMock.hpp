@@ -1,17 +1,17 @@
 #pragma once
 
-#include <cstdint>
+#include "IPwm.hpp"
 
 namespace zct {
 
-class IPwm {
+class PwmMock : public IPwm {
 public:
-    IPwm(const char* name);
+    PwmMock(const char* name);
 
     /**
      * @brief Destroy the PWM.
      */
-    virtual ~IPwm() = default;
+    virtual ~PwmMock() = default;
 
     /**
      * @brief Set the PWM period and pulse width.
@@ -19,9 +19,9 @@ public:
      * @param periodNs The period of the PWM signal in nanoseconds.
      * @param pulseWidthNs The pulse width of the PWM signal in nanoseconds.
      */
-    virtual void set(uint32_t periodNs, uint32_t pulseWidthNs) = 0;
+    virtual void set(uint32_t periodNs, uint32_t pulseWidthNs) override;
+
 protected:
-    const char* m_name;
 };
 
 } // namespace zct
