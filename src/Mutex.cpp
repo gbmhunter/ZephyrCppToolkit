@@ -51,4 +51,9 @@ tl::expected<MutexLockGuard, int> Mutex::lockGuard(k_timeout_t timeout)
     return MutexLockGuard::create(*this, timeout);
 }
 
+struct k_mutex* Mutex::getZephyrMutex()
+{
+    return &m_zephyrMutex;
+}
+
 } // namespace zephyr_cpp_toolkit

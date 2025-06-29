@@ -59,7 +59,7 @@ public:
      * 
      * @return A pointer to the Zephyr mutex object.
      */
-    struct k_mutex* getZephyrMutex() const;
+    struct k_mutex* getZephyrMutex();
 protected:
     struct k_mutex m_zephyrMutex;
 };
