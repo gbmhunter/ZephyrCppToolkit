@@ -70,8 +70,8 @@ public:
     };
 
     ~EventThreadv2() {
-        // LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
-        // LOG_DBG("%s() called.", __FUNCTION__);
+        LOG_MODULE_DECLARE(EventThreadv2, ZCT_EVENT_THREAD_LOG_LEVEL);
+        LOG_DBG("%s() called.", __FUNCTION__);
         k_thread_join(&m_thread, K_FOREVER);
     }
 
@@ -134,6 +134,10 @@ public:
      */
     void sendEvent(const EventType& event) {
         k_msgq_put(&m_threadMsgQueue, &event, K_NO_WAIT);
+    }
+
+    TimerManager<EventType>& timerManager() {
+        return m_timerManager;
     }
 
 protected:

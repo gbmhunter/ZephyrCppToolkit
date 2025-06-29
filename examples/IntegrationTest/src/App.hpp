@@ -4,15 +4,16 @@
 #include <variant>
 
 #include "ZephyrCppToolkit/EventThreadv2.hpp"
+#include "ZephyrCppToolkit/Timer.hpp"
 
 #include "IPeripherals.hpp"
 
 namespace AppEvents {
-    struct Basic {
+    struct InputGpioWentActive {};
+    struct GpioTimerExpired {};
+    struct ExitCmd {};
 
-    };
-
-    using Generic = std::variant<Basic>;
+    using Generic = std::variant<InputGpioWentActive, GpioTimerExpired, ExitCmd>;
 }
 
 class App {
@@ -28,4 +29,6 @@ protected:
     static constexpr size_t THREAD_STACK_SIZE = 512;
     K_KERNEL_STACK_MEMBER(threadStack, THREAD_STACK_SIZE);
     zct::EventThreadv2<AppEvents::Generic> m_eventThread;
+
+    zct::Timer<AppEvents::Generic> m_gpioTimer;
 };

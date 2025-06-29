@@ -1,16 +1,8 @@
+#include <zephyr/ztest.h>
 #include <zephyr/kernel.h>
-#include <zephyr/logging/log.h>
 
-#include "App.hpp"
-#include "PeripheralsMock.hpp"
-
-LOG_MODULE_REGISTER(GpioExample, LOG_LEVEL_DBG);
-
-int main() {
-
-    // Create mock peripherals.
-    PeripheralsMock peripherals;
-
-    // Create app.
-    App app(peripherals);
+void test_main(void)
+{
+    // Run all tests once
+    ztest_run_all(NULL, false, 1, 1);
 }

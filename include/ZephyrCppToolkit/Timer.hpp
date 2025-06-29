@@ -29,16 +29,17 @@ class Timer {
 public:
 
     /**
-     * Create a new timer.
+     * Create a new timer and associate it with an event.
      * 
      * The timer will not be running after creation.
+     * 
+     * \param event The event to fire when the timer expires. This is copied into the timer, so the lifetime of the
+     *              event does not need to be longer than the timer.
      */
     Timer(const EventType& event) :
         m_event(event)
     {
     }
-
-    // ~Timer() = default;
 
     /**
      * Start the timer in reoccurring mode. The timer will expire for the first time
