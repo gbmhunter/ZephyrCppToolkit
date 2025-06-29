@@ -36,6 +36,12 @@ To use the library in your project, add the following to your `CMakeLists.txt`:
 target_link_libraries(app PRIVATE ZephyrCppToolkit_Real)
 ```
 
+## Examples
+
+The `examples/` directory contains some examples of how to use the library.
+
+* `examples/IntegrationTest`: An example of how to use this library to perform integration testing. This tests essentially the entire application, including multiple threads. Mock peripherals are passed into the application. This example also demonstrates the folder structure, with most of the application code in the `src/` directory setup as a CMake `INTERFACE` library, and then two executables defined in the `real/` and the `test/` directories.
+
 ## Mutex
 
 The Mutex class is a wrapper around the Zephyr mutex API. It provides a RAII style `MutexLockGuard` which automatically unlocks the mutex when it goes out of scope. This reduces the risk of you forgetting to unlock the mutex for all execution paths in your function.
