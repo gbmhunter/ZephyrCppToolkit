@@ -35,6 +35,12 @@ jobs:
           VIRTUAL_ENV: .venv
           PATH: .venv/bin:$PATH
 
+      - name: Cache external directory
+        uses: actions/cache@v4
+        with:
+          path: external
+          key: ${{ runner.os }}-zephyr-externals
+
       - name: Install west
         run: pip install west
 
