@@ -22,6 +22,12 @@ int main() {
         bool inputValue = myInput.get();
         LOG_INF("Input value: %d", inputValue);
 
+        // Configure interrupt on our input GPIO
+        myInput.configureInterrupt(zct::IGpio::InterruptMode::LevelToActive, []() {
+            // WARNING: This is called from an interrupt context
+            LOG_INF("Interrupt occurred");
+        });
+
         // Set logical value of output GPIO.
         myOutput.set(!inputValue);
     }

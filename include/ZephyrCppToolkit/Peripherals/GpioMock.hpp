@@ -63,16 +63,16 @@ public:
 
 protected:
     /**
-     * Because it is a mock GPIO, we store the value of the GPIO here.
-     */
-    bool m_logicalValue;
-
-    /**
      * Configure the pin based on the current settings.
      * The real GPIO will call the Zephyr gpio_pin_configure_dt() function.
      * The mock GPIO will do nothing.
      */
     void configurePinBasedOnSettings() override;
+
+    /**
+     * Because it is a mock GPIO, we store the value of the GPIO here.
+     */
+    bool m_logicalValue;
 };
 
 } // namespace zct

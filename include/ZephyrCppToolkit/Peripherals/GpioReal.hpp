@@ -69,17 +69,6 @@ public:
     void configureInterrupt(InterruptMode interruptMode, std::function<void()> callback) override;
 
 protected:
-    const struct gpio_dt_spec* m_spec;
-
-    /**
-     * Structure for holding callback info, if used.
-     * 
-     * Needs to be a pointer to a member of the class.
-     */
-    // struct gpio_callback m_gpioCallbackData;
-
-    GpioCallbackDataAndObject m_gpioCallbackDataAndObject;
-
     /**
      * Configure the pin based on the current settings.
      * The real GPIO will call the Zephyr gpio_pin_configure_dt() function.
@@ -90,12 +79,26 @@ protected:
     /**
      * Static callback handler function which has the correct signature so that it can be passed to Zephyr's
      * gpio_init_callback() function.
+     *
+     * This in turn calls the user provided callback function in configureInterrupt().
      * 
      * @param dev The device that triggered the interrupt.
      * @param cb The callback structure.
      * @param pins The pins that triggered the interrupt.
      */
     static void interruptCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins);
+
+    /**
+     * The Zephyr GPIO DT spec struct.
+     */
+    const struct gpio_dt_spec* m_spec;
+
+    /**
+     * Structure for holding callback info, if used.
+     * 
+     * Needs to be a pointer to a member of the class.
+     */
+    GpioCallbackDataAndObject m_gpioCallbackDataAndObject;
 };
 
 } // namespace zct
