@@ -8,9 +8,10 @@ This is a collection of classes and functions that I have found useful when deve
 
 Design goals:
 
-* Leverage C++ features to make Zephyr applications easier and safer to write (the RAII based mutex guard is a good example of this)
-* Provide an easy way to mock peripherals for testing
-* Provide common functionality ontop of what is provided by Zephyr that may be useful to applications
+* Leverage C++ features to make Zephyr applications easier and safer to write (e.g. RAII based mutex guard, stronger typing with `enum class`, typed unions with `std::variant`).
+* Provide an easy way to mock peripherals for testing using `native_sim` and `ztest`.
+* Provide a C++ interface over Zephyr peripherals.
+* Provide extra functionality on top of what is provided by Zephyr (e.g. event driven threads, timers).
 
 This toolkit uses dynamic memory allocation, but only for initialization. This allows the clean and flexible use of library classes. This means you don't have to
 
@@ -18,6 +19,8 @@ This toolkit uses dynamic memory allocation, but only for initialization. This a
 * Use templating to allocate the memory for the buffers.
 
 This should be acceptable for many firmware projects, since once initialization is complete you are safe from the fragmentation and non-determinisitic issues of dynamic memory allocation.
+
+Read the [documentation](https://gbmhunter.github.io/ZephyrCppToolkit/) for more information.
 
 ## Installation
 
@@ -41,6 +44,26 @@ target_link_libraries(app PRIVATE ZephyrCppToolkit_Real)
 The `examples/` directory contains some examples of how to use the library.
 
 * `examples/IntegrationTest`: An example of how to use this library to perform integration testing. This tests essentially the entire application, including multiple threads. Mock peripherals are passed into the application. This example also demonstrates the folder structure, with most of the application code in the `src/` directory setup as a CMake `INTERFACE` library, and then two executables defined in the `real/` and the `test/` directories.
+
+## Documentaion
+
+To generate the documentation locally, make sure you have `doxygen` installed. Then run:
+
+```bash
+cd doxygen-config
+doxygen
+```
+
+To then serve this locally, run:
+
+```bash
+cd doxygen_docs
+python3 -m http.server
+```
+
+Then navigate to `http://localhost:8000/` in your browser.
+
+The generation is run from the `doxygen-config/` folder rather than the root because I had a weird issue when running it from the root in where I couldn't exclude the `external/` folder from being scanned.
 
 ## Mutex
 
