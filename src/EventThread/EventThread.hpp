@@ -92,7 +92,6 @@ public:
         EventType rxEvent;
         int queueRc = k_msgq_get(&m_threadMsgQueue, &rxEvent, timeout);
         if (queueRc == 0) {
-            // LOG_DBG("Received event from queue. Event ID: %u.", static_cast<uint32_t>(obj->m_lastReceivedMsg.id));
             // We got a message from the queue, so we can handle it
             return rxEvent;
         } else if (queueRc == -EAGAIN) {
@@ -106,6 +105,8 @@ public:
         } else {
             __ASSERT(false, "Got unexpected return code from queue: %d.", queueRc);
         }
+        __ASSERT(false, "Should not get here.");
+        return EventType();
     }
 
     /**

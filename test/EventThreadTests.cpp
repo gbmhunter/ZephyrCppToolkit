@@ -55,7 +55,6 @@ class MyEventThread : public zct::EventThread<Event> {
         static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
         static constexpr size_t THREAD_STACK_SIZE = 512;
         K_KERNEL_STACK_MEMBER(threadStack, THREAD_STACK_SIZE);
-        Event eventQueueBuffer[EVENT_QUEUE_NUM_ITEMS];
         zct::Timer<Event> m_flashingTimer;
         bool m_ledIsOn = false;
         zct::Mutex m_ledIsOnMutex;
