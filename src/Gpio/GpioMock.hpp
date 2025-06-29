@@ -18,7 +18,7 @@ public:
     void set(bool value) override;
 
     /**
-     * @copydoc zct::IGpio::get()
+     * @inherit
      */
     bool get() override;
 
