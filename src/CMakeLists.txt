@@ -11,9 +11,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
-# Add compiler flags for architecture and alignment
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new -m32")
-
 # Create the library target
 add_library(ZephyrCppToolkit INTERFACE)
 
