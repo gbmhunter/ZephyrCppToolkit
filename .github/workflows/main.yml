@@ -1,0 +1,50 @@
+name: Zephyr CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build_and_test:
+    name: Build and Test Zephyr Application
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Setup Zephyr environment
+        uses: zephyrproject-rtos/action-zephyr-setup@v1
+        # app-path defaults to '.', which is correct as west.yml is at the root.
+        # toolchains defaults to 'host', which is needed for native_sim.
+
+      - name: Build tests
+        shell: bash
+        run: |
+          set -e
+          echo "Current directory: $(pwd)"
+          ls -la
+          cd test
+          echo "Current directory after cd test: $(pwd)"
+          ls -la
+          west build -b native_sim
+
+      - name: Run tests
+        shell: bash
+        working-directory: ./test
+        run: |
+          set -e
+          echo "Current directory for running tests: $(pwd)"
+          ls -la build # To see the structure of the build output
+          ./build/test/zephyr/zephyr.exe 
