@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Firmware",
+            "type": "shell",
+            "command": "cd app && west build -b pro_contactless_timer/nrf52840",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Flash Firmware",
+            "type": "shell",
+            "command": "cd app && west flash --runner jlink",
+            "problemMatcher": []
+        },
+        {
+            "label": "Build and Flash Firmware",
+            "dependsOn": [
+                "Build Firmware",
+                "Flash Firmware"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": []
+        }
+    ]
+} 

@@ -1,0 +1,10 @@
+[manifest]
+path = ./
+file = west.yml
+
+[build]
+# cmake-args = -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBOARD_ROOT=../
+cmake-args = -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+[zephyr]
+base = external/zephyr
