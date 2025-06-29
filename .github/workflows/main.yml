@@ -42,19 +42,15 @@ jobs:
           key: ${{ runner.os }}-zephyr-externals
 
       - name: Install west
-        run: pip install west
-
-      - name: Install west dependencies
-        run: west update
-
-      - name: Export CMake
-        run: west zephyr-export
-
-      - name: Install additional Python dependencies
-        run: west packages pip --install
-
-      - name: Install Zephyr SDK
-        run: cd external/zephyr && west sdk install
+        run: |
+          set -e
+          source .venv/bin/activate
+          pip install west
+          west update
+          west zephyr-export
+          west packages pip --install
+          cd external/zephyr
+          west sdk install
 
       # - name: Delete existing west namespaces
       #   shell: bash
