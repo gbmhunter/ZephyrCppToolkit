@@ -4,8 +4,24 @@ namespace zct {
 
 class IGpio {
 public:
-    // GpioBase(); // Constructor not typically needed for pure interface
-    virtual ~IGpio() = default; // Ensure virtual destructor
+
+    enum class Direction {
+        Input,
+        Output
+    };
+
+    /**
+     * @brief Create a new GPIO.
+     * 
+     * @param name The name of the GPIO. Used for logging purposes.
+     * @param direction The direction of the GPIO.
+     */
+    IGpio(const char* name, Direction direction = Direction::Input);
+
+    /**
+     * @brief Destroy the GPIO.
+     */
+    virtual ~IGpio() = default;
 
     /**
      * Set the logical value of the GPIO.
@@ -23,7 +39,11 @@ public:
      * 
      * @return The logical value of the GPIO.
      */
-    virtual bool get() = 0;
+    virtual bool get() const = 0;
+
+protected:
+    const char* m_name;
+    Direction m_direction;
 };
 
 } // namespace zct

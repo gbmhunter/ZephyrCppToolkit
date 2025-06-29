@@ -6,8 +6,9 @@ namespace zct {
 
 LOG_MODULE_REGISTER(GpioReal, LOG_LEVEL_INF);
 
-GpioReal::GpioReal(const char* name, const struct gpio_dt_spec* spec) {
-    m_name = name;
+GpioReal::GpioReal(const char* name, const struct gpio_dt_spec* spec, Direction direction) 
+    : IGpio(name, direction)
+{
     m_spec = spec;
 
     bool isReady = gpio_is_ready_dt(m_spec);
@@ -25,7 +26,7 @@ void GpioReal::set(bool value) {
     gpio_pin_set_dt(m_spec, value ? 1 : 0);
 }
 
-bool GpioReal::get() {
+bool GpioReal::get() const {
     LOG_DBG("Getting GPIO %s. Value: %d.", m_name, gpio_pin_get_dt(m_spec));
     return gpio_pin_get_dt(m_spec) == 1;
 }
