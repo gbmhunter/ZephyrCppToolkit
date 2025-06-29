@@ -1,7 +1,6 @@
 var dir_68267d1309a1af8e8297ef4c3efbcdba =
 [
-    [ "EventThread", "dir_39ba9e40896c45b073b64167248cf5a7.html", "dir_39ba9e40896c45b073b64167248cf5a7" ],
-    [ "Gpio", "dir_2cde145cd5fb6ad40c91bfed20ad0c37.html", "dir_2cde145cd5fb6ad40c91bfed20ad0c37" ],
-    [ "Pwm", "dir_f2f92e66c173d7d5fccf751aebbac3bd.html", "dir_f2f92e66c173d7d5fccf751aebbac3bd" ],
-    [ "Mutex.cpp", "Mutex_8cpp.html", "Mutex_8cpp" ]
+    [ "Core", "dir_a2f0e5642e47e7ed59fe0f0829eafb5f.html", "dir_a2f0e5642e47e7ed59fe0f0829eafb5f" ],
+    [ "Events", "dir_1ff81008302cb45769f1dab653ab23f8.html", "dir_1ff81008302cb45769f1dab653ab23f8" ],
+    [ "Peripherals", "dir_2ef109e2e66c4c5c8ec05e153579b6ca.html", "dir_2ef109e2e66c4c5c8ec05e153579b6ca" ]
 ];

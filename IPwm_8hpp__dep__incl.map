@@ -1,13 +1,13 @@
 <map id="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/IPwm.hpp" name="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/IPwm.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="237,5,445,75"/>
-<area shape="rect" id="Node000002" href="$PwmMock_8hpp.html" title=" " alt="" coords="5,123,213,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,83,178,125,176,120,260,78"/>
-<area shape="rect" id="Node000004" href="$PwmReal_8hpp.html" title=" " alt="" coords="237,123,445,192"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="344,89,344,122,339,122,339,89"/>
-<area shape="rect" id="Node000006" href="$IPwm_8cpp.html" title=" " alt="" coords="469,130,677,185"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="423,79,522,128,519,132,420,83"/>
-<area shape="rect" id="Node000003" href="$PwmMock_8cpp.html" title=" " alt="" coords="5,240,213,295"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,206,112,240,107,240,107,206"/>
-<area shape="rect" id="Node000005" href="$PwmReal_8cpp.html" title=" " alt="" coords="237,240,445,295"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="344,206,344,240,339,240,339,206"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="250,5,458,75"/>
+<area shape="rect" id="Node000002" href="$PwmMock_8hpp.html" title=" " alt="" coords="14,123,222,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="274,83,188,125,186,120,272,78"/>
+<area shape="rect" id="Node000004" href="$PwmReal_8hpp.html" title=" " alt="" coords="250,123,458,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="357,89,357,122,351,122,351,89"/>
+<area shape="rect" id="Node000006" href="$IPwm_8cpp.html" title=" " alt="" coords="482,130,690,185"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="435,79,534,128,532,132,433,83"/>
+<area shape="rect" id="Node000003" href="$PwmMock_8cpp.html" title=" " alt="" coords="5,240,225,295"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="120,206,119,240,113,240,114,205"/>
+<area shape="rect" id="Node000005" href="$PwmReal_8cpp.html" title=" " alt="" coords="249,240,464,295"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="358,205,359,240,353,240,352,206"/>
 </map>

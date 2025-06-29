@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Zephyr C++ Toolkit: /home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Mutex.hpp Source File</title>
+<title>Zephyr C++ Toolkit: /home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Core/Mutex.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -101,10 +101,11 @@ $(document).ready(function(){initNavTree('Mutex_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;zephyr/kernel.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacezct.html">zct</a> {</div>
+<div class="foldopen" id="foldopen00005" data-start="{" data-end="}">
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="namespacezct.html">    5</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacezct.html">zct</a> {</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// Forward declarations</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">class </span>Mutex;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">class </span><a class="code hl_class" href="classzct_1_1Mutex.html">Mutex</a>;</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classzct_1_1MutexLockGuard.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a> {</div>
@@ -143,6 +144,7 @@ $(document).ready(function(){initNavTree('Mutex_8hpp_source.html',''); initResiz
 </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>} <span class="comment">// namespace zct</span></div>
+</div>
 <div class="ttc" id="aclasszct_1_1MutexLockGuard_html"><div class="ttname"><a href="classzct_1_1MutexLockGuard.html">zct::MutexLockGuard</a></div><div class="ttdef"><b>Definition</b> Mutex.hpp:13</div></div>
 <div class="ttc" id="aclasszct_1_1MutexLockGuard_html_a0dda7073c7ac76bce9dd47af10c0f768"><div class="ttname"><a href="classzct_1_1MutexLockGuard.html#a0dda7073c7ac76bce9dd47af10c0f768">zct::MutexLockGuard::m_didGetLock</a></div><div class="ttdeci">bool m_didGetLock</div><div class="ttdef"><b>Definition</b> Mutex.hpp:33</div></div>
 <div class="ttc" id="aclasszct_1_1MutexLockGuard_html_a48285d5709dc5f89e207360f4289a61a"><div class="ttname"><a href="classzct_1_1MutexLockGuard.html#a48285d5709dc5f89e207360f4289a61a">zct::MutexLockGuard::operator=</a></div><div class="ttdeci">MutexLockGuard &amp; operator=(const MutexLockGuard &amp;)=delete</div></div>
@@ -156,13 +158,13 @@ $(document).ready(function(){initNavTree('Mutex_8hpp_source.html',''); initResiz
 <div class="ttc" id="aclasszct_1_1Mutex_html_a50bd814d4db1cc8d41c8a556c5c0064e"><div class="ttname"><a href="classzct_1_1Mutex.html#a50bd814d4db1cc8d41c8a556c5c0064e">zct::Mutex::getZephyrMutex</a></div><div class="ttdeci">struct k_mutex * getZephyrMutex()</div><div class="ttdoc">Get the underlying Zephyr mutex object.</div><div class="ttdef"><b>Definition</b> Mutex.cpp:60</div></div>
 <div class="ttc" id="aclasszct_1_1Mutex_html_a943f7abb30c6cc14af4d4b856c738a9d"><div class="ttname"><a href="classzct_1_1Mutex.html#a943f7abb30c6cc14af4d4b856c738a9d">zct::Mutex::m_zephyrMutex</a></div><div class="ttdeci">struct k_mutex m_zephyrMutex</div><div class="ttdef"><b>Definition</b> Mutex.hpp:71</div></div>
 <div class="ttc" id="aclasszct_1_1Mutex_html_aa8216e98e46d77adb683dfcf7b73a130"><div class="ttname"><a href="classzct_1_1Mutex.html#aa8216e98e46d77adb683dfcf7b73a130">zct::Mutex::Mutex</a></div><div class="ttdeci">Mutex()</div><div class="ttdoc">Construct a new mutex.</div><div class="ttdef"><b>Definition</b> Mutex.cpp:44</div></div>
-<div class="ttc" id="anamespacezct_html"><div class="ttname"><a href="namespacezct.html">zct</a></div><div class="ttdef"><b>Definition</b> EventThread.hpp:9</div></div>
+<div class="ttc" id="anamespacezct_html"><div class="ttname"><a href="namespacezct.html">zct</a></div><div class="ttdef"><b>Definition</b> Mutex.hpp:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_5b573860e5f5ae1e83acfe16ce9cc9ac.html">ZephyrCppToolkit</a></li><li class="navelem"><a class="el" href="Mutex_8hpp.html">Mutex.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_5b573860e5f5ae1e83acfe16ce9cc9ac.html">ZephyrCppToolkit</a></li><li class="navelem"><a class="el" href="dir_5c405b7ac79d2775200a6c52daf4d4c8.html">Core</a></li><li class="navelem"><a class="el" href="Mutex_8hpp.html">Mutex.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

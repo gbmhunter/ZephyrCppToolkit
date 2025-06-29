@@ -1,15 +1,15 @@
-<map id="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Timer.hpp" name="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Timer.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="162,5,370,75"/>
-<area shape="rect" id="Node000002" href="$EventThread_8hpp.html" title=" " alt="" coords="23,240,231,309"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,85,169,103,152,124,139,152,132,183,128,240,122,239,126,182,134,150,148,121,165,99,186,81"/>
-<area shape="rect" id="Node000004" href="$EventThreadv2_8hpp.html" title=" " alt="" coords="301,240,509,309"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="346,81,367,99,384,121,398,150,406,182,410,239,404,240,400,183,393,152,380,124,363,103,343,85"/>
-<area shape="rect" id="Node000006" href="$TimerManager_8hpp.html" title=" " alt="" coords="162,123,370,192"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="269,89,269,122,263,122,263,89"/>
-<area shape="rect" id="Node000003" href="$EventThread_8cpp.html" title=" " alt="" coords="5,357,249,412"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="130,323,130,357,125,357,125,323"/>
-<area shape="rect" id="Node000005" href="$EventThreadv2_8cpp.html" title=" " alt="" coords="275,357,535,412"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="407,323,407,357,402,357,402,323"/>
-<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="217,203,170,242,166,238,213,199"/>
-<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="319,199,366,238,362,242,315,203"/>
+<map id="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Events/Timer.hpp" name="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Events/Timer.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="125,5,333,75"/>
+<area shape="rect" id="Node000002" href="$EventThread_8hpp.html" title=" " alt="" coords="5,240,213,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,85,131,103,116,124,105,152,101,183,105,239,99,240,96,182,100,151,111,121,127,99,147,81"/>
+<area shape="rect" id="Node000004" href="$EventThreadv2_8hpp.html" title=" " alt="" coords="256,240,464,309"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="311,81,331,99,348,121,360,151,366,182,367,240,362,240,361,183,355,152,343,124,327,103,307,85"/>
+<area shape="rect" id="Node000006" href="$TimerManager_8hpp.html" title=" " alt="" coords="125,123,333,192"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="232,89,232,122,227,122,227,89"/>
+<area shape="rect" id="Node000003" href="$EventThread_8cpp.html" title=" " alt="" coords="5,357,213,412"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,323,112,357,107,357,107,323"/>
+<area shape="rect" id="Node000005" href="$EventThreadv2_8cpp.html" title=" " alt="" coords="249,357,471,412"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="363,323,363,357,357,357,357,323"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="186,204,146,242,143,238,182,200"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="280,199,323,238,320,242,276,203"/>
 </map>
