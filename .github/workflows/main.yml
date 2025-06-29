@@ -26,17 +26,32 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Delete existing west namespaces
-        shell: bash
-        run: |
-          set -e
-          rm -rf .west
+      - name: Install west
+        run: pip install west
 
-      - name: Setup Zephyr environment
-        uses: zephyrproject-rtos/action-zephyr-setup@v1
-        with:
-            app-path: src
-            toolchains: arm-zephyr-eabi
+      - name: Install west dependencies
+        run: west update
+
+      - name: Export CMake
+        run: west zephyr-export
+
+      - name: Install additional Python dependencies
+        run: west packages pip --install
+
+      - name: Install Zephyr SDK
+        run: cd external/zephyr && west sdk install
+
+      # - name: Delete existing west namespaces
+      #   shell: bash
+      #   run: |
+      #     set -e
+      #     rm -rf .west
+
+      # - name: Setup Zephyr environment
+      #   uses: zephyrproject-rtos/action-zephyr-setup@v1
+      #   with:
+      #       app-path: src
+      #       toolchains: arm-zephyr-eabi
         # app-path defaults to '.', which is correct as west.yml is at the root.
         # toolchains defaults to 'host', which is needed for native_sim.
 
