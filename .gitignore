@@ -1,3 +1,5 @@
 build/
 .venv/
 external/
+
+doxygen_docs/
