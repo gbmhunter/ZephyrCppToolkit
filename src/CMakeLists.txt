@@ -15,18 +15,18 @@ set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new -m32")
 
 # Create the library target
-add_library(zephyr_cpp_toolkit STATIC)
+add_library(zephyr_cpp_toolkit INTERFACE)
 
 # Explicitly set the library language to C++
 set_target_properties(zephyr_cpp_toolkit PROPERTIES
     LINKER_LANGUAGE CXX)
 
-target_compile_options(zephyr_cpp_toolkit PRIVATE -std=c++20)
+target_compile_options(zephyr_cpp_toolkit INTERFACE -std=c++20)
 
 # Add sources to the library
 target_sources(
     zephyr_cpp_toolkit
-    PRIVATE
+    INTERFACE
     EventThread/EventThread.cpp
     EventThread/Timer.cpp
     EventThread/TimerManager.cpp
@@ -37,7 +37,7 @@ target_sources(
 )
 
 # Link against Zephyr interface library to get include paths and other settings
-target_link_libraries(zephyr_cpp_toolkit PUBLIC zephyr_interface zephyr)
+target_link_libraries(zephyr_cpp_toolkit INTERFACE zephyr_interface zephyr)
 
 # Add compiler option to suppress "warning: structured bindings only available with '-std=c++17' or '-std=gnu++17' [-Wc++17-extensions]"
 # target_compile_options(zephyr_cpp_toolkit PRIVATE -Wno-c++17-extensions)
@@ -45,7 +45,7 @@ target_link_libraries(zephyr_cpp_toolkit PUBLIC zephyr_interface zephyr)
 
 # Make the library headers available to other targets
 target_include_directories(zephyr_cpp_toolkit
-    PUBLIC
+    INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
@@ -63,7 +63,7 @@ FetchContent_MakeAvailable(TlExpected)
 
 # The target 'expected' (aliased as tl::expected) is now configured.
 # Link against the alias provided by the library.
-target_link_libraries(zephyr_cpp_toolkit PUBLIC tl::expected)
+target_link_libraries(zephyr_cpp_toolkit INTERFACE tl::expected)
 
 
 # include(FetchContent)
