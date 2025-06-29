@@ -83,6 +83,20 @@ public:
     }
 
     /**
+     * Stop the timer. This will prevent the timer from expiring until
+     * start() is called again.
+     * 
+     * This does not deregister the timer from the timer manager (if registered), nor
+     * does this clear the event that is saved in the timer for when it expires.
+     */
+    void stop() {
+        this->m_isRunning = false;
+        this->period_ticks = -1;
+        this->startTime_ticks = 0;
+        this->nextExpiryTime_ticks = 0;
+    }
+
+    /**
      * Check if the timer is running.
      * 
      * @return true if the timer is running, false otherwise.
@@ -145,7 +159,6 @@ protected:
     int64_t startTime_ticks;
     int64_t nextExpiryTime_ticks;
     bool m_isRunning;
-    bool m_beforeFirstExpiry;
     EventType m_event;
     bool m_isRegistered = false;
 };
