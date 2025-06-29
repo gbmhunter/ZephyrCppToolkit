@@ -15,6 +15,10 @@ class Mutex;
  */
 class MutexLockGuard {
 public:
+    /**
+     * @brief Constructor is hidden since we can't return an error code from the constructor. Use create() instead.
+     */
+    MutexLockGuard(Mutex& mutex, k_timeout_t timeout, int& mutexRc);
 
     ~MutexLockGuard();
 
@@ -23,10 +27,7 @@ public:
      */
     static tl::expected<MutexLockGuard, int> create(Mutex& mutex, k_timeout_t timeout = K_FOREVER);
 protected:
-    /**
-     * Constructor is hidden since we can't return an error code from the constructor. Use create() instead.
-     */
-    MutexLockGuard(Mutex& mutex);
+    
 
     // The mutex this guard is locking/unlocking.
     Mutex& m_mutex;
@@ -50,7 +51,7 @@ public:
      * @param timeout The max. time to wait to lock the mutex.
      * @return MutexLockGuard  The lock guard for the mutex.
      */
-    tl::expected<MutexLockGuard, int> lockGuard(k_timeout_t timeout = K_FOREVER);
+    // tl::expected<MutexLockGuard, int> lockGuard(k_timeout_t timeout = K_FOREVER);
 
     /**
      * @brief Get the underlying Zephyr mutex object.

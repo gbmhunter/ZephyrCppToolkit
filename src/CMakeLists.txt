@@ -43,18 +43,6 @@ target_include_directories(zephyr_cpp_toolkit
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-# Cache current CXX standard and flags settings for the main project
-set(MAIN_PROJECT_CMAKE_CXX_STANDARD ${CMAKE_CXX_STANDARD})
-set(MAIN_PROJECT_CMAKE_CXX_STANDARD_REQUIRED ${CMAKE_CXX_STANDARD_REQUIRED})
-set(MAIN_PROJECT_CMAKE_CXX_EXTENSIONS ${CMAKE_CXX_EXTENSIONS})
-set(MAIN_PROJECT_CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}") # Cache existing CXX_FLAGS
-
-# Set C++ standard and flags specifically for TlExpected's configuration phase
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20") # Force C++20
-
 # Disable packaging for TlExpected
 set(EXPECTED_BUILD_PACKAGE OFF CACHE BOOL "Disable TlExpected packaging" FORCE)
 set(EXPECTED_BUILD_TESTS OFF CACHE BOOL "Disable TlExpected tests" FORCE)
@@ -66,12 +54,6 @@ FetchContent_Declare(
     GIT_TAG v1.1.0
 )
 FetchContent_MakeAvailable(TlExpected)
-
-# Restore CXX standard and flags settings for the main project
-set(CMAKE_CXX_STANDARD ${MAIN_PROJECT_CMAKE_CXX_STANDARD})
-set(CMAKE_CXX_STANDARD_REQUIRED ${MAIN_PROJECT_CMAKE_CXX_STANDARD_REQUIRED})
-set(CMAKE_CXX_EXTENSIONS ${MAIN_PROJECT_CMAKE_CXX_EXTENSIONS})
-set(CMAKE_CXX_FLAGS "${MAIN_PROJECT_CMAKE_CXX_FLAGS}") # Restore CXX_FLAGS
 
 # The target 'expected' (aliased as tl::expected) is now configured.
 # Link against the alias provided by the library.
