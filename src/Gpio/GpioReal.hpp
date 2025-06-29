@@ -19,7 +19,7 @@ public:
      * @param spec The Zephyr GPIO DT spec struct.
      * @param direction The direction of the GPIO.
      */
-    GpioReal(const char* name, const struct gpio_dt_spec* spec, Direction direction = Direction::Input);
+    GpioReal(const char* name, const struct gpio_dt_spec* spec, Direction direction = Direction::Input, LogicMode logicMode = LogicMode::ActiveHigh);
 
     /**
      * @brief Destroy the GPIO. Does nothing.

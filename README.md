@@ -80,7 +80,7 @@ If you have many peripherals the number of individual peripherals passed in can 
 
 ### GPIO 
 
-The `zct::Gpio` class provides a C++ interface to Zephyr GPIOs. It is designed to be used as follows:
+The `zct::GpioReal` class provides a C++ interface to Zephyr GPIOs. It is designed to be used as follows:
 
 ```c++
 #include <zephyr/kernel.h>
