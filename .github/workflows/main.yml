@@ -23,6 +23,7 @@ jobs:
 
       - name: Install system dependencies
         run: |
+          sudo apt update
           sudo apt install -y --no-install-recommends git cmake ninja-build gperf \
             ccache dfu-util device-tree-compiler wget \
             python3-dev python3-pip python3-setuptools python3-tk python3-wheel xz-utils file \
@@ -60,40 +61,6 @@ jobs:
           cd external/zephyr
           west sdk install
 
-      # - name: Delete existing west namespaces
-      #   shell: bash
-      #   run: |
-      #     set -e
-      #     rm -rf .west
-
-      # - name: Setup Zephyr environment
-      #   uses: zephyrproject-rtos/action-zephyr-setup@v1
-      #   with:
-      #       app-path: src
-      #       toolchains: arm-zephyr-eabi
-        # app-path defaults to '.', which is correct as west.yml is at the root.
-        # toolchains defaults to 'host', which is needed for native_sim.
-
-      # - name: Build tests
-      #   shell: bash
-      #   run: |
-      #     set -e
-      #     echo "Current directory: $(pwd)"
-      #     ls -la
-      #     cd test
-      #     echo "Current directory after cd test: $(pwd)"
-      #     ls -la
-      #     west build -b native_sim
-
-      # - name: Run tests
-      #   shell: bash
-      #   working-directory: ./test
-      #   run: |
-      #     set -e
-      #     echo "Current directory for running tests: $(pwd)"
-      #     ls -la build # To see the structure of the build output
-      #     ./build/test/zephyr/zephyr.exe
-          
       - name: Build everything and run tests
         shell: bash
         run: ./build.sh
