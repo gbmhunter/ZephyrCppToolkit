@@ -28,14 +28,32 @@ typedef std::variant<MyTimerTimeoutEvent, LedFlashingEvent, ExitEvent> Event;
 // EVENT THREAD
 //================================================================================================//
 
-class MyEventThread : public zct::EventThread<Event> {
+class Led : public zct::EventThread<Event> {
 public:
-    MyEventThread() :
+    Led() :
         zct::EventThread<Event>(threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
         m_flashingTimer()
     {
         // Register timers
         m_timerManager.registerTimer(m_flashingTimer);
+    }
+
+    ~Led() {
+        // Send the exit event to the event thread
+        ExitEvent exitEvent;
+        sendEvent(exitEvent);
+    }
+
+    /**
+     * Start flashing the LED at the given rate.
+     * 
+     * THREAD SAFE.
+     * 
+     * @param flashRateMs The rate at which to flash the LED.
+     */
+    void flash(uint32_t flashRateMs) {
+        LedFlashingEvent ledFlashingEvent = { .flashRateMs = flashRateMs };
+        sendEvent(ledFlashingEvent);
     }
 
 private:
@@ -48,17 +66,15 @@ private:
     void threadMain() override {
         while (1) {
             Event event = zct::EventThread<Event>::waitForEvent();
-            LOG_DBG("Event received: %d.", event.index());
             if (std::holds_alternative<MyTimerTimeoutEvent>(event)) {
+                LOG_INF("Toggling LED to %d.", !m_ledIsOn);
                 m_ledIsOn = !m_ledIsOn;
             } else if (std::holds_alternative<LedFlashingEvent>(event)) {
-                LOG_DBG("Toggling LED to %d.", m_ledIsOn);
                 // Start the timer to flash the LED
                 m_flashingTimer.start(1000, 1000);
-                LOG_DBG("Starting flashing. Turning LED on...");
+                LOG_INF("Starting flashing. Turning LED on...");
                 m_ledIsOn = true;
             } else if (std::holds_alternative<ExitEvent>(event)) {
-                LOG_DBG("Got ExitEvent.");
                 break;
             }
         }
@@ -66,15 +82,12 @@ private:
 };
 
 int main() {
-    MyEventThread eventThread;
+    Led led;
 
-    // Send a LED on event
-    LedFlashingEvent ledFlashingEvent = { .flashRateMs = 1000 }; // Create an Event lvalue directly
-    eventThread.sendEvent(ledFlashingEvent);
+    // Start the LED flashing. The flashing will happen
+    // in the LED event thread.
+    led.flash(1000);
 
-    k_sleep(K_MSEC(500));
-
-    // Send an exit event
-    ExitEvent exitEvent;
-    eventThread.sendEvent(exitEvent);
+    // Wait 2.5s. The LED should flash twice in this time.
+    k_sleep(K_MSEC(2500));
 }

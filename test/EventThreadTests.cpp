@@ -26,9 +26,9 @@ struct LedFlashingEvent {
 
 typedef std::variant<MyTimerTimeoutEvent, LedFlashingEvent, ExitEvent> Event;
 
-class MyEventThread : public zct::EventThread<Event> {
+class Led : public zct::EventThread<Event> {
     public:
-        MyEventThread() :
+        Led() :
             zct::EventThread<Event>(threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
             m_flashingTimer()
         {
@@ -83,7 +83,7 @@ class MyEventThread : public zct::EventThread<Event> {
 
 ZTEST(EventThreadTests, testEventThreadCreate)
 {
-    MyEventThread eventThread;
+    Led eventThread;
     zassert_true(true, "Event thread created");
 
     // Send a LED on event

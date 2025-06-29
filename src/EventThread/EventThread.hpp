@@ -27,7 +27,7 @@ public:
     EventThread(k_thread_stack_t* threadStack, size_t threadStackSize, size_t eventQueueBufferNumItems) :
         m_timerManager(10)
     {
-        LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
+        LOG_MODULE_DECLARE(zct_EventThread);
         // Create event queue buffer and then init queue with it
         m_eventQueueBuffer = new EventType[eventQueueBufferNumItems];
         __ASSERT_NO_MSG(m_eventQueueBuffer != nullptr);
@@ -52,7 +52,7 @@ public:
     };
 
     ~EventThread() {
-        LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
+        LOG_MODULE_DECLARE(zct_EventThread);
         LOG_DBG("%s() called.", __FUNCTION__);
         k_thread_join(&m_thread, K_FOREVER);
     }
@@ -63,7 +63,7 @@ public:
      * - An external event (sent from another thread).
      */
     EventType waitForEvent() {
-        LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
+        LOG_MODULE_DECLARE(zct_EventThread);
         LOG_DBG("%s() called.", __FUNCTION__);
 
         // Get the next timer to expire
@@ -123,7 +123,7 @@ protected:
     /** The function needed by pass to Zephyr's thread API */
     static void threadFunction(void* arg1, void* arg2, void* arg3)
     {
-        LOG_MODULE_DECLARE(EventThread, LOG_LEVEL);
+        LOG_MODULE_DECLARE(zct_EventThread);
 
         // First passed in argument is the instance of the class
         EventThread* obj = static_cast<EventThread*>(arg1);

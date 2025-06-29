@@ -30,6 +30,7 @@ target_sources(
     EventThread/EventThread.cpp
     EventThread/Timer.cpp
     EventThread/TimerManager.cpp
+    Gpio/GpioReal.cpp
     Mutex.cpp
 )
 
