@@ -49,7 +49,7 @@ protected:
 /**
  * Mutex is a C++ wrapper around a Zephyr mutex.
  * 
- * The recommended way to lock a mutex is to use the MutexLockGuard class.
+ * The recommended way to lock a mutex is to use the lockGuard() function which returns a MutexLockGuard object. This will automatically unlock the mutex when the lock guard goes out of scope.
  *
  * \sa MutexLockGuard
  * 

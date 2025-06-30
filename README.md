@@ -51,6 +51,8 @@ The Mutex class is a wrapper around the Zephyr mutex API. It provides a RAII sty
 
 ### Usage
 
+Note in the example below how to don't have to remember to unlock the mutex before each `return` statement.
+
 ```c++
 #include "ZephyrCppToolkit.hpp"
 
@@ -59,11 +61,11 @@ void myFunction() {
     zct::Mutex mutex;
 
     // Lock the mutex
-    int mutexRc;
-    auto lockGuard = zct::MutexLockGuard(mutex, K_FOREVER, mutexRc);
-    __ASSERT(mutexRc == 0, "Failed to lock the mutex in main thread.");
+    zct::Mutex mutex;
+    zct::MutexLockGuard lockGuard = mutex.lockGuard(K_MSEC(1000));
+    __ASSERT(lockGuard.didGetLock(), "Failed to lock the mutex in main thread.");
 
-    // 
+    // Various things that require the mutex
     if (uartDriverNotReady) {
         return;
     }
@@ -96,7 +98,7 @@ All peripherals are designed so they can be mocked for testing. They follow this
 * `<peripheral>Real.hpp/cpp`: The real implementation of the peripheral.
 * `<peripheral>Mock.hpp/cpp`: The mock implementation of the peripheral.
 
-All real implementations accept Zephyr device tree structures in their constructors.
+All real implementations accept Zephyr device tree structures in their constructors. Mock implementations may additional methods added to them to allow for easier testing (e.g. the `GpioMock` class has a `mockSetInput()` method which allows you to pretend to be the external signal and set the value of an input GPIO).
 
 This pattern is intended to be used as follows:
 
@@ -154,9 +156,9 @@ Then navigate to `http://localhost:8000/` in your browser.
 
 The generation is run from the `doxygen-config/` folder rather than the root because I had a weird issue when running it from the root in where I couldn't exclude the `external/` folder from being scanned.
 
-## Tests
+## Unit Tests For This Library
 
-To run the tests:
+To run the unit tests for this library:
 
 ```bash
 cd test
@@ -169,4 +171,10 @@ To run a specific test, e.g. all tests in the `EventThreadTests` suite:
 ```bash
 cd test
 west build -b native_sim && ./build/test/zephyr/zephyr.exe --test="EventThreadTests::*"
+```
+
+The `build.sh` in the root of the repository can be used to build everything and run the unit tests.
+
+```bash
+./build.sh
 ```
