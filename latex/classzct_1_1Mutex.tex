@@ -25,7 +25,7 @@ struct k\+\_\+mutex \mbox{\hyperlink{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b85
 \doxysubsection{Detailed Description}
 \doxylink{classzct_1_1Mutex}{Mutex} is a C++ wrapper around a Zephyr mutex.
 
-The recommended way to lock a mutex is to use the \doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard} class.
+The recommended way to lock a mutex is to use the \doxylink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lock\+Guard()} function which returns a \doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard} object. This will automatically unlock the mutex when the lock guard goes out of scope.
 
 \begin{DoxySeeAlso}{See also}
 \doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}
@@ -42,7 +42,7 @@ Below is an example of how to use the \doxylink{classzct_1_1Mutex}{Mutex} class\
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \mbox{\hyperlink{classzct_1_1Mutex}{zct::Mutex}}\ mutex;}
-\DoxyCodeLine{\ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}\ =\ mutex.\mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}(K\_MSEC(1000));}
+\DoxyCodeLine{\ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{zct::MutexLockGuard}}\ \mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}\ =\ mutex.\mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}(K\_MSEC(1000));}
 \DoxyCodeLine{\ \ \ \_\_ASSERT\_NO\_MSG(\mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}.\mbox{\hyperlink{classzct_1_1MutexLockGuard_ab072a70c74ea360332ec387b7689745a}{didGetLock}}());}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ LOG\_INF(\textcolor{stringliteral}{"{}Mutex\ locked.\ It\ will\ be\ unlocked\ automatically\ when\ the\ lock\ guard\ goes\ out\ of\ scope."{}});}
