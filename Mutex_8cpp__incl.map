@@ -4,6 +4,8 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,62,106,107,102,103,148,58"/>
 <area shape="rect" id="Node000003" href="$Mutex_8hpp.html" title=" " alt="" coords="184,108,355,148"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,58,243,96,239,100,201,62"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="208,196,331,221"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="272,148,272,182,267,182,267,148"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="135,196,257,221"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="254,150,218,188,214,184,250,146"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="281,196,404,221"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="289,146,324,184,320,188,285,150"/>
 </map>

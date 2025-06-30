@@ -5,44 +5,51 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}}
-\DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{comment}{//\ Forward\ declarations}}
-\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}};}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\ \{}
-\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}(\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\&\ mutex,\ k\_timeout\_t\ timeout,\ \textcolor{keywordtype}{int}\&\ mutexRc);}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_adf75f621c477e7d62c025156bc19f264}{\string~MutexLockGuard}}();}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Prevent\ copying\ and\ moving}}
-\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_afa9cfaf14cdfadb75af8f9e963f4595d}{MutexLockGuard}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a48285d5709dc5f89e207360f4289a61a}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_abde6f5ee779b73875ad915043a0b7e6c}{MutexLockGuard}}(\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_aabc412425b5fe3eb4c80eed8bf7ed4e8}{operator=}}(\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\&)\ =\ \textcolor{keyword}{delete};}
-\DoxyCodeLine{00027\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00028\ \ \ \ \ }
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ The\ mutex\ this\ guard\ is\ locking/unlocking.}}
-\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a5f9b42de1cf5916106cbcfdccb9c9aac}{m\_mutex}};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a0dda7073c7ac76bce9dd47af10c0f768}{m\_didGetLock}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00034\ \};}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\ \{}
-\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex_aa8216e98e46d77adb683dfcf7b73a130}{Mutex}}();}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex_a2fc33e343bc88b9ef1cd1ba43d610e05}{\string~Mutex}}();}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{struct\ }k\_mutex*\ \mbox{\hyperlink{classzct_1_1Mutex_a50bd814d4db1cc8d41c8a556c5c0064e}{getZephyrMutex}}();}
-\DoxyCodeLine{00066\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <tl/expected.hpp>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Forward\ declarations}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_adf75f621c477e7d62c025156bc19f264}{\string~MutexLockGuard}}();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Prevent\ copying\ and\ moving}}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_afa9cfaf14cdfadb75af8f9e963f4595d}{MutexLockGuard}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a48285d5709dc5f89e207360f4289a61a}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard_af921b544f5cdb302b6c4e4bc7fbc94c8}{MutexLockGuard}}(\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\&);}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_aabc412425b5fe3eb4c80eed8bf7ed4e8}{operator=}}(\mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_ab072a70c74ea360332ec387b7689745a}{didGetLock}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Allow\ Mutex\ to\ construct\ MutexLockGuard\ objects}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}(\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\&\ mutex,\ k\_timeout\_t\ timeout,\ \textcolor{keywordtype}{int}\&\ mutexRc);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\&\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a5f9b42de1cf5916106cbcfdccb9c9aac}{m\_mutex}};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1MutexLockGuard_a0dda7073c7ac76bce9dd47af10c0f768}{m\_didGetLock}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\ \{}
+\DoxyCodeLine{00060\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex_aa8216e98e46d77adb683dfcf7b73a130}{Mutex}}();}
 \DoxyCodeLine{00067\ }
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{struct\ }k\_mutex\ \mbox{\hyperlink{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b856c738a9d}{m\_zephyrMutex}};}
-\DoxyCodeLine{00072\ \};}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Mutex_a2fc33e343bc88b9ef1cd1ba43d610e05}{\string~Mutex}}();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{classzct_1_1MutexLockGuard}{MutexLockGuard}}\ \mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}(k\_timeout\_t\ timeout);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{struct\ }k\_mutex*\ \mbox{\hyperlink{classzct_1_1Mutex_a50bd814d4db1cc8d41c8a556c5c0064e}{getZephyrMutex}}();}
+\DoxyCodeLine{00091\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{struct\ }k\_mutex\ \mbox{\hyperlink{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b856c738a9d}{m\_zephyrMutex}};}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \}\ \textcolor{comment}{//\ namespace\ zct}}
 
 \end{DoxyCode}

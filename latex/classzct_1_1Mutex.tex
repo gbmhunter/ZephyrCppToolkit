@@ -11,6 +11,8 @@
 \begin{DoxyCompactList}\small\item\em Construct a new mutex. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classzct_1_1Mutex_a2fc33e343bc88b9ef1cd1ba43d610e05}{\texorpdfstring{$\sim$}{\string~}\+Mutex}} ()
 \begin{DoxyCompactList}\small\item\em Destroy the mutex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lock\+Guard}} (k\+\_\+timeout\+\_\+t timeout)
+\begin{DoxyCompactList}\small\item\em Get a lock guard for this mutex. \end{DoxyCompactList}\item 
 struct k\+\_\+mutex \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1Mutex_a50bd814d4db1cc8d41c8a556c5c0064e}{get\+Zephyr\+Mutex}} ()
 \begin{DoxyCompactList}\small\item\em Get the underlying Zephyr mutex object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
@@ -26,9 +28,30 @@ struct k\+\_\+mutex \mbox{\hyperlink{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b85
 The recommended way to lock a mutex is to use the \doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard} class.
 
 \begin{DoxySeeAlso}{See also}
-\doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard} 
+\doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}
 \end{DoxySeeAlso}
+Below is an example of how to use the \doxylink{classzct_1_1Mutex}{Mutex} class\+: 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <zephyr/logging/log.h>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Mutex_8hpp}{ZephyrCppToolkit/Core/Mutex.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{namespacezct_a03e785beb455af4012d3a57e19c99d13}{LOG\_MODULE\_REGISTER}}(MutexExample,\ LOG\_LEVEL\_DBG);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \mbox{\hyperlink{classzct_1_1Mutex}{zct::Mutex}}\ mutex;}
+\DoxyCodeLine{\ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}\ =\ mutex.\mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}(K\_MSEC(1000));}
+\DoxyCodeLine{\ \ \ \_\_ASSERT\_NO\_MSG(\mbox{\hyperlink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lockGuard}}.\mbox{\hyperlink{classzct_1_1MutexLockGuard_ab072a70c74ea360332ec387b7689745a}{didGetLock}}());}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ LOG\_INF(\textcolor{stringliteral}{"{}Mutex\ locked.\ It\ will\ be\ unlocked\ automatically\ when\ the\ lock\ guard\ goes\ out\ of\ scope."{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
 
+\end{DoxyCodeInclude}
+ 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classzct_1_1Mutex_aa8216e98e46d77adb683dfcf7b73a130}\label{classzct_1_1Mutex_aa8216e98e46d77adb683dfcf7b73a130} 
@@ -68,6 +91,21 @@ It is not recommended to use this function. Only use as an escape hatch if the p
 
 \begin{DoxyReturn}{Returns}
 A pointer to the Zephyr mutex object. 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}\label{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210} 
+\index{zct::Mutex@{zct::Mutex}!lockGuard@{lockGuard}}
+\index{lockGuard@{lockGuard}!zct::Mutex@{zct::Mutex}}
+\doxysubsubsection{\texorpdfstring{lockGuard()}{lockGuard()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} zct\+::\+Mutex\+::lock\+Guard (\begin{DoxyParamCaption}\item[{k\+\_\+timeout\+\_\+t}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Get a lock guard for this mutex. 
+
+Note that this function may fail to lock the mutex. It is the callers responsibility to check if the lock was successful with did\+Get\+Lock() after making this call.
+
+\begin{DoxyReturn}{Returns}
+A lock guard for this mutex. 
 \end{DoxyReturn}
 
 

@@ -17,18 +17,23 @@ Collaboration diagram for zct\+::Mutex\+Lock\+Guard\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classzct_1_1MutexLockGuard_a48702c56a87e8a959d4990c7da23743a}{Mutex\+Lock\+Guard}} (\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}} \&mutex, k\+\_\+timeout\+\_\+t timeout, int \&mutex\+Rc)
-\begin{DoxyCompactList}\small\item\em Constructor is hidden since we can\textquotesingle{}t return an error code from the constructor. Use create() instead. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classzct_1_1MutexLockGuard_adf75f621c477e7d62c025156bc19f264}{\texorpdfstring{$\sim$}{\string~}\+Mutex\+Lock\+Guard}} ()
 \item 
 \mbox{\hyperlink{classzct_1_1MutexLockGuard_afa9cfaf14cdfadb75af8f9e963f4595d}{Mutex\+Lock\+Guard}} (const \mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&)=delete
 \item 
 \mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \& \mbox{\hyperlink{classzct_1_1MutexLockGuard_a48285d5709dc5f89e207360f4289a61a}{operator=}} (const \mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&)=delete
 \item 
-\mbox{\hyperlink{classzct_1_1MutexLockGuard_abde6f5ee779b73875ad915043a0b7e6c}{Mutex\+Lock\+Guard}} (\mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&\&)=delete
+\mbox{\hyperlink{classzct_1_1MutexLockGuard_af921b544f5cdb302b6c4e4bc7fbc94c8}{Mutex\+Lock\+Guard}} (\mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&\&)
 \item 
 \mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \& \mbox{\hyperlink{classzct_1_1MutexLockGuard_aabc412425b5fe3eb4c80eed8bf7ed4e8}{operator=}} (\mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&\&)=delete
-\end{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classzct_1_1MutexLockGuard_ab072a70c74ea360332ec387b7689745a}{did\+Get\+Lock}} () const
+\begin{DoxyCompactList}\small\item\em Check if the mutex was successfully locked with this lock guard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1MutexLockGuard_a48702c56a87e8a959d4990c7da23743a}{Mutex\+Lock\+Guard}} (\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}} \&mutex, k\+\_\+timeout\+\_\+t timeout, int \&mutex\+Rc)
+\begin{DoxyCompactList}\small\item\em Constructor is hidden since we only want to allow the \doxylink{classzct_1_1Mutex}{Mutex} class to construct \doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,22 +41,17 @@ Collaboration diagram for zct\+::Mutex\+Lock\+Guard\+:
 \item 
 bool \mbox{\hyperlink{classzct_1_1MutexLockGuard_a0dda7073c7ac76bce9dd47af10c0f768}{m\+\_\+did\+Get\+Lock}} = false
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classzct_1_1MutexLockGuard_a0299a51a8b97fb3200509d92ba10fa2c}{Mutex}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 A RAII class that locks the mutex when constructed and unlocks it when destroyed. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classzct_1_1MutexLockGuard_a48702c56a87e8a959d4990c7da23743a}\label{classzct_1_1MutexLockGuard_a48702c56a87e8a959d4990c7da23743a} 
-\index{zct::MutexLockGuard@{zct::MutexLockGuard}!MutexLockGuard@{MutexLockGuard}}
-\index{MutexLockGuard@{MutexLockGuard}!zct::MutexLockGuard@{zct::MutexLockGuard}}
-\doxysubsubsection{\texorpdfstring{MutexLockGuard()}{MutexLockGuard()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily zct\+::\+Mutex\+Lock\+Guard\+::\+Mutex\+Lock\+Guard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}} \&}]{mutex,  }\item[{k\+\_\+timeout\+\_\+t}]{timeout,  }\item[{int \&}]{mutex\+Rc }\end{DoxyParamCaption})}
-
-
-
-Constructor is hidden since we can\textquotesingle{}t return an error code from the constructor. Use create() instead. 
-
 \Hypertarget{classzct_1_1MutexLockGuard_adf75f621c477e7d62c025156bc19f264}\label{classzct_1_1MutexLockGuard_adf75f621c477e7d62c025156bc19f264} 
 \index{zct::MutexLockGuard@{zct::MutexLockGuard}!````~MutexLockGuard@{\texorpdfstring{$\sim$}{\string~}MutexLockGuard}}
 \index{````~MutexLockGuard@{\texorpdfstring{$\sim$}{\string~}MutexLockGuard}!zct::MutexLockGuard@{zct::MutexLockGuard}}
@@ -61,18 +61,41 @@ Constructor is hidden since we can\textquotesingle{}t return an error code from 
 \Hypertarget{classzct_1_1MutexLockGuard_afa9cfaf14cdfadb75af8f9e963f4595d}\label{classzct_1_1MutexLockGuard_afa9cfaf14cdfadb75af8f9e963f4595d} 
 \index{zct::MutexLockGuard@{zct::MutexLockGuard}!MutexLockGuard@{MutexLockGuard}}
 \index{MutexLockGuard@{MutexLockGuard}!zct::MutexLockGuard@{zct::MutexLockGuard}}
-\doxysubsubsection{\texorpdfstring{MutexLockGuard()}{MutexLockGuard()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\doxysubsubsection{\texorpdfstring{MutexLockGuard()}{MutexLockGuard()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily zct\+::\+Mutex\+Lock\+Guard\+::\+Mutex\+Lock\+Guard (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
 
-\Hypertarget{classzct_1_1MutexLockGuard_abde6f5ee779b73875ad915043a0b7e6c}\label{classzct_1_1MutexLockGuard_abde6f5ee779b73875ad915043a0b7e6c} 
+\Hypertarget{classzct_1_1MutexLockGuard_af921b544f5cdb302b6c4e4bc7fbc94c8}\label{classzct_1_1MutexLockGuard_af921b544f5cdb302b6c4e4bc7fbc94c8} 
+\index{zct::MutexLockGuard@{zct::MutexLockGuard}!MutexLockGuard@{MutexLockGuard}}
+\index{MutexLockGuard@{MutexLockGuard}!zct::MutexLockGuard@{zct::MutexLockGuard}}
+\doxysubsubsection{\texorpdfstring{MutexLockGuard()}{MutexLockGuard()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily zct\+::\+Mutex\+Lock\+Guard\+::\+Mutex\+Lock\+Guard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&\&}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{classzct_1_1MutexLockGuard_a48702c56a87e8a959d4990c7da23743a}\label{classzct_1_1MutexLockGuard_a48702c56a87e8a959d4990c7da23743a} 
 \index{zct::MutexLockGuard@{zct::MutexLockGuard}!MutexLockGuard@{MutexLockGuard}}
 \index{MutexLockGuard@{MutexLockGuard}!zct::MutexLockGuard@{zct::MutexLockGuard}}
 \doxysubsubsection{\texorpdfstring{MutexLockGuard()}{MutexLockGuard()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily zct\+::\+Mutex\+Lock\+Guard\+::\+Mutex\+Lock\+Guard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+{\footnotesize\ttfamily zct\+::\+Mutex\+Lock\+Guard\+::\+Mutex\+Lock\+Guard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1Mutex}{Mutex}} \&}]{mutex,  }\item[{k\+\_\+timeout\+\_\+t}]{timeout,  }\item[{int \&}]{mutex\+Rc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Constructor is hidden since we only want to allow the \doxylink{classzct_1_1Mutex}{Mutex} class to construct \doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard} objects. 
 
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1MutexLockGuard_ab072a70c74ea360332ec387b7689745a}\label{classzct_1_1MutexLockGuard_ab072a70c74ea360332ec387b7689745a} 
+\index{zct::MutexLockGuard@{zct::MutexLockGuard}!didGetLock@{didGetLock}}
+\index{didGetLock@{didGetLock}!zct::MutexLockGuard@{zct::MutexLockGuard}}
+\doxysubsubsection{\texorpdfstring{didGetLock()}{didGetLock()}}
+{\footnotesize\ttfamily bool zct\+::\+Mutex\+Lock\+Guard\+::did\+Get\+Lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if the mutex was successfully locked with this lock guard. 
+
+\begin{DoxyReturn}{Returns}
+True if the mutex was successfully locked with this lock guard, false otherwise. 
+\end{DoxyReturn}
 \Hypertarget{classzct_1_1MutexLockGuard_a48285d5709dc5f89e207360f4289a61a}\label{classzct_1_1MutexLockGuard_a48285d5709dc5f89e207360f4289a61a} 
 \index{zct::MutexLockGuard@{zct::MutexLockGuard}!operator=@{operator=}}
 \index{operator=@{operator=}!zct::MutexLockGuard@{zct::MutexLockGuard}}
@@ -84,6 +107,15 @@ Constructor is hidden since we can\textquotesingle{}t return an error code from 
 \index{operator=@{operator=}!zct::MutexLockGuard@{zct::MutexLockGuard}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \& zct\+::\+Mutex\+Lock\+Guard\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classzct_1_1MutexLockGuard_a0299a51a8b97fb3200509d92ba10fa2c}\label{classzct_1_1MutexLockGuard_a0299a51a8b97fb3200509d92ba10fa2c} 
+\index{zct::MutexLockGuard@{zct::MutexLockGuard}!Mutex@{Mutex}}
+\index{Mutex@{Mutex}!zct::MutexLockGuard@{zct::MutexLockGuard}}
+\doxysubsubsection{\texorpdfstring{Mutex}{Mutex}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\hspace{0.3cm}{\ttfamily [friend]}}
 
 
 
@@ -100,7 +132,7 @@ Constructor is hidden since we can\textquotesingle{}t return an error code from 
 \doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}\& zct\+::\+Mutex\+Lock\+Guard\+::m\+\_\+mutex\hspace{0.3cm}{\ttfamily [protected]}}
 
-
+The mutex this guard is locking/unlocking. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -107,6 +107,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2fc33e343bc88b9ef1cd1ba43d610e05" id="r_a2fc33e343bc88b9ef1cd1ba43d610e05"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Mutex.html#a2fc33e343bc88b9ef1cd1ba43d610e05">~Mutex</a> ()</td></tr>
 <tr class="memdesc:a2fc33e343bc88b9ef1cd1ba43d610e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the mutex.  <br /></td></tr>
 <tr class="separator:a2fc33e343bc88b9ef1cd1ba43d610e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad63ba880382c8f159a806c44504ea210" id="r_ad63ba880382c8f159a806c44504ea210"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Mutex.html#ad63ba880382c8f159a806c44504ea210">lockGuard</a> (k_timeout_t timeout)</td></tr>
+<tr class="memdesc:ad63ba880382c8f159a806c44504ea210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a lock guard for this mutex.  <br /></td></tr>
+<tr class="separator:ad63ba880382c8f159a806c44504ea210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50bd814d4db1cc8d41c8a556c5c0064e" id="r_a50bd814d4db1cc8d41c8a556c5c0064e"><td class="memItemLeft" align="right" valign="top">struct k_mutex *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Mutex.html#a50bd814d4db1cc8d41c8a556c5c0064e">getZephyrMutex</a> ()</td></tr>
 <tr class="memdesc:a50bd814d4db1cc8d41c8a556c5c0064e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the underlying Zephyr mutex object.  <br /></td></tr>
 <tr class="separator:a50bd814d4db1cc8d41c8a556c5c0064e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,8 +122,30 @@ Protected Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classzct_1_1Mutex.html">Mutex</a> is a C++ wrapper around a Zephyr mutex.</p>
 <p>The recommended way to lock a mutex is to use the <a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a> class.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a> </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a></dd></dl>
+<p>Below is an example of how to use the <a class="el" href="classzct_1_1Mutex.html">Mutex</a> class: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;zephyr/kernel.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;zephyr/logging/log.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="Mutex_8hpp.html">ZephyrCppToolkit/Core/Mutex.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_function" href="namespacezct.html#a03e785beb455af4012d3a57e19c99d13">LOG_MODULE_REGISTER</a>(MutexExample, LOG_LEVEL_DBG);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line"> </div>
+<div class="line">   <a class="code hl_class" href="classzct_1_1Mutex.html">zct::Mutex</a> mutex;</div>
+<div class="line">   <span class="keyword">auto</span> <a class="code hl_function" href="classzct_1_1Mutex.html#ad63ba880382c8f159a806c44504ea210">lockGuard</a> = mutex.<a class="code hl_function" href="classzct_1_1Mutex.html#ad63ba880382c8f159a806c44504ea210">lockGuard</a>(K_MSEC(1000));</div>
+<div class="line">   __ASSERT_NO_MSG(<a class="code hl_function" href="classzct_1_1Mutex.html#ad63ba880382c8f159a806c44504ea210">lockGuard</a>.<a class="code hl_function" href="classzct_1_1MutexLockGuard.html#ab072a70c74ea360332ec387b7689745a">didGetLock</a>());</div>
+<div class="line"> </div>
+<div class="line">   LOG_INF(<span class="stringliteral">&quot;Mutex locked. It will be unlocked automatically when the lock guard goes out of scope.&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">   <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="aMutex_8hpp_html"><div class="ttname"><a href="Mutex_8hpp.html">Mutex.hpp</a></div></div>
+<div class="ttc" id="aclasszct_1_1MutexLockGuard_html_ab072a70c74ea360332ec387b7689745a"><div class="ttname"><a href="classzct_1_1MutexLockGuard.html#ab072a70c74ea360332ec387b7689745a">zct::MutexLockGuard::didGetLock</a></div><div class="ttdeci">bool didGetLock() const</div><div class="ttdoc">Check if the mutex was successfully locked with this lock guard.</div><div class="ttdef"><b>Definition</b> Mutex.cpp:40</div></div>
+<div class="ttc" id="aclasszct_1_1Mutex_html"><div class="ttname"><a href="classzct_1_1Mutex.html">zct::Mutex</a></div><div class="ttdef"><b>Definition</b> Mutex.hpp:59</div></div>
+<div class="ttc" id="aclasszct_1_1Mutex_html_ad63ba880382c8f159a806c44504ea210"><div class="ttname"><a href="classzct_1_1Mutex.html#ad63ba880382c8f159a806c44504ea210">zct::Mutex::lockGuard</a></div><div class="ttdeci">MutexLockGuard lockGuard(k_timeout_t timeout)</div><div class="ttdoc">Get a lock guard for this mutex.</div><div class="ttdef"><b>Definition</b> Mutex.cpp:59</div></div>
+<div class="ttc" id="anamespacezct_html_a03e785beb455af4012d3a57e19c99d13"><div class="ttname"><a href="namespacezct.html#a03e785beb455af4012d3a57e19c99d13">zct::LOG_MODULE_REGISTER</a></div><div class="ttdeci">LOG_MODULE_REGISTER(EventThread, LOG_LEVEL_DBG)</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa8216e98e46d77adb683dfcf7b73a130" name="aa8216e98e46d77adb683dfcf7b73a130"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8216e98e46d77adb683dfcf7b73a130">&#9670;&#160;</a></span>Mutex()</h2>
 
@@ -179,6 +204,28 @@ Protected Attributes</h2></td></tr>
 <p>Get the underlying Zephyr mutex object. </p>
 <p>It is not recommended to use this function. Only use as an escape hatch if the provided C++ API is not sufficient.</p>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the Zephyr mutex object. </dd></dl>
+
+</div>
+</div>
+<a id="ad63ba880382c8f159a806c44504ea210" name="ad63ba880382c8f159a806c44504ea210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad63ba880382c8f159a806c44504ea210">&#9670;&#160;</a></span>lockGuard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classzct_1_1MutexLockGuard.html">MutexLockGuard</a> zct::Mutex::lockGuard </td>
+          <td>(</td>
+          <td class="paramtype">k_timeout_t&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a lock guard for this mutex. </p>
+<p>Note that this function may fail to lock the mutex. It is the callers responsibility to check if the lock was successful with didGetLock() after making this call.</p>
+<dl class="section return"><dt>Returns</dt><dd>A lock guard for this mutex. </dd></dl>
 
 </div>
 </div>
