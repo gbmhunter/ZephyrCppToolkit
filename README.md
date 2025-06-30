@@ -24,7 +24,19 @@ Read the [documentation](https://gbmhunter.github.io/ZephyrCppToolkit/) for more
 
 ## Installation
 
-This project uses `CMake` to build. This project exposes two CMake targets for you to link against in your Zephyr application:
+This project uses `CMake` to build. To use the library in your project, add the following to your `CMakeLists.txt` file:
+
+```cmake
+FetchContent_Declare(
+    ZephyrCppToolkit
+    GIT_REPOSITORY https://github.com/gbmhunter/ZephyrCppToolkit.git
+    GIT_TAG main
+)
+FetchContent_MakeAvailable(ZephyrCppToolkit)
+target_link_libraries(app PRIVATE ZephyrCppToolkit_Real)
+```
+
+This project exposes two CMake targets for you to link against in your Zephyr application:
 
 * `ZephyrCppToolkit_Real`: An `INTERFACE` library that bundles the generic code + real implementations of all peripherals.
 * `ZephyrCppToolkit_Mock`: An `INTERFACE` library that bundles the generic code + mock implementations of all peripherals.
@@ -32,38 +44,6 @@ This project uses `CMake` to build. This project exposes two CMake targets for y
 You can link against either of these targets to get the functionality you need. For example, your real app would link against `ZephyrCppToolkit_Real` and your test application would link against `ZephyrCppToolkit_Mock`.
 
 You can also link against both to get both real and mock implementations.
-
-To use the library in your project, add the following to your `CMakeLists.txt`:
-
-```cmake
-target_link_libraries(app PRIVATE ZephyrCppToolkit_Real)
-```
-
-## Examples
-
-The `examples/` directory contains some examples of how to use the library.
-
-* `examples/IntegrationTest`: An example of how to use this library to perform integration testing. This tests essentially the entire application, including multiple threads. Mock peripherals are passed into the application. This example also demonstrates the folder structure, with most of the application code in the `src/` directory setup as a CMake `INTERFACE` library, and then two executables defined in the `real/` and the `test/` directories.
-
-## Documentaion
-
-To generate the documentation locally, make sure you have `doxygen` installed. Then run:
-
-```bash
-cd doxygen-config
-doxygen
-```
-
-To then serve this locally, run:
-
-```bash
-cd doxygen_docs
-python3 -m http.server
-```
-
-Then navigate to `http://localhost:8000/` in your browser.
-
-The generation is run from the `doxygen-config/` folder rather than the root because I had a weird issue when running it from the root in where I couldn't exclude the `external/` folder from being scanned.
 
 ## Mutex
 
@@ -106,6 +86,8 @@ int main() {
 }
 ```
 
+See the [Mutex class documentation](https://gbmhunter.github.io/ZephyrCppToolkit/classzct_1_1Mutex.html) for more information.
+
 ## Peripherals
 
 All peripherals are designed so they can be mocked for testing. They follow this pattern:
@@ -118,46 +100,16 @@ All real implementations accept Zephyr device tree structures in their construct
 
 This pattern is intended to be used as follows:
 
-1. Create an `App.cpp` class which contains your application logic. This accepts periperhal interface classes in it's constructor and uses them throughout the application.
+1. Create an `App` class which contains your application logic. This accepts periperhal interface classes in it's constructor and uses them throughout the application.
 1. Your real `main.cpp` creates real peripherals and passes them into your `App` class.
 1. Your test code `main.cpp` creates mock peripherals and passes them into your `App` class.
 
 If you have many peripherals the number of individual peripherals passed in can get unweildy. In this case you can create a `IPeripherals` class which wraps all the individual peripherals. Then your `main.cpp` creates either a `PeripheralsReal` or `PeripheralsMock` class and passes that into your `App` class.
 
-### GPIO 
+See the following documentation for more information:
 
-The `zct::GpioReal` class provides a C++ interface to Zephyr GPIOs. It is designed to be used as follows:
-
-```c++
-#include <zephyr/kernel.h>
-#include <zephyr/logging/log.h>
-
-#include "ZephyrCppToolkit/Peripherals/GpioReal.hpp"
-
-LOG_MODULE_REGISTER(GpioExample, LOG_LEVEL_DBG);
-
-static const struct gpio_dt_spec l_inputGpioSpec = GPIO_DT_SPEC_GET(DT_PATH(example_gpios, input_gpio), gpios);
-static const struct gpio_dt_spec l_outputGpioSpec = GPIO_DT_SPEC_GET(DT_PATH(example_gpios, output_gpio), gpios);
-
-int main() {
-
-    // Create an input GPIO. By default they are set to be an input, active high.
-    // The name is used for logging purposes.
-    zct::GpioReal myInput("MyInput", &l_inputGpioSpec);
-
-    // Create an output GPIO.
-    zct::GpioReal myOutput("MyOutput", &l_outputGpioSpec, zct::IGpio::Direction::Output);
-
-    while (true) {
-        // Read logical value of input GPIO.
-        bool inputValue = myInput.get();
-        LOG_INF("Input value: %d", inputValue);
-
-        // Set logical value of output GPIO.
-        myOutput.set(!inputValue);
-    }
-}
-```
+* [IGpio class](https://gbmhunter.github.io/ZephyrCppToolkit/classzct_1_1IGpio.html)
+* [IPwm class](https://gbmhunter.github.io/ZephyrCppToolkit/classzct_1_1IPwm.html)
 
 ## Event Thread
 
@@ -172,104 +124,35 @@ Each event thread requires a event type to be defined which is a container of al
 
 Rather than post to the message queue directly from other modules, it's recommended to create wrapper functions (like the `flash` function below) which do the work of creating the event and posting it to the queue. These functions will be inherently thread safe.
 
-```c++
-#include <variant>
+See the [EventThread class documentation](https://gbmhunter.github.io/ZephyrCppToolkit/classzct_1_1EventThread.html) for more information.
 
-#include <zephyr/kernel.h>
-#include <zephyr/logging/log.h>
+## Examples
 
-#include "ZephyrCppToolkit/EventThread.hpp"
+The `examples/` directory contains some examples of how to use the library.
 
-LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
+* `examples/IntegrationTest`: An example of how to use this library to perform integration testing. This tests essentially the entire application, including multiple threads. Mock peripherals are passed into the application. This example also demonstrates the folder structure, with most of the application code in the `src/` directory setup as a CMake `INTERFACE` library, and then two executables defined in the `real/` and the `test/` directories.
 
-//================================================================================================//
-// EVENTS
-//================================================================================================//
+## Documentaion
 
-namespace Events {
+The documentation is generated automatically when there are new commits on the `main` branch. The documentation is hosted on GitHub Pages at [https://gbmhunter.github.io/ZephyrCppToolkit/](https://gbmhunter.github.io/ZephyrCppToolkit/).
 
-struct MyTimerExpiry {
-};
+To generate the documentation locally (when developing this library), make sure you have `doxygen` installed. Then run:
 
-struct Exit {};
-
-struct LedFlashing {
-    uint32_t flashRateMs;
-};
-
-// Create a generic event type that can be anyone of the specific events above.
-typedef std::variant<MyTimerExpiry, LedFlashing, Exit> Generic;
-
-}
-
-//================================================================================================//
-// EVENT THREAD
-//================================================================================================//
-
-class Led : public zct::EventThread<Events::Generic> {
-public:
-    Led() :
-        zct::EventThread<Events::Generic>("Led", threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
-        m_flashingTimer(Events::MyTimerExpiry())
-    {
-        // Register timers
-        m_timerManager.registerTimer(m_flashingTimer);
-    }
-
-    ~Led() {
-        // Send the exit event to the event thread
-        Events::Exit exitEvent;
-        sendEvent(exitEvent);
-    }
-
-    /**
-     * Start flashing the LED at the given rate.
-     * 
-     * THREAD SAFE.
-     * 
-     * @param flashRateMs The rate at which to flash the LED.
-     */
-    void flash(uint32_t flashRateMs) {
-        Events::LedFlashing ledFlashingEvent = { .flashRateMs = flashRateMs };
-        sendEvent(ledFlashingEvent);
-    }
-
-private:
-    static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
-    static constexpr size_t THREAD_STACK_SIZE = 512;
-    K_KERNEL_STACK_MEMBER(threadStack, THREAD_STACK_SIZE);
-    zct::Timer<Events::Generic> m_flashingTimer;
-    bool m_ledIsOn = false;
-
-    void threadMain() override {
-        while (1) {
-            Events::Generic event = zct::EventThread<Events::Generic>::waitForEvent();
-            if (std::holds_alternative<Events::MyTimerExpiry>(event)) {
-                LOG_INF("Toggling LED to %d.", !m_ledIsOn);
-                m_ledIsOn = !m_ledIsOn;
-            } else if (std::holds_alternative<Events::LedFlashing>(event)) {
-                // Start the timer to flash the LED
-                m_flashingTimer.start(1000, 1000);
-                LOG_INF("Starting flashing. Turning LED on...");
-                m_ledIsOn = true;
-            } else if (std::holds_alternative<Events::Exit>(event)) {
-                break;
-            }
-        }
-    }
-};
-
-int main() {
-    Led led;
-
-    // Start the LED flashing. The flashing will happen
-    // in the LED event thread.
-    led.flash(1000);
-
-    // Wait 2.5s. The LED should flash twice in this time.
-    k_sleep(K_MSEC(2500));
-}
+```bash
+cd doxygen-config
+doxygen
 ```
+
+To then serve this locally, run:
+
+```bash
+cd doxygen_docs
+python3 -m http.server
+```
+
+Then navigate to `http://localhost:8000/` in your browser.
+
+The generation is run from the `doxygen-config/` folder rather than the root because I had a weird issue when running it from the root in where I couldn't exclude the `external/` folder from being scanned.
 
 ## Tests
 

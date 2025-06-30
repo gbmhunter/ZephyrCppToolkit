@@ -1,6 +1,7 @@
 #pragma once
 
 #include <zephyr/kernel.h>
+#include <tl/expected.hpp>
 
 namespace zct {
 
@@ -12,22 +13,34 @@ class Mutex;
  */
 class MutexLockGuard {
 public:
-    /**
-     * \brief Constructor is hidden since we can't return an error code from the constructor. Use create() instead.
-     */
-    MutexLockGuard(Mutex& mutex, k_timeout_t timeout, int& mutexRc);
 
     ~MutexLockGuard();
 
     // Prevent copying and moving
     MutexLockGuard(const MutexLockGuard&) = delete;
     MutexLockGuard& operator=(const MutexLockGuard&) = delete;
-    MutexLockGuard(MutexLockGuard&&) = delete;
+    MutexLockGuard(MutexLockGuard&&);
     MutexLockGuard& operator=(MutexLockGuard&&) = delete;
-protected:
-    
 
-    // The mutex this guard is locking/unlocking.
+    /**
+     * \brief Check if the mutex was successfully locked with this lock guard.
+     * 
+     * \return True if the mutex was successfully locked with this lock guard, false otherwise.
+     */
+    bool didGetLock() const;
+
+    // Allow Mutex to construct MutexLockGuard objects
+    friend class Mutex;
+
+protected:
+    /**
+     * \brief Constructor is hidden since we only want to allow the Mutex class to construct MutexLockGuard objects.
+     */
+    MutexLockGuard(Mutex& mutex, k_timeout_t timeout, int& mutexRc);
+
+    /**
+     * The mutex this guard is locking/unlocking.
+     */
     Mutex& m_mutex;
 
     bool m_didGetLock = false;
@@ -39,28 +52,40 @@ protected:
  * The recommended way to lock a mutex is to use the MutexLockGuard class.
  *
  * \sa MutexLockGuard
+ * 
+ * Below is an example of how to use the Mutex class:
+ * \include /examples/Mutex/main.cpp
  */
 class Mutex {
 public:
     /**
-     * @brief Construct a new mutex.
+     * \brief Construct a new mutex.
      * 
      * The mutex starts of in an unlocked state. Use a MutexLockGuard to lock the mutex.
      */
     Mutex();
 
     /**
-     * @brief Destroy the mutex.
+     * \brief Destroy the mutex.
      */
     ~Mutex();
 
     /**
-     * @brief Get the underlying Zephyr mutex object.
+     * \brief Get a lock guard for this mutex.
+     * 
+     * Note that this function may fail to lock the mutex. It is the callers responsibility to check if the lock was successful with didGetLock() after making this call.
+     * 
+     * \return A lock guard for this mutex.
+     */
+    MutexLockGuard lockGuard(k_timeout_t timeout);
+
+    /**
+     * \brief Get the underlying Zephyr mutex object.
      * 
      * It is not recommended to use this function. Only use as an escape hatch if
      * the provided C++ API is not sufficient.
      * 
-     * @return A pointer to the Zephyr mutex object.
+     * \return A pointer to the Zephyr mutex object.
      */
     struct k_mutex* getZephyrMutex();
 protected:

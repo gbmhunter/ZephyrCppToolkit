@@ -18,3 +18,7 @@ cd examples/Gpio
 west build -b native_sim
 # ./build/Gpio/zephyr/zephyr.exe
 cd ../..
+
+cd examples/Mutex
+west build -b native_sim
+cd ../..

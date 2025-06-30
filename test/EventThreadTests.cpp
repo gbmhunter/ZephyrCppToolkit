@@ -46,16 +46,14 @@ class Led : public zct::EventThread<MyEvents::Generic> {
         }
 
         bool getLedIsOn() {
-            int mutexRc = 0;
-            zct::MutexLockGuard lockGuard = zct::MutexLockGuard(m_ledIsOnMutex, K_FOREVER, mutexRc);
-            __ASSERT_NO_MSG(mutexRc == 0);
+            zct::MutexLockGuard lockGuard = m_ledIsOnMutex.lockGuard(K_FOREVER);
+            __ASSERT_NO_MSG(lockGuard.didGetLock());
             return m_ledIsOn;
         }
 
         void setLedIsOn(bool ledIsOn) {
-            int mutexRc = 0;
-            zct::MutexLockGuard lockGuard = zct::MutexLockGuard(m_ledIsOnMutex, K_FOREVER, mutexRc);
-            __ASSERT_NO_MSG(mutexRc == 0);
+            zct::MutexLockGuard lockGuard = m_ledIsOnMutex.lockGuard(K_FOREVER);
+            __ASSERT_NO_MSG(lockGuard.didGetLock());
             m_ledIsOn = ledIsOn;
         }
 

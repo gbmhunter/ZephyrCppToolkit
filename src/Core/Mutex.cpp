@@ -2,7 +2,7 @@
 
 #include "ZephyrCppToolkit/Core/Mutex.hpp"
 
-LOG_MODULE_REGISTER(zct_Mutex, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(zct_Mutex, LOG_LEVEL_DBG);
 
 namespace zct {
 
@@ -37,6 +37,11 @@ MutexLockGuard::~MutexLockGuard()
     }
 }
 
+bool MutexLockGuard::didGetLock() const
+{
+    return m_didGetLock;
+}
+
 //================================================================================================//
 // Mutex
 //================================================================================================//
@@ -51,11 +56,13 @@ Mutex::~Mutex()
 {
 }
 
-// tl::expected<MutexLockGuard, int> Mutex::lockGuard(k_timeout_t timeout)
-// {
-//     // Create a lock guard, passing in this mutex
-//     return MutexLockGuard::create(*this, timeout);
-// }
+MutexLockGuard Mutex::lockGuard(k_timeout_t timeout)
+{
+    LOG_DBG("%s() called on mutex %p", __func__, getZephyrMutex());
+    // Create a lock guard, passing in this mutex
+    int mutexRc;
+    return MutexLockGuard(*this, timeout, mutexRc);
+}
 
 struct k_mutex* Mutex::getZephyrMutex()
 {

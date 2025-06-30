@@ -2,17 +2,11 @@
     "configurations": [
         {
             "name": "Test",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
             "configurationProvider": "ms-vscode.cmake-tools",
-            "compileCommands": "${workspaceFolder}/test/build/test/compile_commands.json"
+            "compileCommands": [
+                "${workspaceFolder}/test/build/test/compile_commands.json"
+            ]
         },
-        {
-            "name": "examples/IntegrationTest/test",
-            "configurationProvider": "ms-vscode.cmake-tools",
-            "compileCommands": "${workspaceFolder}/examples/IntegrationTest/test/build/test/compile_commands.json"
-        }
     ],
     "version": 4
 }

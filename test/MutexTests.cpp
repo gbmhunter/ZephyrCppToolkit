@@ -16,13 +16,12 @@ void threadMain(void* arg1, void* arg2, void* arg3)
     bool* lock_result = static_cast<bool*>(arg2);
     struct k_sem* completion_sem = static_cast<struct k_sem*>(arg3);
 
-    int mutexRc;
-    auto thread_lock_guard = zct::MutexLockGuard(*mutex, K_NO_WAIT, mutexRc);
-    *lock_result = mutexRc == 0;
+    auto thread_lock_guard = mutex->lockGuard(K_NO_WAIT);
+    *lock_result = thread_lock_guard.didGetLock();
     k_sem_give(completion_sem);
 }
 
-bool isMutexLocked(zct::Mutex& mutex)
+bool tryLockInAnotherThread(zct::Mutex& mutex)
 {
     // To make sure the mutex is locked, we need to create another thread
     // to try and lock it
@@ -51,18 +50,17 @@ ZTEST(MutexTests, testMutexLockGuard)
     // Scoped block to make sure the lockGuard goes out of scope below
     {
         // Try and lock the mutex in the main thread
-        int mutexRc;
-        auto lockGuard = zct::MutexLockGuard(mutex, K_NO_WAIT, mutexRc);
+        zct::MutexLockGuard lockGuard = mutex.lockGuard(K_MSEC(100));
 
-        // Should have locked ok
-        zassert_true(mutexRc == 0, "Failed to lock the mutex in main thread.");
+        // Should have locked ok.
+        zassert_true(lockGuard.didGetLock(), "Failed to lock the mutex in main thread.");
 
         // Assert that the spawned thread failed to lock the mutex
-        zassert_true(isMutexLocked(mutex), "Spawned thread should have failed to lock the mutex.");
+        zassert_true(tryLockInAnotherThread(mutex), "Spawned thread should have failed to lock the mutex.");
     } // lockGuard goes out of scope, so the mutex is unlocked
 
     // Now make sure the mutex has been unlocked
-    zassert_false(isMutexLocked(mutex), "Mutex should be unlocked after lockGuard goes out of scope.");
+    zassert_false(tryLockInAnotherThread(mutex), "Mutex should be unlocked after lockGuard goes out of scope.");
 }
 
 // Make sure we can't copy or move the lock guard.
