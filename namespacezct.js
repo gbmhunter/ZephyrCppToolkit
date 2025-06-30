@@ -1,7 +1,6 @@
 var namespacezct =
 [
     [ "EventThread", "classzct_1_1EventThread.html", "classzct_1_1EventThread" ],
-    [ "EventThreadv2", "classzct_1_1EventThreadv2.html", "classzct_1_1EventThreadv2" ],
     [ "GpioCallbackDataAndObject", "structzct_1_1GpioCallbackDataAndObject.html", "structzct_1_1GpioCallbackDataAndObject" ],
     [ "GpioMock", "classzct_1_1GpioMock.html", "classzct_1_1GpioMock" ],
     [ "GpioReal", "classzct_1_1GpioReal.html", "classzct_1_1GpioReal" ],
@@ -14,7 +13,6 @@ var namespacezct =
     [ "Timer", "classzct_1_1Timer.html", "classzct_1_1Timer" ],
     [ "TimerManager", "classzct_1_1TimerManager.html", "classzct_1_1TimerManager" ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#a03e785beb455af4012d3a57e19c99d13", null ],
-    [ "LOG_MODULE_REGISTER", "namespacezct.html#a725268dca9114cfa598bdc449e4d706b", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#abf625d69ae2176b0fcba4b1c82596e03", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#afbc9e7692ac4e586af47062f1e1fa428", null ],
     [ "LOG_MODULE_REGISTER", "namespacezct.html#adcf3308409ec88b5afd4026eff3744b8", null ],

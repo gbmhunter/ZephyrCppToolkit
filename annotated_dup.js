@@ -2,7 +2,6 @@ var annotated_dup =
 [
     [ "zct", "namespacezct.html", [
       [ "EventThread", "classzct_1_1EventThread.html", "classzct_1_1EventThread" ],
-      [ "EventThreadv2", "classzct_1_1EventThreadv2.html", "classzct_1_1EventThreadv2" ],
       [ "GpioCallbackDataAndObject", "structzct_1_1GpioCallbackDataAndObject.html", "structzct_1_1GpioCallbackDataAndObject" ],
       [ "GpioMock", "classzct_1_1GpioMock.html", "classzct_1_1GpioMock" ],
       [ "GpioReal", "classzct_1_1GpioReal.html", "classzct_1_1GpioReal" ],

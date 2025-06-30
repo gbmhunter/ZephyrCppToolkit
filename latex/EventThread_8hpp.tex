@@ -1,5 +1,6 @@
 \doxysection{/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Events/\+Event\+Thread.hpp File Reference}
 \hypertarget{EventThread_8hpp}{}\label{EventThread_8hpp}\index{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Events/EventThread.hpp@{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Events/EventThread.hpp}}
+{\ttfamily \#include $<$functional$>$}\newline
 {\ttfamily \#include $<$zephyr/kernel.\+h$>$}\newline
 {\ttfamily \#include $<$zephyr/logging/log.\+h$>$}\newline
 {\ttfamily \#include "{}Timer.\+hpp"{}}\newline
@@ -12,21 +13,27 @@ Include dependency graph for Event\+Thread.\+hpp\+:
 \includegraphics[width=350pt]{EventThread_8hpp__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=236pt]{EventThread_8hpp__dep__incl}
-\end{center}
-\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread$<$ Event\+Type $>$}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Use this class in your objects to create a thread that can wait for events. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacezct}{zct}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\+\_\+\+EVENT\+\_\+\+THREAD\+\_\+\+LOG\+\_\+\+LEVEL}}~LOG\+\_\+\+LEVEL\+\_\+\+DBG
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}\label{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea} 
+\index{EventThread.hpp@{EventThread.hpp}!ZCT\_EVENT\_THREAD\_LOG\_LEVEL@{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}}
+\index{ZCT\_EVENT\_THREAD\_LOG\_LEVEL@{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}!EventThread.hpp@{EventThread.hpp}}
+\doxysubsubsection{\texorpdfstring{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}}
+{\footnotesize\ttfamily \#define ZCT\+\_\+\+EVENT\+\_\+\+THREAD\+\_\+\+LOG\+\_\+\+LEVEL~LOG\+\_\+\+LEVEL\+\_\+\+DBG}
+

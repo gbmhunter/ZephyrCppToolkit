@@ -1,7 +1,6 @@
 var hierarchy =
 [
     [ "zct::EventThread< EventType >", "classzct_1_1EventThread.html", null ],
-    [ "zct::EventThreadv2< EventType >", "classzct_1_1EventThreadv2.html", null ],
     [ "zct::GpioCallbackDataAndObject", "structzct_1_1GpioCallbackDataAndObject.html", null ],
     [ "zct::IGpio", "classzct_1_1IGpio.html", [
       [ "zct::GpioMock", "classzct_1_1GpioMock.html", null ],

@@ -91,11 +91,13 @@ $(document).ready(function(){initNavTree('EventThread_8hpp.html',''); initResiza
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">EventThread.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;zephyr/kernel.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;zephyr/kernel.h&gt;</code><br />
 <code>#include &lt;zephyr/logging/log.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="TimerManager_8hpp_source.html">TimerManager.hpp</a>&quot;</code><br />
@@ -104,35 +106,27 @@ Include dependency graph for EventThread.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="EventThread_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2ZephyrCppToolkit_2ZephyrCppToolkit_2include_2ZephyrCppToolkit_2Events_2EventThread_8hpp" alt=""/></div>
 <map name="a_2home_2runner_2work_2ZephyrCppToolkit_2ZephyrCppToolkit_2include_2ZephyrCppToolkit_2Events_2EventThread_8hpp" id="a_2home_2runner_2work_2ZephyrCppToolkit_2ZephyrCppToolkit_2include_2ZephyrCppToolkit_2Events_2EventThread_8hpp">
-<area shape="rect" title=" " alt="" coords="153,5,361,75"/>
+<area shape="rect" title=" " alt="" coords="85,5,293,75"/>
+<area shape="rect" title=" " alt="" coords="11,123,98,148"/>
+<area shape="poly" title=" " alt="" coords="142,77,84,117,81,112,139,73"/>
 <area shape="rect" title=" " alt="" coords="371,269,493,295"/>
-<area shape="poly" title=" " alt="" coords="338,72,370,94,398,121,417,154,429,191,434,226,435,256,430,256,429,226,423,192,412,156,394,124,367,98,335,77"/>
+<area shape="poly" title=" " alt="" coords="295,67,342,90,385,121,408,152,423,188,431,225,434,255,429,256,426,225,418,190,404,155,381,125,339,94,292,72"/>
 <area shape="rect" title=" " alt="" coords="5,269,160,295"/>
-<area shape="poly" title=" " alt="" coords="235,77,101,259,97,256,231,74"/>
+<area shape="poly" title=" " alt="" coords="177,76,96,257,91,255,172,74"/>
 <area shape="rect" href="Timer_8hpp.html" title=" " alt="" coords="174,196,261,221"/>
-<area shape="poly" title=" " alt="" coords="246,76,231,123,222,182,216,182,225,122,241,74"/>
-<area shape="rect" href="TimerManager_8hpp.html" title=" " alt="" coords="240,123,384,148"/>
-<area shape="poly" title=" " alt="" coords="279,73,301,109,296,112,275,76"/>
+<area shape="poly" title=" " alt="" coords="198,74,216,182,210,183,192,75"/>
+<area shape="rect" href="TimerManager_8hpp.html" title=" " alt="" coords="227,123,371,148"/>
+<area shape="poly" title=" " alt="" coords="231,73,276,112,273,116,227,77"/>
 <area shape="poly" title=" " alt="" coords="253,219,385,262,383,267,251,224"/>
 <area shape="poly" title=" " alt="" coords="197,224,118,265,116,260,194,219"/>
 <area shape="rect" title=" " alt="" coords="184,269,251,295"/>
 <area shape="poly" title=" " alt="" coords="220,222,220,256,215,256,215,222"/>
 <area shape="rect" title=" " alt="" coords="275,269,346,295"/>
 <area shape="poly" title=" " alt="" coords="234,219,286,259,283,263,231,223"/>
-<area shape="poly" title=" " alt="" coords="313,148,314,183,319,202,327,220,352,244,383,262,380,266,349,249,323,223,314,204,309,183,308,148"/>
-<area shape="poly" title=" " alt="" coords="298,150,245,190,242,185,295,146"/>
+<area shape="poly" title=" " alt="" coords="302,148,309,183,317,202,327,220,355,244,386,262,384,266,352,248,323,223,312,204,304,184,297,149"/>
+<area shape="poly" title=" " alt="" coords="287,150,243,189,239,185,284,146"/>
 <area shape="rect" title=" " alt="" coords="337,196,407,221"/>
-<area shape="poly" title=" " alt="" coords="324,147,356,184,351,187,320,150"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="EventThread_8hpp__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2ZephyrCppToolkit_2ZephyrCppToolkit_2include_2ZephyrCppToolkit_2Events_2EventThread_8hppdep" alt=""/></div>
-<map name="a_2home_2runner_2work_2ZephyrCppToolkit_2ZephyrCppToolkit_2include_2ZephyrCppToolkit_2Events_2EventThread_8hppdep" id="a_2home_2runner_2work_2ZephyrCppToolkit_2ZephyrCppToolkit_2include_2ZephyrCppToolkit_2Events_2EventThread_8hppdep">
-<area shape="rect" title=" " alt="" coords="5,5,213,75"/>
-<area shape="rect" href="EventThread_8cpp.html" title=" " alt="" coords="5,123,213,177"/>
-<area shape="poly" title=" " alt="" coords="112,88,112,122,107,122,107,88"/>
+<area shape="poly" title=" " alt="" coords="313,146,352,184,348,188,309,150"/>
 </map>
 </div>
 </div>
@@ -141,13 +135,34 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html">zct::EventThread&lt; EventType &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this class in your objects to create a thread that can wait for events.  <a href="classzct_1_1EventThread.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacezct" id="r_namespacezct"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html">zct</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aa93682f51f170feb5e257b4aa70327ea" id="r_aa93682f51f170feb5e257b4aa70327ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="EventThread_8hpp.html#aa93682f51f170feb5e257b4aa70327ea">ZCT_EVENT_THREAD_LOG_LEVEL</a>&#160;&#160;&#160;LOG_LEVEL_DBG</td></tr>
+<tr class="separator:aa93682f51f170feb5e257b4aa70327ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aa93682f51f170feb5e257b4aa70327ea" name="aa93682f51f170feb5e257b4aa70327ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa93682f51f170feb5e257b4aa70327ea">&#9670;&#160;</a></span>ZCT_EVENT_THREAD_LOG_LEVEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ZCT_EVENT_THREAD_LOG_LEVEL&#160;&#160;&#160;LOG_LEVEL_DBG</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
