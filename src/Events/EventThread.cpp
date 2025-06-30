@@ -1,9 +1,5 @@
-#include <stdio.h>
-
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
-
-#include "ZephyrCppToolkit/Events/EventThread.hpp"
 
 namespace zct {
 

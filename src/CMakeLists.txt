@@ -14,7 +14,6 @@ add_library(ZephyrCppToolkit_Mock INTERFACE)
 set(COMMON_SRC_FILES
     "Core/Mutex.cpp"
     "Events/EventThread.cpp"
-    "Events/EventThreadv2.cpp"
     "Events/Timer.cpp"
     "Events/TimerManager.cpp"
     "Peripherals/IGpio.cpp"

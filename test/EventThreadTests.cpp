@@ -15,22 +15,31 @@ ZTEST_SUITE(EventThreadTests, NULL, NULL, NULL, NULL, NULL);
 // EVENTS
 //================================================================================================//
 
-struct MyTimerTimeoutEvent {
-};
+/** Wrap events in a namespace to avoid name collisions with other events. */
+namespace MyEvents {
+    struct MyTimerTimeoutEvent {};
 
-struct ExitEvent {};
+    struct ExitEvent {};
 
-struct LedFlashingEvent {
-    uint32_t flashRateMs;
-};
+    struct LedFlashingEvent {
+        uint32_t flashRateMs;
+    };
 
-typedef std::variant<MyTimerTimeoutEvent, LedFlashingEvent, ExitEvent> Event;
+    using Generic = std::variant<MyTimerTimeoutEvent, LedFlashingEvent, ExitEvent>;
+} // namespace MyEvents
 
-class Led : public zct::EventThread<Event> {
+class Led : public zct::EventThread<MyEvents::Generic> {
     public:
         Led() :
-            zct::EventThread<Event>("Led", threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
-            m_flashingTimer(MyTimerTimeoutEvent())
+            zct::EventThread<MyEvents::Generic>(
+                "Led",
+                m_threadStack,
+                THREAD_STACK_SIZE,
+                [this]() { threadMain(); },
+                7,
+                EVENT_QUEUE_NUM_ITEMS
+            ),
+            m_flashingTimer(MyEvents::MyTimerTimeoutEvent())
         {
             // Register timers
             m_timerManager.registerTimer(m_flashingTimer);
@@ -54,26 +63,26 @@ class Led : public zct::EventThread<Event> {
     private:
         static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
         static constexpr size_t THREAD_STACK_SIZE = 512;
-        K_KERNEL_STACK_MEMBER(threadStack, THREAD_STACK_SIZE);
-        zct::Timer<Event> m_flashingTimer;
+        K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);
+        zct::Timer<MyEvents::Generic> m_flashingTimer;
         bool m_ledIsOn = false;
         zct::Mutex m_ledIsOnMutex;
 
-        void threadMain() override {
+        void threadMain() {
             while (1) {
-                Event event = zct::EventThread<Event>::waitForEvent();
+                MyEvents::Generic event = waitForEvent();
                 LOG_DBG("Event received: %d.", event.index());
-                if (std::holds_alternative<MyTimerTimeoutEvent>(event)) {
+                if (std::holds_alternative<MyEvents::MyTimerTimeoutEvent>(event)) {
                     bool ledIsOn = getLedIsOn();
                     LOG_DBG("Got MyTimerTimeoutEvent. ledIsOn currently: %d. Setting to %d.", ledIsOn, !ledIsOn);
                     setLedIsOn(!ledIsOn);
-                } else if (std::holds_alternative<LedFlashingEvent>(event)) {
+                } else if (std::holds_alternative<MyEvents::LedFlashingEvent>(event)) {
                     LOG_DBG("Got LedFlashingEvent.");
                     // Start the timer to flash the LED
                     m_flashingTimer.start(1000, 1000);
                     LOG_DBG("Got LedFlashingEvent. Starting flashing...");
                     setLedIsOn(true);
-                } else if (std::holds_alternative<ExitEvent>(event)) {
+                } else if (std::holds_alternative<MyEvents::ExitEvent>(event)) {
                     LOG_DBG("Got ExitEvent.");
                     break;
                 }
@@ -87,7 +96,7 @@ ZTEST(EventThreadTests, testEventThreadCreate)
     zassert_true(true, "Event thread created");
 
     // Send a LED on event
-    LedFlashingEvent ledFlashingEvent = { .flashRateMs = 1000 }; // Create an Event lvalue directly
+    MyEvents::LedFlashingEvent ledFlashingEvent = { .flashRateMs = 1000 }; // Create an Event lvalue directly
     eventThread.sendEvent(ledFlashingEvent);
 
     k_sleep(K_MSEC(500));
@@ -105,6 +114,6 @@ ZTEST(EventThreadTests, testEventThreadCreate)
     LOG_DBG("Check finished.");
 
     // Send an exit event
-    ExitEvent exitEvent;
+    MyEvents::ExitEvent exitEvent;
     eventThread.sendEvent(exitEvent);
 }

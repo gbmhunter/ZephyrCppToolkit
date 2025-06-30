@@ -13,8 +13,7 @@ LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
 
 namespace Events {
 
-struct MyTimerExpiry {
-};
+struct MyTimerExpiry {};
 
 struct Exit {};
 
@@ -34,7 +33,14 @@ typedef std::variant<MyTimerExpiry, LedFlashing, Exit> Generic;
 class Led : public zct::EventThread<Events::Generic> {
 public:
     Led() :
-        zct::EventThread<Events::Generic>("Led", threadStack, THREAD_STACK_SIZE, EVENT_QUEUE_NUM_ITEMS),
+        zct::EventThread<Events::Generic>(
+            "Led",
+            m_threadStack,
+            THREAD_STACK_SIZE,
+            [this]() { threadMain(); },
+            7,
+            EVENT_QUEUE_NUM_ITEMS
+        ),
         m_flashingTimer(Events::MyTimerExpiry())
     {
         // Register timers
@@ -62,11 +68,11 @@ public:
 private:
     static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
     static constexpr size_t THREAD_STACK_SIZE = 512;
-    K_KERNEL_STACK_MEMBER(threadStack, THREAD_STACK_SIZE);
+    K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);
     zct::Timer<Events::Generic> m_flashingTimer;
     bool m_ledIsOn = false;
 
-    void threadMain() override {
+    void threadMain() {
         while (1) {
             Events::Generic event = zct::EventThread<Events::Generic>::waitForEvent();
             if (std::holds_alternative<Events::MyTimerExpiry>(event)) {

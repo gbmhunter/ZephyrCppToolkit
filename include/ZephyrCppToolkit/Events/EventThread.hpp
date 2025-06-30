@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
@@ -8,40 +10,73 @@
 
 namespace zct {
 
+// Don't use this, it seg faults!
+// static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;
+#define ZCT_EVENT_THREAD_LOG_LEVEL LOG_LEVEL_DBG
+
+/**
+ * \brief Use this class in your objects to create a thread that can wait for events.
+ * 
+ * This class spawns a new Zephyr thread.
+ * 
+ * The user is responsible for making sure the thread function returns if you want to destroy this
+ * object. This is because the destructor blocks until the thread is complete. The best way
+ * to do this is to implement a exit event and send it to the event thread. The event thread
+ * returns when it receives the exit event.
+ * 
+ * Making sure to return from the thread function is only important if you are destroying the object, e.g. in testing.
+ * 
+ * Below is an example of how to use this class.
+ * 
+ * \include EventThreadExample/main.cpp
+ */
 template <typename EventType>
 class EventThread {
 
 public:
 
-    static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;
-
     /**
      * Create a new event thread.
      * 
-     * Dynamically allocates memory for the event queue buffer.
+     * Dynamically allocates memory for the event queue buffer. At the moment, you have to allocate
+     * the thread stack yourself and pass it in. Once Zephyr's dynamic thread support is out of
+     * experimental (and working), hopefully we can just pass in the desired stack size.
      *
-     * @param name The name of the thread. Used for logging purposes.
-     * @param threadStack The stack to use for the thread.
+     * @param name The name of the this event thread. Used for logging purposes.
+     *      The Zephyr thread name will also be set to this name.
+     * @param threadStack The stack to use for the thread. You can use `K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);` to declare a stack member in the parent class that encloses this event thread.
      * @param threadStackSize The size of the stack provided.
+     * @param threadFunction The function to call when the thread is started. This should
+     *                        do whatever setup you need and then call waitForEvent().
+     * @param threadPriority The priority to assign to the thread.
      * @param eventQueueBufferNumItems The number of items in the event queue.
      */
-    EventThread(const char* name, k_thread_stack_t* threadStack, size_t threadStackSize, size_t eventQueueBufferNumItems) :
+    EventThread(
+        const char* name,
+        k_thread_stack_t* threadStack,
+        size_t threadStackSize,
+        std::function<void()> threadFunction,
+        int threadPriority,
+        size_t eventQueueBufferNumItems
+    ) :
+        m_threadFunction(threadFunction),
         m_timerManager(10)
     {
-        LOG_MODULE_DECLARE(zct_EventThread);
+        LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
+        LOG_DBG("EventThread constructor called.");
         m_name = name;
+
         // Create event queue buffer and then init queue with it
         m_eventQueueBuffer = new EventType[eventQueueBufferNumItems];
         __ASSERT_NO_MSG(m_eventQueueBuffer != nullptr);
         k_msgq_init(&m_threadMsgQueue, (char*)m_eventQueueBuffer, sizeof(EventType), eventQueueBufferNumItems);
 
-        LOG_DBG("Initializing threaded state machine...");
         // Start the thread
         k_thread_create(
             &m_thread,
             threadStack,
             threadStackSize,
-            threadFunction,
+            staticThreadFunction,
             this, // Pass in the instance of the class
             NULL,
             NULL,
@@ -50,11 +85,16 @@ public:
             K_NO_WAIT);
         // Name the thread for easier debugging/logging
         k_thread_name_set(&m_thread, m_name);
-        LOG_DBG("Threaded state machine initialized.");
     };
 
+    /**
+     * Destroy the event thread. This will block until the thread has exited.
+     * 
+     * If you want this function to return, make sure you make the thread function return.
+     * See \ref EventThread for more details.
+     */
     ~EventThread() {
-        LOG_MODULE_DECLARE(zct_EventThread);
+        LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
         LOG_DBG("%s() called.", __FUNCTION__);
         k_thread_join(&m_thread, K_FOREVER);
     }
@@ -63,9 +103,15 @@ public:
      * Call to block and wait for an event. An event can either be:
      * - A internal timer timeout event.
      * - An external event (sent from another thread).
+     * 
+     * This should be called from the thread function that is passed in to the constructor,
+     * once any initialisation you want done (e.g. setup some timers) has been done.
+     * 
+     * \return The event that was received. This should be handled in your thread function
+     *      and then loop back to `waitForEvent()` to wait for the next event.
      */
     EventType waitForEvent() {
-        LOG_MODULE_DECLARE(zct_EventThread);
+        LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
         LOG_DBG("%s() called.", __FUNCTION__);
 
         // Get the next timer to expire
@@ -112,45 +158,63 @@ public:
     }
 
     /**
-     * Send an event to this event thread.
+     * Send an event to this event thread. This can be called from any other thread to send an
+     * event to this event thread.
      * 
-     * @param event The event to send. It is copied into the event queue so it's lifetime only needs to be as long as this function call.
+     * \note This function is thread safe.
+     * \param event The event to send. It is copied into the event queue so it's lifetime only needs to be as long as this function call.
      */
     void sendEvent(const EventType& event) {
         k_msgq_put(&m_threadMsgQueue, &event, K_NO_WAIT);
     }
 
+    /**
+     * Call to get the timer manager for this event thread. This is useful when you want
+     * to create timers and then register them with the event thread.
+     * 
+     * Typically you would call:
+     * 
+     * \code
+     * myEventThread.timerManager().registerTimer(myTimer);
+     * \endcode
+     * 
+     * \return A reference to the timer manager for this event thread.
+     */
+    TimerManager<EventType>& timerManager() {
+        return m_timerManager;
+    }
+
 protected:
 
     /** The function needed by pass to Zephyr's thread API */
-    static void threadFunction(void* arg1, void* arg2, void* arg3)
+    static void staticThreadFunction(void* arg1, void* arg2, void* arg3)
     {
-        LOG_MODULE_DECLARE(zct_EventThread);
+        LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
 
         // First passed in argument is the instance of the class
         EventThread* obj = static_cast<EventThread*>(arg1);
         // Call the derived class's threadMain function
-        obj->threadMain();
+        obj->m_threadFunction();
 
         // If we get here, the user decided to exit the thread
     }
 
 
-    /** To be implemented by the derived class */
-    virtual void threadMain() = 0;
-
     const char* m_name = nullptr;
     void* m_eventQueueBuffer = nullptr;
 
     struct k_thread m_thread;
-    static constexpr size_t STACK_SIZE = 1024;
-    K_KERNEL_STACK_MEMBER(m_threadStack, STACK_SIZE);
     static constexpr int THREAD_PRIORITY = 7;
 
     struct k_msgq m_threadMsgQueue;
 
-
+    std::function<void()> m_threadFunction;
     TimerManager<EventType> m_timerManager;
 };
+
+/**
+ * \example ../examples/IntegrationTest/src/App.cpp
+ * This is an example of how to use the \ref zct::EventThread class to create a thread that can wait for events.
+ */
 
 } // namespace zct
