@@ -93,7 +93,6 @@ $(document).ready(function(){initNavTree('classzct_1_1EventThread.html',''); ini
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="classzct_1_1EventThread-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">zct::EventThread&lt; EventType &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -136,11 +135,6 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:af82899498638998526e3118fded52e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7f6b59b51793ee17b868ea32a3ae63d" id="r_ac7f6b59b51793ee17b868ea32a3ae63d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a>&lt; EventType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#ac7f6b59b51793ee17b868ea32a3ae63d">m_timerManager</a></td></tr>
 <tr class="separator:ac7f6b59b51793ee17b868ea32a3ae63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
-Static Protected Attributes</h2></td></tr>
-<tr class="memitem:aaf7e9bd4d9ab977fb4ea1930cb6b3950" id="r_aaf7e9bd4d9ab977fb4ea1930cb6b3950"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#aaf7e9bd4d9ab977fb4ea1930cb6b3950">THREAD_PRIORITY</a> = 7</td></tr>
-<tr class="separator:aaf7e9bd4d9ab977fb4ea1930cb6b3950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename EventType&gt;<br />
@@ -247,8 +241,8 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="ttc" id="aEventThread_8hpp_html"><div class="ttname"><a href="EventThread_8hpp.html">EventThread.hpp</a></div></div>
 <div class="ttc" id="aclasszct_1_1EventThread_html"><div class="ttname"><a href="classzct_1_1EventThread.html">zct::EventThread</a></div><div class="ttdoc">Use this class in your objects to create a thread that can wait for events.</div><div class="ttdef"><b>Definition</b> EventThread.hpp:34</div></div>
 <div class="ttc" id="aclasszct_1_1EventThread_html_a2607651cb659eb7d0c1beb81a7690293"><div class="ttname"><a href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">zct::EventThread::waitForEvent</a></div><div class="ttdeci">EventType waitForEvent()</div><div class="ttdef"><b>Definition</b> EventThread.hpp:113</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html"><div class="ttname"><a href="classzct_1_1Timer.html">zct::Timer</a></div><div class="ttdoc">A timer that can be used to fire events at a regular interval in an event driven application.</div><div class="ttdef"><b>Definition</b> Timer.hpp:37</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html_ac2642b147eeb4ebbe126ac70f10ac7be"><div class="ttname"><a href="classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be">zct::Timer::start</a></div><div class="ttdeci">void start(int64_t period_ms)</div><div class="ttdef"><b>Definition</b> Timer.hpp:59</div></div>
+<div class="ttc" id="aclasszct_1_1Timer_html"><div class="ttname"><a href="classzct_1_1Timer.html">zct::Timer</a></div><div class="ttdoc">A timer that can be used to fire events at a regular interval in an event driven application.</div><div class="ttdef"><b>Definition</b> Timer.hpp:39</div></div>
+<div class="ttc" id="aclasszct_1_1Timer_html_ac2642b147eeb4ebbe126ac70f10ac7be"><div class="ttname"><a href="classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be">zct::Timer::start</a></div><div class="ttdeci">void start(int64_t period_ms)</div><div class="ttdef"><b>Definition</b> Timer.hpp:61</div></div>
 <div class="ttc" id="anamespacezct_html"><div class="ttname"><a href="namespacezct.html">zct</a></div><div class="ttdef"><b>Definition</b> Mutex.hpp:6</div></div>
 <div class="ttc" id="anamespacezct_html_a03e785beb455af4012d3a57e19c99d13"><div class="ttname"><a href="namespacezct.html#a03e785beb455af4012d3a57e19c99d13">zct::LOG_MODULE_REGISTER</a></div><div class="ttdeci">LOG_MODULE_REGISTER(EventThread, LOG_LEVEL_DBG)</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -641,30 +635,6 @@ template&lt;typename EventType &gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aaf7e9bd4d9ab977fb4ea1930cb6b3950" name="aaf7e9bd4d9ab977fb4ea1930cb6b3950"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf7e9bd4d9ab977fb4ea1930cb6b3950">&#9670;&#160;</a></span>THREAD_PRIORITY</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename EventType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr int <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::THREAD_PRIORITY = 7</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

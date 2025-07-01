@@ -14,9 +14,9 @@
 \DoxyCodeLine{00010\ }
 \DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{comment}{//\ Don't\ use\ this,\ it\ seg\ faults!}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Don't\ use\ constexpr\ here,\ it\ seg\ faults!}}
 \DoxyCodeLine{00014\ \textcolor{comment}{//\ static\ constexpr\ int\ LOG\_LEVEL\ =\ LOG\_LEVEL\_DBG;}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ZCT\_EVENT\_THREAD\_LOG\_LEVEL\ LOG\_LEVEL\_DBG}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ZCT\_EVENT\_THREAD\_LOG\_LEVEL\ LOG\_LEVEL\_WRN}}
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00033\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ EventType>}
 \DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}\ \{}
@@ -52,7 +52,7 @@
 \DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},\ \textcolor{comment}{//\ Pass\ in\ the\ instance\ of\ the\ class}}
 \DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
 \DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_aaf7e9bd4d9ab977fb4ea1930cb6b3950}{THREAD\_PRIORITY}},}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ threadPriority,}
 \DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ K\_NO\_WAIT);}
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Name\ the\ thread\ for\ easier\ debugging/logging}}
@@ -125,28 +125,29 @@
 \DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_ad9ef1d2f6b589be97f8a27c632278d2b}{staticThreadFunction}}(\textcolor{keywordtype}{void}*\ arg1,\ \textcolor{keywordtype}{void}*\ arg2,\ \textcolor{keywordtype}{void}*\ arg3)}
 \DoxyCodeLine{00191\ \ \ \ \ \{}
 \DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
-\DoxyCodeLine{00193\ }
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First\ passed\ in\ argument\ is\ the\ instance\ of\ the\ class}}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}*\ obj\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}*\textcolor{keyword}{>}(arg1);}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Call\ the\ derived\ class's\ threadMain\ function}}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ obj-\/>\mbox{\hyperlink{classzct_1_1EventThread_af82899498638998526e3118fded52e0c}{m\_threadFunction}}();}
-\DoxyCodeLine{00198\ }
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ get\ here,\ the\ user\ decided\ to\ exit\ the\ thread}}
-\DoxyCodeLine{00200\ \ \ \ \ \}}
-\DoxyCodeLine{00201\ }
-\DoxyCodeLine{00202\ }
-\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{struct\ }k\_thread\ \mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}};}
-\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1EventThread_aaf7e9bd4d9ab977fb4ea1930cb6b3950}{THREAD\_PRIORITY}}\ =\ 7;}
-\DoxyCodeLine{00208\ }
-\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keyword}{struct\ }k\_msgq\ \mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}};}
-\DoxyCodeLine{00210\ }
-\DoxyCodeLine{00211\ \ \ \ \ std::function<void()>\ \mbox{\hyperlink{classzct_1_1EventThread_af82899498638998526e3118fded52e0c}{m\_threadFunction}};}
-\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager<EventType>}}\ \mbox{\hyperlink{classzct_1_1EventThread_ac7f6b59b51793ee17b868ea32a3ae63d}{m\_timerManager}};}
-\DoxyCodeLine{00213\ \};}
-\DoxyCodeLine{00214\ }
-\DoxyCodeLine{00220\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ ARG\_UNUSED(arg2);}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ ARG\_UNUSED(arg3);}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First\ passed\ in\ argument\ is\ the\ instance\ of\ the\ class}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}*\ obj\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}*\textcolor{keyword}{>}(arg1);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Call\ the\ derived\ class's\ threadMain\ function}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ obj-\/>\mbox{\hyperlink{classzct_1_1EventThread_af82899498638998526e3118fded52e0c}{m\_threadFunction}}();}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ get\ here,\ the\ user\ decided\ to\ exit\ the\ thread}}
+\DoxyCodeLine{00202\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{struct\ }k\_thread\ \mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}};}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{struct\ }k\_msgq\ \mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}};}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ std::function<void()>\ \mbox{\hyperlink{classzct_1_1EventThread_af82899498638998526e3118fded52e0c}{m\_threadFunction}};}
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager<EventType>}}\ \mbox{\hyperlink{classzct_1_1EventThread_ac7f6b59b51793ee17b868ea32a3ae63d}{m\_timerManager}};}
+\DoxyCodeLine{00214\ \};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00221\ \}\ \textcolor{comment}{//\ namespace\ zct}}
 
 \end{DoxyCode}

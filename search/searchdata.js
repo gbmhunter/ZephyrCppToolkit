@@ -5,11 +5,11 @@ var indexSectionsWithContent =
   2: "z",
   3: "degimpt",
   4: "cdegilmoprstuw~",
-  5: "mnpst",
+  5: "mnps",
   6: "dil",
   7: "adeilo",
   8: "m",
-  9: "tz",
+  9: "z",
   10: "ctz"
 };
 
