@@ -4,7 +4,7 @@
 
 namespace zct {
 
-LOG_MODULE_REGISTER(GpioReal, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(GpioReal, LOG_LEVEL_WRN);
 
 GpioReal::GpioReal(const char* name, const struct gpio_dt_spec* spec, Direction direction, LogicMode logicMode) 
     : IGpio(name, direction, logicMode)

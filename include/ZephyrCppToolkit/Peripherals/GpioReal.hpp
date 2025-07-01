@@ -23,7 +23,11 @@ struct GpioCallbackDataAndObject {
 };
 
 /**
- * Implements a real Zephyr GPIO pin.
+ * Implements a real Zephyr GPIO pin. Implements the IGpio interface.
+ * 
+ * Create these in your real application code.
+ * 
+ * \sa GpioMock
  */
 class GpioReal : public IGpio {
 public:

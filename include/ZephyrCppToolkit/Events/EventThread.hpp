@@ -10,9 +10,9 @@
 
 namespace zct {
 
-// Don't use this, it seg faults!
+// Don't use constexpr here, it seg faults!
 // static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;
-#define ZCT_EVENT_THREAD_LOG_LEVEL LOG_LEVEL_DBG
+#define ZCT_EVENT_THREAD_LOG_LEVEL LOG_LEVEL_WRN
 
 /**
  * \brief Use this class in your objects to create a thread that can wait for events.
@@ -80,7 +80,7 @@ public:
             this, // Pass in the instance of the class
             NULL,
             NULL,
-            THREAD_PRIORITY,
+            threadPriority,
             0,
             K_NO_WAIT);
         // Name the thread for easier debugging/logging
@@ -190,6 +190,8 @@ protected:
     static void staticThreadFunction(void* arg1, void* arg2, void* arg3)
     {
         LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
+        ARG_UNUSED(arg2);
+        ARG_UNUSED(arg3);
 
         // First passed in argument is the instance of the class
         EventThread* obj = static_cast<EventThread*>(arg1);
@@ -204,7 +206,6 @@ protected:
     void* m_eventQueueBuffer = nullptr;
 
     struct k_thread m_thread;
-    static constexpr int THREAD_PRIORITY = 7;
 
     struct k_msgq m_threadMsgQueue;
 

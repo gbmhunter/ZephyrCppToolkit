@@ -5,7 +5,7 @@
 
 namespace zct {
 
-LOG_MODULE_REGISTER(zct_GpioMock, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(zct_GpioMock, LOG_LEVEL_WRN);
 
 GpioMock::GpioMock(const char* name, Direction direction) : IGpio(name, direction) {
     m_logicalValue = false;

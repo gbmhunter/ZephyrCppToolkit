@@ -22,7 +22,9 @@
 // MACROS
 //================================================================================================//
 
-#define TIMER_MANAGER_LOG_LEVEL LOG_LEVEL_DBG
+// Don't use constexpr here, it seg faults!
+// static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;
+#define ZCT_TIMER_MANAGER_LOG_LEVEL LOG_LEVEL_WRN
 
 //================================================================================================//
 // CLASS DECLARATION
@@ -43,7 +45,7 @@ public:
      *                     this many pointers to timers will be allocated on the heap.
      */
     TimerManager(uint32_t maxNumTimers) {
-        LOG_MODULE_DECLARE(TimerManager, TIMER_MANAGER_LOG_LEVEL);
+        LOG_MODULE_DECLARE(TimerManager, ZCT_TIMER_MANAGER_LOG_LEVEL);
         LOG_DBG("TimerManager constructor called.");
         m_timers = new Timer<EventType>*[maxNumTimers];
         for (uint32_t i = 0; i < maxNumTimers; i++) {
@@ -88,7 +90,7 @@ public:
      * @return A struct containing the timer that expires next and the duration to wait until that timer expires.
      */
     TimerExpiryInfo getNextExpiringTimer() {
-        LOG_MODULE_DECLARE(TimerManager, TIMER_MANAGER_LOG_LEVEL);
+        LOG_MODULE_DECLARE(TimerManager, ZCT_TIMER_MANAGER_LOG_LEVEL);
         LOG_DBG("getNextExpiringTimer() called. this: %p, m_numTimers: %u.", this, m_numTimers);
 
         // Set output to null in case no timer expired
