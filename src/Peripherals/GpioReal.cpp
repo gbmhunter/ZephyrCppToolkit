@@ -95,6 +95,8 @@ void GpioReal::configureInterrupt(InterruptMode interruptMode, std::function<voi
 
 void GpioReal::interruptCallback(const struct device* dev, struct gpio_callback* cb, gpio_port_pins_t pins)
 {
+    ARG_UNUSED(dev);
+    ARG_UNUSED(pins);
     // WARNING: This will be called in a interrupt context.
     GpioCallbackDataAndObject* gpioCallbackDataAndObject = CONTAINER_OF(cb, GpioCallbackDataAndObject, m_gpioCallbackData);
     GpioReal* obj = gpioCallbackDataAndObject->m_obj;
