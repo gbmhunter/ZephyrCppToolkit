@@ -25,6 +25,11 @@ enum class \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}
 , \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9a06d7f9066ffa302a03435a26fb345168}{Active\+Low}}
  \}
 \item 
+enum class \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} \{ \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754}{None}}
+, \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afadbe269e26d8282186a4163a2424e3361}{Pull\+Up}}
+, \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa4178eba6913566377ec7e0519dead47b}{Pull\+Down}}
+ \}
+\item 
 enum class \mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}} \{ \newline
 \mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543aeabcfaccebf745acfd5e75351095a5394a}{Disable}}
 , \mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543aeacc846e9d42c07a82ea701a923dd06d50}{Edge\+Rising}}
@@ -43,7 +48,7 @@ enum class \mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classzct_1_1IGpio_a7a7e0bfc5ab99720afd40089f1aea496}{IGpio}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} direction=\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}}, \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} logic\+Mode=\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9a5d51eb090a6bb620cf3aa90c6e5b0797}{Logic\+Mode\+::\+Active\+High}})
+\mbox{\hyperlink{classzct_1_1IGpio_af21982880070ece386916ac3f36b69dc}{IGpio}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} direction=\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}}, \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} logic\+Mode=\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9a5d51eb090a6bb620cf3aa90c6e5b0797}{Logic\+Mode\+::\+Active\+High}}, \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} pull\+Mode=\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754}{Pull\+Mode\+::\+None}})
 \begin{DoxyCompactList}\small\item\em Create a new GPIO. \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classzct_1_1IGpio_af81a56a2a58a6010618e872b267b3b08}{\texorpdfstring{$\sim$}{\string~}\+IGpio}} ()=default
 \begin{DoxyCompactList}\small\item\em Destroy the GPIO. \end{DoxyCompactList}\item 
@@ -60,6 +65,8 @@ virtual void \mbox{\hyperlink{classzct_1_1IGpio_a0405bb3fa9638b69cc0d5fee38a8c18
 virtual void \mbox{\hyperlink{classzct_1_1IGpio_aede6f2be760508b9d178b8f126dda251}{set\+Logic\+Mode}} (\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} logic\+Mode)
 \item 
 virtual void \mbox{\hyperlink{classzct_1_1IGpio_a8532a63ce41b6a92324c06d045d2f456}{configure\+Interrupt}} (\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}} interrupt\+Mode, std\+::function$<$ void()$>$ callback)=0
+\item 
+virtual void \mbox{\hyperlink{classzct_1_1IGpio_a3cfaadb3f1518837f22be571e81b368d}{set\+Pull\+Mode}} (\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} pull\+Mode)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -74,6 +81,8 @@ const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IGpio_a4d3ab3
 \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} \mbox{\hyperlink{classzct_1_1IGpio_a0a1e2dc8194f44707a8e7e2acf352882}{m\+\_\+direction}}
 \item 
 \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a90073d05d1212e013d8ff66ac840072c}{m\+\_\+logic\+Mode}}
+\item 
+\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a9f4980b7ee08fffc3389cf86bf49bd68}{m\+\_\+pull\+Mode}}
 \item 
 \mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a99072812037174cabc81d35c590f3665}{m\+\_\+interrupt\+Mode}}
 \item 
@@ -172,14 +181,34 @@ Active\+Low&\\
 \hline
 
 \end{DoxyEnumFields}
+\Hypertarget{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}\label{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af} 
+\index{zct::IGpio@{zct::IGpio}!PullMode@{PullMode}}
+\index{PullMode@{PullMode}!zct::IGpio@{zct::IGpio}}
+\doxysubsubsection{\texorpdfstring{PullMode}{PullMode}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{zct\+::\+IGpio\+::\+Pull\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!zct::IGpio@{zct::IGpio}}\index{zct::IGpio@{zct::IGpio}!None@{None}}}\Hypertarget{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754}\label{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PullUp@{PullUp}!zct::IGpio@{zct::IGpio}}\index{zct::IGpio@{zct::IGpio}!PullUp@{PullUp}}}\Hypertarget{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afadbe269e26d8282186a4163a2424e3361}\label{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afadbe269e26d8282186a4163a2424e3361} 
+Pull\+Up&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PullDown@{PullDown}!zct::IGpio@{zct::IGpio}}\index{zct::IGpio@{zct::IGpio}!PullDown@{PullDown}}}\Hypertarget{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa4178eba6913566377ec7e0519dead47b}\label{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa4178eba6913566377ec7e0519dead47b} 
+Pull\+Down&\\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classzct_1_1IGpio_a7a7e0bfc5ab99720afd40089f1aea496}\label{classzct_1_1IGpio_a7a7e0bfc5ab99720afd40089f1aea496} 
+\Hypertarget{classzct_1_1IGpio_af21982880070ece386916ac3f36b69dc}\label{classzct_1_1IGpio_af21982880070ece386916ac3f36b69dc} 
 \index{zct::IGpio@{zct::IGpio}!IGpio@{IGpio}}
 \index{IGpio@{IGpio}!zct::IGpio@{zct::IGpio}}
 \doxysubsubsection{\texorpdfstring{IGpio()}{IGpio()}}
-{\footnotesize\ttfamily zct\+::\+IGpio\+::\+IGpio (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}}}]{direction = {\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}}},  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}}}]{logic\+Mode = {\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9a5d51eb090a6bb620cf3aa90c6e5b0797}{Logic\+Mode\+::\+Active\+High}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily zct\+::\+IGpio\+::\+IGpio (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}}}]{direction = {\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}}},  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}}}]{logic\+Mode = {\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9a5d51eb090a6bb620cf3aa90c6e5b0797}{Logic\+Mode\+::\+Active\+High}}},  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}}}]{pull\+Mode = {\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754}{Pull\+Mode\+::\+None}}} }\end{DoxyParamCaption})}
 
 
 
@@ -339,6 +368,19 @@ This ignores the logic mode of the GPIO and sets the physical value directly.
 
 Implemented in \mbox{\hyperlink{classzct_1_1GpioMock_ad4e19640bafe02ce0f8b9dafa4899ec3}{zct\+::\+Gpio\+Mock}}, and \mbox{\hyperlink{classzct_1_1GpioReal_a3b84410f890ce9e7f30636d14256a62e}{zct\+::\+Gpio\+Real}}.
 
+\Hypertarget{classzct_1_1IGpio_a3cfaadb3f1518837f22be571e81b368d}\label{classzct_1_1IGpio_a3cfaadb3f1518837f22be571e81b368d} 
+\index{zct::IGpio@{zct::IGpio}!setPullMode@{setPullMode}}
+\index{setPullMode@{setPullMode}!zct::IGpio@{zct::IGpio}}
+\doxysubsubsection{\texorpdfstring{setPullMode()}{setPullMode()}}
+{\footnotesize\ttfamily void zct\+::\+IGpio\+::set\+Pull\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}}}]{pull\+Mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Set the pull mode of the GPIO.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pull\+Mode} & The pull mode to set. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Data Documentation}
@@ -371,6 +413,12 @@ Implemented in \mbox{\hyperlink{classzct_1_1GpioMock_ad4e19640bafe02ce0f8b9dafa4
 \index{m\_name@{m\_name}!zct::IGpio@{zct::IGpio}}
 \doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
 {\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} zct\+::\+IGpio\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1IGpio_a9f4980b7ee08fffc3389cf86bf49bd68}\label{classzct_1_1IGpio_a9f4980b7ee08fffc3389cf86bf49bd68} 
+\index{zct::IGpio@{zct::IGpio}!m\_pullMode@{m\_pullMode}}
+\index{m\_pullMode@{m\_pullMode}!zct::IGpio@{zct::IGpio}}
+\doxysubsubsection{\texorpdfstring{m\_pullMode}{m\_pullMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} zct\+::\+IGpio\+::m\+\_\+pull\+Mode\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
