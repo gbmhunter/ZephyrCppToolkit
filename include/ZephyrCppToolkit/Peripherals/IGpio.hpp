@@ -22,6 +22,12 @@ public:
         ActiveLow
     };
 
+    enum class PullMode {
+        None,
+        PullUp,
+        PullDown
+    };
+
     /**
      * Enumerates the possible interrupt modes of a GPIO.
      */
@@ -45,7 +51,7 @@ public:
      * @param direction The direction of the GPIO.
      * @param logicMode The logic mode of the GPIO.
      */
-    IGpio(const char* name, Direction direction = Direction::Input, LogicMode logicMode = LogicMode::ActiveHigh);
+    IGpio(const char* name, Direction direction = Direction::Input, LogicMode logicMode = LogicMode::ActiveHigh, PullMode pullMode = PullMode::None);
 
     /**
      * @brief Destroy the GPIO.
@@ -110,10 +116,18 @@ public:
      */
     virtual void configureInterrupt(InterruptMode interruptMode, std::function<void()> callback) = 0;
 
+    /**
+     * Set the pull mode of the GPIO.
+     * 
+     * @param pullMode The pull mode to set.
+     */
+    virtual void setPullMode(PullMode pullMode);
+
 protected:
     const char* m_name;
     Direction m_direction;
     LogicMode m_logicMode;
+    PullMode m_pullMode;
     InterruptMode m_interruptMode;
     std::function<void()> m_interruptUserCallback;
 

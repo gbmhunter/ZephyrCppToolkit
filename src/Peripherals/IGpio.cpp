@@ -4,10 +4,11 @@
 
 namespace zct {
 
-IGpio::IGpio(const char* name, Direction direction, LogicMode logicMode) :
+IGpio::IGpio(const char* name, Direction direction, LogicMode logicMode, PullMode pullMode) :
     m_name(name),
     m_direction(direction),
     m_logicMode(logicMode),
+    m_pullMode(pullMode),
     m_interruptMode(InterruptMode::Disable),
     m_interruptUserCallback(nullptr)
 {
@@ -48,10 +49,9 @@ void IGpio::setLogicMode(LogicMode logicMode) {
     configurePinBasedOnSettings();
 }
 
-// void IGpio::configureInterrupt(InterruptMode interruptMode, std::function<void()> callback) {
-//     // m_interruptMode = interruptMode;
-//     // m_interruptCallback = callback;
-//     // configurePinBasedOnSettings();
-// }
+void IGpio::setPullMode(PullMode pullMode) {
+    m_pullMode = pullMode;
+    configurePinBasedOnSettings();
+}
 
 } // namespace zct

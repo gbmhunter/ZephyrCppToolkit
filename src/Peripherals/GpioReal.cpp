@@ -40,7 +40,7 @@ void GpioReal::configurePinBasedOnSettings() {
     } else if (m_direction == Direction::Input) {
         flags |= GPIO_INPUT;
     } else {
-        __ASSERT_NO_MSG(false);
+        __ASSERT(false, "Got unsupported direction. Direction: %d.", static_cast<int>(m_direction));
     }
 
     if (m_logicMode == LogicMode::ActiveHigh) {
@@ -48,7 +48,17 @@ void GpioReal::configurePinBasedOnSettings() {
     } else if (m_logicMode == LogicMode::ActiveLow) {
         flags |= GPIO_ACTIVE_LOW;
     } else {
-        __ASSERT_NO_MSG(false);
+        __ASSERT(false, "Got unsupported logic mode. Logic mode: %d.", static_cast<int>(m_logicMode));
+    }
+
+    if (m_pullMode == PullMode::None) {
+        // Do nothing
+    } else if (m_pullMode == PullMode::PullUp) {
+        flags |= GPIO_PULL_UP;
+    } else if (m_pullMode == PullMode::PullDown) {
+        flags |= GPIO_PULL_DOWN;
+    } else {
+        __ASSERT(false, "Got unsupported pull mode. Pull mode: %d.", static_cast<int>(m_pullMode));
     }
 
     int rc = gpio_pin_configure_dt(m_spec, flags);
