@@ -20,16 +20,17 @@ GpioReal::GpioReal(const char* name, const struct gpio_dt_spec* spec, Direction 
 GpioReal::~GpioReal() {}
 
 void GpioReal::setPhysical(bool value) {
-    LOG_DBG("Setting GPIO %s to %s.", m_name, value ? "on" : "off");
-    int rc = gpio_pin_set_dt(m_spec, value ? 1 : 0);
+    LOG_DBG("Setting GPIO %s to physical value of %s.", m_name, value ? "1" : "0");
+    // Set the physical value, since this class manages the logic mode
+    int rc = gpio_pin_set_raw(m_spec->port, m_spec->pin, value ? 1 : 0);
     __ASSERT_NO_MSG(rc == 0);
-    // Get value
-    LOG_DBG("gpio_get_dt(%s) = %d", m_spec->port->name, gpio_pin_get_dt(m_spec));
 }
 
 bool GpioReal::getPhysical() const {
-    LOG_DBG("Getting GPIO %s. Value: %d.", m_name, gpio_pin_get_dt(m_spec));
-    return gpio_pin_get_dt(m_spec) == 1;
+    // Get the physical value, since this class manages the logic mode
+    int value = gpio_pin_get_raw(m_spec->port, m_spec->pin);
+    LOG_DBG("Getting GPIO %s. Physical value: %d.", m_name, value);
+    return value == 1;
 }
 
 void GpioReal::configurePinBasedOnSettings() {

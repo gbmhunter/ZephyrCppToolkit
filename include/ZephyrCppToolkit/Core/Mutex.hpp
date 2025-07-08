@@ -50,6 +50,8 @@ protected:
  * Mutex is a C++ wrapper around a Zephyr mutex.
  * 
  * The recommended way to lock a mutex is to use the lockGuard() function which returns a MutexLockGuard object. This will automatically unlock the mutex when the lock guard goes out of scope.
+ * 
+ * Just like with the Zephyr mutex, they are not designed for use in interrupts.
  *
  * \sa MutexLockGuard
  * 
@@ -75,6 +77,7 @@ public:
      * 
      * Note that this function may fail to lock the mutex. It is the callers responsibility to check if the lock was successful with didGetLock() after making this call.
      * 
+     * \param timeout The timeout for the lock. Pass K_FOREVER to wait indefinitely, or K_NO_WAIT to not wait at all.
      * \return A lock guard for this mutex.
      */
     MutexLockGuard lockGuard(k_timeout_t timeout);

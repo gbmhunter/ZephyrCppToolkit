@@ -1,3 +1,0 @@
-CompileFlags:
-  CompilationDatabase: test/build/test
-  Remove: [-fno-reorder-functions, -fno-freestanding]
