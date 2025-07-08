@@ -27,6 +27,8 @@ struct k\+\_\+mutex \mbox{\hyperlink{classzct_1_1Mutex_a943f7abb30c6cc14af4d4b85
 
 The recommended way to lock a mutex is to use the \doxylink{classzct_1_1Mutex_ad63ba880382c8f159a806c44504ea210}{lock\+Guard()} function which returns a \doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard} object. This will automatically unlock the mutex when the lock guard goes out of scope.
 
+Just like with the Zephyr mutex, they are not designed for use in interrupts.
+
 \begin{DoxySeeAlso}{See also}
 \doxylink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}
 \end{DoxySeeAlso}
@@ -104,6 +106,11 @@ Get a lock guard for this mutex.
 
 Note that this function may fail to lock the mutex. It is the callers responsibility to check if the lock was successful with did\+Get\+Lock() after making this call.
 
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & The timeout for the lock. Pass K\+\_\+\+FOREVER to wait indefinitely, or K\+\_\+\+NO\+\_\+\+WAIT to not wait at all. \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 A lock guard for this mutex. 
 \end{DoxyReturn}
