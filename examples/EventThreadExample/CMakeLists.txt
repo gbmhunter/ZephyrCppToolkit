@@ -17,10 +17,10 @@ target_sources(
 )
 
 # Link against the library
-if(NOT TARGET ZephyrCppToolkit_Real)
-    message(FATAL_ERROR "CMake target 'ZephyrCppToolkit_Real' not found. Cannot link to 'app'.")
+if(NOT TARGET ZephyrCppToolkit_Mock)
+    message(FATAL_ERROR "CMake target 'ZephyrCppToolkit_Mock' not found. Cannot link to 'app'.")
 endif()
-target_link_libraries(app PRIVATE ZephyrCppToolkit_Real)
+target_link_libraries(app PRIVATE ZephyrCppToolkit_Mock)
 
 # Make the compiler stop at the first error.
 target_compile_options(app PRIVATE -Wfatal-errors)

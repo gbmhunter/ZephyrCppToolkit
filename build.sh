@@ -15,7 +15,7 @@ west build -b native_sim
 cd ../..
 
 cd examples/Gpio
-west build -b native_sim
+west build -b nrf52840dk/nrf52840
 # ./build/Gpio/zephyr/zephyr.exe
 cd ../..
 

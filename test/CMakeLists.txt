@@ -17,6 +17,7 @@ target_sources(
     EventThreadTests.cpp
     GpioTests.cpp
     MutexTests.cpp
+    WatchdogTests.cpp
 )
 
 # Link against the library. We link against both mock and real implementations to test both.
@@ -27,7 +28,7 @@ endif()
 if(NOT TARGET ZephyrCppToolkit_Real)
     message(FATAL_ERROR "CMake target 'ZephyrCppToolkit_Real' not found. Cannot link to 'app'. Check src/CMakeLists.txt and the add_subdirectory call.")
 endif()
-target_link_libraries(app PRIVATE ZephyrCppToolkit_Mock ZephyrCppToolkit_Real)
+target_link_libraries(app PRIVATE ZephyrCppToolkit_Mock)
 
 # Make the compiler stop at the first error.
 target_compile_options(app PRIVATE -Wfatal-errors)

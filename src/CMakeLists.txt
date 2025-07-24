@@ -16,24 +16,30 @@ set(COMMON_SRC_FILES
     "Events/EventThread.cpp"
     "Events/Timer.cpp"
     "Events/TimerManager.cpp"
+    "Peripherals/IAdc.cpp"
     "Peripherals/IGpio.cpp"
     "Peripherals/IPwm.cpp"
+    "Peripherals/IWatchdog.cpp"
 )
 
 target_sources(
     ZephyrCppToolkit_Real
     INTERFACE
     ${COMMON_SRC_FILES}
+    Peripherals/AdcReal.cpp
     Peripherals/GpioReal.cpp
     Peripherals/PwmReal.cpp
+    Peripherals/WatchdogReal.cpp
 )
 
 target_sources(
     ZephyrCppToolkit_Mock
     INTERFACE
     ${COMMON_SRC_FILES}
+    Peripherals/AdcMock.cpp
     Peripherals/GpioMock.cpp
     Peripherals/PwmMock.cpp
+    Peripherals/WatchdogMock.cpp
 )
 
 # Link against Zephyr interface library to get include paths and other settings

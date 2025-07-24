@@ -5,8 +5,8 @@
 
 LOG_MODULE_REGISTER(GpioExample, LOG_LEVEL_DBG);
 
-static const struct gpio_dt_spec l_inputGpioSpec = GPIO_DT_SPEC_GET(DT_PATH(example_gpios, input_gpio), gpios);
-static const struct gpio_dt_spec l_outputGpioSpec = GPIO_DT_SPEC_GET(DT_PATH(example_gpios, output_gpio), gpios);
+static const struct gpio_dt_spec l_inputGpioSpec = GPIO_DT_SPEC_GET(DT_NODELABEL(button0), gpios);
+static const struct gpio_dt_spec l_outputGpioSpec = GPIO_DT_SPEC_GET(DT_NODELABEL(led0), gpios);
 
 int main() {
 

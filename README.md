@@ -183,6 +183,12 @@ Install the additional west Python dependencies:
 west packages pip --install
 ```
 
+Install the Zephyr SDK. It is recommended to install `v0.17.0` as this is what version this library is tested against in the CI. There is a known issue with `v0.17.1` in where you get multiple definition errors when building.
+
+```bash
+west sdk install --version 0.17.0
+```
+
 To run the unit tests for this library:
 
 ```bash
