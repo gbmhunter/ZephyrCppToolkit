@@ -120,7 +120,6 @@ public:
         // See if there is an already expired timer, is so, there is no need to block
         // on the event queue.
         if (nextTimerInfo.m_timer != nullptr && nextTimerInfo.m_durationToWaitUs == 0) {
-            nextTimerInfo = m_timerManager.getNextExpiringTimer();
             LOG_DBG("Timer expired. Timer: %p.", nextTimerInfo.m_timer);
             // Get the timer event
             nextTimerInfo.m_timer->updateAfterExpiry();

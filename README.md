@@ -156,7 +156,32 @@ Then navigate to `http://localhost:8000/` in your browser.
 
 The generation is run from the `doxygen-config/` folder rather than the root because I had a weird issue when running it from the root in where I couldn't exclude the `external/` folder from being scanned.
 
-## Unit Tests For This Library
+## Developing This Library
+
+You will need to install west, install the dependencies (including Zephyr) and make sure you have the Zephyr SDK installed. Create and activate a virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install west:
+
+```bash
+pip install west
+```
+
+Install west dependencies:
+
+```bash
+west update
+```
+
+Install the additional west Python dependencies:
+
+```bash
+west packages pip --install
+```
 
 To run the unit tests for this library:
 

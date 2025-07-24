@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed bug in EventThread::waitForEvent() where multiple calls to `getNextExpiringTimer()` where sometimes occuring when they should not have been.
+
 ## [1.0.0] - 2025-07-09
 
 ### Added
