@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../classzct_1_1MutexLockGuard.html#a48285d5709dc5f89e207360f4289a61a',1,'zct::MutexLockGuard::operator=(const MutexLockGuard &amp;)=delete'],['../classzct_1_1MutexLockGuard.html#aabc412425b5fe3eb4c80eed8bf7ed4e8',1,'zct::MutexLockGuard::operator=(MutexLockGuard &amp;&amp;)=delete']]],
-  ['output_1',['Output',['../classzct_1_1IGpio.html#af8c2b6d47d04aa64950a2b4467653ff2a29c2c02a361c9d7028472e5d92cd4a54',1,'zct::IGpio']]]
+  ['nextexpirytime_5fticks_0',['nextExpiryTime_ticks',['../classzct_1_1Timer.html#a8092783d4bdfb93d721012228d41d205',1,'zct::Timer']]],
+  ['none_1',['none',['../classzct_1_1IGpio.html#af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754',1,'zct::IGpio::None'],['../classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754',1,'zct::IWatchdog::None'],['../classzct_1_1IWatchdog.html#acb4badf10cdf36a819d2f0acf61615e1a6adf97f83acf6453d4a6a4b1070f3754',1,'zct::IWatchdog::None']]]
 ];

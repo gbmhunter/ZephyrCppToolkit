@@ -1,0 +1,97 @@
+\doxysection{zct\+::Watchdog\+Mock\+::Timeout\+Channel Struct Reference}
+\hypertarget{structzct_1_1WatchdogMock_1_1TimeoutChannel}{}\label{structzct_1_1WatchdogMock_1_1TimeoutChannel}\index{zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}}
+
+
+Structure to hold information about an installed timeout channel.  
+
+
+
+
+{\ttfamily \#include $<$Watchdog\+Mock.\+hpp$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_ac64b0594f8b3bffd9769ba54c3aca274}{timeout\+Ms}}
+\begin{DoxyCompactList}\small\item\em Timeout value in milliseconds. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_af91c91cf793778a214bc9659c854a35b}{callback}}
+\begin{DoxyCompactList}\small\item\em Callback function. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_af5617feb6722fffb43ab940e2d4e4dc7}{user\+Data}}
+\begin{DoxyCompactList}\small\item\em User data for callback. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_ad10c471a08977cd8e2f11a9964617a2b}{flags}}
+\begin{DoxyCompactList}\small\item\em Reset behavior flags. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_a99ec88fe1152c7fb1ef291d6e700809f}{is\+Active}}
+\begin{DoxyCompactList}\small\item\em Whether the channel is active. \end{DoxyCompactList}\item 
+std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_a775d36a3ee6b36c2315918d1b5a5ec93}{last\+Fed}}
+\begin{DoxyCompactList}\small\item\em Last time channel was fed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to hold information about an installed timeout channel. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structzct_1_1WatchdogMock_1_1TimeoutChannel_af91c91cf793778a214bc9659c854a35b}\label{structzct_1_1WatchdogMock_1_1TimeoutChannel_af91c91cf793778a214bc9659c854a35b} 
+\index{zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}!callback@{callback}}
+\index{callback@{callback}!zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}}
+\doxysubsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} zct\+::\+Watchdog\+Mock\+::\+Timeout\+Channel\+::callback}
+
+
+
+Callback function. 
+
+\Hypertarget{structzct_1_1WatchdogMock_1_1TimeoutChannel_ad10c471a08977cd8e2f11a9964617a2b}\label{structzct_1_1WatchdogMock_1_1TimeoutChannel_ad10c471a08977cd8e2f11a9964617a2b} 
+\index{zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}!flags@{flags}}
+\index{flags@{flags}!zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} zct\+::\+Watchdog\+Mock\+::\+Timeout\+Channel\+::flags}
+
+
+
+Reset behavior flags. 
+
+\Hypertarget{structzct_1_1WatchdogMock_1_1TimeoutChannel_a99ec88fe1152c7fb1ef291d6e700809f}\label{structzct_1_1WatchdogMock_1_1TimeoutChannel_a99ec88fe1152c7fb1ef291d6e700809f} 
+\index{zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}!isActive@{isActive}}
+\index{isActive@{isActive}!zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}}
+\doxysubsubsection{\texorpdfstring{isActive}{isActive}}
+{\footnotesize\ttfamily bool zct\+::\+Watchdog\+Mock\+::\+Timeout\+Channel\+::is\+Active}
+
+
+
+Whether the channel is active. 
+
+\Hypertarget{structzct_1_1WatchdogMock_1_1TimeoutChannel_a775d36a3ee6b36c2315918d1b5a5ec93}\label{structzct_1_1WatchdogMock_1_1TimeoutChannel_a775d36a3ee6b36c2315918d1b5a5ec93} 
+\index{zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}!lastFed@{lastFed}}
+\index{lastFed@{lastFed}!zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}}
+\doxysubsubsection{\texorpdfstring{lastFed}{lastFed}}
+{\footnotesize\ttfamily std\+::chrono\+::steady\+\_\+clock\+::time\+\_\+point zct\+::\+Watchdog\+Mock\+::\+Timeout\+Channel\+::last\+Fed}
+
+
+
+Last time channel was fed. 
+
+\Hypertarget{structzct_1_1WatchdogMock_1_1TimeoutChannel_ac64b0594f8b3bffd9769ba54c3aca274}\label{structzct_1_1WatchdogMock_1_1TimeoutChannel_ac64b0594f8b3bffd9769ba54c3aca274} 
+\index{zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}!timeoutMs@{timeoutMs}}
+\index{timeoutMs@{timeoutMs}!zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}}
+\doxysubsubsection{\texorpdfstring{timeoutMs}{timeoutMs}}
+{\footnotesize\ttfamily uint32\+\_\+t zct\+::\+Watchdog\+Mock\+::\+Timeout\+Channel\+::timeout\+Ms}
+
+
+
+Timeout value in milliseconds. 
+
+\Hypertarget{structzct_1_1WatchdogMock_1_1TimeoutChannel_af5617feb6722fffb43ab940e2d4e4dc7}\label{structzct_1_1WatchdogMock_1_1TimeoutChannel_af5617feb6722fffb43ab940e2d4e4dc7} 
+\index{zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}!userData@{userData}}
+\index{userData@{userData}!zct::WatchdogMock::TimeoutChannel@{zct::WatchdogMock::TimeoutChannel}}
+\doxysubsubsection{\texorpdfstring{userData}{userData}}
+{\footnotesize\ttfamily void\texorpdfstring{$\ast$}{*} zct\+::\+Watchdog\+Mock\+::\+Timeout\+Channel\+::user\+Data}
+
+
+
+User data for callback. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Peripherals/\mbox{\hyperlink{WatchdogMock_8hpp}{Watchdog\+Mock.\+hpp}}\end{DoxyCompactItemize}

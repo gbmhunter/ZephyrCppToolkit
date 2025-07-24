@@ -1,0 +1,465 @@
+\doxysection{zct\+::Watchdog\+Mock Class Reference}
+\hypertarget{classzct_1_1WatchdogMock}{}\label{classzct_1_1WatchdogMock}\index{zct::WatchdogMock@{zct::WatchdogMock}}
+
+
+Mock implementation of the watchdog interface for testing.  
+
+
+
+
+{\ttfamily \#include $<$Watchdog\+Mock.\+hpp$>$}
+
+
+
+Inheritance diagram for zct\+::Watchdog\+Mock\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classzct_1_1WatchdogMock__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for zct\+::Watchdog\+Mock\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classzct_1_1WatchdogMock__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel}{Timeout\+Channel}}
+\begin{DoxyCompactList}\small\item\em Structure to hold information about an installed timeout channel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1WatchdogMock_a4d4af682f9c8f554d018833a83ae6724}{Watchdog\+Mock}} (const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classzct_1_1WatchdogMock_aae9e76369281632a15db4cf2e9483e17}{\texorpdfstring{$\sim$}{\string~}\+Watchdog\+Mock}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogMock_a26cffc95aaa6778cf74518eea07167df}{install\+Timeout}} (uint32\+\_\+t timeout\+Ms, \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} callback=nullptr, void \texorpdfstring{$\ast$}{*}user\+Data=nullptr, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} flags=\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Flag\+::\+Reset\+Soc}}) override
+\begin{DoxyCompactList}\small\item\em Install a watchdog timeout configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogMock_acd301df660d8d595b44b9f87fd7436b3}{setup}} (\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} options=\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option\+::\+None}}) override
+\begin{DoxyCompactList}\small\item\em Setup the watchdog with global configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogMock_a443f2a159b31882cf4c51069faadb8f8}{feed}} (int channel\+Id) override
+\begin{DoxyCompactList}\small\item\em Feed (service) a watchdog channel to prevent timeout. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogMock_a14c4536746212c0e58d49adab6690be7}{disable}} () override
+\begin{DoxyCompactList}\small\item\em Disable the watchdog instance. \end{DoxyCompactList}\item 
+const struct device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1WatchdogMock_a3b75b6a6182943ce4d0e87333a7686ea}{get\+Raw\+Device}} () const override
+\begin{DoxyCompactList}\small\item\em Get the raw watchdog device pointer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzct_1_1WatchdogMock_ad721635cba4e7aaea70e9e2bdddb9793}{mock\+Trigger\+Timeout}} (int channel\+Id)
+\begin{DoxyCompactList}\small\item\em Manually trigger a timeout for a specific channel. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classzct_1_1WatchdogMock_a5530881a8e3bb08e402c0f5bf4ece685}{mock\+Is\+Setup}} () const
+\begin{DoxyCompactList}\small\item\em Check if the watchdog has been set up. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classzct_1_1WatchdogMock_a2ff8563c9fe9bf3286bb6f7efbe0165d}{mock\+Is\+Disabled}} () const
+\begin{DoxyCompactList}\small\item\em Check if the watchdog is disabled. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classzct_1_1WatchdogMock_a64304e259eafc2b875400882744ede28}{mock\+Get\+Channel\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Get the number of installed timeout channels. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel}{Timeout\+Channel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1WatchdogMock_afc62bb3a76b65c7b05e1b5a42dde0858}{mock\+Get\+Channel\+Info}} (int channel\+Id) const
+\begin{DoxyCompactList}\small\item\em Get information about a specific channel. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classzct_1_1WatchdogMock_ad121d9c012ea01cf495c6c92667ff7b2}{mock\+Is\+Channel\+Expired}} (int channel\+Id) const
+\begin{DoxyCompactList}\small\item\em Check if a channel is expired (past its timeout). \end{DoxyCompactList}\item 
+int64\+\_\+t \mbox{\hyperlink{classzct_1_1WatchdogMock_aad632d94567f273a62a5367e1bd424ed}{mock\+Get\+Time\+Remaining\+Ms}} (int channel\+Id) const
+\begin{DoxyCompactList}\small\item\em Get the time remaining until timeout for a channel. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classzct_1_1WatchdogMock_ad3a15a2324ca287854f31a242abb62b7}{mock\+Get\+Feed\+Count}} (int channel\+Id) const
+\begin{DoxyCompactList}\small\item\em Get the number of times a channel has been fed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classzct_1_1WatchdogMock_ab0f17585489f1351fcd20842feb2a6a6}{mock\+Reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset all mock state (useful for test setup). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classzct_1_1IWatchdog}{zct\+::\+IWatchdog}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1IWatchdog_a90a501bd3ad62d063b7235e0f3548d5e}{IWatchdog}} (const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classzct_1_1IWatchdog_aa2e2a2ed16798d25211e14b9946aed99}{\texorpdfstring{$\sim$}{\string~}\+IWatchdog}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IWatchdog_a5ab0e7e592c9a2ded783d24f3b81bb80}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of this watchdog instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel}{Timeout\+Channel}} $>$ \mbox{\hyperlink{classzct_1_1WatchdogMock_adce5063cf181d7a6b709baafec1ea1b6}{m\+\_\+channels}}
+\begin{DoxyCompactList}\small\item\em Installed timeout channels. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{classzct_1_1WatchdogMock_a653d7d2be76ddc3fa858458c11da5408}{m\+\_\+feed\+Counts}}
+\begin{DoxyCompactList}\small\item\em Feed count per channel. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classzct_1_1WatchdogMock_a04d3583fc95d10a04f609d65a74c6005}{m\+\_\+is\+Setup}}
+\begin{DoxyCompactList}\small\item\em Whether \doxylink{classzct_1_1WatchdogMock_acd301df660d8d595b44b9f87fd7436b3}{setup()} has been called. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classzct_1_1WatchdogMock_ad3d40bdbba10b825ffcf6f54e9b97652}{m\+\_\+is\+Disabled}}
+\begin{DoxyCompactList}\small\item\em Whether \doxylink{classzct_1_1WatchdogMock_a14c4536746212c0e58d49adab6690be7}{disable()} has been called. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} \mbox{\hyperlink{classzct_1_1WatchdogMock_a172a57aab1e63bdb1e70001a3c66554e}{m\+\_\+global\+Options}}
+\begin{DoxyCompactList}\small\item\em Global watchdog options. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogMock_a7cb53c6f5a6cf93a7c5bc29b638d58fd}{m\+\_\+next\+Channel\+Id}}
+\begin{DoxyCompactList}\small\item\em Next channel ID to assign. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classzct_1_1IWatchdog}{zct\+::\+IWatchdog}}}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{None}} = 0
+, \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa320cd45f0f4ad4c4c5fe6f312b026e10}{Pause\+In\+Sleep}} = 1
+, \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa649a0b856df788eb1777fc621fd8e08e}{Pause\+Halted\+By\+Debug}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Watchdog configuration options. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a6adf97f83acf6453d4a6a4b1070f3754}{None}} = 0
+, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a1bb26b705f0cfeec95f6da12e2bbc135}{Reset\+Cpu\+Core}} = 1
+, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Soc}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Watchdog reset behavior flags. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} = std\+::function$<$ void(int channel\+Id, void \texorpdfstring{$\ast$}{*}user\+Data)$>$
+\begin{DoxyCompactList}\small\item\em Watchdog callback function type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classzct_1_1IWatchdog}{zct\+::\+IWatchdog}}}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IWatchdog_aaa60b6582ebcbbe6359adc8cc5fb8f2d}{m\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em Name of this watchdog instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mock implementation of the watchdog interface for testing. 
+
+This class simulates watchdog behavior in software for unit testing purposes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1WatchdogMock_a4d4af682f9c8f554d018833a83ae6724}\label{classzct_1_1WatchdogMock_a4d4af682f9c8f554d018833a83ae6724} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!WatchdogMock@{WatchdogMock}}
+\index{WatchdogMock@{WatchdogMock}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{WatchdogMock()}{WatchdogMock()}}
+{\footnotesize\ttfamily zct\+::\+Watchdog\+Mock\+::\+Watchdog\+Mock (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the watchdog instance for logging purposes \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1WatchdogMock_aae9e76369281632a15db4cf2e9483e17}\label{classzct_1_1WatchdogMock_aae9e76369281632a15db4cf2e9483e17} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!````~WatchdogMock@{\texorpdfstring{$\sim$}{\string~}WatchdogMock}}
+\index{````~WatchdogMock@{\texorpdfstring{$\sim$}{\string~}WatchdogMock}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}WatchdogMock()}{\string~WatchdogMock()}}
+{\footnotesize\ttfamily zct\+::\+Watchdog\+Mock\+::\texorpdfstring{$\sim$}{\string~}\+Watchdog\+Mock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1WatchdogMock_a14c4536746212c0e58d49adab6690be7}\label{classzct_1_1WatchdogMock_a14c4536746212c0e58d49adab6690be7} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!disable@{disable}}
+\index{disable@{disable}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{disable()}{disable()}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Mock\+::disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Disable the watchdog instance. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_af3cb34a67584e89f11d7a10b292cca03}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogMock_a443f2a159b31882cf4c51069faadb8f8}\label{classzct_1_1WatchdogMock_a443f2a159b31882cf4c51069faadb8f8} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!feed@{feed}}
+\index{feed@{feed}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{feed()}{feed()}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Mock\+::feed (\begin{DoxyParamCaption}\item[{int}]{channel\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Feed (service) a watchdog channel to prevent timeout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & Channel ID to feed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_ae0defe55658f8c4b1833983c24182f2c}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogMock_a3b75b6a6182943ce4d0e87333a7686ea}\label{classzct_1_1WatchdogMock_a3b75b6a6182943ce4d0e87333a7686ea} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!getRawDevice@{getRawDevice}}
+\index{getRawDevice@{getRawDevice}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{getRawDevice()}{getRawDevice()}}
+{\footnotesize\ttfamily const struct device \texorpdfstring{$\ast$}{*} zct\+::\+Watchdog\+Mock\+::get\+Raw\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the raw watchdog device pointer. 
+
+\begin{DoxyReturn}{Returns}
+Raw watchdog device pointer 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_a980aa7da00a3083832ca076440ebaf1b}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogMock_a26cffc95aaa6778cf74518eea07167df}\label{classzct_1_1WatchdogMock_a26cffc95aaa6778cf74518eea07167df} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!installTimeout@{installTimeout}}
+\index{installTimeout@{installTimeout}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{installTimeout()}{installTimeout()}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Mock\+::install\+Timeout (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{timeout\+Ms,  }\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}}}]{callback = {\ttfamily nullptr},  }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+Data = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}}}]{flags = {\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Flag\+::\+Reset\+Soc}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Install a watchdog timeout configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Ms} & Timeout value in milliseconds \\
+\hline
+{\em callback} & Callback function to execute on timeout (optional) \\
+\hline
+{\em user\+Data} & User data to pass to callback (optional) \\
+\hline
+{\em flags} & Reset behavior flags \\
+\hline
+{\em options} & Configuration options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Channel ID on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_a7c2046b37b229032797354877dd1cc8b}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogMock_a64304e259eafc2b875400882744ede28}\label{classzct_1_1WatchdogMock_a64304e259eafc2b875400882744ede28} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockGetChannelCount@{mockGetChannelCount}}
+\index{mockGetChannelCount@{mockGetChannelCount}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockGetChannelCount()}{mockGetChannelCount()}}
+{\footnotesize\ttfamily size\+\_\+t zct\+::\+Watchdog\+Mock\+::mock\+Get\+Channel\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of installed timeout channels. 
+
+\begin{DoxyReturn}{Returns}
+Number of channels 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogMock_afc62bb3a76b65c7b05e1b5a42dde0858}\label{classzct_1_1WatchdogMock_afc62bb3a76b65c7b05e1b5a42dde0858} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockGetChannelInfo@{mockGetChannelInfo}}
+\index{mockGetChannelInfo@{mockGetChannelInfo}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockGetChannelInfo()}{mockGetChannelInfo()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel}{Watchdog\+Mock\+::\+Timeout\+Channel}} \texorpdfstring{$\ast$}{*} zct\+::\+Watchdog\+Mock\+::mock\+Get\+Channel\+Info (\begin{DoxyParamCaption}\item[{int}]{channel\+Id }\end{DoxyParamCaption}) const}
+
+
+
+Get information about a specific channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & Channel ID to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to channel info, or nullptr if channel doesn\textquotesingle{}t exist 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogMock_ad3a15a2324ca287854f31a242abb62b7}\label{classzct_1_1WatchdogMock_ad3a15a2324ca287854f31a242abb62b7} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockGetFeedCount@{mockGetFeedCount}}
+\index{mockGetFeedCount@{mockGetFeedCount}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockGetFeedCount()}{mockGetFeedCount()}}
+{\footnotesize\ttfamily uint32\+\_\+t zct\+::\+Watchdog\+Mock\+::mock\+Get\+Feed\+Count (\begin{DoxyParamCaption}\item[{int}]{channel\+Id }\end{DoxyParamCaption}) const}
+
+
+
+Get the number of times a channel has been fed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & Channel ID to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Feed count for the channel 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogMock_aad632d94567f273a62a5367e1bd424ed}\label{classzct_1_1WatchdogMock_aad632d94567f273a62a5367e1bd424ed} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockGetTimeRemainingMs@{mockGetTimeRemainingMs}}
+\index{mockGetTimeRemainingMs@{mockGetTimeRemainingMs}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockGetTimeRemainingMs()}{mockGetTimeRemainingMs()}}
+{\footnotesize\ttfamily int64\+\_\+t zct\+::\+Watchdog\+Mock\+::mock\+Get\+Time\+Remaining\+Ms (\begin{DoxyParamCaption}\item[{int}]{channel\+Id }\end{DoxyParamCaption}) const}
+
+
+
+Get the time remaining until timeout for a channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & Channel ID to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Time remaining in milliseconds, or -\/1 if channel doesn\textquotesingle{}t exist 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogMock_ad121d9c012ea01cf495c6c92667ff7b2}\label{classzct_1_1WatchdogMock_ad121d9c012ea01cf495c6c92667ff7b2} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockIsChannelExpired@{mockIsChannelExpired}}
+\index{mockIsChannelExpired@{mockIsChannelExpired}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockIsChannelExpired()}{mockIsChannelExpired()}}
+{\footnotesize\ttfamily bool zct\+::\+Watchdog\+Mock\+::mock\+Is\+Channel\+Expired (\begin{DoxyParamCaption}\item[{int}]{channel\+Id }\end{DoxyParamCaption}) const}
+
+
+
+Check if a channel is expired (past its timeout). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & Channel ID to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if channel has expired 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogMock_a2ff8563c9fe9bf3286bb6f7efbe0165d}\label{classzct_1_1WatchdogMock_a2ff8563c9fe9bf3286bb6f7efbe0165d} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockIsDisabled@{mockIsDisabled}}
+\index{mockIsDisabled@{mockIsDisabled}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockIsDisabled()}{mockIsDisabled()}}
+{\footnotesize\ttfamily bool zct\+::\+Watchdog\+Mock\+::mock\+Is\+Disabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if the watchdog is disabled. 
+
+\begin{DoxyReturn}{Returns}
+True if \doxylink{classzct_1_1WatchdogMock_a14c4536746212c0e58d49adab6690be7}{disable()} has been called 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogMock_a5530881a8e3bb08e402c0f5bf4ece685}\label{classzct_1_1WatchdogMock_a5530881a8e3bb08e402c0f5bf4ece685} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockIsSetup@{mockIsSetup}}
+\index{mockIsSetup@{mockIsSetup}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockIsSetup()}{mockIsSetup()}}
+{\footnotesize\ttfamily bool zct\+::\+Watchdog\+Mock\+::mock\+Is\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if the watchdog has been set up. 
+
+\begin{DoxyReturn}{Returns}
+True if \doxylink{classzct_1_1WatchdogMock_acd301df660d8d595b44b9f87fd7436b3}{setup()} has been called successfully 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogMock_ab0f17585489f1351fcd20842feb2a6a6}\label{classzct_1_1WatchdogMock_ab0f17585489f1351fcd20842feb2a6a6} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockReset@{mockReset}}
+\index{mockReset@{mockReset}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockReset()}{mockReset()}}
+{\footnotesize\ttfamily void zct\+::\+Watchdog\+Mock\+::mock\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset all mock state (useful for test setup). 
+
+\Hypertarget{classzct_1_1WatchdogMock_ad721635cba4e7aaea70e9e2bdddb9793}\label{classzct_1_1WatchdogMock_ad721635cba4e7aaea70e9e2bdddb9793} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!mockTriggerTimeout@{mockTriggerTimeout}}
+\index{mockTriggerTimeout@{mockTriggerTimeout}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{mockTriggerTimeout()}{mockTriggerTimeout()}}
+{\footnotesize\ttfamily void zct\+::\+Watchdog\+Mock\+::mock\+Trigger\+Timeout (\begin{DoxyParamCaption}\item[{int}]{channel\+Id }\end{DoxyParamCaption})}
+
+
+
+Manually trigger a timeout for a specific channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & Channel ID to trigger timeout for \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1WatchdogMock_acd301df660d8d595b44b9f87fd7436b3}\label{classzct_1_1WatchdogMock_acd301df660d8d595b44b9f87fd7436b3} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!setup@{setup}}
+\index{setup@{setup}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Mock\+::setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}}]{options = {\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option\+::\+None}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Setup the watchdog with global configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & Global watchdog options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_ab36e7a53806dfb268d8dbbb3953adca5}{zct\+::\+IWatchdog}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1WatchdogMock_adce5063cf181d7a6b709baafec1ea1b6}\label{classzct_1_1WatchdogMock_adce5063cf181d7a6b709baafec1ea1b6} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!m\_channels@{m\_channels}}
+\index{m\_channels@{m\_channels}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{m\_channels}{m\_channels}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel}{Timeout\+Channel}}$>$ zct\+::\+Watchdog\+Mock\+::m\+\_\+channels\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Installed timeout channels. 
+
+\Hypertarget{classzct_1_1WatchdogMock_a653d7d2be76ddc3fa858458c11da5408}\label{classzct_1_1WatchdogMock_a653d7d2be76ddc3fa858458c11da5408} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!m\_feedCounts@{m\_feedCounts}}
+\index{m\_feedCounts@{m\_feedCounts}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{m\_feedCounts}{m\_feedCounts}}
+{\footnotesize\ttfamily std\+::vector$<$uint32\+\_\+t$>$ zct\+::\+Watchdog\+Mock\+::m\+\_\+feed\+Counts\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Feed count per channel. 
+
+\Hypertarget{classzct_1_1WatchdogMock_a172a57aab1e63bdb1e70001a3c66554e}\label{classzct_1_1WatchdogMock_a172a57aab1e63bdb1e70001a3c66554e} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!m\_globalOptions@{m\_globalOptions}}
+\index{m\_globalOptions@{m\_globalOptions}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{m\_globalOptions}{m\_globalOptions}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} zct\+::\+Watchdog\+Mock\+::m\+\_\+global\+Options\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Global watchdog options. 
+
+\Hypertarget{classzct_1_1WatchdogMock_ad3d40bdbba10b825ffcf6f54e9b97652}\label{classzct_1_1WatchdogMock_ad3d40bdbba10b825ffcf6f54e9b97652} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!m\_isDisabled@{m\_isDisabled}}
+\index{m\_isDisabled@{m\_isDisabled}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{m\_isDisabled}{m\_isDisabled}}
+{\footnotesize\ttfamily bool zct\+::\+Watchdog\+Mock\+::m\+\_\+is\+Disabled\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether \doxylink{classzct_1_1WatchdogMock_a14c4536746212c0e58d49adab6690be7}{disable()} has been called. 
+
+\Hypertarget{classzct_1_1WatchdogMock_a04d3583fc95d10a04f609d65a74c6005}\label{classzct_1_1WatchdogMock_a04d3583fc95d10a04f609d65a74c6005} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!m\_isSetup@{m\_isSetup}}
+\index{m\_isSetup@{m\_isSetup}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{m\_isSetup}{m\_isSetup}}
+{\footnotesize\ttfamily bool zct\+::\+Watchdog\+Mock\+::m\+\_\+is\+Setup\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Whether \doxylink{classzct_1_1WatchdogMock_acd301df660d8d595b44b9f87fd7436b3}{setup()} has been called. 
+
+\Hypertarget{classzct_1_1WatchdogMock_a7cb53c6f5a6cf93a7c5bc29b638d58fd}\label{classzct_1_1WatchdogMock_a7cb53c6f5a6cf93a7c5bc29b638d58fd} 
+\index{zct::WatchdogMock@{zct::WatchdogMock}!m\_nextChannelId@{m\_nextChannelId}}
+\index{m\_nextChannelId@{m\_nextChannelId}!zct::WatchdogMock@{zct::WatchdogMock}}
+\doxysubsubsection{\texorpdfstring{m\_nextChannelId}{m\_nextChannelId}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Mock\+::m\+\_\+next\+Channel\+Id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Next channel ID to assign. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Peripherals/\mbox{\hyperlink{WatchdogMock_8hpp}{Watchdog\+Mock.\+hpp}}\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/src/\+Peripherals/\mbox{\hyperlink{WatchdogMock_8cpp}{Watchdog\+Mock.\+cpp}}\end{DoxyCompactItemize}

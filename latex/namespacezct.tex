@@ -3,6 +3,10 @@
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+class \mbox{\hyperlink{classzct_1_1AdcMock}{Adc\+Mock}}
+\item 
+class \mbox{\hyperlink{classzct_1_1AdcReal}{Adc\+Real}}
+\item 
 class \mbox{\hyperlink{classzct_1_1EventThread}{Event\+Thread}}
 \begin{DoxyCompactList}\small\item\em Use this class in your objects to create a thread that can wait for events. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structzct_1_1GpioCallbackDataAndObject}{Gpio\+Callback\+Data\+And\+Object}}
@@ -11,10 +15,14 @@ class \mbox{\hyperlink{classzct_1_1GpioMock}{Gpio\+Mock}}
 \item 
 class \mbox{\hyperlink{classzct_1_1GpioReal}{Gpio\+Real}}
 \item 
+class \mbox{\hyperlink{classzct_1_1IAdc}{IAdc}}
+\item 
 class \mbox{\hyperlink{classzct_1_1IGpio}{IGpio}}
 \item 
 class \mbox{\hyperlink{classzct_1_1IPwm}{IPwm}}
 \item 
+class \mbox{\hyperlink{classzct_1_1IWatchdog}{IWatchdog}}
+\begin{DoxyCompactList}\small\item\em Interface for a hardware watchdog peripheral (not the software watchdog, this does not need to be mocked). \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classzct_1_1Mutex}{Mutex}}
 \item 
 class \mbox{\hyperlink{classzct_1_1MutexLockGuard}{Mutex\+Lock\+Guard}}
@@ -26,23 +34,41 @@ class \mbox{\hyperlink{classzct_1_1PwmReal}{Pwm\+Real}}
 class \mbox{\hyperlink{classzct_1_1Timer}{Timer}}
 \begin{DoxyCompactList}\small\item\em A timer that can be used to fire events at a regular interval in an event driven application. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}}
-\end{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classzct_1_1WatchdogMock}{Watchdog\+Mock}}
+\begin{DoxyCompactList}\small\item\em Mock implementation of the watchdog interface for testing. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classzct_1_1WatchdogReal}{Watchdog\+Real}}
+\begin{DoxyCompactList}\small\item\em Real hardware implementation of the watchdog interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+constexpr \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}} \mbox{\hyperlink{namespacezct_a35335a64cd4a73693dc0382da6b68322}{operator\texorpdfstring{$\vert$}{|}}} (\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}} lhs, \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}} rhs)
+\begin{DoxyCompactList}\small\item\em Bitwise OR operator for watchdog options. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}} \mbox{\hyperlink{namespacezct_af58fd7e1b57198f0fcfd27b878e71139}{operator\&}} (\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}} lhs, \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}} rhs)
+\begin{DoxyCompactList}\small\item\em Bitwise AND operator for watchdog options. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacezct_a03e785beb455af4012d3a57e19c99d13}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (\mbox{\hyperlink{classzct_1_1EventThread}{Event\+Thread}}, LOG\+\_\+\+LEVEL\+\_\+\+DBG)
 \item 
 \mbox{\hyperlink{namespacezct_a0ce845244f34bad5962f8600b1f843f4}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (zct\+\_\+\+Timer, LOG\+\_\+\+LEVEL\+\_\+\+DBG)
 \item 
 \mbox{\hyperlink{namespacezct_afbc9e7692ac4e586af47062f1e1fa428}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (\mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}}, LOG\+\_\+\+LEVEL\+\_\+\+DBG)
 \item 
+\mbox{\hyperlink{namespacezct_a623a2a5fce764d31356ff56a66d4d496}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (zct\+\_\+\+Adc\+Mock, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
+\item 
+\mbox{\hyperlink{namespacezct_aa0ed595c113bda322e4b9d589b5cbf35}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (zct\+\_\+\+Adc\+Real, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
+\item 
 \mbox{\hyperlink{namespacezct_a7758498b0c64cfd96a524a70537a36dd}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (zct\+\_\+\+Gpio\+Mock, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
 \item 
 \mbox{\hyperlink{namespacezct_a5ad84bd62540e60266e0f9e91d38b74f}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (\mbox{\hyperlink{classzct_1_1GpioReal}{Gpio\+Real}}, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
 \item 
+\mbox{\hyperlink{namespacezct_ad3339ca579bc8f0116e898ec1d770002}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (zct\+\_\+\+IWatchdog, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
+\item 
 \mbox{\hyperlink{namespacezct_ae20b7f8274467dfc7cdba0e65f3186dc}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (zct\+\_\+\+Pwm\+Mock, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
 \item 
 \mbox{\hyperlink{namespacezct_af6f24df2bde6bea753a70352e6171cdd}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (zct\+\_\+\+Pwm\+Real, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
+\item 
+\mbox{\hyperlink{namespacezct_aa501a0b08a941ecd60c6c0e8015e812c}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (\mbox{\hyperlink{classzct_1_1WatchdogMock}{Watchdog\+Mock}}, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
+\item 
+\mbox{\hyperlink{namespacezct_a946d913a36f47603cc17483f8abdfe62}{LOG\+\_\+\+MODULE\+\_\+\+REGISTER}} (zct\+\_\+\+Watchdog\+Real, LOG\+\_\+\+LEVEL\+\_\+\+WRN)
 \end{DoxyCompactItemize}
 
 
@@ -50,42 +76,92 @@ class \mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}}
 \Hypertarget{namespacezct_a03e785beb455af4012d3a57e19c99d13}\label{namespacezct_a03e785beb455af4012d3a57e19c99d13} 
 \index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
 \index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
-\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [1/12]}}
 {\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1EventThread}{Event\+Thread}}}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+DBG}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacezct_a5ad84bd62540e60266e0f9e91d38b74f}\label{namespacezct_a5ad84bd62540e60266e0f9e91d38b74f} 
 \index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
 \index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
-\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [2/12]}}
 {\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1GpioReal}{Gpio\+Real}}}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacezct_afbc9e7692ac4e586af47062f1e1fa428}\label{namespacezct_afbc9e7692ac4e586af47062f1e1fa428} 
 \index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
 \index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
-\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [3/12]}}
 {\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}}}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+DBG}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacezct_aa501a0b08a941ecd60c6c0e8015e812c}\label{namespacezct_aa501a0b08a941ecd60c6c0e8015e812c} 
+\index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
+\index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
+{\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1WatchdogMock}{Watchdog\+Mock}}}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacezct_a623a2a5fce764d31356ff56a66d4d496}\label{namespacezct_a623a2a5fce764d31356ff56a66d4d496} 
+\index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
+\index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [5/12]}}
+{\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{zct\+\_\+\+Adc\+Mock}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacezct_aa0ed595c113bda322e4b9d589b5cbf35}\label{namespacezct_aa0ed595c113bda322e4b9d589b5cbf35} 
+\index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
+\index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [6/12]}}
+{\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{zct\+\_\+\+Adc\+Real}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacezct_a7758498b0c64cfd96a524a70537a36dd}\label{namespacezct_a7758498b0c64cfd96a524a70537a36dd} 
 \index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
 \index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
-\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [7/12]}}
 {\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{zct\+\_\+\+Gpio\+Mock}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacezct_ad3339ca579bc8f0116e898ec1d770002}\label{namespacezct_ad3339ca579bc8f0116e898ec1d770002} 
+\index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
+\index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [8/12]}}
+{\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{zct\+\_\+\+IWatchdog}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacezct_ae20b7f8274467dfc7cdba0e65f3186dc}\label{namespacezct_ae20b7f8274467dfc7cdba0e65f3186dc} 
 \index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
 \index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
-\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [9/12]}}
 {\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{zct\+\_\+\+Pwm\+Mock}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacezct_af6f24df2bde6bea753a70352e6171cdd}\label{namespacezct_af6f24df2bde6bea753a70352e6171cdd} 
 \index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
 \index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
-\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [10/12]}}
 {\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{zct\+\_\+\+Pwm\+Real}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacezct_a0ce845244f34bad5962f8600b1f843f4}\label{namespacezct_a0ce845244f34bad5962f8600b1f843f4} 
 \index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
 \index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
-\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
 {\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{zct\+\_\+\+Timer}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+DBG}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacezct_a946d913a36f47603cc17483f8abdfe62}\label{namespacezct_a946d913a36f47603cc17483f8abdfe62} 
+\index{zct@{zct}!LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}}
+\index{LOG\_MODULE\_REGISTER@{LOG\_MODULE\_REGISTER}!zct@{zct}}
+\doxysubsubsection{\texorpdfstring{LOG\_MODULE\_REGISTER()}{LOG\_MODULE\_REGISTER()}\hspace{0.1cm}{\footnotesize\ttfamily [12/12]}}
+{\footnotesize\ttfamily zct\+::\+LOG\+\_\+\+MODULE\+\_\+\+REGISTER (\begin{DoxyParamCaption}\item[{zct\+\_\+\+Watchdog\+Real}]{,  }\item[{LOG\+\_\+\+LEVEL\+\_\+\+WRN}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacezct_af58fd7e1b57198f0fcfd27b878e71139}\label{namespacezct_af58fd7e1b57198f0fcfd27b878e71139} 
+\index{zct@{zct}!operator\&@{operator\&}}
+\index{operator\&@{operator\&}!zct@{zct}}
+\doxysubsubsection{\texorpdfstring{operator\&()}{operator\&()}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}} zct\+::operator\& (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}}}]{lhs,  }\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}}}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Bitwise AND operator for watchdog options. 
+
+\Hypertarget{namespacezct_a35335a64cd4a73693dc0382da6b68322}\label{namespacezct_a35335a64cd4a73693dc0382da6b68322} 
+\index{zct@{zct}!operator\texttt{"|}@{operator\texttt{"|}}}
+\index{operator\texttt{"|}@{operator\texttt{"|}}!zct@{zct}}
+\doxysubsubsection{\texorpdfstring{operator\texttt{"|}()}{operator|()}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}} zct\+::operator\texorpdfstring{$\vert$}{|} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}}}]{lhs,  }\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option}}}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Bitwise OR operator for watchdog options. 
 

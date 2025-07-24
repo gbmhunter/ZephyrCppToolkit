@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['timer_2ecpp_0',['Timer.cpp',['../Timer_8cpp.html',1,'']]],
-  ['timer_2ehpp_1',['Timer.hpp',['../Timer_8hpp.html',1,'']]],
-  ['timermanager_2ecpp_2',['TimerManager.cpp',['../TimerManager_8cpp.html',1,'']]],
-  ['timermanager_2ehpp_3',['TimerManager.hpp',['../TimerManager_8hpp.html',1,'']]]
+  ['pwmmock_2ecpp_0',['PwmMock.cpp',['../PwmMock_8cpp.html',1,'']]],
+  ['pwmmock_2ehpp_1',['PwmMock.hpp',['../PwmMock_8hpp.html',1,'']]],
+  ['pwmreal_2ecpp_2',['PwmReal.cpp',['../PwmReal_8cpp.html',1,'']]],
+  ['pwmreal_2ehpp_3',['PwmReal.hpp',['../PwmReal_8hpp.html',1,'']]]
 ];

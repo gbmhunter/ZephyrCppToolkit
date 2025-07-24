@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['waitforevent_0',['waitForEvent',['../classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293',1,'zct::EventThread']]]
+  ['updateafterexpiry_0',['updateAfterExpiry',['../classzct_1_1Timer.html#abaf35854363b0076f582174780b92b95',1,'zct::Timer']]],
+  ['userdata_1',['userData',['../structzct_1_1WatchdogMock_1_1TimeoutChannel.html#af5617feb6722fffb43ab940e2d4e4dc7',1,'zct::WatchdogMock::TimeoutChannel']]]
 ];

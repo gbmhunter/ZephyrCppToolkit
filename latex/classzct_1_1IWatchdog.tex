@@ -1,0 +1,305 @@
+\doxysection{zct\+::IWatchdog Class Reference}
+\hypertarget{classzct_1_1IWatchdog}{}\label{classzct_1_1IWatchdog}\index{zct::IWatchdog@{zct::IWatchdog}}
+
+
+Interface for a hardware watchdog peripheral (not the software watchdog, this does not need to be mocked).  
+
+
+
+
+{\ttfamily \#include $<$IWatchdog.\+hpp$>$}
+
+
+
+Inheritance diagram for zct\+::IWatchdog\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{classzct_1_1IWatchdog__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{None}} = 0
+, \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa320cd45f0f4ad4c4c5fe6f312b026e10}{Pause\+In\+Sleep}} = 1
+, \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa649a0b856df788eb1777fc621fd8e08e}{Pause\+Halted\+By\+Debug}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Watchdog configuration options. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a6adf97f83acf6453d4a6a4b1070f3754}{None}} = 0
+, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a1bb26b705f0cfeec95f6da12e2bbc135}{Reset\+Cpu\+Core}} = 1
+, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Soc}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Watchdog reset behavior flags. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} = std\+::function$<$ void(int channel\+Id, void \texorpdfstring{$\ast$}{*}user\+Data)$>$
+\begin{DoxyCompactList}\small\item\em Watchdog callback function type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1IWatchdog_a90a501bd3ad62d063b7235e0f3548d5e}{IWatchdog}} (const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classzct_1_1IWatchdog_aa2e2a2ed16798d25211e14b9946aed99}{\texorpdfstring{$\sim$}{\string~}\+IWatchdog}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classzct_1_1IWatchdog_a7c2046b37b229032797354877dd1cc8b}{install\+Timeout}} (uint32\+\_\+t timeout\+Ms, \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} callback=nullptr, void \texorpdfstring{$\ast$}{*}user\+Data=nullptr, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} flags=\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Flag\+::\+Reset\+Soc}})=0
+\begin{DoxyCompactList}\small\item\em Install a watchdog timeout configuration. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classzct_1_1IWatchdog_ab36e7a53806dfb268d8dbbb3953adca5}{setup}} (\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} options=\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option\+::\+None}})=0
+\begin{DoxyCompactList}\small\item\em Setup the watchdog with global configuration. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classzct_1_1IWatchdog_ae0defe55658f8c4b1833983c24182f2c}{feed}} (int channel\+Id)=0
+\begin{DoxyCompactList}\small\item\em Feed (service) a watchdog channel to prevent timeout. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classzct_1_1IWatchdog_af3cb34a67584e89f11d7a10b292cca03}{disable}} ()=0
+\begin{DoxyCompactList}\small\item\em Disable the watchdog instance. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IWatchdog_a5ab0e7e592c9a2ded783d24f3b81bb80}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of this watchdog instance. \end{DoxyCompactList}\item 
+virtual const struct device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IWatchdog_a980aa7da00a3083832ca076440ebaf1b}{get\+Raw\+Device}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the raw watchdog device pointer. Only valid on real implementations, mock implementations will return nullptr. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IWatchdog_aaa60b6582ebcbbe6359adc8cc5fb8f2d}{m\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em Name of this watchdog instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for a hardware watchdog peripheral (not the software watchdog, this does not need to be mocked). 
+
+This class provides a C++ abstraction layer over Zephyr\textquotesingle{}s watchdog API. It follows the same patterns as other Zephyr\+Cpp\+Toolkit peripheral interfaces. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}\label{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8} 
+\index{zct::IWatchdog@{zct::IWatchdog}!CallbackFn@{CallbackFn}}
+\index{CallbackFn@{CallbackFn}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{CallbackFn}{CallbackFn}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{zct\+::\+IWatchdog\+::\+Callback\+Fn}} =  std\+::function$<$void(int channel\+Id, void\texorpdfstring{$\ast$}{*} user\+Data)$>$}
+
+
+
+Watchdog callback function type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & The channel ID that timed out \\
+\hline
+{\em user\+Data} & User data passed during configuration \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}\label{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf} 
+\index{zct::IWatchdog@{zct::IWatchdog}!Option@{Option}}
+\index{Option@{Option}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{Option}{Option}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{zct\+::\+IWatchdog\+::\+Option}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Watchdog configuration options. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!zct::IWatchdog@{zct::IWatchdog}}\index{zct::IWatchdog@{zct::IWatchdog}!None@{None}}}\Hypertarget{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}\label{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PauseInSleep@{PauseInSleep}!zct::IWatchdog@{zct::IWatchdog}}\index{zct::IWatchdog@{zct::IWatchdog}!PauseInSleep@{PauseInSleep}}}\Hypertarget{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa320cd45f0f4ad4c4c5fe6f312b026e10}\label{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa320cd45f0f4ad4c4c5fe6f312b026e10} 
+Pause\+In\+Sleep&Pause timer during CPU sleep. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PauseHaltedByDebug@{PauseHaltedByDebug}!zct::IWatchdog@{zct::IWatchdog}}\index{zct::IWatchdog@{zct::IWatchdog}!PauseHaltedByDebug@{PauseHaltedByDebug}}}\Hypertarget{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa649a0b856df788eb1777fc621fd8e08e}\label{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa649a0b856df788eb1777fc621fd8e08e} 
+Pause\+Halted\+By\+Debug&Pause timer when debugger halts CPU. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}\label{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1} 
+\index{zct::IWatchdog@{zct::IWatchdog}!ResetFlag@{ResetFlag}}
+\index{ResetFlag@{ResetFlag}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{ResetFlag}{ResetFlag}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{zct\+::\+IWatchdog\+::\+Reset\+Flag}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Watchdog reset behavior flags. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!zct::IWatchdog@{zct::IWatchdog}}\index{zct::IWatchdog@{zct::IWatchdog}!None@{None}}}\Hypertarget{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a6adf97f83acf6453d4a6a4b1070f3754}\label{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a6adf97f83acf6453d4a6a4b1070f3754} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ResetCpuCore@{ResetCpuCore}!zct::IWatchdog@{zct::IWatchdog}}\index{zct::IWatchdog@{zct::IWatchdog}!ResetCpuCore@{ResetCpuCore}}}\Hypertarget{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a1bb26b705f0cfeec95f6da12e2bbc135}\label{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a1bb26b705f0cfeec95f6da12e2bbc135} 
+Reset\+Cpu\+Core&Reset CPU core on timeout. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ResetSoc@{ResetSoc}!zct::IWatchdog@{zct::IWatchdog}}\index{zct::IWatchdog@{zct::IWatchdog}!ResetSoc@{ResetSoc}}}\Hypertarget{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}\label{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51} 
+Reset\+Soc&Reset entire SoC on timeout. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1IWatchdog_a90a501bd3ad62d063b7235e0f3548d5e}\label{classzct_1_1IWatchdog_a90a501bd3ad62d063b7235e0f3548d5e} 
+\index{zct::IWatchdog@{zct::IWatchdog}!IWatchdog@{IWatchdog}}
+\index{IWatchdog@{IWatchdog}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{IWatchdog()}{IWatchdog()}}
+{\footnotesize\ttfamily zct\+::\+IWatchdog\+::\+IWatchdog (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the watchdog instance for logging purposes \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1IWatchdog_aa2e2a2ed16798d25211e14b9946aed99}\label{classzct_1_1IWatchdog_aa2e2a2ed16798d25211e14b9946aed99} 
+\index{zct::IWatchdog@{zct::IWatchdog}!````~IWatchdog@{\texorpdfstring{$\sim$}{\string~}IWatchdog}}
+\index{````~IWatchdog@{\texorpdfstring{$\sim$}{\string~}IWatchdog}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IWatchdog()}{\string~IWatchdog()}}
+{\footnotesize\ttfamily virtual zct\+::\+IWatchdog\+::\texorpdfstring{$\sim$}{\string~}\+IWatchdog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtual destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1IWatchdog_af3cb34a67584e89f11d7a10b292cca03}\label{classzct_1_1IWatchdog_af3cb34a67584e89f11d7a10b292cca03} 
+\index{zct::IWatchdog@{zct::IWatchdog}!disable@{disable}}
+\index{disable@{disable}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{disable()}{disable()}}
+{\footnotesize\ttfamily virtual int zct\+::\+IWatchdog\+::disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Disable the watchdog instance. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classzct_1_1WatchdogMock_a14c4536746212c0e58d49adab6690be7}{zct\+::\+Watchdog\+Mock}}, and \mbox{\hyperlink{classzct_1_1WatchdogReal_abe6f845295a7088567250cbd4564b56c}{zct\+::\+Watchdog\+Real}}.
+
+\Hypertarget{classzct_1_1IWatchdog_ae0defe55658f8c4b1833983c24182f2c}\label{classzct_1_1IWatchdog_ae0defe55658f8c4b1833983c24182f2c} 
+\index{zct::IWatchdog@{zct::IWatchdog}!feed@{feed}}
+\index{feed@{feed}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{feed()}{feed()}}
+{\footnotesize\ttfamily virtual int zct\+::\+IWatchdog\+::feed (\begin{DoxyParamCaption}\item[{int}]{channel\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Feed (service) a watchdog channel to prevent timeout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & Channel ID to feed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classzct_1_1WatchdogMock_a443f2a159b31882cf4c51069faadb8f8}{zct\+::\+Watchdog\+Mock}}, and \mbox{\hyperlink{classzct_1_1WatchdogReal_a995cd6ff1bcb459f130fd1c8fa9ba4ad}{zct\+::\+Watchdog\+Real}}.
+
+\Hypertarget{classzct_1_1IWatchdog_a5ab0e7e592c9a2ded783d24f3b81bb80}\label{classzct_1_1IWatchdog_a5ab0e7e592c9a2ded783d24f3b81bb80} 
+\index{zct::IWatchdog@{zct::IWatchdog}!getName@{getName}}
+\index{getName@{getName}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} zct\+::\+IWatchdog\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the name of this watchdog instance. 
+
+\begin{DoxyReturn}{Returns}
+Name string 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1IWatchdog_a980aa7da00a3083832ca076440ebaf1b}\label{classzct_1_1IWatchdog_a980aa7da00a3083832ca076440ebaf1b} 
+\index{zct::IWatchdog@{zct::IWatchdog}!getRawDevice@{getRawDevice}}
+\index{getRawDevice@{getRawDevice}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{getRawDevice()}{getRawDevice()}}
+{\footnotesize\ttfamily virtual const struct device \texorpdfstring{$\ast$}{*} zct\+::\+IWatchdog\+::get\+Raw\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the raw watchdog device pointer. Only valid on real implementations, mock implementations will return nullptr. 
+
+\begin{DoxyReturn}{Returns}
+Raw watchdog device pointer. Returns nullptr on mock implementations. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classzct_1_1WatchdogMock_a3b75b6a6182943ce4d0e87333a7686ea}{zct\+::\+Watchdog\+Mock}}, and \mbox{\hyperlink{classzct_1_1WatchdogReal_a08a87dd8c7b7c5f826b41812123df7fe}{zct\+::\+Watchdog\+Real}}.
+
+\Hypertarget{classzct_1_1IWatchdog_a7c2046b37b229032797354877dd1cc8b}\label{classzct_1_1IWatchdog_a7c2046b37b229032797354877dd1cc8b} 
+\index{zct::IWatchdog@{zct::IWatchdog}!installTimeout@{installTimeout}}
+\index{installTimeout@{installTimeout}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{installTimeout()}{installTimeout()}}
+{\footnotesize\ttfamily virtual int zct\+::\+IWatchdog\+::install\+Timeout (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{timeout\+Ms,  }\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}}}]{callback = {\ttfamily nullptr},  }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+Data = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}}}]{flags = {\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Flag\+::\+Reset\+Soc}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Install a watchdog timeout configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Ms} & Timeout value in milliseconds \\
+\hline
+{\em callback} & Callback function to execute on timeout (optional) \\
+\hline
+{\em user\+Data} & User data to pass to callback (optional) \\
+\hline
+{\em flags} & Reset behavior flags \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Channel ID on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classzct_1_1WatchdogMock_a26cffc95aaa6778cf74518eea07167df}{zct\+::\+Watchdog\+Mock}}, and \mbox{\hyperlink{classzct_1_1WatchdogReal_a1fa369a2464474dcb0db6f14e8aba3dc}{zct\+::\+Watchdog\+Real}}.
+
+\Hypertarget{classzct_1_1IWatchdog_ab36e7a53806dfb268d8dbbb3953adca5}\label{classzct_1_1IWatchdog_ab36e7a53806dfb268d8dbbb3953adca5} 
+\index{zct::IWatchdog@{zct::IWatchdog}!setup@{setup}}
+\index{setup@{setup}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily virtual int zct\+::\+IWatchdog\+::setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}}]{options = {\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option\+::\+None}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Setup the watchdog with global configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & Global watchdog options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classzct_1_1WatchdogMock_acd301df660d8d595b44b9f87fd7436b3}{zct\+::\+Watchdog\+Mock}}, and \mbox{\hyperlink{classzct_1_1WatchdogReal_ac4b7f2a99f1623809750250fea67e2d2}{zct\+::\+Watchdog\+Real}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1IWatchdog_aaa60b6582ebcbbe6359adc8cc5fb8f2d}\label{classzct_1_1IWatchdog_aaa60b6582ebcbbe6359adc8cc5fb8f2d} 
+\index{zct::IWatchdog@{zct::IWatchdog}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!zct::IWatchdog@{zct::IWatchdog}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} zct\+::\+IWatchdog\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Name of this watchdog instance. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Peripherals/\mbox{\hyperlink{IWatchdog_8hpp}{IWatchdog.\+hpp}}\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/src/\+Peripherals/\mbox{\hyperlink{IWatchdog_8cpp}{IWatchdog.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+<map id="zct::IWatchdog" name="zct::IWatchdog">
+<area shape="rect" id="Node000001" title="Interface for a hardware watchdog peripheral (not the software watchdog, this does not need to be moc..." alt="" coords="105,5,222,31"/>
+<area shape="rect" id="Node000002" href="$classzct_1_1WatchdogMock.html" title="Mock implementation of the watchdog interface for testing." alt="" coords="5,79,153,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,42,95,80,91,76,138,38"/>
+<area shape="rect" id="Node000003" href="$classzct_1_1WatchdogReal.html" title="Real hardware implementation of the watchdog interface." alt="" coords="177,79,320,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,37,236,76,233,80,186,41"/>
+</map>

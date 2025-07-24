@@ -1,0 +1,115 @@
+\doxysection{zct\+::Adc\+Mock Class Reference}
+\hypertarget{classzct_1_1AdcMock}{}\label{classzct_1_1AdcMock}\index{zct::AdcMock@{zct::AdcMock}}
+
+
+{\ttfamily \#include $<$Adc\+Mock.\+hpp$>$}
+
+
+
+Inheritance diagram for zct\+::Adc\+Mock\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{classzct_1_1AdcMock__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for zct\+::Adc\+Mock\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{classzct_1_1AdcMock__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1AdcMock_adc4cd551abe8de4ac81515e15680a4a6}{Adc\+Mock}} (const char \texorpdfstring{$\ast$}{*}name)
+\item 
+\mbox{\hyperlink{classzct_1_1AdcMock_ab9be46ee8033fc87fc1eb78c30061abc}{\texorpdfstring{$\sim$}{\string~}\+Adc\+Mock}} ()
+\item 
+int32\+\_\+t \mbox{\hyperlink{classzct_1_1AdcMock_a53991ca180c30382d1c68e9195a80d74}{read\+Mv}} () override
+\item 
+void \mbox{\hyperlink{classzct_1_1AdcMock_a145a57ea92fedd66dda249dc477194e1}{mock\+Set\+Mv}} (int32\+\_\+t mv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classzct_1_1IAdc}{zct\+::\+IAdc}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1IAdc_ac3e29060c2d738b3a8aea21fcf8838b7}{IAdc}} (const char \texorpdfstring{$\ast$}{*}name)
+\item 
+\mbox{\hyperlink{classzct_1_1IAdc_a2169dcaff43289d98f638ce2529d0f68}{\texorpdfstring{$\sim$}{\string~}\+IAdc}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \mbox{\hyperlink{classzct_1_1AdcMock_a1500315d151591b7600163baffd09df0}{m\+\_\+mock\+Mv}} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classzct_1_1IAdc}{zct\+::\+IAdc}}}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IAdc_a8ba555e39dc55fd99f0b12971200a65b}{m\+\_\+name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1AdcMock_adc4cd551abe8de4ac81515e15680a4a6}\label{classzct_1_1AdcMock_adc4cd551abe8de4ac81515e15680a4a6} 
+\index{zct::AdcMock@{zct::AdcMock}!AdcMock@{AdcMock}}
+\index{AdcMock@{AdcMock}!zct::AdcMock@{zct::AdcMock}}
+\doxysubsubsection{\texorpdfstring{AdcMock()}{AdcMock()}}
+{\footnotesize\ttfamily zct\+::\+Adc\+Mock\+::\+Adc\+Mock (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{classzct_1_1AdcMock_ab9be46ee8033fc87fc1eb78c30061abc}\label{classzct_1_1AdcMock_ab9be46ee8033fc87fc1eb78c30061abc} 
+\index{zct::AdcMock@{zct::AdcMock}!````~AdcMock@{\texorpdfstring{$\sim$}{\string~}AdcMock}}
+\index{````~AdcMock@{\texorpdfstring{$\sim$}{\string~}AdcMock}!zct::AdcMock@{zct::AdcMock}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AdcMock()}{\string~AdcMock()}}
+{\footnotesize\ttfamily zct\+::\+Adc\+Mock\+::\texorpdfstring{$\sim$}{\string~}\+Adc\+Mock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1AdcMock_a145a57ea92fedd66dda249dc477194e1}\label{classzct_1_1AdcMock_a145a57ea92fedd66dda249dc477194e1} 
+\index{zct::AdcMock@{zct::AdcMock}!mockSetMv@{mockSetMv}}
+\index{mockSetMv@{mockSetMv}!zct::AdcMock@{zct::AdcMock}}
+\doxysubsubsection{\texorpdfstring{mockSetMv()}{mockSetMv()}}
+{\footnotesize\ttfamily void zct\+::\+Adc\+Mock\+::mock\+Set\+Mv (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{mv }\end{DoxyParamCaption})}
+
+Mock the analogue input voltage to the ADC. Calls to \doxylink{classzct_1_1AdcMock_a53991ca180c30382d1c68e9195a80d74}{read\+Mv()} after this call will return this value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mv} & The mock ADC reading in mV. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1AdcMock_a53991ca180c30382d1c68e9195a80d74}\label{classzct_1_1AdcMock_a53991ca180c30382d1c68e9195a80d74} 
+\index{zct::AdcMock@{zct::AdcMock}!readMv@{readMv}}
+\index{readMv@{readMv}!zct::AdcMock@{zct::AdcMock}}
+\doxysubsubsection{\texorpdfstring{readMv()}{readMv()}}
+{\footnotesize\ttfamily int32\+\_\+t zct\+::\+Adc\+Mock\+::read\+Mv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Perform a single ADC conversion on the channel and return the result in mV.
+
+\begin{DoxyReturn}{Returns}
+The result of the ADC conversion in mV. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IAdc_a85c8e51786e4a9c2e4ce88918c89953d}{zct\+::\+IAdc}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1AdcMock_a1500315d151591b7600163baffd09df0}\label{classzct_1_1AdcMock_a1500315d151591b7600163baffd09df0} 
+\index{zct::AdcMock@{zct::AdcMock}!m\_mockMv@{m\_mockMv}}
+\index{m\_mockMv@{m\_mockMv}!zct::AdcMock@{zct::AdcMock}}
+\doxysubsubsection{\texorpdfstring{m\_mockMv}{m\_mockMv}}
+{\footnotesize\ttfamily int32\+\_\+t zct\+::\+Adc\+Mock\+::m\+\_\+mock\+Mv = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Peripherals/\mbox{\hyperlink{AdcMock_8hpp}{Adc\+Mock.\+hpp}}\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/src/\+Peripherals/\mbox{\hyperlink{AdcMock_8cpp}{Adc\+Mock.\+cpp}}\end{DoxyCompactItemize}

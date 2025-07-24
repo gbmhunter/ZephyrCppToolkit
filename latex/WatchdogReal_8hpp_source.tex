@@ -1,0 +1,60 @@
+\doxysection{Watchdog\+Real.\+hpp}
+\hypertarget{WatchdogReal_8hpp_source}{}\label{WatchdogReal_8hpp_source}\index{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/WatchdogReal.hpp@{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/WatchdogReal.hpp}}
+\mbox{\hyperlink{WatchdogReal_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**************************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ WatchdogReal.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Real\ hardware\ implementation\ of\ the\ watchdog\ interface\ using\ Zephyr's\ watchdog\ API.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ **************************************************************************************}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Copyright\ 2025\ Electronic\ Timers\ Ltd.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ **************************************************************************************/}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ 3rd\ party\ includes}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <zephyr/drivers/watchdog.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Local\ includes}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{IWatchdog_8hpp}{IWatchdog.hpp}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1WatchdogReal}{WatchdogReal}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classzct_1_1IWatchdog}{IWatchdog}}\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classzct_1_1WatchdogReal}{WatchdogReal}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ device*\ device);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classzct_1_1WatchdogReal_ac143b8f79534fc8d5bc20878f9dc7722}{\string~WatchdogReal}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogReal_a1fa369a2464474dcb0db6f14e8aba3dc}{installTimeout}}(uint32\_t\ timeoutMs,\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{CallbackFn}}\ callback\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ userData\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{ResetFlag}}\ flags\ =\ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{ResetFlag::ResetSoc}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogReal_ac4b7f2a99f1623809750250fea67e2d2}{setup}}(\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}\ options\ =\ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option::None}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogReal_a995cd6ff1bcb459f130fd1c8fa9ba4ad}{feed}}(\textcolor{keywordtype}{int}\ channelId)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogReal_abe6f845295a7088567250cbd4564b56c}{disable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }device*\ \mbox{\hyperlink{classzct_1_1WatchdogReal_a08a87dd8c7b7c5f826b41812123df7fe}{getRawDevice}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{classzct_1_1WatchdogReal_a8033a2a91a0b4985c2f271a07d1aebb8}{convertOptions}}(\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}\ options);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{classzct_1_1WatchdogReal_ac559009b014a6b91dd8239f5490ce119}{convertResetFlags}}(\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{ResetFlag}}\ flags);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1WatchdogReal_ac1ac63098eed2fcbedafcdc73e64471d}{staticCallback}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ device*\ dev,\ \textcolor{keywordtype}{int}\ channelId);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }device*\ \mbox{\hyperlink{classzct_1_1WatchdogReal_ab5748c013f6f8458383ca4546edda2a3}{m\_device}};\ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1WatchdogReal_a30a80feace30c65032eef414effbbfda}{m\_isSetup}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{CallbackFn}}\ \mbox{\hyperlink{classzct_1_1WatchdogReal_a1cfddf9ecb80eba502854365f828e929}{m\_callback}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classzct_1_1WatchdogReal_a3900589fc41de42ff9680099d3a4cd27}{m\_userData}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \};}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+
+\end{DoxyCode}

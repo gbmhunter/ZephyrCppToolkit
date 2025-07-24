@@ -1,0 +1,346 @@
+\doxysection{zct\+::Watchdog\+Real Class Reference}
+\hypertarget{classzct_1_1WatchdogReal}{}\label{classzct_1_1WatchdogReal}\index{zct::WatchdogReal@{zct::WatchdogReal}}
+
+
+Real hardware implementation of the watchdog interface.  
+
+
+
+
+{\ttfamily \#include $<$Watchdog\+Real.\+hpp$>$}
+
+
+
+Inheritance diagram for zct\+::Watchdog\+Real\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classzct_1_1WatchdogReal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for zct\+::Watchdog\+Real\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classzct_1_1WatchdogReal__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1WatchdogReal_abd73f739ef5217e66c81027612a74d48}{Watchdog\+Real}} (const char \texorpdfstring{$\ast$}{*}name, const struct device \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classzct_1_1WatchdogReal_ac143b8f79534fc8d5bc20878f9dc7722}{\texorpdfstring{$\sim$}{\string~}\+Watchdog\+Real}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogReal_a1fa369a2464474dcb0db6f14e8aba3dc}{install\+Timeout}} (uint32\+\_\+t timeout\+Ms, \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} callback=nullptr, void \texorpdfstring{$\ast$}{*}user\+Data=nullptr, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} flags=\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Flag\+::\+Reset\+Soc}}) override
+\begin{DoxyCompactList}\small\item\em Install a watchdog timeout configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogReal_ac4b7f2a99f1623809750250fea67e2d2}{setup}} (\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} options=\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option\+::\+None}}) override
+\begin{DoxyCompactList}\small\item\em Setup the watchdog with global configuration. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogReal_a995cd6ff1bcb459f130fd1c8fa9ba4ad}{feed}} (int channel\+Id) override
+\begin{DoxyCompactList}\small\item\em Feed (service) a watchdog channel to prevent timeout. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classzct_1_1WatchdogReal_abe6f845295a7088567250cbd4564b56c}{disable}} () override
+\begin{DoxyCompactList}\small\item\em Disable the watchdog instance. \end{DoxyCompactList}\item 
+const struct device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1WatchdogReal_a08a87dd8c7b7c5f826b41812123df7fe}{get\+Raw\+Device}} () const override
+\begin{DoxyCompactList}\small\item\em Get the raw watchdog device pointer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classzct_1_1IWatchdog}{zct\+::\+IWatchdog}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1IWatchdog_a90a501bd3ad62d063b7235e0f3548d5e}{IWatchdog}} (const char \texorpdfstring{$\ast$}{*}name)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classzct_1_1IWatchdog_aa2e2a2ed16798d25211e14b9946aed99}{\texorpdfstring{$\sim$}{\string~}\+IWatchdog}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IWatchdog_a5ab0e7e592c9a2ded783d24f3b81bb80}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of this watchdog instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{classzct_1_1WatchdogReal_a8033a2a91a0b4985c2f271a07d1aebb8}{convert\+Options}} (\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} options)
+\begin{DoxyCompactList}\small\item\em Convert \doxylink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option} to Zephyr wdt options. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{classzct_1_1WatchdogReal_ac559009b014a6b91dd8239f5490ce119}{convert\+Reset\+Flags}} (\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} flags)
+\begin{DoxyCompactList}\small\item\em Convert \doxylink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{IWatchdog\+::\+Reset\+Flag} to Zephyr wdt flags. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classzct_1_1WatchdogReal_ac1ac63098eed2fcbedafcdc73e64471d}{static\+Callback}} (const struct device \texorpdfstring{$\ast$}{*}dev, int channel\+Id)
+\begin{DoxyCompactList}\small\item\em Static callback function for Zephyr WDT API. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const struct device \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1WatchdogReal_ab5748c013f6f8458383ca4546edda2a3}{m\+\_\+device}}
+\begin{DoxyCompactList}\small\item\em Zephyr watchdog device. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classzct_1_1WatchdogReal_a30a80feace30c65032eef414effbbfda}{m\+\_\+is\+Setup}}
+\begin{DoxyCompactList}\small\item\em Track if \doxylink{classzct_1_1WatchdogReal_ac4b7f2a99f1623809750250fea67e2d2}{setup()} has been called. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} \mbox{\hyperlink{classzct_1_1WatchdogReal_a1cfddf9ecb80eba502854365f828e929}{m\+\_\+callback}}
+\begin{DoxyCompactList}\small\item\em User callback function. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1WatchdogReal_a3900589fc41de42ff9680099d3a4cd27}{m\+\_\+user\+Data}}
+\begin{DoxyCompactList}\small\item\em User data for callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{classzct_1_1IWatchdog}{zct\+::\+IWatchdog}}}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{None}} = 0
+, \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa320cd45f0f4ad4c4c5fe6f312b026e10}{Pause\+In\+Sleep}} = 1
+, \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa649a0b856df788eb1777fc621fd8e08e}{Pause\+Halted\+By\+Debug}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Watchdog configuration options. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a6adf97f83acf6453d4a6a4b1070f3754}{None}} = 0
+, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a1bb26b705f0cfeec95f6da12e2bbc135}{Reset\+Cpu\+Core}} = 1
+, \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Soc}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Watchdog reset behavior flags. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} = std\+::function$<$ void(int channel\+Id, void \texorpdfstring{$\ast$}{*}user\+Data)$>$
+\begin{DoxyCompactList}\small\item\em Watchdog callback function type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classzct_1_1IWatchdog}{zct\+::\+IWatchdog}}}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IWatchdog_aaa60b6582ebcbbe6359adc8cc5fb8f2d}{m\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em Name of this watchdog instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Real hardware implementation of the watchdog interface. 
+
+This class provides a C++ wrapper around Zephyr\textquotesingle{}s watchdog driver API. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1WatchdogReal_abd73f739ef5217e66c81027612a74d48}\label{classzct_1_1WatchdogReal_abd73f739ef5217e66c81027612a74d48} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!WatchdogReal@{WatchdogReal}}
+\index{WatchdogReal@{WatchdogReal}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{WatchdogReal()}{WatchdogReal()}}
+{\footnotesize\ttfamily zct\+::\+Watchdog\+Real\+::\+Watchdog\+Real (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{const struct device \texorpdfstring{$\ast$}{*}}]{device }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the watchdog instance for logging purposes \\
+\hline
+{\em device} & Pointer to the Zephyr watchdog device \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1WatchdogReal_ac143b8f79534fc8d5bc20878f9dc7722}\label{classzct_1_1WatchdogReal_ac143b8f79534fc8d5bc20878f9dc7722} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!````~WatchdogReal@{\texorpdfstring{$\sim$}{\string~}WatchdogReal}}
+\index{````~WatchdogReal@{\texorpdfstring{$\sim$}{\string~}WatchdogReal}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}WatchdogReal()}{\string~WatchdogReal()}}
+{\footnotesize\ttfamily zct\+::\+Watchdog\+Real\+::\texorpdfstring{$\sim$}{\string~}\+Watchdog\+Real (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1WatchdogReal_a8033a2a91a0b4985c2f271a07d1aebb8}\label{classzct_1_1WatchdogReal_a8033a2a91a0b4985c2f271a07d1aebb8} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!convertOptions@{convertOptions}}
+\index{convertOptions@{convertOptions}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{convertOptions()}{convertOptions()}}
+{\footnotesize\ttfamily uint8\+\_\+t zct\+::\+Watchdog\+Real\+::convert\+Options (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}}]{options }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Convert \doxylink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog\+::\+Option} to Zephyr wdt options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & \doxylink{classzct_1_1IWatchdog}{IWatchdog} options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zephyr wdt options 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogReal_ac559009b014a6b91dd8239f5490ce119}\label{classzct_1_1WatchdogReal_ac559009b014a6b91dd8239f5490ce119} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!convertResetFlags@{convertResetFlags}}
+\index{convertResetFlags@{convertResetFlags}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{convertResetFlags()}{convertResetFlags()}}
+{\footnotesize\ttfamily uint8\+\_\+t zct\+::\+Watchdog\+Real\+::convert\+Reset\+Flags (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}}}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Convert \doxylink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{IWatchdog\+::\+Reset\+Flag} to Zephyr wdt flags. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flags} & \doxylink{classzct_1_1IWatchdog}{IWatchdog} reset flags \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zephyr wdt flags 
+\end{DoxyReturn}
+\Hypertarget{classzct_1_1WatchdogReal_abe6f845295a7088567250cbd4564b56c}\label{classzct_1_1WatchdogReal_abe6f845295a7088567250cbd4564b56c} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!disable@{disable}}
+\index{disable@{disable}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{disable()}{disable()}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Real\+::disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Disable the watchdog instance. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_af3cb34a67584e89f11d7a10b292cca03}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogReal_a995cd6ff1bcb459f130fd1c8fa9ba4ad}\label{classzct_1_1WatchdogReal_a995cd6ff1bcb459f130fd1c8fa9ba4ad} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!feed@{feed}}
+\index{feed@{feed}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{feed()}{feed()}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Real\+::feed (\begin{DoxyParamCaption}\item[{int}]{channel\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Feed (service) a watchdog channel to prevent timeout. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\+Id} & Channel ID to feed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_ae0defe55658f8c4b1833983c24182f2c}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogReal_a08a87dd8c7b7c5f826b41812123df7fe}\label{classzct_1_1WatchdogReal_a08a87dd8c7b7c5f826b41812123df7fe} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!getRawDevice@{getRawDevice}}
+\index{getRawDevice@{getRawDevice}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{getRawDevice()}{getRawDevice()}}
+{\footnotesize\ttfamily const struct device \texorpdfstring{$\ast$}{*} zct\+::\+Watchdog\+Real\+::get\+Raw\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the raw watchdog device pointer. 
+
+\begin{DoxyReturn}{Returns}
+Raw watchdog device pointer 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_a980aa7da00a3083832ca076440ebaf1b}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogReal_a1fa369a2464474dcb0db6f14e8aba3dc}\label{classzct_1_1WatchdogReal_a1fa369a2464474dcb0db6f14e8aba3dc} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!installTimeout@{installTimeout}}
+\index{installTimeout@{installTimeout}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{installTimeout()}{installTimeout()}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Real\+::install\+Timeout (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{timeout\+Ms,  }\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}}}]{callback = {\ttfamily nullptr},  }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+Data = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{Reset\+Flag}}}]{flags = {\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{Reset\+Flag\+::\+Reset\+Soc}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Install a watchdog timeout configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Ms} & Timeout value in milliseconds \\
+\hline
+{\em callback} & Callback function to execute on timeout (optional) \\
+\hline
+{\em user\+Data} & User data to pass to callback (optional) \\
+\hline
+{\em flags} & Reset behavior flags \\
+\hline
+{\em options} & Configuration options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Channel ID on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_a7c2046b37b229032797354877dd1cc8b}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogReal_ac4b7f2a99f1623809750250fea67e2d2}\label{classzct_1_1WatchdogReal_ac4b7f2a99f1623809750250fea67e2d2} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!setup@{setup}}
+\index{setup@{setup}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily int zct\+::\+Watchdog\+Real\+::setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}}]{options = {\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option\+::\+None}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Setup the watchdog with global configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & Global watchdog options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, negative error code on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IWatchdog_ab36e7a53806dfb268d8dbbb3953adca5}{zct\+::\+IWatchdog}}.
+
+\Hypertarget{classzct_1_1WatchdogReal_ac1ac63098eed2fcbedafcdc73e64471d}\label{classzct_1_1WatchdogReal_ac1ac63098eed2fcbedafcdc73e64471d} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!staticCallback@{staticCallback}}
+\index{staticCallback@{staticCallback}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{staticCallback()}{staticCallback()}}
+{\footnotesize\ttfamily void zct\+::\+Watchdog\+Real\+::static\+Callback (\begin{DoxyParamCaption}\item[{const struct device \texorpdfstring{$\ast$}{*}}]{dev,  }\item[{int}]{channel\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static callback function for Zephyr WDT API. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Watchdog device \\
+\hline
+{\em channel\+Id} & Channel that timed out \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1WatchdogReal_a1cfddf9ecb80eba502854365f828e929}\label{classzct_1_1WatchdogReal_a1cfddf9ecb80eba502854365f828e929} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!m\_callback@{m\_callback}}
+\index{m\_callback@{m\_callback}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{m\_callback}{m\_callback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{Callback\+Fn}} zct\+::\+Watchdog\+Real\+::m\+\_\+callback\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+User callback function. 
+
+\Hypertarget{classzct_1_1WatchdogReal_ab5748c013f6f8458383ca4546edda2a3}\label{classzct_1_1WatchdogReal_ab5748c013f6f8458383ca4546edda2a3} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!m\_device@{m\_device}}
+\index{m\_device@{m\_device}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{m\_device}{m\_device}}
+{\footnotesize\ttfamily const struct device\texorpdfstring{$\ast$}{*} zct\+::\+Watchdog\+Real\+::m\+\_\+device\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Zephyr watchdog device. 
+
+\Hypertarget{classzct_1_1WatchdogReal_a30a80feace30c65032eef414effbbfda}\label{classzct_1_1WatchdogReal_a30a80feace30c65032eef414effbbfda} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!m\_isSetup@{m\_isSetup}}
+\index{m\_isSetup@{m\_isSetup}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{m\_isSetup}{m\_isSetup}}
+{\footnotesize\ttfamily bool zct\+::\+Watchdog\+Real\+::m\+\_\+is\+Setup\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Track if \doxylink{classzct_1_1WatchdogReal_ac4b7f2a99f1623809750250fea67e2d2}{setup()} has been called. 
+
+\Hypertarget{classzct_1_1WatchdogReal_a3900589fc41de42ff9680099d3a4cd27}\label{classzct_1_1WatchdogReal_a3900589fc41de42ff9680099d3a4cd27} 
+\index{zct::WatchdogReal@{zct::WatchdogReal}!m\_userData@{m\_userData}}
+\index{m\_userData@{m\_userData}!zct::WatchdogReal@{zct::WatchdogReal}}
+\doxysubsubsection{\texorpdfstring{m\_userData}{m\_userData}}
+{\footnotesize\ttfamily void\texorpdfstring{$\ast$}{*} zct\+::\+Watchdog\+Real\+::m\+\_\+user\+Data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+User data for callback. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Peripherals/\mbox{\hyperlink{WatchdogReal_8hpp}{Watchdog\+Real.\+hpp}}\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/src/\+Peripherals/\mbox{\hyperlink{WatchdogReal_8cpp}{Watchdog\+Real.\+cpp}}\end{DoxyCompactItemize}

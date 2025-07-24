@@ -1,14 +1,8 @@
 var searchData=
 [
-  ['sendevent_0',['sendEvent',['../classzct_1_1EventThread.html#a6eda66c2494c12922204a368786dfb73',1,'zct::EventThread']]],
-  ['set_1',['set',['../classzct_1_1IGpio.html#a842346ef624df42aedb51646b8f10588',1,'zct::IGpio::set()'],['../classzct_1_1IPwm.html#aca00b94ac3ddf92dfeee1dcff0ee0ac1',1,'zct::IPwm::set()'],['../classzct_1_1PwmMock.html#a1bd47a42c4ebf2d2d126089c595f9ec9',1,'zct::PwmMock::set()'],['../classzct_1_1PwmReal.html#aaefa783908bb0ca5bbd39c954d0d1f08',1,'zct::PwmReal::set()']]],
-  ['setdirection_2',['setDirection',['../classzct_1_1IGpio.html#a0405bb3fa9638b69cc0d5fee38a8c18d',1,'zct::IGpio']]],
-  ['setisregistered_3',['setIsRegistered',['../classzct_1_1Timer.html#a1ce3b5751d0e93503233d23106da5f0d',1,'zct::Timer']]],
-  ['setlogicmode_4',['setlogicmode',['../classzct_1_1GpioMock.html#a4a0ecd4aa0b2c355ceb57f862a059c78',1,'zct::GpioMock::setLogicMode()'],['../classzct_1_1IGpio.html#aede6f2be760508b9d178b8f126dda251',1,'zct::IGpio::setLogicMode()']]],
-  ['setphysical_5',['setphysical',['../classzct_1_1GpioMock.html#ad4e19640bafe02ce0f8b9dafa4899ec3',1,'zct::GpioMock::setPhysical()'],['../classzct_1_1IGpio.html#a977d3b9cd95539d77642f911e7ca510d',1,'zct::IGpio::setPhysical()'],['../classzct_1_1GpioReal.html#a3b84410f890ce9e7f30636d14256a62e',1,'zct::GpioReal::setPhysical()']]],
-  ['setpullmode_6',['setPullMode',['../classzct_1_1IGpio.html#a3cfaadb3f1518837f22be571e81b368d',1,'zct::IGpio']]],
-  ['start_7',['start',['../classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be',1,'zct::Timer::start(int64_t period_ms)'],['../classzct_1_1Timer.html#ad0d94d71b5c4df5e07732b96dfd30cfa',1,'zct::Timer::start(int64_t startDuration_ms, int64_t period_ms)']]],
-  ['starttime_5fticks_8',['startTime_ticks',['../classzct_1_1Timer.html#a2793f618e9ee0c2efa1cd7a70c2dc1a5',1,'zct::Timer']]],
-  ['staticthreadfunction_9',['staticThreadFunction',['../classzct_1_1EventThread.html#ad9ef1d2f6b589be97f8a27c632278d2b',1,'zct::EventThread']]],
-  ['stop_10',['stop',['../classzct_1_1Timer.html#aaf970a68d8eeac56c760313eced4a721',1,'zct::Timer']]]
+  ['readmv_0',['readmv',['../classzct_1_1AdcMock.html#a53991ca180c30382d1c68e9195a80d74',1,'zct::AdcMock::readMv()'],['../classzct_1_1AdcReal.html#a00b06667da09cdcc068a7908c7766d76',1,'zct::AdcReal::readMv()'],['../classzct_1_1IAdc.html#a85c8e51786e4a9c2e4ce88918c89953d',1,'zct::IAdc::readMv()']]],
+  ['registertimer_1',['registerTimer',['../classzct_1_1TimerManager.html#a0273876163c7411b2ecde92140412239',1,'zct::TimerManager']]],
+  ['resetcpucore_2',['ResetCpuCore',['../classzct_1_1IWatchdog.html#acb4badf10cdf36a819d2f0acf61615e1a1bb26b705f0cfeec95f6da12e2bbc135',1,'zct::IWatchdog']]],
+  ['resetflag_3',['ResetFlag',['../classzct_1_1IWatchdog.html#acb4badf10cdf36a819d2f0acf61615e1',1,'zct::IWatchdog']]],
+  ['resetsoc_4',['ResetSoc',['../classzct_1_1IWatchdog.html#acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51',1,'zct::IWatchdog']]]
 ];

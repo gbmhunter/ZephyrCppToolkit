@@ -1,0 +1,28 @@
+\doxysection{Adc\+Mock.\+hpp}
+\hypertarget{AdcMock_8hpp_source}{}\label{AdcMock_8hpp_source}\index{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/AdcMock.hpp@{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/AdcMock.hpp}}
+\mbox{\hyperlink{AdcMock_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{IAdc_8hpp}{IAdc.hpp}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1AdcMock}{AdcMock}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classzct_1_1IAdc}{IAdc}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classzct_1_1AdcMock}{AdcMock}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name);}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{classzct_1_1AdcMock_ab9be46ee8033fc87fc1eb78c30061abc}{\string~AdcMock}}();}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00019\ \ \ \ \ int32\_t\ \mbox{\hyperlink{classzct_1_1AdcMock_a53991ca180c30382d1c68e9195a80d74}{readMv}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1AdcMock_a145a57ea92fedd66dda249dc477194e1}{mockSetMv}}(int32\_t\ mv);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00029\ \ \ \ \ int32\_t\ \mbox{\hyperlink{classzct_1_1AdcMock_a1500315d151591b7600163baffd09df0}{m\_mockMv}}\ =\ 0;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+
+\end{DoxyCode}

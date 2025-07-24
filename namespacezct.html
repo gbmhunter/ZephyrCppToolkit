@@ -98,6 +98,10 @@ $(document).ready(function(){initNavTree('namespacezct.html',''); initResizable(
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1AdcMock.html">AdcMock</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1AdcReal.html">AdcReal</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html">EventThread</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this class in your objects to create a thread that can wait for events.  <a href="classzct_1_1EventThread.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,9 +111,14 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1GpioReal.html">GpioReal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1IAdc.html">IAdc</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1IGpio.html">IGpio</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1IPwm.html">IPwm</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1IWatchdog.html">IWatchdog</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for a hardware watchdog peripheral (not the software watchdog, this does not need to be mocked).  <a href="classzct_1_1IWatchdog.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Mutex.html">Mutex</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,27 +133,49 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1WatchdogMock.html">WatchdogMock</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mock implementation of the watchdog interface for testing.  <a href="classzct_1_1WatchdogMock.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1WatchdogReal.html">WatchdogReal</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Real hardware implementation of the watchdog interface.  <a href="classzct_1_1WatchdogReal.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a35335a64cd4a73693dc0382da6b68322" id="r_a35335a64cd4a73693dc0382da6b68322"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#a35335a64cd4a73693dc0382da6b68322">operator|</a> (<a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a> lhs, <a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a> rhs)</td></tr>
+<tr class="memdesc:a35335a64cd4a73693dc0382da6b68322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitwise OR operator for watchdog options.  <br /></td></tr>
+<tr class="separator:a35335a64cd4a73693dc0382da6b68322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af58fd7e1b57198f0fcfd27b878e71139" id="r_af58fd7e1b57198f0fcfd27b878e71139"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#af58fd7e1b57198f0fcfd27b878e71139">operator&amp;</a> (<a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a> lhs, <a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a> rhs)</td></tr>
+<tr class="memdesc:af58fd7e1b57198f0fcfd27b878e71139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitwise AND operator for watchdog options.  <br /></td></tr>
+<tr class="separator:af58fd7e1b57198f0fcfd27b878e71139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03e785beb455af4012d3a57e19c99d13" id="r_a03e785beb455af4012d3a57e19c99d13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#a03e785beb455af4012d3a57e19c99d13">LOG_MODULE_REGISTER</a> (<a class="el" href="classzct_1_1EventThread.html">EventThread</a>, LOG_LEVEL_DBG)</td></tr>
 <tr class="separator:a03e785beb455af4012d3a57e19c99d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ce845244f34bad5962f8600b1f843f4" id="r_a0ce845244f34bad5962f8600b1f843f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#a0ce845244f34bad5962f8600b1f843f4">LOG_MODULE_REGISTER</a> (zct_Timer, LOG_LEVEL_DBG)</td></tr>
 <tr class="separator:a0ce845244f34bad5962f8600b1f843f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbc9e7692ac4e586af47062f1e1fa428" id="r_afbc9e7692ac4e586af47062f1e1fa428"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#afbc9e7692ac4e586af47062f1e1fa428">LOG_MODULE_REGISTER</a> (<a class="el" href="classzct_1_1TimerManager.html">TimerManager</a>, LOG_LEVEL_DBG)</td></tr>
 <tr class="separator:afbc9e7692ac4e586af47062f1e1fa428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a623a2a5fce764d31356ff56a66d4d496" id="r_a623a2a5fce764d31356ff56a66d4d496"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#a623a2a5fce764d31356ff56a66d4d496">LOG_MODULE_REGISTER</a> (zct_AdcMock, LOG_LEVEL_WRN)</td></tr>
+<tr class="separator:a623a2a5fce764d31356ff56a66d4d496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0ed595c113bda322e4b9d589b5cbf35" id="r_aa0ed595c113bda322e4b9d589b5cbf35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#aa0ed595c113bda322e4b9d589b5cbf35">LOG_MODULE_REGISTER</a> (zct_AdcReal, LOG_LEVEL_WRN)</td></tr>
+<tr class="separator:aa0ed595c113bda322e4b9d589b5cbf35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7758498b0c64cfd96a524a70537a36dd" id="r_a7758498b0c64cfd96a524a70537a36dd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#a7758498b0c64cfd96a524a70537a36dd">LOG_MODULE_REGISTER</a> (zct_GpioMock, LOG_LEVEL_WRN)</td></tr>
 <tr class="separator:a7758498b0c64cfd96a524a70537a36dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ad84bd62540e60266e0f9e91d38b74f" id="r_a5ad84bd62540e60266e0f9e91d38b74f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#a5ad84bd62540e60266e0f9e91d38b74f">LOG_MODULE_REGISTER</a> (<a class="el" href="classzct_1_1GpioReal.html">GpioReal</a>, LOG_LEVEL_WRN)</td></tr>
 <tr class="separator:a5ad84bd62540e60266e0f9e91d38b74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3339ca579bc8f0116e898ec1d770002" id="r_ad3339ca579bc8f0116e898ec1d770002"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#ad3339ca579bc8f0116e898ec1d770002">LOG_MODULE_REGISTER</a> (zct_IWatchdog, LOG_LEVEL_WRN)</td></tr>
+<tr class="separator:ad3339ca579bc8f0116e898ec1d770002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae20b7f8274467dfc7cdba0e65f3186dc" id="r_ae20b7f8274467dfc7cdba0e65f3186dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#ae20b7f8274467dfc7cdba0e65f3186dc">LOG_MODULE_REGISTER</a> (zct_PwmMock, LOG_LEVEL_WRN)</td></tr>
 <tr class="separator:ae20b7f8274467dfc7cdba0e65f3186dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6f24df2bde6bea753a70352e6171cdd" id="r_af6f24df2bde6bea753a70352e6171cdd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#af6f24df2bde6bea753a70352e6171cdd">LOG_MODULE_REGISTER</a> (zct_PwmReal, LOG_LEVEL_WRN)</td></tr>
 <tr class="separator:af6f24df2bde6bea753a70352e6171cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa501a0b08a941ecd60c6c0e8015e812c" id="r_aa501a0b08a941ecd60c6c0e8015e812c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#aa501a0b08a941ecd60c6c0e8015e812c">LOG_MODULE_REGISTER</a> (<a class="el" href="classzct_1_1WatchdogMock.html">WatchdogMock</a>, LOG_LEVEL_WRN)</td></tr>
+<tr class="separator:aa501a0b08a941ecd60c6c0e8015e812c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a946d913a36f47603cc17483f8abdfe62" id="r_a946d913a36f47603cc17483f8abdfe62"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacezct.html#a946d913a36f47603cc17483f8abdfe62">LOG_MODULE_REGISTER</a> (zct_WatchdogReal, LOG_LEVEL_WRN)</td></tr>
+<tr class="separator:a946d913a36f47603cc17483f8abdfe62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a03e785beb455af4012d3a57e19c99d13" name="a03e785beb455af4012d3a57e19c99d13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03e785beb455af4012d3a57e19c99d13">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[1/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a03e785beb455af4012d3a57e19c99d13">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[1/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -172,7 +203,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a5ad84bd62540e60266e0f9e91d38b74f" name="a5ad84bd62540e60266e0f9e91d38b74f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ad84bd62540e60266e0f9e91d38b74f">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[2/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ad84bd62540e60266e0f9e91d38b74f">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[2/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,7 +231,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="afbc9e7692ac4e586af47062f1e1fa428" name="afbc9e7692ac4e586af47062f1e1fa428"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbc9e7692ac4e586af47062f1e1fa428">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[3/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afbc9e7692ac4e586af47062f1e1fa428">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[3/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -227,8 +258,92 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa501a0b08a941ecd60c6c0e8015e812c" name="aa501a0b08a941ecd60c6c0e8015e812c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa501a0b08a941ecd60c6c0e8015e812c">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[4/12]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">zct::LOG_MODULE_REGISTER </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzct_1_1WatchdogMock.html">WatchdogMock</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LOG_LEVEL_WRN&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a623a2a5fce764d31356ff56a66d4d496" name="a623a2a5fce764d31356ff56a66d4d496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a623a2a5fce764d31356ff56a66d4d496">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[5/12]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">zct::LOG_MODULE_REGISTER </td>
+          <td>(</td>
+          <td class="paramtype">zct_AdcMock&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LOG_LEVEL_WRN&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa0ed595c113bda322e4b9d589b5cbf35" name="aa0ed595c113bda322e4b9d589b5cbf35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0ed595c113bda322e4b9d589b5cbf35">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[6/12]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">zct::LOG_MODULE_REGISTER </td>
+          <td>(</td>
+          <td class="paramtype">zct_AdcReal&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LOG_LEVEL_WRN&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7758498b0c64cfd96a524a70537a36dd" name="a7758498b0c64cfd96a524a70537a36dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7758498b0c64cfd96a524a70537a36dd">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[4/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7758498b0c64cfd96a524a70537a36dd">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[7/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,8 +370,36 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ad3339ca579bc8f0116e898ec1d770002" name="ad3339ca579bc8f0116e898ec1d770002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3339ca579bc8f0116e898ec1d770002">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[8/12]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">zct::LOG_MODULE_REGISTER </td>
+          <td>(</td>
+          <td class="paramtype">zct_IWatchdog&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LOG_LEVEL_WRN&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae20b7f8274467dfc7cdba0e65f3186dc" name="ae20b7f8274467dfc7cdba0e65f3186dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae20b7f8274467dfc7cdba0e65f3186dc">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[5/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae20b7f8274467dfc7cdba0e65f3186dc">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[9/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,7 +427,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="af6f24df2bde6bea753a70352e6171cdd" name="af6f24df2bde6bea753a70352e6171cdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6f24df2bde6bea753a70352e6171cdd">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[6/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af6f24df2bde6bea753a70352e6171cdd">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[10/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,7 +455,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a0ce845244f34bad5962f8600b1f843f4" name="a0ce845244f34bad5962f8600b1f843f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ce845244f34bad5962f8600b1f843f4">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[7/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ce845244f34bad5962f8600b1f843f4">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[11/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -336,6 +479,110 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a946d913a36f47603cc17483f8abdfe62" name="a946d913a36f47603cc17483f8abdfe62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a946d913a36f47603cc17483f8abdfe62">&#9670;&#160;</a></span>LOG_MODULE_REGISTER() <span class="overload">[12/12]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">zct::LOG_MODULE_REGISTER </td>
+          <td>(</td>
+          <td class="paramtype">zct_WatchdogReal&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LOG_LEVEL_WRN&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af58fd7e1b57198f0fcfd27b878e71139" name="af58fd7e1b57198f0fcfd27b878e71139"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af58fd7e1b57198f0fcfd27b878e71139">&#9670;&#160;</a></span>operator&amp;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a> zct::operator&amp; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a>&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a>&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bitwise AND operator for watchdog options. </p>
+
+</div>
+</div>
+<a id="a35335a64cd4a73693dc0382da6b68322" name="a35335a64cd4a73693dc0382da6b68322"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35335a64cd4a73693dc0382da6b68322">&#9670;&#160;</a></span>operator|()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a> zct::operator| </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a>&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">IWatchdog::Option</a>&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Bitwise OR operator for watchdog options. </p>
 
 </div>
 </div>

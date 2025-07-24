@@ -1,0 +1,73 @@
+\doxysection{IWatchdog.\+hpp}
+\hypertarget{IWatchdog_8hpp_source}{}\label{IWatchdog_8hpp_source}\index{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/IWatchdog.hpp@{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/IWatchdog.hpp}}
+\mbox{\hyperlink{IWatchdog_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**************************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ IWatchdog.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Interface\ for\ watchdog\ peripherals\ in\ the\ ZephyrCppToolkit\ library.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ **************************************************************************************}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Copyright\ 2025\ Electronic\ Timers\ Ltd.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ **************************************************************************************/}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ System\ includes}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1IWatchdog}{IWatchdog}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}\ :\ uint8\_t\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{None}}\ =\ 0,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa320cd45f0f4ad4c4c5fe6f312b026e10}{PauseInSleep}}\ =\ 1,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa649a0b856df788eb1777fc621fd8e08e}{PauseHaltedByDebug}}\ =\ 2\ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{ResetFlag}}\ :\ uint8\_t\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{None}}\ =\ 0,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a1bb26b705f0cfeec95f6da12e2bbc135}{ResetCpuCore}}\ =\ 1,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{ResetSoc}}\ =\ 2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{CallbackFn}}\ =\ std::function<void(\textcolor{keywordtype}{int}\ channelId,\ \textcolor{keywordtype}{void}*\ userData)>;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog}{IWatchdog}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classzct_1_1IWatchdog_aa2e2a2ed16798d25211e14b9946aed99}{\string~IWatchdog}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1IWatchdog_a7c2046b37b229032797354877dd1cc8b}{installTimeout}}(uint32\_t\ timeoutMs,\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{CallbackFn}}\ callback\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ userData\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{ResetFlag}}\ flags\ =\ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{ResetFlag::ResetSoc}})\ =\ 0;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1IWatchdog_ab36e7a53806dfb268d8dbbb3953adca5}{setup}}(\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}\ options\ =\ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option::None}})\ =\ 0;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1IWatchdog_ae0defe55658f8c4b1833983c24182f2c}{feed}}(\textcolor{keywordtype}{int}\ channelId)\ =\ 0;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1IWatchdog_af3cb34a67584e89f11d7a10b292cca03}{disable}}()\ =\ 0;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classzct_1_1IWatchdog_a5ab0e7e592c9a2ded783d24f3b81bb80}{getName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzct_1_1IWatchdog_aaa60b6582ebcbbe6359adc8cc5fb8f2d}{m\_name}};\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }device*\ \mbox{\hyperlink{classzct_1_1IWatchdog_a980aa7da00a3083832ca076440ebaf1b}{getRawDevice}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classzct_1_1IWatchdog_aaa60b6582ebcbbe6359adc8cc5fb8f2d}{m\_name}};\ \ \ \ \ }
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog::Option}}\ \mbox{\hyperlink{namespacezct_a35335a64cd4a73693dc0382da6b68322}{operator|}}(\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog::Option}}\ lhs,\ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog::Option}}\ rhs)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog::Option}}\textcolor{keyword}{>}(\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(lhs)\ |\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(rhs));}
+\DoxyCodeLine{00126\ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog::Option}}\ \mbox{\hyperlink{namespacezct_af58fd7e1b57198f0fcfd27b878e71139}{operator\&}}(\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog::Option}}\ lhs,\ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog::Option}}\ rhs)\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{IWatchdog::Option}}\textcolor{keyword}{>}(\textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(lhs)\ \&\ \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(rhs));}
+\DoxyCodeLine{00133\ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+
+\end{DoxyCode}

@@ -1,0 +1,100 @@
+\doxysection{zct\+::Adc\+Real Class Reference}
+\hypertarget{classzct_1_1AdcReal}{}\label{classzct_1_1AdcReal}\index{zct::AdcReal@{zct::AdcReal}}
+
+
+{\ttfamily \#include $<$Adc\+Real.\+hpp$>$}
+
+
+
+Inheritance diagram for zct\+::Adc\+Real\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classzct_1_1AdcReal__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for zct\+::Adc\+Real\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classzct_1_1AdcReal__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1AdcReal_a787d17f5df67350f3b9a1a230d8b0010}{Adc\+Real}} (const char \texorpdfstring{$\ast$}{*}name, const struct adc\+\_\+dt\+\_\+spec \texorpdfstring{$\ast$}{*}adc\+Spec)
+\item 
+\mbox{\hyperlink{classzct_1_1AdcReal_a39a213d71288d3863203f1cefa091a2f}{\texorpdfstring{$\sim$}{\string~}\+Adc\+Real}} ()
+\item 
+int32\+\_\+t \mbox{\hyperlink{classzct_1_1AdcReal_a00b06667da09cdcc068a7908c7766d76}{read\+Mv}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classzct_1_1IAdc}{zct\+::\+IAdc}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1IAdc_ac3e29060c2d738b3a8aea21fcf8838b7}{IAdc}} (const char \texorpdfstring{$\ast$}{*}name)
+\item 
+\mbox{\hyperlink{classzct_1_1IAdc_a2169dcaff43289d98f638ce2529d0f68}{\texorpdfstring{$\sim$}{\string~}\+IAdc}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const struct adc\+\_\+dt\+\_\+spec \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1AdcReal_a22fca75da25c79cb914acbece3d14a47}{m\+\_\+adc\+Spec}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classzct_1_1IAdc}{zct\+::\+IAdc}}}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IAdc_a8ba555e39dc55fd99f0b12971200a65b}{m\+\_\+name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1AdcReal_a787d17f5df67350f3b9a1a230d8b0010}\label{classzct_1_1AdcReal_a787d17f5df67350f3b9a1a230d8b0010} 
+\index{zct::AdcReal@{zct::AdcReal}!AdcReal@{AdcReal}}
+\index{AdcReal@{AdcReal}!zct::AdcReal@{zct::AdcReal}}
+\doxysubsubsection{\texorpdfstring{AdcReal()}{AdcReal()}}
+{\footnotesize\ttfamily zct\+::\+Adc\+Real\+::\+Adc\+Real (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{const struct adc\+\_\+dt\+\_\+spec \texorpdfstring{$\ast$}{*}}]{adc\+Spec }\end{DoxyParamCaption})}
+
+\Hypertarget{classzct_1_1AdcReal_a39a213d71288d3863203f1cefa091a2f}\label{classzct_1_1AdcReal_a39a213d71288d3863203f1cefa091a2f} 
+\index{zct::AdcReal@{zct::AdcReal}!````~AdcReal@{\texorpdfstring{$\sim$}{\string~}AdcReal}}
+\index{````~AdcReal@{\texorpdfstring{$\sim$}{\string~}AdcReal}!zct::AdcReal@{zct::AdcReal}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}AdcReal()}{\string~AdcReal()}}
+{\footnotesize\ttfamily zct\+::\+Adc\+Real\+::\texorpdfstring{$\sim$}{\string~}\+Adc\+Real (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1AdcReal_a00b06667da09cdcc068a7908c7766d76}\label{classzct_1_1AdcReal_a00b06667da09cdcc068a7908c7766d76} 
+\index{zct::AdcReal@{zct::AdcReal}!readMv@{readMv}}
+\index{readMv@{readMv}!zct::AdcReal@{zct::AdcReal}}
+\doxysubsubsection{\texorpdfstring{readMv()}{readMv()}}
+{\footnotesize\ttfamily int32\+\_\+t zct\+::\+Adc\+Real\+::read\+Mv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Perform a single ADC conversion on the channel and return the result in mV.
+
+\begin{DoxyReturn}{Returns}
+The result of the ADC conversion in mV. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classzct_1_1IAdc_a85c8e51786e4a9c2e4ce88918c89953d}{zct\+::\+IAdc}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1AdcReal_a22fca75da25c79cb914acbece3d14a47}\label{classzct_1_1AdcReal_a22fca75da25c79cb914acbece3d14a47} 
+\index{zct::AdcReal@{zct::AdcReal}!m\_adcSpec@{m\_adcSpec}}
+\index{m\_adcSpec@{m\_adcSpec}!zct::AdcReal@{zct::AdcReal}}
+\doxysubsubsection{\texorpdfstring{m\_adcSpec}{m\_adcSpec}}
+{\footnotesize\ttfamily const struct adc\+\_\+dt\+\_\+spec\texorpdfstring{$\ast$}{*} zct\+::\+Adc\+Real\+::m\+\_\+adc\+Spec\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Peripherals/\mbox{\hyperlink{AdcReal_8hpp}{Adc\+Real.\+hpp}}\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/src/\+Peripherals/\mbox{\hyperlink{AdcReal_8cpp}{Adc\+Real.\+cpp}}\end{DoxyCompactItemize}

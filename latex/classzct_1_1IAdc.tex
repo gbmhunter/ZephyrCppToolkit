@@ -1,0 +1,78 @@
+\doxysection{zct\+::IAdc Class Reference}
+\hypertarget{classzct_1_1IAdc}{}\label{classzct_1_1IAdc}\index{zct::IAdc@{zct::IAdc}}
+
+
+{\ttfamily \#include $<$IAdc.\+hpp$>$}
+
+
+
+Inheritance diagram for zct\+::IAdc\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{classzct_1_1IAdc__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classzct_1_1IAdc_ac3e29060c2d738b3a8aea21fcf8838b7}{IAdc}} (const char \texorpdfstring{$\ast$}{*}name)
+\item 
+\mbox{\hyperlink{classzct_1_1IAdc_a2169dcaff43289d98f638ce2529d0f68}{\texorpdfstring{$\sim$}{\string~}\+IAdc}} ()
+\item 
+virtual int32\+\_\+t \mbox{\hyperlink{classzct_1_1IAdc_a85c8e51786e4a9c2e4ce88918c89953d}{read\+Mv}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IAdc_a8ba555e39dc55fd99f0b12971200a65b}{m\+\_\+name}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classzct_1_1IAdc_ac3e29060c2d738b3a8aea21fcf8838b7}\label{classzct_1_1IAdc_ac3e29060c2d738b3a8aea21fcf8838b7} 
+\index{zct::IAdc@{zct::IAdc}!IAdc@{IAdc}}
+\index{IAdc@{IAdc}!zct::IAdc@{zct::IAdc}}
+\doxysubsubsection{\texorpdfstring{IAdc()}{IAdc()}}
+{\footnotesize\ttfamily zct\+::\+IAdc\+::\+IAdc (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{classzct_1_1IAdc_a2169dcaff43289d98f638ce2529d0f68}\label{classzct_1_1IAdc_a2169dcaff43289d98f638ce2529d0f68} 
+\index{zct::IAdc@{zct::IAdc}!````~IAdc@{\texorpdfstring{$\sim$}{\string~}IAdc}}
+\index{````~IAdc@{\texorpdfstring{$\sim$}{\string~}IAdc}!zct::IAdc@{zct::IAdc}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IAdc()}{\string~IAdc()}}
+{\footnotesize\ttfamily zct\+::\+IAdc\+::\texorpdfstring{$\sim$}{\string~}\+IAdc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1IAdc_a85c8e51786e4a9c2e4ce88918c89953d}\label{classzct_1_1IAdc_a85c8e51786e4a9c2e4ce88918c89953d} 
+\index{zct::IAdc@{zct::IAdc}!readMv@{readMv}}
+\index{readMv@{readMv}!zct::IAdc@{zct::IAdc}}
+\doxysubsubsection{\texorpdfstring{readMv()}{readMv()}}
+{\footnotesize\ttfamily virtual int32\+\_\+t zct\+::\+IAdc\+::read\+Mv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Perform a single ADC conversion on the channel and return the result in mV.
+
+\begin{DoxyReturn}{Returns}
+The result of the ADC conversion in mV. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classzct_1_1AdcMock_a53991ca180c30382d1c68e9195a80d74}{zct\+::\+Adc\+Mock}}, and \mbox{\hyperlink{classzct_1_1AdcReal_a00b06667da09cdcc068a7908c7766d76}{zct\+::\+Adc\+Real}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classzct_1_1IAdc_a8ba555e39dc55fd99f0b12971200a65b}\label{classzct_1_1IAdc_a8ba555e39dc55fd99f0b12971200a65b} 
+\index{zct::IAdc@{zct::IAdc}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!zct::IAdc@{zct::IAdc}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} zct\+::\+IAdc\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Peripherals/\mbox{\hyperlink{IAdc_8hpp}{IAdc.\+hpp}}\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/src/\+Peripherals/\mbox{\hyperlink{IAdc_8cpp}{IAdc.\+cpp}}\end{DoxyCompactItemize}

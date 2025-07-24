@@ -1,0 +1,13 @@
+<map id="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src/Peripherals/IWatchdog.cpp" name="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src/Peripherals/IWatchdog.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="119,5,340,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,115,128,141"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="185,62,100,111,97,106,182,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="152,115,307,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,60,232,101,227,101,227,60"/>
+<area shape="rect" id="Node000004" href="$IWatchdog_8hpp.html" title=" " alt="" coords="331,108,544,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="289,58,384,100,382,105,287,62"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="343,196,430,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="427,150,404,186,399,183,423,147"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="455,196,521,221"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="452,147,475,183,471,186,447,150"/>
+</map>

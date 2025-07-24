@@ -1,0 +1,88 @@
+\doxysection{Watchdog\+Mock.\+hpp}
+\hypertarget{WatchdogMock_8hpp_source}{}\label{WatchdogMock_8hpp_source}\index{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/WatchdogMock.hpp@{/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Peripherals/WatchdogMock.hpp}}
+\mbox{\hyperlink{WatchdogMock_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/**************************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ @file\ WatchdogMock.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ Mock\ implementation\ of\ the\ watchdog\ interface\ for\ testing\ purposes.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ **************************************************************************************}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ Copyright\ 2025\ Electronic\ Timers\ Ltd.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ **************************************************************************************/}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ System\ includes}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Local\ includes}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{IWatchdog_8hpp}{IWatchdog.hpp}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1WatchdogMock}{WatchdogMock}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classzct_1_1IWatchdog}{IWatchdog}}\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel}{TimeoutChannel}}\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_ac64b0594f8b3bffd9769ba54c3aca274}{timeoutMs}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{CallbackFn}}\ \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_af91c91cf793778a214bc9659c854a35b}{callback}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_af5617feb6722fffb43ab940e2d4e4dc7}{userData}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{ResetFlag}}\ \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_ad10c471a08977cd8e2f11a9964617a2b}{flags}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_a99ec88fe1152c7fb1ef291d6e700809f}{isActive}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ std::chrono::steady\_clock::time\_point\ \mbox{\hyperlink{structzct_1_1WatchdogMock_1_1TimeoutChannel_a775d36a3ee6b36c2315918d1b5a5ec93}{lastFed}};\ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{classzct_1_1WatchdogMock}{WatchdogMock}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classzct_1_1WatchdogMock_aae9e76369281632a15db4cf2e9483e17}{\string~WatchdogMock}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a26cffc95aaa6778cf74518eea07167df}{installTimeout}}(uint32\_t\ timeoutMs,\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_ab546ce5ce1bea81047c53874875cbbe8}{CallbackFn}}\ callback\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ userData\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1}{ResetFlag}}\ flags\ =\ \mbox{\hyperlink{classzct_1_1IWatchdog_acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51}{ResetFlag::ResetSoc}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_acd301df660d8d595b44b9f87fd7436b3}{setup}}(\mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}\ options\ =\ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7bafa6adf97f83acf6453d4a6a4b1070f3754}{Option::None}})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a443f2a159b31882cf4c51069faadb8f8}{feed}}(\textcolor{keywordtype}{int}\ channelId)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a14c4536746212c0e58d49adab6690be7}{disable}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }device*\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a3b75b6a6182943ce4d0e87333a7686ea}{getRawDevice}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Mock-\/specific\ methods\ for\ testing}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ ========================================}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_ad721635cba4e7aaea70e9e2bdddb9793}{mockTriggerTimeout}}(\textcolor{keywordtype}{int}\ channelId);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a5530881a8e3bb08e402c0f5bf4ece685}{mockIsSetup}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a04d3583fc95d10a04f609d65a74c6005}{m\_isSetup}};\ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a2ff8563c9fe9bf3286bb6f7efbe0165d}{mockIsDisabled}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_ad3d40bdbba10b825ffcf6f54e9b97652}{m\_isDisabled}};\ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a64304e259eafc2b875400882744ede28}{mockGetChannelCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_adce5063cf181d7a6b709baafec1ea1b6}{m\_channels}}.size();\ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{const}\ TimeoutChannel*\ \mbox{\hyperlink{classzct_1_1WatchdogMock_afc62bb3a76b65c7b05e1b5a42dde0858}{mockGetChannelInfo}}(\textcolor{keywordtype}{int}\ channelId)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_ad121d9c012ea01cf495c6c92667ff7b2}{mockIsChannelExpired}}(\textcolor{keywordtype}{int}\ channelId)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00153\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1WatchdogMock_aad632d94567f273a62a5367e1bd424ed}{mockGetTimeRemainingMs}}(\textcolor{keywordtype}{int}\ channelId)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00161\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classzct_1_1WatchdogMock_ad3a15a2324ca287854f31a242abb62b7}{mockGetFeedCount}}(\textcolor{keywordtype}{int}\ channelId)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_ab0f17585489f1351fcd20842feb2a6a6}{mockReset}}();}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00169\ \ \ \ \ std::vector<TimeoutChannel>\ \mbox{\hyperlink{classzct_1_1WatchdogMock_adce5063cf181d7a6b709baafec1ea1b6}{m\_channels}};\ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ std::vector<uint32\_t>\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a653d7d2be76ddc3fa858458c11da5408}{m\_feedCounts}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a04d3583fc95d10a04f609d65a74c6005}{m\_isSetup}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_ad3d40bdbba10b825ffcf6f54e9b97652}{m\_isDisabled}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{classzct_1_1IWatchdog_a738cc7d23713ae816bcdad28613d7baf}{Option}}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a172a57aab1e63bdb1e70001a3c66554e}{m\_globalOptions}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1WatchdogMock_a7cb53c6f5a6cf93a7c5bc29b638d58fd}{m\_nextChannelId}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00175\ \};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+
+\end{DoxyCode}

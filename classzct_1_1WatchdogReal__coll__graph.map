@@ -1,0 +1,5 @@
+<map id="zct::WatchdogReal" name="zct::WatchdogReal">
+<area shape="rect" id="Node000001" title="Real hardware implementation of the watchdog interface." alt="" coords="5,79,148,104"/>
+<area shape="rect" id="Node000002" href="$classzct_1_1IWatchdog.html" title="Interface for a hardware watchdog peripheral (not the software watchdog, this does not need to be moc..." alt="" coords="18,5,135,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,44,79,79,74,79,74,44"/>
+</map>
