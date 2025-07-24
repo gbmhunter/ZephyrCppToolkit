@@ -59,7 +59,7 @@ jobs:
           west zephyr-export
           west packages pip --install
           cd external/zephyr
-          west sdk install
+          west sdk install --version 0.17.0 --toolchains arm-zephyr-eabi x86_64-zephyr-elf
 
       - name: Build everything and run tests
         shell: bash

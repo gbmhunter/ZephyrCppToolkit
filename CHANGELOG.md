@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - GPIO example is now built for the nRF52840 DK board so that the example can demo real GPIO peripherals.
+- Zephyr SDK version is now pinned to `v0.17.0` in the CI.
+- Zephyr SDK toolchains now specified when installing to reduce download size.
 
 ## [1.0.0] - 2025-07-09
 
