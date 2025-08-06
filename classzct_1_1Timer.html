@@ -104,8 +104,8 @@ $(document).ready(function(){initNavTree('classzct_1_1Timer.html',''); initResiz
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6c64f6c722af612556843d92b6c29758" id="r_a6c64f6c722af612556843d92b6c29758"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#a6c64f6c722af612556843d92b6c29758">Timer</a> (const EventType &amp;event)</td></tr>
-<tr class="separator:a6c64f6c722af612556843d92b6c29758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bac1213595d2ae6d3f2373eb5787ec7" id="r_a9bac1213595d2ae6d3f2373eb5787ec7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#a9bac1213595d2ae6d3f2373eb5787ec7">Timer</a> (const char *name, const EventType &amp;event)</td></tr>
+<tr class="separator:a9bac1213595d2ae6d3f2373eb5787ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2642b147eeb4ebbe126ac70f10ac7be" id="r_ac2642b147eeb4ebbe126ac70f10ac7be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be">start</a> (int64_t period_ms)</td></tr>
 <tr class="separator:ac2642b147eeb4ebbe126ac70f10ac7be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0d94d71b5c4df5e07732b96dfd30cfa" id="r_ad0d94d71b5c4df5e07732b96dfd30cfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#ad0d94d71b5c4df5e07732b96dfd30cfa">start</a> (int64_t startDuration_ms, int64_t period_ms)</td></tr>
@@ -139,6 +139,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a8729cce9b0c456d3e14eef3d9333ab75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d680964ebe923a190efa66345f19071" id="r_a9d680964ebe923a190efa66345f19071"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#a9d680964ebe923a190efa66345f19071">m_isRegistered</a> = false</td></tr>
 <tr class="separator:a9d680964ebe923a190efa66345f19071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addd731a2ad0221858a2e28c37e6e7776" id="r_addd731a2ad0221858a2e28c37e6e7776"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#addd731a2ad0221858a2e28c37e6e7776">m_name</a></td></tr>
+<tr class="separator:addd731a2ad0221858a2e28c37e6e7776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename EventType&gt;<br />
@@ -146,8 +148,8 @@ class zct::Timer&lt; EventType &gt;</div><p>A timer that can be used to fire eve
 <p>This class is designed to be used with the <a class="el" href="classzct_1_1TimerManager.html">zct::TimerManager</a> class. The timer manager monitors a list of timers and fires events when the timers expire.</p>
 <p>This class is also designed to be used with the zct::EventThreadv2 class. The event thread can block until either a timer expires or an external event is received. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6c64f6c722af612556843d92b6c29758" name="a6c64f6c722af612556843d92b6c29758"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c64f6c722af612556843d92b6c29758">&#9670;&#160;</a></span>Timer()</h2>
+<a id="a9bac1213595d2ae6d3f2373eb5787ec7" name="a9bac1213595d2ae6d3f2373eb5787ec7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bac1213595d2ae6d3f2373eb5787ec7">&#9670;&#160;</a></span>Timer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,9 +162,19 @@ template&lt;typename EventType &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classzct_1_1Timer.html">zct::Timer</a>&lt; EventType &gt;::Timer </td>
           <td>(</td>
-          <td class="paramtype">const EventType &amp;&#160;</td>
-          <td class="paramname"><em>event</em></td><td>)</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const EventType &amp;&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -537,6 +549,30 @@ template&lt;typename EventType &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="classzct_1_1Timer.html">zct::Timer</a>&lt; EventType &gt;::m_isRunning = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="addd731a2ad0221858a2e28c37e6e7776" name="addd731a2ad0221858a2e28c37e6e7776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addd731a2ad0221858a2e28c37e6e7776">&#9670;&#160;</a></span>m_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="classzct_1_1Timer.html">zct::Timer</a>&lt; EventType &gt;::m_name</td>
         </tr>
       </table>
   </td>

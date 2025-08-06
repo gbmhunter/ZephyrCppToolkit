@@ -1,0 +1,40 @@
+\doxysection{zct\+::Util Class Reference}
+\hypertarget{classzct_1_1Util}{}\label{classzct_1_1Util}\index{zct::Util@{zct::Util}}
+
+
+{\ttfamily \#include $<$Util.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classzct_1_1Util_ad1b12d57e515f088951c840dc7072f10}{sleep\+Until\+System\+Time}} (int64\+\_\+t target\+Time\+Ms)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classzct_1_1Util_ad1b12d57e515f088951c840dc7072f10}\label{classzct_1_1Util_ad1b12d57e515f088951c840dc7072f10} 
+\index{zct::Util@{zct::Util}!sleepUntilSystemTime@{sleepUntilSystemTime}}
+\index{sleepUntilSystemTime@{sleepUntilSystemTime}!zct::Util@{zct::Util}}
+\doxysubsubsection{\texorpdfstring{sleepUntilSystemTime()}{sleepUntilSystemTime()}}
+{\footnotesize\ttfamily static void zct\+::\+Util\+::sleep\+Until\+System\+Time (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{target\+Time\+Ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Sleep until the system time is equal to or greater than the target time. This is useful in testing when we want to sleep until a specific absolute time, rather than a relative time as per k\+\_\+sleep(\+K\+\_\+\+MSEC(...)). Uses k\+\_\+sleep() to sleep.
+
+Typical use would be\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{int64\_t\ startTimeMs\ =\ k\_uptime\_get();}
+\DoxyCodeLine{\mbox{\hyperlink{classzct_1_1Util_ad1b12d57e515f088951c840dc7072f10}{zct::Util::sleepUntilSystemTime}}(startTimeMs\ +\ 1000);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em target\+Time\+Ms} & The target time (as a system time in milliseconds) to sleep until. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Core/\mbox{\hyperlink{Util_8hpp}{Util.\+hpp}}\end{DoxyCompactItemize}

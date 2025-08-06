@@ -1,6 +1,6 @@
 var classzct_1_1Timer =
 [
-    [ "Timer", "classzct_1_1Timer.html#a6c64f6c722af612556843d92b6c29758", null ],
+    [ "Timer", "classzct_1_1Timer.html#a9bac1213595d2ae6d3f2373eb5787ec7", null ],
     [ "getEvent", "classzct_1_1Timer.html#aba740daadf6150547a8704a57d5bcd92", null ],
     [ "getIsRegistered", "classzct_1_1Timer.html#ad43282ff100f909aa76e315b052143b0", null ],
     [ "getNextExpiryTimeTicks", "classzct_1_1Timer.html#a0ac28656c9426876c597728f66a2cbdc", null ],
@@ -13,6 +13,7 @@ var classzct_1_1Timer =
     [ "m_event", "classzct_1_1Timer.html#a8729cce9b0c456d3e14eef3d9333ab75", null ],
     [ "m_isRegistered", "classzct_1_1Timer.html#a9d680964ebe923a190efa66345f19071", null ],
     [ "m_isRunning", "classzct_1_1Timer.html#a0cc2340d053d72a2c764bc287f5e463c", null ],
+    [ "m_name", "classzct_1_1Timer.html#addd731a2ad0221858a2e28c37e6e7776", null ],
     [ "nextExpiryTime_ticks", "classzct_1_1Timer.html#a8092783d4bdfb93d721012228d41d205", null ],
     [ "period_ticks", "classzct_1_1Timer.html#a95bb9224c4269cf011d4f656f1083a2d", null ],
     [ "startTime_ticks", "classzct_1_1Timer.html#a2793f618e9ee0c2efa1cd7a70c2dc1a5", null ]

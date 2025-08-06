@@ -214,7 +214,9 @@ template&lt;typename EventType &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Iterates over all registered timers and returns the expiry time of the timer that expires next. If no timer is found, the 'timer' member of the returned struct will be nullptr. timer is guaranteed to not be nullptr if durationToWaitUs is not UINT64_MAX. </p><dl class="section return"><dt>Returns</dt><dd>A struct containing the timer that expires next and the duration to wait until that timer expires. </dd></dl>
+<p>Iterates over all registered timers and returns the expiry time of the timer that expires next. If no timer is found, the 'timer' member of the returned struct will be nullptr. timer is guaranteed to not be nullptr if durationToWaitUs is not UINT64_MAX.</p>
+<p>This function does not update the timer's next expiry time if it finds an expired timer. It is up to the caller to do this when it decides that the timer expiry has been "handled".</p>
+<dl class="section return"><dt>Returns</dt><dd>A struct containing the timer that expires next and the duration to wait until that timer expires. </dd></dl>
 
 </div>
 </div>

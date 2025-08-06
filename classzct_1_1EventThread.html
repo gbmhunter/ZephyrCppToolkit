@@ -175,10 +175,10 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="line"><span class="comment">// EVENT THREAD</span></div>
 <div class="line"><span class="comment">//================================================================================================//</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">class </span>Led : <span class="keyword">public</span> <a class="code hl_class" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt;Events::Generic&gt; {</div>
+<div class="line"><span class="keyword">class </span>Led {</div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    Led() :</div>
-<div class="line">        <a class="code hl_namespace" href="namespacezct.html">zct</a>::EventThread&lt;Events::Generic&gt;(</div>
+<div class="line">        m_eventThread(</div>
 <div class="line">            <span class="stringliteral">&quot;Led&quot;</span>,</div>
 <div class="line">            m_threadStack,</div>
 <div class="line">            THREAD_STACK_SIZE,</div>
@@ -186,33 +186,34 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="line">            7,</div>
 <div class="line">            EVENT_QUEUE_NUM_ITEMS</div>
 <div class="line">        ),</div>
-<div class="line">        m_flashingTimer(Events::MyTimerExpiry())</div>
+<div class="line">        m_flashingTimer(<span class="stringliteral">&quot;FlashingTimer&quot;</span>, Events::MyTimerExpiry())</div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Register timers</span></div>
-<div class="line">        m_timerManager.registerTimer(m_flashingTimer);</div>
+<div class="line">        m_eventThread.timerManager().registerTimer(m_flashingTimer);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    ~Led() {</div>
 <div class="line">        <span class="comment">// Send the exit event to the event thread</span></div>
 <div class="line">        Events::Exit exitEvent;</div>
-<div class="line">        sendEvent(exitEvent);</div>
+<div class="line">        m_eventThread.sendEvent(exitEvent);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">void</span> flash(uint32_t flashRateMs) {</div>
 <div class="line">        Events::LedFlashing ledFlashingEvent = { .flashRateMs = flashRateMs };</div>
-<div class="line">        sendEvent(ledFlashingEvent);</div>
+<div class="line">        m_eventThread.sendEvent(ledFlashingEvent);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">private</span>:</div>
 <div class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> EVENT_QUEUE_NUM_ITEMS = 10;</div>
 <div class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> THREAD_STACK_SIZE = 512;</div>
 <div class="line">    K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);</div>
+<div class="line">    <a class="code hl_class" href="classzct_1_1EventThread.html">zct::EventThread&lt;Events::Generic&gt;</a> m_eventThread;</div>
 <div class="line">    <a class="code hl_class" href="classzct_1_1Timer.html">zct::Timer&lt;Events::Generic&gt;</a> m_flashingTimer;</div>
 <div class="line">    <span class="keywordtype">bool</span> m_ledIsOn = <span class="keyword">false</span>;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">void</span> threadMain() {</div>
 <div class="line">        <span class="keywordflow">while</span> (1) {</div>
-<div class="line">            Events::Generic <span class="keyword">event</span> = <a class="code hl_function" href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">zct::EventThread&lt;Events::Generic&gt;::waitForEvent</a>();</div>
+<div class="line">            Events::Generic <span class="keyword">event</span> = m_eventThread.<a class="code hl_function" href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">waitForEvent</a>();</div>
 <div class="line">            <span class="keywordflow">if</span> (std::holds_alternative&lt;Events::MyTimerExpiry&gt;(event)) {</div>
 <div class="line">                LOG_INF(<span class="stringliteral">&quot;Toggling LED to %d.&quot;</span>, !m_ledIsOn);</div>
 <div class="line">                m_ledIsOn = !m_ledIsOn;</div>
@@ -242,8 +243,7 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="ttc" id="aclasszct_1_1EventThread_html"><div class="ttname"><a href="classzct_1_1EventThread.html">zct::EventThread</a></div><div class="ttdoc">Use this class in your objects to create a thread that can wait for events.</div><div class="ttdef"><b>Definition</b> EventThread.hpp:34</div></div>
 <div class="ttc" id="aclasszct_1_1EventThread_html_a2607651cb659eb7d0c1beb81a7690293"><div class="ttname"><a href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">zct::EventThread::waitForEvent</a></div><div class="ttdeci">EventType waitForEvent()</div><div class="ttdef"><b>Definition</b> EventThread.hpp:113</div></div>
 <div class="ttc" id="aclasszct_1_1Timer_html"><div class="ttname"><a href="classzct_1_1Timer.html">zct::Timer</a></div><div class="ttdoc">A timer that can be used to fire events at a regular interval in an event driven application.</div><div class="ttdef"><b>Definition</b> Timer.hpp:39</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html_ac2642b147eeb4ebbe126ac70f10ac7be"><div class="ttname"><a href="classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be">zct::Timer::start</a></div><div class="ttdeci">void start(int64_t period_ms)</div><div class="ttdef"><b>Definition</b> Timer.hpp:61</div></div>
-<div class="ttc" id="anamespacezct_html"><div class="ttname"><a href="namespacezct.html">zct</a></div><div class="ttdef"><b>Definition</b> Mutex.hpp:6</div></div>
+<div class="ttc" id="aclasszct_1_1Timer_html_ac2642b147eeb4ebbe126ac70f10ac7be"><div class="ttname"><a href="classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be">zct::Timer::start</a></div><div class="ttdeci">void start(int64_t period_ms)</div><div class="ttdef"><b>Definition</b> Timer.hpp:62</div></div>
 <div class="ttc" id="anamespacezct_html_a03e785beb455af4012d3a57e19c99d13"><div class="ttname"><a href="namespacezct.html#a03e785beb455af4012d3a57e19c99d13">zct::LOG_MODULE_REGISTER</a></div><div class="ttdeci">LOG_MODULE_REGISTER(EventThread, LOG_LEVEL_DBG)</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae5fff68f935d3dc1b0a7043232b54eeb" name="ae5fff68f935d3dc1b0a7043232b54eeb"></a>

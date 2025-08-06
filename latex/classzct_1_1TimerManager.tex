@@ -65,7 +65,11 @@ Dynamically allocates memory for max\+Num\+Timers pointers to timers.
 {\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
 \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Expiry\+Info}} \mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::get\+Next\+Expiring\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Iterates over all registered timers and returns the expiry time of the timer that expires next. If no timer is found, the \textquotesingle{}timer\textquotesingle{} member of the returned struct will be nullptr. timer is guaranteed to not be nullptr if duration\+To\+Wait\+Us is not UINT64\+\_\+\+MAX. \begin{DoxyReturn}{Returns}
+Iterates over all registered timers and returns the expiry time of the timer that expires next. If no timer is found, the \textquotesingle{}timer\textquotesingle{} member of the returned struct will be nullptr. timer is guaranteed to not be nullptr if duration\+To\+Wait\+Us is not UINT64\+\_\+\+MAX.
+
+This function does not update the timer\textquotesingle{}s next expiry time if it finds an expired timer. It is up to the caller to do this when it decides that the timer expiry has been "{}handled"{}.
+
+\begin{DoxyReturn}{Returns}
 A struct containing the timer that expires next and the duration to wait until that timer expires. 
 \end{DoxyReturn}
 \Hypertarget{classzct_1_1TimerManager_a0273876163c7411b2ecde92140412239}\label{classzct_1_1TimerManager_a0273876163c7411b2ecde92140412239} 

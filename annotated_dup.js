@@ -17,6 +17,7 @@ var annotated_dup =
       [ "PwmReal", "classzct_1_1PwmReal.html", "classzct_1_1PwmReal" ],
       [ "Timer", "classzct_1_1Timer.html", "classzct_1_1Timer" ],
       [ "TimerManager", "classzct_1_1TimerManager.html", "classzct_1_1TimerManager" ],
+      [ "Util", "classzct_1_1Util.html", null ],
       [ "WatchdogMock", "classzct_1_1WatchdogMock.html", "classzct_1_1WatchdogMock" ],
       [ "WatchdogReal", "classzct_1_1WatchdogReal.html", "classzct_1_1WatchdogReal" ]
     ] ]

@@ -91,10 +91,10 @@ Below is an example of how to use this class.
 \DoxyCodeLine{\textcolor{comment}{//\ EVENT\ THREAD}}
 \DoxyCodeLine{\textcolor{comment}{//================================================================================================//}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{class\ }Led\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classzct_1_1EventThread}{zct::EventThread}}<Events::Generic>\ \{}
+\DoxyCodeLine{\textcolor{keyword}{class\ }Led\ \{}
 \DoxyCodeLine{\textcolor{keyword}{public}:}
 \DoxyCodeLine{\ \ \ \ Led()\ :}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacezct}{zct}}::EventThread<Events::Generic>(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_eventThread(}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Led"{}},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ m\_threadStack,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ THREAD\_STACK\_SIZE,}
@@ -102,33 +102,34 @@ Below is an example of how to use this class.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 7,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ EVENT\_QUEUE\_NUM\_ITEMS}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ ),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_flashingTimer(Events::MyTimerExpiry())}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_flashingTimer(\textcolor{stringliteral}{"{}FlashingTimer"{}},\ Events::MyTimerExpiry())}
 \DoxyCodeLine{\ \ \ \ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Register\ timers}}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_timerManager.registerTimer(m\_flashingTimer);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_eventThread.timerManager().registerTimer(m\_flashingTimer);}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \string~Led()\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Send\ the\ exit\ event\ to\ the\ event\ thread}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ Events::Exit\ exitEvent;}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ sendEvent(exitEvent);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_eventThread.sendEvent(exitEvent);}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ flash(uint32\_t\ flashRateMs)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ Events::LedFlashing\ ledFlashingEvent\ =\ \{\ .flashRateMs\ =\ flashRateMs\ \};}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ sendEvent(ledFlashingEvent);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_eventThread.sendEvent(ledFlashingEvent);}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{private}:}
 \DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ EVENT\_QUEUE\_NUM\_ITEMS\ =\ 10;}
 \DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ THREAD\_STACK\_SIZE\ =\ 512;}
 \DoxyCodeLine{\ \ \ \ K\_KERNEL\_STACK\_MEMBER(m\_threadStack,\ THREAD\_STACK\_SIZE);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread}{zct::EventThread<Events::Generic>}}\ m\_eventThread;}
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classzct_1_1Timer}{zct::Timer<Events::Generic>}}\ m\_flashingTimer;}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ m\_ledIsOn\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ threadMain()\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Events::Generic\ \textcolor{keyword}{event}\ =\ \mbox{\hyperlink{classzct_1_1EventThread_a2607651cb659eb7d0c1beb81a7690293}{zct::EventThread<Events::Generic>::waitForEvent}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Events::Generic\ \textcolor{keyword}{event}\ =\ m\_eventThread.\mbox{\hyperlink{classzct_1_1EventThread_a2607651cb659eb7d0c1beb81a7690293}{waitForEvent}}();}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<Events::MyTimerExpiry>(event))\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_INF(\textcolor{stringliteral}{"{}Toggling\ LED\ to\ \%d."{}},\ !m\_ledIsOn);}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_ledIsOn\ =\ !m\_ledIsOn;}

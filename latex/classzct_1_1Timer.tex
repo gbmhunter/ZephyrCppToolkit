@@ -12,7 +12,7 @@ A timer that can be used to fire events at a regular interval in an event driven
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758}{Timer}} (const Event\+Type \&event)
+\mbox{\hyperlink{classzct_1_1Timer_a9bac1213595d2ae6d3f2373eb5787ec7}{Timer}} (const char \texorpdfstring{$\ast$}{*}name, const Event\+Type \&event)
 \item 
 void \mbox{\hyperlink{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be}{start}} (int64\+\_\+t period\+\_\+ms)
 \item 
@@ -46,6 +46,8 @@ bool \mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\+\_
 Event\+Type \mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}{m\+\_\+event}}
 \item 
 bool \mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\+\_\+is\+Registered}} = false
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1Timer_addd731a2ad0221858a2e28c37e6e7776}{m\+\_\+name}}
 \end{DoxyCompactItemize}
 
 
@@ -59,12 +61,12 @@ This class is designed to be used with the \doxylink{classzct_1_1TimerManager}{z
 This class is also designed to be used with the zct\+::\+Event\+Threadv2 class. The event thread can block until either a timer expires or an external event is received. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758}\label{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758} 
+\Hypertarget{classzct_1_1Timer_a9bac1213595d2ae6d3f2373eb5787ec7}\label{classzct_1_1Timer_a9bac1213595d2ae6d3f2373eb5787ec7} 
 \index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!Timer@{Timer}}
 \index{Timer@{Timer}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
 \doxysubsubsection{\texorpdfstring{Timer()}{Timer()}}
 {\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
-\mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::\+Timer (\begin{DoxyParamCaption}\item[{const Event\+Type \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::\+Timer (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{const Event\+Type \&}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Create a new timer and associate it with an event.
 
@@ -210,6 +212,13 @@ bool \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::
 \doxysubsubsection{\texorpdfstring{m\_isRunning}{m\_isRunning}}
 {\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
 bool \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::m\+\_\+is\+Running = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1Timer_addd731a2ad0221858a2e28c37e6e7776}\label{classzct_1_1Timer_addd731a2ad0221858a2e28c37e6e7776} 
+\index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+const char\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1Timer}{zct\+::\+Timer}}$<$ Event\+Type $>$\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
 
 \Hypertarget{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}\label{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205} 
 \index{zct::Timer$<$ EventType $>$@{zct::Timer$<$ EventType $>$}!nextExpiryTime\_ticks@{nextExpiryTime\_ticks}}

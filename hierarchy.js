@@ -23,5 +23,6 @@ var hierarchy =
     [ "zct::WatchdogMock::TimeoutChannel", "structzct_1_1WatchdogMock_1_1TimeoutChannel.html", null ],
     [ "zct::Timer< EventType >", "classzct_1_1Timer.html", null ],
     [ "zct::TimerManager< EventType >::TimerExpiryInfo", "structzct_1_1TimerManager_1_1TimerExpiryInfo.html", null ],
-    [ "zct::TimerManager< EventType >", "classzct_1_1TimerManager.html", null ]
+    [ "zct::TimerManager< EventType >", "classzct_1_1TimerManager.html", null ],
+    [ "zct::Util", "classzct_1_1Util.html", null ]
 ];

@@ -34,78 +34,80 @@
 \DoxyCodeLine{00039\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1Timer}{Timer}}\ \{}
 \DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer_a6c64f6c722af612556843d92b6c29758}{Timer}}(\textcolor{keyword}{const}\ EventType\&\ event)\ :}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}{m\_event}}(event)}
-\DoxyCodeLine{00052\ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \}}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be}{start}}(int64\_t\ period\_ms)\ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ ms\ to\ ticks}}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be}{start}}(period\_ms,\ period\_ms);}
-\DoxyCodeLine{00064\ \ \ \ \ \}}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_ad0d94d71b5c4df5e07732b96dfd30cfa}{start}}(int64\_t\ startDuration\_ms,\ int64\_t\ period\_ms)\ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(zct\_Timer,\ \mbox{\hyperlink{Timer_8hpp_a504ee1dc3245c84d1c2195a1a4be171c}{ZCT\_TIMER\_LOG\_LEVEL}});}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \_\_ASSERT\_NO\_MSG(startDuration\_ms\ >=\ 0);\ \textcolor{comment}{//\ Start\ time\ can\ be\ 0,\ which\ means\ the\ timer\ will\ fire\ immediately.\ Can't\ be\ negative!}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \_\_ASSERT\_NO\_MSG(period\_ms\ >=\ -\/1);\ \textcolor{comment}{//\ Period\ can\ be\ -\/1,\ which\ means\ the\ timer\ will\ not\ repeat}}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\_isRegistered}})\ \{}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_WRN(\textcolor{stringliteral}{"{}Timer\ \%p\ is\ not\ registered\ with\ a\ timer\ manager.\ Expiry\ events\ will\ not\ be\ handled."{}},\ \textcolor{keyword}{this});}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{startTime\_ticks}}\ =\ k\_uptime\_ticks();}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ ceil\ and\ not\ floor\ to\ guarantee\ a\ minimum\ delay}}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}}\ =\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{startTime\_ticks}}\ +\ k\_ms\_to\_ticks\_ceil64(startDuration\_ms);}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (period\_ms\ ==\ -\/1)\ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ =\ -\/1;}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ =\ k\_ms\_to\_ticks\_ceil64(period\_ms);}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00090\ \ \ \ \ \}}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_aaf970a68d8eeac56c760313eced4a721}{stop}}()\ \{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ =\ -\/1;}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{startTime\_ticks}}\ =\ 0;}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}}\ =\ 0;}
-\DoxyCodeLine{00104\ \ \ \ \ \}}
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1Timer_af9d7393aec6f58883189dc57c8e9f6c2}{isRunning}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}};\ \}}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_abaf35854363b0076f582174780b92b95}{updateAfterExpiry}}()\ \{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(zct\_Timer,\ \mbox{\hyperlink{Timer_8hpp_a504ee1dc3245c84d1c2195a1a4be171c}{ZCT\_TIMER\_LOG\_LEVEL}});}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ ==\ -\/1)}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Timer\ was\ one-\/shot,\ so\ stop\ it}}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ expiry\ time\ based\ on\ the\ period}}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Updating\ timer\ expiry\ time.\ Period:\ \%lld.\ Next\ expiry\ time\ before\ update:\ \%lld."{}},\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}},\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}});}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}}\ +=\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}};}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Next\ expiry\ time\ after\ update:\ \%lld."{}},\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}});}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00134\ \ \ \ \ \}}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{const}\ EventType\&\ \mbox{\hyperlink{classzct_1_1Timer_aba740daadf6150547a8704a57d5bcd92}{getEvent}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}{m\_event}};\ \}}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00147\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1Timer_a0ac28656c9426876c597728f66a2cbdc}{getNextExpiryTimeTicks}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}};\ \}}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_a1ce3b5751d0e93503233d23106da5f0d}{setIsRegistered}}(\textcolor{keywordtype}{bool}\ isRegistered)\ \{\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\_isRegistered}}\ =\ isRegistered;\ \}}
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1Timer_ad43282ff100f909aa76e315b052143b0}{getIsRegistered}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\_isRegistered}};\ \}}
-\DoxyCodeLine{00163\ }
-\DoxyCodeLine{00164\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00165\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ =\ 0;}
-\DoxyCodeLine{00166\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{startTime\_ticks}}\ =\ 0;}
-\DoxyCodeLine{00167\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}}\ =\ 0;}
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00169\ \ \ \ \ EventType\ \mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}{m\_event}};}
-\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\_isRegistered}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00171\ \};}
-\DoxyCodeLine{00172\ }
-\DoxyCodeLine{00173\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer_a9bac1213595d2ae6d3f2373eb5787ec7}{Timer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keyword}{const}\ EventType\&\ event)\ :}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}{m\_event}}(event),}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer_addd731a2ad0221858a2e28c37e6e7776}{m\_name}}(name)}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be}{start}}(int64\_t\ period\_ms)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ ms\ to\ ticks}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer_ac2642b147eeb4ebbe126ac70f10ac7be}{start}}(period\_ms,\ period\_ms);}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_ad0d94d71b5c4df5e07732b96dfd30cfa}{start}}(int64\_t\ startDuration\_ms,\ int64\_t\ period\_ms)\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(zct\_Timer,\ \mbox{\hyperlink{Timer_8hpp_a504ee1dc3245c84d1c2195a1a4be171c}{ZCT\_TIMER\_LOG\_LEVEL}});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \_\_ASSERT\_NO\_MSG(startDuration\_ms\ >=\ 0);\ \textcolor{comment}{//\ Start\ time\ can\ be\ 0,\ which\ means\ the\ timer\ will\ fire\ immediately.\ Can't\ be\ negative!}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \_\_ASSERT\_NO\_MSG(period\_ms\ >=\ -\/1);\ \textcolor{comment}{//\ Period\ can\ be\ -\/1,\ which\ means\ the\ timer\ will\ not\ repeat}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>\mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\_isRegistered}})\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_WRN(\textcolor{stringliteral}{"{}Timer\ \(\backslash\)"{}\%s\(\backslash\)"{}\ is\ not\ registered\ with\ a\ timer\ manager.\ Expiry\ events\ will\ not\ be\ handled."{}},\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_addd731a2ad0221858a2e28c37e6e7776}{m\_name}});}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{startTime\_ticks}}\ =\ k\_uptime\_ticks();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ ceil\ and\ not\ floor\ to\ guarantee\ a\ minimum\ delay}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}}\ =\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{startTime\_ticks}}\ +\ k\_ms\_to\_ticks\_ceil64(startDuration\_ms);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (period\_ms\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ =\ -\/1;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ =\ k\_ms\_to\_ticks\_ceil64(period\_ms);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_aaf970a68d8eeac56c760313eced4a721}{stop}}()\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ =\ -\/1;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{startTime\_ticks}}\ =\ 0;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}}\ =\ 0;}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1Timer_af9d7393aec6f58883189dc57c8e9f6c2}{isRunning}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}};\ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_abaf35854363b0076f582174780b92b95}{updateAfterExpiry}}()\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(zct\_Timer,\ \mbox{\hyperlink{Timer_8hpp_a504ee1dc3245c84d1c2195a1a4be171c}{ZCT\_TIMER\_LOG\_LEVEL}});}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ ==\ -\/1)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Timer\ was\ one-\/shot,\ so\ stop\ it}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ expiry\ time\ based\ on\ the\ period}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Updating\ timer\ expiry\ time.\ Period:\ \%lld.\ Next\ expiry\ time\ before\ update:\ \%lld."{}},\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}},\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}});}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}}\ +=\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Next\ expiry\ time\ after\ update:\ \%lld."{}},\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}});}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{const}\ EventType\&\ \mbox{\hyperlink{classzct_1_1Timer_aba740daadf6150547a8704a57d5bcd92}{getEvent}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}{m\_event}};\ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00148\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1Timer_a0ac28656c9426876c597728f66a2cbdc}{getNextExpiryTimeTicks}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}};\ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1Timer_a1ce3b5751d0e93503233d23106da5f0d}{setIsRegistered}}(\textcolor{keywordtype}{bool}\ isRegistered)\ \{\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\_isRegistered}}\ =\ isRegistered;\ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1Timer_ad43282ff100f909aa76e315b052143b0}{getIsRegistered}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\_isRegistered}};\ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00166\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1Timer_a95bb9224c4269cf011d4f656f1083a2d}{period\_ticks}}\ =\ 0;}
+\DoxyCodeLine{00167\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1Timer_a2793f618e9ee0c2efa1cd7a70c2dc1a5}{startTime\_ticks}}\ =\ 0;}
+\DoxyCodeLine{00168\ \ \ \ \ int64\_t\ \mbox{\hyperlink{classzct_1_1Timer_a8092783d4bdfb93d721012228d41d205}{nextExpiryTime\_ticks}}\ =\ 0;}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1Timer_a0cc2340d053d72a2c764bc287f5e463c}{m\_isRunning}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00170\ \ \ \ \ EventType\ \mbox{\hyperlink{classzct_1_1Timer_a8729cce9b0c456d3e14eef3d9333ab75}{m\_event}};}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1Timer_a9d680964ebe923a190efa66345f19071}{m\_isRegistered}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classzct_1_1Timer_addd731a2ad0221858a2e28c37e6e7776}{m\_name}};}
+\DoxyCodeLine{00173\ \};}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \}\ \textcolor{comment}{//\ namespace\ zct}}
 
 \end{DoxyCode}
