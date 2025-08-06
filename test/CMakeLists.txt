@@ -14,7 +14,8 @@ target_sources(
     app
     PRIVATE
     main.cpp
-    EventThreadTests.cpp
+    EventThreadLedTests.cpp
+    EventThreadMultipleTimersTests.cpp
     GpioTests.cpp
     MutexTests.cpp
     WatchdogTests.cpp

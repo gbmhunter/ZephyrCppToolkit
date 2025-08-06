@@ -11,10 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added ADC peripheral classes.
 - Added Watchdog (hardware watchdog) peripheral classes.
+- Added unit tests for the event thread and timer manager classes.
+- Added name parameter to Timer constructor for logging/debugging purposes.
 
 ### Fixed
 
 - Fixed bug in EventThread::waitForEvent() where multiple calls to `getNextExpiringTimer()` where sometimes occuring when they should not have been.
+- Fixed bug where `getNextExpiringTimer()` was updating the timers next expiry time when it should not have been.
 
 ### Changed
 

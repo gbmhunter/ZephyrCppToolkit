@@ -120,7 +120,7 @@ public:
                 LOG_DBG("Timer expired.");
                 // Need to update the timer now that we have detected it has expired.
                 // This will either stop the timer if it is a one-shot, or update the next expiry time
-                expiredTimer->updateAfterExpiry();
+                // expiredTimer->updateAfterExpiry();
             } else {
                 durationToWaitUs = k_ticks_to_us_ceil64(expiredTimer->getNextExpiryTimeTicks() - uptime_ticks);
                 LOG_DBG("Time to wait in us: %llu.", durationToWaitUs);

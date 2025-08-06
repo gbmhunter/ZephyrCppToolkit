@@ -47,8 +47,9 @@ public:
      * \param event The event to fire when the timer expires. This is copied into the timer, so the lifetime of the
      *              event does not need to be longer than the timer.
      */
-    Timer(const EventType& event) :
-        m_event(event)
+    Timer(const char* name, const EventType& event) :
+        m_event(event),
+        m_name(name)
     {
     }
 
@@ -75,7 +76,7 @@ public:
         __ASSERT_NO_MSG(period_ms >= -1); // Period can be -1, which means the timer will not repeat
         
         if (!this->m_isRegistered) {
-            LOG_WRN("Timer %p is not registered with a timer manager. Expiry events will not be handled.", this);
+            LOG_WRN("Timer \"%s\" is not registered with a timer manager. Expiry events will not be handled.", this->m_name);
         }
 
         this->startTime_ticks = k_uptime_ticks();
@@ -168,6 +169,7 @@ protected:
     bool m_isRunning = false;
     EventType m_event;
     bool m_isRegistered = false;
+    const char* m_name;
 };
 
 } // namespace zct

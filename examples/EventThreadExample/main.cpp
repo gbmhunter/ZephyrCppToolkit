@@ -41,7 +41,7 @@ public:
             7,
             EVENT_QUEUE_NUM_ITEMS
         ),
-        m_flashingTimer(Events::MyTimerExpiry())
+        m_flashingTimer("FlashingTimer", Events::MyTimerExpiry())
     {
         // Register timers
         m_timerManager.registerTimer(m_flashingTimer);

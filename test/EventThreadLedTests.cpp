@@ -7,9 +7,9 @@
 #include "ZephyrCppToolkit/Events/Timer.hpp"
 #include "ZephyrCppToolkit/Core/Mutex.hpp"
 
-LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(EventThreadLedTests, LOG_LEVEL_DBG);
 
-ZTEST_SUITE(EventThreadTests, NULL, NULL, NULL, NULL, NULL);
+ZTEST_SUITE(EventThreadLedTests, NULL, NULL, NULL, NULL, NULL);
 
 //================================================================================================//
 // EVENTS
@@ -39,7 +39,7 @@ class Led : public zct::EventThread<MyEvents::Generic> {
                 7,
                 EVENT_QUEUE_NUM_ITEMS
             ),
-            m_flashingTimer(MyEvents::MyTimerTimeoutEvent())
+            m_flashingTimer("FlashingTimer", MyEvents::MyTimerTimeoutEvent())
         {
             // Register timers
             m_timerManager.registerTimer(m_flashingTimer);
@@ -88,7 +88,7 @@ class Led : public zct::EventThread<MyEvents::Generic> {
         }
 };
 
-ZTEST(EventThreadTests, testEventThreadCreate)
+ZTEST(EventThreadLedTests, testEventThreadCreate)
 {
     Led eventThread;
     zassert_true(true, "Event thread created");

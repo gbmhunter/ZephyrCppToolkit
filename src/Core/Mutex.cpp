@@ -2,7 +2,7 @@
 
 #include "ZephyrCppToolkit/Core/Mutex.hpp"
 
-LOG_MODULE_REGISTER(zct_Mutex, LOG_LEVEL_DBG);
+LOG_MODULE_REGISTER(zct_Mutex, LOG_LEVEL_WRN);
 
 namespace zct {
 
