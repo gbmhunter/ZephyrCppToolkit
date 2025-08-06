@@ -87,7 +87,10 @@ public:
      * Iterates over all registered timers and returns the expiry time of the timer that expires next.
      * If no timer is found, the 'timer' member of the returned struct will be nullptr. timer is guaranteed to
      * not be nullptr if durationToWaitUs is not UINT64_MAX.
-     * @return A struct containing the timer that expires next and the duration to wait until that timer expires.
+     * 
+     * This function does not update the timer's next expiry time if it finds an expired timer. It is up to the caller to do this when it decides that the timer expiry has been "handled".
+     * 
+     * \return A struct containing the timer that expires next and the duration to wait until that timer expires.
      */
     TimerExpiryInfo getNextExpiringTimer() {
         LOG_MODULE_DECLARE(TimerManager, ZCT_TIMER_MANAGER_LOG_LEVEL);

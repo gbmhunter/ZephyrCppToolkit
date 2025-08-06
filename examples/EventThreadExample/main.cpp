@@ -30,10 +30,10 @@ typedef std::variant<MyTimerExpiry, LedFlashing, Exit> Generic;
 // EVENT THREAD
 //================================================================================================//
 
-class Led : public zct::EventThread<Events::Generic> {
+class Led {
 public:
     Led() :
-        zct::EventThread<Events::Generic>(
+        m_eventThread(
             "Led",
             m_threadStack,
             THREAD_STACK_SIZE,
@@ -44,13 +44,13 @@ public:
         m_flashingTimer("FlashingTimer", Events::MyTimerExpiry())
     {
         // Register timers
-        m_timerManager.registerTimer(m_flashingTimer);
+        m_eventThread.timerManager().registerTimer(m_flashingTimer);
     }
 
     ~Led() {
         // Send the exit event to the event thread
         Events::Exit exitEvent;
-        sendEvent(exitEvent);
+        m_eventThread.sendEvent(exitEvent);
     }
 
     /**
@@ -62,19 +62,20 @@ public:
      */
     void flash(uint32_t flashRateMs) {
         Events::LedFlashing ledFlashingEvent = { .flashRateMs = flashRateMs };
-        sendEvent(ledFlashingEvent);
+        m_eventThread.sendEvent(ledFlashingEvent);
     }
 
 private:
     static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
     static constexpr size_t THREAD_STACK_SIZE = 512;
     K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);
+    zct::EventThread<Events::Generic> m_eventThread;
     zct::Timer<Events::Generic> m_flashingTimer;
     bool m_ledIsOn = false;
 
     void threadMain() {
         while (1) {
-            Events::Generic event = zct::EventThread<Events::Generic>::waitForEvent();
+            Events::Generic event = m_eventThread.waitForEvent();
             if (std::holds_alternative<Events::MyTimerExpiry>(event)) {
                 LOG_INF("Toggling LED to %d.", !m_ledIsOn);
                 m_ledIsOn = !m_ledIsOn;
