@@ -24,19 +24,22 @@ Collaboration diagram for zct\+::Event\+Thread\texorpdfstring{$<$}{<} Event\+Typ
 \item 
 \mbox{\hyperlink{classzct_1_1EventThread_a4751223fb4a4b628988433c0f415892f}{Event\+Thread}} (const char \texorpdfstring{$\ast$}{*}name, k\+\_\+thread\+\_\+stack\+\_\+t \texorpdfstring{$\ast$}{*}thread\+Stack, size\+\_\+t thread\+Stack\+Size, int thread\+Priority, size\+\_\+t event\+Queue\+Buffer\+Num\+Items)
 \item 
-void \mbox{\hyperlink{classzct_1_1EventThread_aab7247827f4989207fc613d8b4495219}{start}} ()
-\item 
 \mbox{\hyperlink{classzct_1_1EventThread_a904626047be03e08a6563cdafb3582c0}{\texorpdfstring{$\sim$}{\string~}\+Event\+Thread}} ()
 \item 
-void \mbox{\hyperlink{classzct_1_1EventThread_a466b293455fda762c63357549025d8af}{on\+External\+Event}} (std\+::function$<$ void(const Event\+Type \&)$>$ callback)
+void \mbox{\hyperlink{classzct_1_1EventThread_aab7247827f4989207fc613d8b4495219}{start}} ()
 \item 
-void \mbox{\hyperlink{classzct_1_1EventThread_a7edd0a4e156e57bf8f3c6832ae3bde68}{run\+Event\+Loop}} ()
+void \mbox{\hyperlink{classzct_1_1EventThread_a466b293455fda762c63357549025d8af}{on\+External\+Event}} (std\+::function$<$ void(const Event\+Type \&)$>$ callback)
 \item 
 void \mbox{\hyperlink{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73}{send\+Event}} (const Event\+Type \&event)
 \item 
 \mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}} \& \mbox{\hyperlink{classzct_1_1EventThread_aa5461d18e52c82257da77a557f173e24}{timer\+Manager}} ()
 \item 
 void \mbox{\hyperlink{classzct_1_1EventThread_a491f2b0619e3db842d9f40f1b268f892}{exit\+Event\+Loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classzct_1_1EventThread_a7edd0a4e156e57bf8f3c6832ae3bde68}{run\+Event\+Loop}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -104,8 +107,10 @@ Below is an example of how to use this class.
 \DoxyCodeLine{\ \ \ \ uint32\_t\ flashRateMs;}
 \DoxyCodeLine{\};}
 \DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }TimerExpired\ \{\};}
+\DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{comment}{//\ Create\ a\ generic\ event\ type\ that\ can\ be\ anyone\ of\ the\ specific\ events\ above.}}
-\DoxyCodeLine{\textcolor{keyword}{typedef}\ std::variant<LedFlashing,\ Exit>\ Generic;}
+\DoxyCodeLine{\textcolor{keyword}{typedef}\ std::variant<LedFlashing,\ Exit,\ TimerExpired>\ Generic;}
 \DoxyCodeLine{}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
@@ -123,7 +128,10 @@ Below is an example of how to use this class.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 7,}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ EVENT\_QUEUE\_NUM\_ITEMS}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ ),}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_flashingTimer(\textcolor{stringliteral}{"{}FlashingTimer"{}},\ [this]()\ \{\ onFlashingTimerCallback();\ \})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_flashingTimer(\textcolor{stringliteral}{"{}FlashingTimer"{}},\ [this]()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ Events::TimerExpired\ timerExpiredEvent;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ handleEvent(timerExpiredEvent);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \})}
 \DoxyCodeLine{\ \ \ \ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Register\ timers}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ m\_eventThread.timerManager().registerTimer(m\_flashingTimer);}
@@ -133,6 +141,7 @@ Below is an example of how to use this class.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ handleEvent(event);}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ the\ event\ loop\ (it\ runs\ it\ it's\ own\ thread)}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ m\_eventThread.start();}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
@@ -144,6 +153,9 @@ Below is an example of how to use this class.
 \DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ flash(uint32\_t\ flashRateMs)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ Events::LedFlashing\ ledFlashingEvent\ =\ \{\ .flashRateMs\ =\ flashRateMs\ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ is\ how\ use\ send\ "{}external"{}\ events\ (i.e.\ not\ timer\ events)\ to}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ event\ thread.\ The\ event\ thread\ will\ call\ handleEvent()\ when\ it}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ receives\ this\ event.}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ m\_eventThread.sendEvent(ledFlashingEvent);}
 \DoxyCodeLine{\ \ \ \ \}}
 \DoxyCodeLine{}
@@ -155,11 +167,6 @@ Below is an example of how to use this class.
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classzct_1_1Timer}{zct::Timer}}\ m\_flashingTimer;}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ m\_ledIsOn\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ onFlashingTimerCallback()\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ LOG\_INF(\textcolor{stringliteral}{"{}Toggling\ LED\ to\ \%d."{}},\ !m\_ledIsOn);}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ m\_ledIsOn\ =\ !m\_ledIsOn;}
-\DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{}
 \DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ handleEvent(\textcolor{keyword}{const}\ Events::Generic\&\ event)\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<Events::LedFlashing>(event))\ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ the\ timer\ to\ flash\ the\ LED}}
@@ -167,10 +174,14 @@ Below is an example of how to use this class.
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ LOG\_INF(\textcolor{stringliteral}{"{}Starting\ flashing.\ Turning\ LED\ on..."{}});}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ m\_ledIsOn\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::holds\_alternative<Events::Exit>(event))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ will\ cause\ the\ event\ loop\ to\ end\ (and\ the\ thread\ to\ exit)}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ once\ we\ return\ from\ handleEvent().}}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ m\_eventThread.\mbox{\hyperlink{classzct_1_1EventThread_a491f2b0619e3db842d9f40f1b268f892}{exitEventLoop}}();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::holds\_alternative<Events::TimerExpired>(event))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ LOG\_INF(\textcolor{stringliteral}{"{}Toggling\ LED\ to\ \%d."{}},\ !m\_ledIsOn);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ m\_ledIsOn\ =\ !m\_ledIsOn;}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\ \ \ \ \}}
-\DoxyCodeLine{}
 \DoxyCodeLine{\};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
@@ -244,6 +255,10 @@ void \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event
 
 Set the callback function to be called when external events are received.
 
+The callback is executed in the context of the event thread.
+
+This function should be used to setup the external event callback before \doxylink{classzct_1_1EventThread_aab7247827f4989207fc613d8b4495219}{start()} is called to start the event loop.
+
 
 \begin{DoxyParams}{Parameters}
 {\em callback} & The callback function to call when an external event is received. The callback will be passed the received event. \\
@@ -254,7 +269,7 @@ Set the callback function to be called when external events are received.
 \index{runEventLoop@{runEventLoop}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
 \doxysubsubsection{\texorpdfstring{runEventLoop()}{runEventLoop()}}
 {\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
-void \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::run\+Event\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::run\+Event\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
 
 Start the event loop. This function never returns and should be called from the thread function that is passed in to the constructor.
 
