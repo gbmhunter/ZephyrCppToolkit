@@ -130,7 +130,6 @@ class TestClass {
                 LOG_DBG("Timer3 callback. Count: %d.", m_timer3Count);
             }
         }
-
 };
 
 ZTEST(EventThreadMultipleTimersTests, testEventThreadCreate)

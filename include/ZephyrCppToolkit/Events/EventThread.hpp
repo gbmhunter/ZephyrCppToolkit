@@ -72,6 +72,19 @@ public:
     };
 
     /**
+     * Destroy the event thread. This will block until the thread has exited.
+     * 
+     * If you want this function to return, make sure the event loop exits.
+     * The best way to do this is to call exitEventLoop() from a timer callback
+     * or external event handler.
+     */
+    ~EventThread() {
+        LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
+        LOG_DBG("%s() called.", __FUNCTION__);
+        k_thread_join(&m_thread, K_FOREVER);
+    }
+
+    /**
      * Start the event thread. This creates and starts the Zephyr thread which will begin
      * running the event loop.
      * 
@@ -99,26 +112,75 @@ public:
     }
 
     /**
-     * Destroy the event thread. This will block until the thread has exited.
-     * 
-     * If you want this function to return, make sure the event loop exits.
-     * The best way to do this is to call exitEventLoop() from a timer callback
-     * or external event handler.
-     */
-    ~EventThread() {
-        LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
-        LOG_DBG("%s() called.", __FUNCTION__);
-        k_thread_join(&m_thread, K_FOREVER);
-    }
-
-    /**
      * Set the callback function to be called when external events are received.
+     * 
+     * The callback is executed in the context of the event thread.
+     * 
+     * This function should be used to setup the external event callback before start() is called
+     * to start the event loop.
      * 
      * \param callback The callback function to call when an external event is received.
      *                 The callback will be passed the received event.
      */
     void onExternalEvent(std::function<void(const EventType&)> callback) {
         m_externalEventCallback = callback;
+    }
+
+    /**
+     * Send an event to this event thread. This can be called from any other thread to send an
+     * event to this event thread.
+     * 
+     * \note This function is thread safe.
+     * \param event The event to send. It is copied into the event queue so it's lifetime only needs to be as long as this function call.
+     */
+    void sendEvent(const EventType& event) {
+        k_msgq_put(&m_threadMsgQueue, &event, K_NO_WAIT);
+    }
+
+    /**
+     * Call to get the timer manager for this event thread. This is useful when you want
+     * to create timers and then register them with the event thread.
+     * 
+     * Typically you would call:
+     * 
+     * \code
+     * myEventThread.timerManager().registerTimer(myTimer);
+     * \endcode
+     * 
+     * \return A reference to the timer manager for this event thread.
+     */
+    TimerManager& timerManager() {
+        return m_timerManager;
+    }
+
+    /**
+     * Exit the event loop. This will cause runEventLoop() to return.
+     * This function must be called from the event thread context (i.e. from a timer
+     * callback or from an external event handler).
+     * 
+     * This will make the event loop return from runEventLoop() as soon as the timer callback
+     * or external event handler returns.
+     * 
+     * Use this in tests to cleanly exit from the event loop and it's corresponding thread.
+     */
+    void exitEventLoop() {
+        m_exitEventLoop = true;
+    }
+
+protected:
+
+    /** The function needed by pass to Zephyr's thread API */
+    static void staticThreadFunction(void* arg1, void* arg2, void* arg3)
+    {
+        LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
+        ARG_UNUSED(arg2);
+        ARG_UNUSED(arg3);
+
+        // First passed in argument is the instance of the class
+        EventThread* obj = static_cast<EventThread*>(arg1);
+        // Run the event loop. This should not return unless the user calls exitEventLoop().
+        obj->runEventLoop();
+        // If we get here, the user decided to exit the thread
     }
 
     /**
@@ -197,63 +259,6 @@ public:
             __ASSERT(false, "Got unexpected return code from queue: %d.", queueRc);
         }
         } // End of while (true) loop
-    }
-
-    /**
-     * Send an event to this event thread. This can be called from any other thread to send an
-     * event to this event thread.
-     * 
-     * \note This function is thread safe.
-     * \param event The event to send. It is copied into the event queue so it's lifetime only needs to be as long as this function call.
-     */
-    void sendEvent(const EventType& event) {
-        k_msgq_put(&m_threadMsgQueue, &event, K_NO_WAIT);
-    }
-
-    /**
-     * Call to get the timer manager for this event thread. This is useful when you want
-     * to create timers and then register them with the event thread.
-     * 
-     * Typically you would call:
-     * 
-     * \code
-     * myEventThread.timerManager().registerTimer(myTimer);
-     * \endcode
-     * 
-     * \return A reference to the timer manager for this event thread.
-     */
-    TimerManager& timerManager() {
-        return m_timerManager;
-    }
-
-    /**
-     * Exit the event loop. This will cause runEventLoop() to return.
-     * This function must be called from the event thread context (i.e. from a timer
-     * callback or from an external event handler).
-     * 
-     * This will make the event loop return from runEventLoop() as soon as the timer callback
-     * or external event handler returns.
-     * 
-     * Use this in tests to cleanly exit from the event loop and it's corresponding thread.
-     */
-    void exitEventLoop() {
-        m_exitEventLoop = true;
-    }
-
-protected:
-
-    /** The function needed by pass to Zephyr's thread API */
-    static void staticThreadFunction(void* arg1, void* arg2, void* arg3)
-    {
-        LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
-        ARG_UNUSED(arg2);
-        ARG_UNUSED(arg3);
-
-        // First passed in argument is the instance of the class
-        EventThread* obj = static_cast<EventThread*>(arg1);
-        // Run the event loop. This should not return unless the user calls exitEventLoop().
-        obj->runEventLoop();
-        // If we get here, the user decided to exit the thread
     }
 
     const char* m_name = nullptr;

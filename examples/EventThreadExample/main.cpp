@@ -19,8 +19,10 @@ struct LedFlashing {
     uint32_t flashRateMs;
 };
 
+struct TimerExpired {};
+
 // Create a generic event type that can be anyone of the specific events above.
-typedef std::variant<LedFlashing, Exit> Generic;
+typedef std::variant<LedFlashing, Exit, TimerExpired> Generic;
 
 }
 
@@ -38,7 +40,10 @@ public:
             7,
             EVENT_QUEUE_NUM_ITEMS
         ),
-        m_flashingTimer("FlashingTimer", [this]() { onFlashingTimerCallback(); })
+        m_flashingTimer("FlashingTimer", [this]() {
+            Events::TimerExpired timerExpiredEvent;
+            handleEvent(timerExpiredEvent);
+        })
     {
         // Register timers
         m_eventThread.timerManager().registerTimer(m_flashingTimer);
@@ -48,6 +53,7 @@ public:
             handleEvent(event);
         });
         
+        // Start the event loop (it runs it it's own thread)
         m_eventThread.start();
     }
 
@@ -66,6 +72,9 @@ public:
      */
     void flash(uint32_t flashRateMs) {
         Events::LedFlashing ledFlashingEvent = { .flashRateMs = flashRateMs };
+        // This is how use send "external" events (i.e. not timer events) to
+        // the event thread. The event thread will call handleEvent() when it
+        // receives this event.
         m_eventThread.sendEvent(ledFlashingEvent);
     }
 
@@ -77,11 +86,6 @@ private:
     zct::Timer m_flashingTimer;
     bool m_ledIsOn = false;
 
-    void onFlashingTimerCallback() {
-        LOG_INF("Toggling LED to %d.", !m_ledIsOn);
-        m_ledIsOn = !m_ledIsOn;
-    }
-
     void handleEvent(const Events::Generic& event) {
         if (std::holds_alternative<Events::LedFlashing>(event)) {
             // Start the timer to flash the LED
@@ -89,10 +93,14 @@ private:
             LOG_INF("Starting flashing. Turning LED on...");
             m_ledIsOn = true;
         } else if (std::holds_alternative<Events::Exit>(event)) {
+            // This will cause the event loop to end (and the thread to exit)
+            // once we return from handleEvent().
             m_eventThread.exitEventLoop();
+        } else if (std::holds_alternative<Events::TimerExpired>(event)) {
+            LOG_INF("Toggling LED to %d.", !m_ledIsOn);
+            m_ledIsOn = !m_ledIsOn;
         }
     }
-
 };
 
 int main() {
