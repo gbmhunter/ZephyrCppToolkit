@@ -60,8 +60,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AdcMock_8cpp.html",
-"classzct_1_1IGpio.html#af8c2b6d47d04aa64950a2b4467653ff2",
-"globals_func.html"
+"classzct_1_1IGpio.html#af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754",
+"functions_func.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
