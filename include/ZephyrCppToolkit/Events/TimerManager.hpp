@@ -32,7 +32,6 @@
 
 namespace zct {
 
-template <typename EventType>
 class TimerManager {
 public:
 
@@ -47,7 +46,7 @@ public:
     TimerManager(uint32_t maxNumTimers) {
         LOG_MODULE_DECLARE(TimerManager, ZCT_TIMER_MANAGER_LOG_LEVEL);
         LOG_DBG("TimerManager constructor called.");
-        m_timers = new Timer<EventType>*[maxNumTimers];
+        m_timers = new Timer*[maxNumTimers];
         for (uint32_t i = 0; i < maxNumTimers; i++) {
             m_timers[i] = nullptr;
         }
@@ -62,11 +61,11 @@ public:
 
     /** Used as a return type for getNextExpiringTimer(). */
     struct TimerExpiryInfo {
-        Timer<EventType>* m_timer = nullptr;
+        Timer* m_timer = nullptr;
         uint64_t m_durationToWaitUs = 0;
 
         // Explicit constructor
-        TimerExpiryInfo(Timer<EventType>* timer, uint64_t durationToWaitUs) : m_timer(timer), m_durationToWaitUs(durationToWaitUs) {}
+        TimerExpiryInfo(Timer* timer, uint64_t durationToWaitUs) : m_timer(timer), m_durationToWaitUs(durationToWaitUs) {}
     };
 
 
@@ -74,7 +73,7 @@ public:
      * Registers a timer with the timer manager. The provided timer needs to exist for the duration of the registration.
      * @param timer The timer to register.
      */
-    void registerTimer(Timer<EventType>& timer) {
+    void registerTimer(Timer& timer) {
         __ASSERT(m_numTimers < m_maxNumTimers, "Max number of timers of %u reached.", m_maxNumTimers);
         m_timers[m_numTimers] = &timer;
         m_numTimers++;
@@ -97,11 +96,11 @@ public:
         LOG_DBG("getNextExpiringTimer() called. this: %p, m_numTimers: %u.", this, m_numTimers);
 
         // Set output to null in case no timer expired
-        Timer<EventType>* expiredTimer = nullptr;
+        Timer* expiredTimer = nullptr;
         uint64_t durationToWaitUs = 0;
         // Iterate through all registered timers, and find the one that is expiring next (if any)
         for(uint32_t i = 0; i < this->m_numTimers; i++) {
-            Timer<EventType> * timer = this->m_timers[i];
+            Timer* timer = this->m_timers[i];
             if (timer->isRunning()) {
                 if (expiredTimer == nullptr || timer->getNextExpiryTimeTicks() < expiredTimer->getNextExpiryTimeTicks()) {
                     // LOG_DBG("Setting expired timer to %p.", timer);
@@ -139,7 +138,7 @@ public:
 
 
 protected:
-    Timer<EventType> ** m_timers;
+    Timer** m_timers;
     uint32_t m_numTimers = 0;
     uint32_t m_maxNumTimers;
 };

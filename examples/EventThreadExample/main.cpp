@@ -13,8 +13,6 @@ LOG_MODULE_REGISTER(EventThreadTests, LOG_LEVEL_DBG);
 
 namespace Events {
 
-struct MyTimerExpiry {};
-
 struct Exit {};
 
 struct LedFlashing {
@@ -22,7 +20,7 @@ struct LedFlashing {
 };
 
 // Create a generic event type that can be anyone of the specific events above.
-typedef std::variant<MyTimerExpiry, LedFlashing, Exit> Generic;
+typedef std::variant<LedFlashing, Exit> Generic;
 
 }
 
@@ -41,7 +39,7 @@ public:
             7,
             EVENT_QUEUE_NUM_ITEMS
         ),
-        m_flashingTimer("FlashingTimer", Events::MyTimerExpiry())
+        m_flashingTimer("FlashingTimer", [this]() { onFlashingTimerCallback(); })
     {
         // Register timers
         m_eventThread.timerManager().registerTimer(m_flashingTimer);
@@ -70,24 +68,33 @@ private:
     static constexpr size_t THREAD_STACK_SIZE = 512;
     K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);
     zct::EventThread<Events::Generic> m_eventThread;
-    zct::Timer<Events::Generic> m_flashingTimer;
+    zct::Timer m_flashingTimer;
     bool m_ledIsOn = false;
 
-    void threadMain() {
-        while (1) {
-            Events::Generic event = m_eventThread.waitForEvent();
-            if (std::holds_alternative<Events::MyTimerExpiry>(event)) {
-                LOG_INF("Toggling LED to %d.", !m_ledIsOn);
-                m_ledIsOn = !m_ledIsOn;
-            } else if (std::holds_alternative<Events::LedFlashing>(event)) {
-                // Start the timer to flash the LED
-                m_flashingTimer.start(1000, 1000);
-                LOG_INF("Starting flashing. Turning LED on...");
-                m_ledIsOn = true;
-            } else if (std::holds_alternative<Events::Exit>(event)) {
-                break;
-            }
+    void onFlashingTimerCallback() {
+        LOG_INF("Toggling LED to %d.", !m_ledIsOn);
+        m_ledIsOn = !m_ledIsOn;
+    }
+
+    void handleEvent(const Events::Generic& event) {
+        if (std::holds_alternative<Events::LedFlashing>(event)) {
+            // Start the timer to flash the LED
+            m_flashingTimer.start(1000, 1000);
+            LOG_INF("Starting flashing. Turning LED on...");
+            m_ledIsOn = true;
+        } else if (std::holds_alternative<Events::Exit>(event)) {
+            m_eventThread.exitEventLoop();
         }
+    }
+
+    void threadMain() {
+        // Register external event callback
+        m_eventThread.onExternalEvent([this](const Events::Generic& event) {
+            handleEvent(event);
+        });
+
+        // Start the event loop (this never returns unless exitEventLoop is called)
+        m_eventThread.runEventLoop();
     }
 };
 

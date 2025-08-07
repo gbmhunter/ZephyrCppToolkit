@@ -100,30 +100,52 @@ public:
     }
 
     /**
-     * Call to block and wait for an event. An event can either be:
-     * - A internal timer timeout event.
-     * - An external event (sent from another thread).
+     * Set the callback function to be called when external events are received.
+     * 
+     * \param callback The callback function to call when an external event is received.
+     *                 The callback will be passed the received event.
+     */
+    void onExternalEvent(std::function<void(const EventType&)> callback) {
+        m_externalEventCallback = callback;
+    }
+
+    /**
+     * Start the event loop. This function never returns and should be called from the thread function that is passed in to the constructor.
+     * 
+     * This function will:
+     * - Handle expired timers by calling their callbacks
+     * - Handle external events by calling the registered external event callback (call onExternalEvent() to register a callback).
      * 
      * This should be called from the thread function that is passed in to the constructor,
      * once any initialisation you want done (e.g. setup some timers) has been done.
-     * 
-     * \return The event that was received. This should be handled in your thread function
-     *      and then loop back to `waitForEvent()` to wait for the next event.
      */
-    EventType waitForEvent() {
+    void runEventLoop() {
         LOG_MODULE_DECLARE(EventThread, ZCT_EVENT_THREAD_LOG_LEVEL);
         LOG_DBG("%s() called.", __FUNCTION__);
 
-        // Get the next timer to expire
-        auto nextTimerInfo = m_timerManager.getNextExpiringTimer();
+        while (!m_exitEventLoop) {
+            // Get the next timer to expire
+            auto nextTimerInfo = m_timerManager.getNextExpiringTimer();
 
-        // See if there is an already expired timer, is so, there is no need to block
-        // on the event queue.
-        if (nextTimerInfo.m_timer != nullptr && nextTimerInfo.m_durationToWaitUs == 0) {
+        // Check for expired timers and call their callbacks
+        while (nextTimerInfo.m_timer != nullptr && nextTimerInfo.m_durationToWaitUs == 0) {
             LOG_DBG("Timer expired. Timer: %p.", nextTimerInfo.m_timer);
-            // Get the timer event
+            // Update the timer after expiry
             nextTimerInfo.m_timer->updateAfterExpiry();
-            return nextTimerInfo.m_timer->getEvent();
+            
+            // Call the callback
+            const auto& callback = nextTimerInfo.m_timer->getExpiryCallback();
+            if (callback) {
+                callback();
+                // If the callback calls exitEventLoop(), we will exit the event loop
+                // and return from runEventLoop().
+                if (m_exitEventLoop) {
+                    return;
+                }
+            }
+            
+            // Check for the next expired timer
+            nextTimerInfo = m_timerManager.getNextExpiringTimer();
         }
 
         // If we get here, we have handled all expired timers.
@@ -139,21 +161,30 @@ public:
         EventType rxEvent;
         int queueRc = k_msgq_get(&m_threadMsgQueue, &rxEvent, timeout);
         if (queueRc == 0) {
-            // We got a message from the queue, so we can handle it
-            return rxEvent;
+            // We got a message from the queue, call the external event callback
+            if (m_externalEventCallback) {
+                m_externalEventCallback(rxEvent);
+                // If the callback calls exitEventLoop(), we will exit the event loop
+                // and return from runEventLoop().
+                if (m_exitEventLoop) {
+                    return;
+                }
+            } else {
+                LOG_WRN("Received external event in event thread \"%s\" but no external event callback is registered.", m_name);
+            }
+            continue;
         } else if (queueRc == -EAGAIN) {
-            // Queue timed out, which means we need to handle the timer expiry
-            LOG_DBG("Queue timed out, which means we need to handle the timer expiry.");
-            nextTimerInfo.m_timer->updateAfterExpiry();
-            return nextTimerInfo.m_timer->getEvent();
+            // Queue timed out, which means we need to handle the timer expiry,
+            // jump back to start of while loop to handle the timer expiry
+            LOG_DBG("Queue timed out, which means we need to handle timer expiry.");
+            continue;
         } else if (queueRc == -ENOMSG) {
             // This means the queue must have been purged
             __ASSERT(false, "Got -ENOMSG from queue, was not expecting this.");
         } else {
             __ASSERT(false, "Got unexpected return code from queue: %d.", queueRc);
         }
-        __ASSERT(false, "Should not get here.");
-        return EventType();
+        } // End of while (true) loop
     }
 
     /**
@@ -179,8 +210,22 @@ public:
      * 
      * \return A reference to the timer manager for this event thread.
      */
-    TimerManager<EventType>& timerManager() {
+    TimerManager& timerManager() {
         return m_timerManager;
+    }
+
+    /**
+     * Exit the event loop. This will cause runEventLoop() to return.
+     * This function must be called from the event thread context (i.e. from a timer
+     * callback or from an external event handler).
+     * 
+     * This will make the event loop return from runEventLoop() as soon as the timer callback
+     * or external event handler returns.
+     * 
+     * Use this in tests to cleanly exit from the event loop and it's corresponding thread.
+     */
+    void exitEventLoop() {
+        m_exitEventLoop = true;
     }
 
 protected:
@@ -200,7 +245,6 @@ protected:
         // If we get here, the user decided to exit the thread
     }
 
-
     const char* m_name = nullptr;
     void* m_eventQueueBuffer = nullptr;
 
@@ -208,8 +252,14 @@ protected:
 
     struct k_msgq m_threadMsgQueue;
 
-    std::function<void()> m_threadFunction;
-    TimerManager<EventType> m_timerManager;
+    std::function<void()> m_threadFunction = nullptr;
+    TimerManager m_timerManager;
+    std::function<void(const EventType&)> m_externalEventCallback = nullptr;
+
+    /**
+     * Used to signal from exitEventLoop() to the code in the runEventLoop() function to exit.
+     */
+    bool m_exitEventLoop = false;
 };
 
 /**

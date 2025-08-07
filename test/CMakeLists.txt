@@ -16,6 +16,7 @@ target_sources(
     main.cpp
     EventThreadLedTests.cpp
     EventThreadMultipleTimersTests.cpp
+    TimerCallbackTests.cpp
     GpioTests.cpp
     MutexTests.cpp
     WatchdogTests.cpp

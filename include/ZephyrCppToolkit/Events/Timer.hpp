@@ -12,6 +12,7 @@ class Timer;
 
 #include <cstdint>
 #include <cstddef>
+#include <functional>
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -27,29 +28,29 @@ namespace zct {
 //================================================================================================//
 
 /**
- * \brief A timer that can be used to fire events at a regular interval in an event driven application.
+ * \brief A timer that can be used to execute callbacks at regular intervals in an event driven application.
  * 
  * This class is designed to be used with the zct::TimerManager class. The timer manager
- * monitors a list of timers and fires events when the timers expire.
+ * monitors a list of timers and executes callbacks when the timers expire.
  * 
- * This class is also designed to be used with the zct::EventThreadv2 class. The event thread
+ * This class is also designed to be used with the zct::EventThread class. The event thread
  * can block until either a timer expires or an external event is received.
  */
-template <typename EventType>
 class Timer {
 public:
 
     /**
-     * Create a new timer and associate it with an event.
+     * Create a new timer with a callback function.
      * 
      * The timer will not be running after creation.
      * 
-     * \param event The event to fire when the timer expires. This is copied into the timer, so the lifetime of the
-     *              event does not need to be longer than the timer.
+     * \param name The name of the timer, used for logging purposes.
+     * \param expiryCallback Callback function to call when the timer expires. This will be
+     *                       called by the EventThread when the timer expires.
      */
-    Timer(const char* name, const EventType& event) :
-        m_event(event),
-        m_name(name)
+    Timer(const char* name, std::function<void()> expiryCallback) :
+        m_name(name),
+        m_expiryCallback(expiryCallback)
     {
     }
 
@@ -134,11 +135,6 @@ public:
         }
     }
 
-    /**
-     * Gets a pointer to the event which is saved in the timer.
-     * Needs to be cast by the user back to the correct type.
-     */
-    const EventType& getEvent() const { return this->m_event; }
 
     /**
      * Get the next expiry time of the timer.
@@ -162,14 +158,28 @@ public:
      */
     bool getIsRegistered() const { return this->m_isRegistered; }
 
+    /**
+     * Set the expiry callback function.
+     * 
+     * @param callback The callback function to call when the timer expires. Set to nullptr to disable callback.
+     */
+    void setExpiryCallback(std::function<void()> callback) { m_expiryCallback = callback; }
+
+    /**
+     * Get the expiry callback function.
+     * 
+     * @return The expiry callback function, or nullptr if no callback is set.
+     */
+    const std::function<void()>& getExpiryCallback() const { return m_expiryCallback; }
+
 protected:
     int64_t period_ticks = 0;
     int64_t startTime_ticks = 0;
     int64_t nextExpiryTime_ticks = 0;
     bool m_isRunning = false;
-    EventType m_event;
     bool m_isRegistered = false;
     const char* m_name;
+    std::function<void()> m_expiryCallback;
 };
 
 } // namespace zct

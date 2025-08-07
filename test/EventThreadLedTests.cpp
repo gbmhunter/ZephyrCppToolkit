@@ -17,7 +17,7 @@ ZTEST_SUITE(EventThreadLedTests, NULL, NULL, NULL, NULL, NULL);
 
 /** Wrap events in a namespace to avoid name collisions with other events. */
 namespace MyEvents {
-    struct MyTimerTimeoutEvent {};
+    struct TimerExpiredEvent {};
 
     struct ExitEvent {};
 
@@ -25,7 +25,7 @@ namespace MyEvents {
         uint32_t flashRateMs;
     };
 
-    using Generic = std::variant<MyTimerTimeoutEvent, LedFlashingEvent, ExitEvent>;
+    using Generic = std::variant<TimerExpiredEvent, LedFlashingEvent, ExitEvent>;
 } // namespace MyEvents
 
 class Led : public zct::EventThread<MyEvents::Generic> {
@@ -39,7 +39,11 @@ class Led : public zct::EventThread<MyEvents::Generic> {
                 7,
                 EVENT_QUEUE_NUM_ITEMS
             ),
-            m_flashingTimer("FlashingTimer", MyEvents::MyTimerTimeoutEvent())
+            m_flashingTimer("FlashingTimer", [this]() {
+                LOG_DBG("Timer callback called, creating TimerExpiredEvent.");
+                MyEvents::TimerExpiredEvent timerEvent;
+                handleEvent(timerEvent);
+             })
         {
             // Register timers
             m_timerManager.registerTimer(m_flashingTimer);
@@ -62,29 +66,37 @@ class Led : public zct::EventThread<MyEvents::Generic> {
         static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
         static constexpr size_t THREAD_STACK_SIZE = 512;
         K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);
-        zct::Timer<MyEvents::Generic> m_flashingTimer;
+        zct::Timer m_flashingTimer;
         bool m_ledIsOn = false;
         zct::Mutex m_ledIsOnMutex;
 
-        void threadMain() {
-            while (1) {
-                MyEvents::Generic event = waitForEvent();
-                LOG_DBG("Event received: %d.", event.index());
-                if (std::holds_alternative<MyEvents::MyTimerTimeoutEvent>(event)) {
-                    bool ledIsOn = getLedIsOn();
-                    LOG_DBG("Got MyTimerTimeoutEvent. ledIsOn currently: %d. Setting to %d.", ledIsOn, !ledIsOn);
-                    setLedIsOn(!ledIsOn);
-                } else if (std::holds_alternative<MyEvents::LedFlashingEvent>(event)) {
-                    LOG_DBG("Got LedFlashingEvent.");
-                    // Start the timer to flash the LED
-                    m_flashingTimer.start(1000, 1000);
-                    LOG_DBG("Got LedFlashingEvent. Starting flashing...");
-                    setLedIsOn(true);
-                } else if (std::holds_alternative<MyEvents::ExitEvent>(event)) {
-                    LOG_DBG("Got ExitEvent.");
-                    break;
-                }
+        void handleEvent(const MyEvents::Generic& event) {
+            LOG_DBG("Event received: %d.", event.index());
+            if (std::holds_alternative<MyEvents::TimerExpiredEvent>(event)) {
+                bool ledIsOn = getLedIsOn();
+                LOG_DBG("Got TimerExpiredEvent: ledIsOn currently: %d. Setting to %d.", ledIsOn, !ledIsOn);
+                setLedIsOn(!ledIsOn);
+            } else if (std::holds_alternative<MyEvents::LedFlashingEvent>(event)) {
+                LOG_DBG("Got LedFlashingEvent.");
+                // Start the timer to flash the LED
+                m_flashingTimer.start(1000, 1000);
+                LOG_DBG("Got LedFlashingEvent. Starting flashing...");
+                setLedIsOn(true);
+            } else if (std::holds_alternative<MyEvents::ExitEvent>(event)) {
+                LOG_DBG("Got ExitEvent.");
+                // Exit the event loop
+                exitEventLoop();
             }
+        }
+
+        void threadMain() {
+            // Register external event callback
+            onExternalEvent([this](const MyEvents::Generic& event) {
+                handleEvent(event);
+            });
+
+            // Start the event loop (this never returns)
+            runEventLoop();
         }
 };
 

@@ -20,13 +20,9 @@ ZTEST_SUITE(EventThreadMultipleTimersTests, NULL, NULL, NULL, NULL, NULL);
 
 /** Wrap events in a namespace to avoid name collisions with other events. */
 namespace MyEvents {
-    struct Timer1TimeoutEvent {};
-    struct Timer2TimeoutEvent {};
-    struct Timer3TimeoutEvent {};
-
     struct ExitEvent {};
 
-    using Generic = std::variant<Timer1TimeoutEvent, Timer2TimeoutEvent, Timer3TimeoutEvent, ExitEvent>;
+    using Generic = std::variant<ExitEvent>;
 } // namespace MyEvents
 
 class TestClass {
@@ -40,9 +36,9 @@ class TestClass {
                 7,
                 EVENT_QUEUE_NUM_ITEMS
             ),
-            m_timer1("Timer1", MyEvents::Timer1TimeoutEvent()),
-            m_timer2("Timer2", MyEvents::Timer2TimeoutEvent()),
-            m_timer3("Timer3", MyEvents::Timer3TimeoutEvent())
+            m_timer1("Timer1", [this]() { onTimer1Callback(); }),
+            m_timer2("Timer2", [this]() { onTimer2Callback(); }),
+            m_timer3("Timer3", [this]() { onTimer3Callback(); })
         {
             // Register timers
             m_eventThread.timerManager().registerTimer(m_timer1);
@@ -73,9 +69,9 @@ class TestClass {
         static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
         static constexpr size_t THREAD_STACK_SIZE = 512;
         K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);
-        zct::Timer<MyEvents::Generic> m_timer1;
-        zct::Timer<MyEvents::Generic> m_timer2;
-        zct::Timer<MyEvents::Generic> m_timer3;
+        zct::Timer m_timer1;
+        zct::Timer m_timer2;
+        zct::Timer m_timer3;
         
         
         uint32_t m_timer1Count = 0;
@@ -84,35 +80,49 @@ class TestClass {
 
         zct::Mutex m_accessMutex;
 
+        void onTimer1Callback() {
+            zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
+            __ASSERT_NO_MSG(lockGuard.didGetLock());
+            m_timer1Count++;
+            LOG_DBG("Timer1 callback. Count: %d.", m_timer1Count);
+        }
+
+        void onTimer2Callback() {
+            zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
+            __ASSERT_NO_MSG(lockGuard.didGetLock());
+            m_timer2Count++;
+            LOG_DBG("Timer2 callback. Count: %d.", m_timer2Count);
+        }
+
+        void onTimer3Callback() {
+            zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
+            __ASSERT_NO_MSG(lockGuard.didGetLock());
+            m_timer3Count++;
+            LOG_DBG("Timer3 callback. Count: %d.", m_timer3Count);
+        }
+
+        void handleEvent(const MyEvents::Generic& event) {
+            LOG_DBG("Event received: %d.", event.index());
+            if (std::holds_alternative<MyEvents::ExitEvent>(event)) {
+                LOG_DBG("Got ExitEvent.");
+                // Exit the event loop
+                m_eventThread.exitEventLoop();
+            }
+        }
+
         void threadMain() {
             // Start the timers
             m_timer1.start(1000, 1000);
             m_timer2.start(2000, 2000);
             m_timer3.start(3000, 3000);
 
-            while (1) {
-                MyEvents::Generic event = m_eventThread.waitForEvent();
-                LOG_DBG("Event received: %d.", event.index());
-                if (std::holds_alternative<MyEvents::Timer1TimeoutEvent>(event)) {
-                    zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
-                    __ASSERT_NO_MSG(lockGuard.didGetLock());
-                    m_timer1Count++;
-                    LOG_DBG("Got Timer1TimeoutEvent. Count: %d.", m_timer1Count);
-                } else if (std::holds_alternative<MyEvents::Timer2TimeoutEvent>(event)) {
-                    zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
-                    __ASSERT_NO_MSG(lockGuard.didGetLock());
-                    m_timer2Count++;
-                    LOG_DBG("Got Timer2TimeoutEvent. Count: %d.", m_timer2Count);
-                } else if (std::holds_alternative<MyEvents::Timer3TimeoutEvent>(event)) {
-                    zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
-                    __ASSERT_NO_MSG(lockGuard.didGetLock());
-                    m_timer3Count++;
-                    LOG_DBG("Got Timer3TimeoutEvent. Count: %d.", m_timer3Count);
-                } else if (std::holds_alternative<MyEvents::ExitEvent>(event)) {
-                    LOG_DBG("Got ExitEvent.");
-                    break;
-                }
-            }
+            // Register external event callback
+            m_eventThread.onExternalEvent([this](const MyEvents::Generic& event) {
+                handleEvent(event);
+            });
+
+            // Start the event loop (this never returns)
+            m_eventThread.runEventLoop();
         }
 };
 
