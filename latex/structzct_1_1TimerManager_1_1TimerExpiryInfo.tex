@@ -1,52 +1,57 @@
-\doxysection{zct\+::Timer\+Manager\texorpdfstring{$<$}{<} Event\+Type \texorpdfstring{$>$}{>}\+::Timer\+Expiry\+Info Struct Reference}
-\hypertarget{structzct_1_1TimerManager_1_1TimerExpiryInfo}{}\label{structzct_1_1TimerManager_1_1TimerExpiryInfo}\index{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo@{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo}}
+\doxysection{zct\+::Timer\+Manager\+::Timer\+Expiry\+Info Struct Reference}
+\hypertarget{structzct_1_1TimerManager_1_1TimerExpiryInfo}{}\label{structzct_1_1TimerManager_1_1TimerExpiryInfo}\index{zct::TimerManager::TimerExpiryInfo@{zct::TimerManager::TimerExpiryInfo}}
 
 
 {\ttfamily \#include $<$Timer\+Manager.\+hpp$>$}
 
+
+
+Collaboration diagram for zct\+::Timer\+Manager\+::Timer\+Expiry\+Info\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{structzct_1_1TimerManager_1_1TimerExpiryInfo__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_a92867a78c76135e6faa43e4be1d460c5}{Timer\+Expiry\+Info}} (\mbox{\hyperlink{classzct_1_1Timer}{Timer}}$<$ Event\+Type $>$ \texorpdfstring{$\ast$}{*}timer, uint64\+\_\+t duration\+To\+Wait\+Us)
+\mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_aaab3e3f3d2706a7507d3bdf5b7e4d415}{Timer\+Expiry\+Info}} (\mbox{\hyperlink{classzct_1_1Timer}{Timer}} \texorpdfstring{$\ast$}{*}timer, uint64\+\_\+t duration\+To\+Wait\+Us)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classzct_1_1Timer}{Timer}}$<$ Event\+Type $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_afd6db8d29ae9cb346f4389bb874ef4bf}{m\+\_\+timer}} = nullptr
+\mbox{\hyperlink{classzct_1_1Timer}{Timer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_ac4b8647a526e29fd0f97ba7b524fc7a2}{m\+\_\+timer}} = nullptr
 \item 
-uint64\+\_\+t \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_ad67353393614ccbcadcbd7108b93f089}{m\+\_\+duration\+To\+Wait\+Us}} = 0
+uint64\+\_\+t \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_a7c71fc3fce0a51a212760d9118f7bac7}{m\+\_\+duration\+To\+Wait\+Us}} = 0
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\subsubsection*{template$<$typename Event\+Type$>$\newline
-struct zct\+::\+Timer\+Manager$<$ Event\+Type $>$\+::\+Timer\+Expiry\+Info}
-Used as a return type for \doxylink{classzct_1_1TimerManager_a8de14b3ba770157083af1bb2cafae86e}{get\+Next\+Expiring\+Timer()}. 
+Used as a return type for \doxylink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{get\+Next\+Expiring\+Timer()}. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{structzct_1_1TimerManager_1_1TimerExpiryInfo_a92867a78c76135e6faa43e4be1d460c5}\label{structzct_1_1TimerManager_1_1TimerExpiryInfo_a92867a78c76135e6faa43e4be1d460c5} 
-\index{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo@{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo}!TimerExpiryInfo@{TimerExpiryInfo}}
-\index{TimerExpiryInfo@{TimerExpiryInfo}!zct::TimerManager$<$ EventType $>$::TimerExpiryInfo@{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo}}
+\Hypertarget{structzct_1_1TimerManager_1_1TimerExpiryInfo_aaab3e3f3d2706a7507d3bdf5b7e4d415}\label{structzct_1_1TimerManager_1_1TimerExpiryInfo_aaab3e3f3d2706a7507d3bdf5b7e4d415} 
+\index{zct::TimerManager::TimerExpiryInfo@{zct::TimerManager::TimerExpiryInfo}!TimerExpiryInfo@{TimerExpiryInfo}}
+\index{TimerExpiryInfo@{TimerExpiryInfo}!zct::TimerManager::TimerExpiryInfo@{zct::TimerManager::TimerExpiryInfo}}
 \doxysubsubsection{\texorpdfstring{TimerExpiryInfo()}{TimerExpiryInfo()}}
-{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
-\mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::\+Timer\+Expiry\+Info\+::\+Timer\+Expiry\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1Timer}{Timer}}$<$ Event\+Type $>$ \texorpdfstring{$\ast$}{*}}]{timer,  }\item[{uint64\+\_\+t}]{duration\+To\+Wait\+Us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily zct\+::\+Timer\+Manager\+::\+Timer\+Expiry\+Info\+::\+Timer\+Expiry\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1Timer}{Timer}} \texorpdfstring{$\ast$}{*}}]{timer,  }\item[{uint64\+\_\+t}]{duration\+To\+Wait\+Us }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{structzct_1_1TimerManager_1_1TimerExpiryInfo_ad67353393614ccbcadcbd7108b93f089}\label{structzct_1_1TimerManager_1_1TimerExpiryInfo_ad67353393614ccbcadcbd7108b93f089} 
-\index{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo@{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo}!m\_durationToWaitUs@{m\_durationToWaitUs}}
-\index{m\_durationToWaitUs@{m\_durationToWaitUs}!zct::TimerManager$<$ EventType $>$::TimerExpiryInfo@{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo}}
+\Hypertarget{structzct_1_1TimerManager_1_1TimerExpiryInfo_a7c71fc3fce0a51a212760d9118f7bac7}\label{structzct_1_1TimerManager_1_1TimerExpiryInfo_a7c71fc3fce0a51a212760d9118f7bac7} 
+\index{zct::TimerManager::TimerExpiryInfo@{zct::TimerManager::TimerExpiryInfo}!m\_durationToWaitUs@{m\_durationToWaitUs}}
+\index{m\_durationToWaitUs@{m\_durationToWaitUs}!zct::TimerManager::TimerExpiryInfo@{zct::TimerManager::TimerExpiryInfo}}
 \doxysubsubsection{\texorpdfstring{m\_durationToWaitUs}{m\_durationToWaitUs}}
-{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
-uint64\+\_\+t \mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::\+Timer\+Expiry\+Info\+::m\+\_\+duration\+To\+Wait\+Us = 0}
+{\footnotesize\ttfamily uint64\+\_\+t zct\+::\+Timer\+Manager\+::\+Timer\+Expiry\+Info\+::m\+\_\+duration\+To\+Wait\+Us = 0}
 
-\Hypertarget{structzct_1_1TimerManager_1_1TimerExpiryInfo_afd6db8d29ae9cb346f4389bb874ef4bf}\label{structzct_1_1TimerManager_1_1TimerExpiryInfo_afd6db8d29ae9cb346f4389bb874ef4bf} 
-\index{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo@{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo}!m\_timer@{m\_timer}}
-\index{m\_timer@{m\_timer}!zct::TimerManager$<$ EventType $>$::TimerExpiryInfo@{zct::TimerManager$<$ EventType $>$::TimerExpiryInfo}}
+\Hypertarget{structzct_1_1TimerManager_1_1TimerExpiryInfo_ac4b8647a526e29fd0f97ba7b524fc7a2}\label{structzct_1_1TimerManager_1_1TimerExpiryInfo_ac4b8647a526e29fd0f97ba7b524fc7a2} 
+\index{zct::TimerManager::TimerExpiryInfo@{zct::TimerManager::TimerExpiryInfo}!m\_timer@{m\_timer}}
+\index{m\_timer@{m\_timer}!zct::TimerManager::TimerExpiryInfo@{zct::TimerManager::TimerExpiryInfo}}
 \doxysubsubsection{\texorpdfstring{m\_timer}{m\_timer}}
-{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
-\mbox{\hyperlink{classzct_1_1Timer}{Timer}}$<$Event\+Type$>$\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1TimerManager}{zct\+::\+Timer\+Manager}}$<$ Event\+Type $>$\+::\+Timer\+Expiry\+Info\+::m\+\_\+timer = nullptr}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1Timer}{Timer}}\texorpdfstring{$\ast$}{*} zct\+::\+Timer\+Manager\+::\+Timer\+Expiry\+Info\+::m\+\_\+timer = nullptr}
 
 
 

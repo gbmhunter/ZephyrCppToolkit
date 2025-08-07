@@ -102,6 +102,18 @@ $(document).ready(function(){initNavTree('classzct_1_1EventThread.html',''); ini
  <a href="classzct_1_1EventThread.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="EventThread_8hpp_source.html">EventThread.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for zct::EventThread&lt; EventType &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classzct_1_1EventThread__coll__graph.png" border="0" usemap="#azct_1_1EventThread_3_01EventType_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="azct_1_1EventThread_3_01EventType_01_4_coll__map" id="azct_1_1EventThread_3_01EventType_01_4_coll__map">
+<area shape="rect" title="Use this class in your objects to create a thread that can wait for events." alt="" coords="5,181,233,207"/>
+<area shape="rect" href="classzct_1_1TimerManager.html" title=" " alt="" coords="47,93,191,119"/>
+<area shape="poly" title=" " alt="" coords="122,133,122,181,117,181,117,133"/>
+<area shape="rect" href="classzct_1_1Timer.html" title="A timer that can be used to execute callbacks at regular intervals in an event driven application." alt="" coords="76,5,163,31"/>
+<area shape="poly" title=" " alt="" coords="122,45,122,93,117,93,117,45"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -109,12 +121,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae5fff68f935d3dc1b0a7043232b54eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a904626047be03e08a6563cdafb3582c0" id="r_a904626047be03e08a6563cdafb3582c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#a904626047be03e08a6563cdafb3582c0">~EventThread</a> ()</td></tr>
 <tr class="separator:a904626047be03e08a6563cdafb3582c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2607651cb659eb7d0c1beb81a7690293" id="r_a2607651cb659eb7d0c1beb81a7690293"><td class="memItemLeft" align="right" valign="top">EventType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">waitForEvent</a> ()</td></tr>
-<tr class="separator:a2607651cb659eb7d0c1beb81a7690293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466b293455fda762c63357549025d8af" id="r_a466b293455fda762c63357549025d8af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#a466b293455fda762c63357549025d8af">onExternalEvent</a> (std::function&lt; void(const EventType &amp;)&gt; callback)</td></tr>
+<tr class="separator:a466b293455fda762c63357549025d8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7edd0a4e156e57bf8f3c6832ae3bde68" id="r_a7edd0a4e156e57bf8f3c6832ae3bde68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68">runEventLoop</a> ()</td></tr>
+<tr class="separator:a7edd0a4e156e57bf8f3c6832ae3bde68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eda66c2494c12922204a368786dfb73" id="r_a6eda66c2494c12922204a368786dfb73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#a6eda66c2494c12922204a368786dfb73">sendEvent</a> (const EventType &amp;event)</td></tr>
 <tr class="separator:a6eda66c2494c12922204a368786dfb73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62e7cf1cb3a1fe3fb0fd531d35493287" id="r_a62e7cf1cb3a1fe3fb0fd531d35493287"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a>&lt; EventType &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#a62e7cf1cb3a1fe3fb0fd531d35493287">timerManager</a> ()</td></tr>
-<tr class="separator:a62e7cf1cb3a1fe3fb0fd531d35493287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5461d18e52c82257da77a557f173e24" id="r_aa5461d18e52c82257da77a557f173e24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#aa5461d18e52c82257da77a557f173e24">timerManager</a> ()</td></tr>
+<tr class="separator:aa5461d18e52c82257da77a557f173e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a491f2b0619e3db842d9f40f1b268f892" id="r_a491f2b0619e3db842d9f40f1b268f892"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#a491f2b0619e3db842d9f40f1b268f892">exitEventLoop</a> ()</td></tr>
+<tr class="separator:a491f2b0619e3db842d9f40f1b268f892"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
@@ -131,10 +147,14 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ae99f50e4328cdd741e63e379fbe7de6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeac1a315e79be599f6c6c8e275c7286a" id="r_aeac1a315e79be599f6c6c8e275c7286a"><td class="memItemLeft" align="right" valign="top">struct k_msgq&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#aeac1a315e79be599f6c6c8e275c7286a">m_threadMsgQueue</a></td></tr>
 <tr class="separator:aeac1a315e79be599f6c6c8e275c7286a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af82899498638998526e3118fded52e0c" id="r_af82899498638998526e3118fded52e0c"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#af82899498638998526e3118fded52e0c">m_threadFunction</a></td></tr>
+<tr class="memitem:af82899498638998526e3118fded52e0c" id="r_af82899498638998526e3118fded52e0c"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#af82899498638998526e3118fded52e0c">m_threadFunction</a> = nullptr</td></tr>
 <tr class="separator:af82899498638998526e3118fded52e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7f6b59b51793ee17b868ea32a3ae63d" id="r_ac7f6b59b51793ee17b868ea32a3ae63d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a>&lt; EventType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#ac7f6b59b51793ee17b868ea32a3ae63d">m_timerManager</a></td></tr>
-<tr class="separator:ac7f6b59b51793ee17b868ea32a3ae63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af22edf13ee45ca97df31199cdd089f7a" id="r_af22edf13ee45ca97df31199cdd089f7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#af22edf13ee45ca97df31199cdd089f7a">m_timerManager</a></td></tr>
+<tr class="separator:af22edf13ee45ca97df31199cdd089f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec687dd8872426f1aad685703922a2e0" id="r_aec687dd8872426f1aad685703922a2e0"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const EventType &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#aec687dd8872426f1aad685703922a2e0">m_externalEventCallback</a> = nullptr</td></tr>
+<tr class="separator:aec687dd8872426f1aad685703922a2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdfe877db96d4deef20cc96f6673c84a" id="r_afdfe877db96d4deef20cc96f6673c84a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1EventThread.html#afdfe877db96d4deef20cc96f6673c84a">m_exitEventLoop</a> = false</td></tr>
+<tr class="separator:afdfe877db96d4deef20cc96f6673c84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename EventType&gt;<br />
@@ -158,8 +178,6 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span>Events {</div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">struct </span>MyTimerExpiry {};</div>
-<div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>Exit {};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>LedFlashing {</div>
@@ -167,7 +185,7 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Create a generic event type that can be anyone of the specific events above.</span></div>
-<div class="line"><span class="keyword">typedef</span> std::variant&lt;MyTimerExpiry, LedFlashing, Exit&gt; Generic;</div>
+<div class="line"><span class="keyword">typedef</span> std::variant&lt;LedFlashing, Exit&gt; Generic;</div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -186,7 +204,7 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="line">            7,</div>
 <div class="line">            EVENT_QUEUE_NUM_ITEMS</div>
 <div class="line">        ),</div>
-<div class="line">        m_flashingTimer(<span class="stringliteral">&quot;FlashingTimer&quot;</span>, Events::MyTimerExpiry())</div>
+<div class="line">        m_flashingTimer(<span class="stringliteral">&quot;FlashingTimer&quot;</span>, [<span class="keyword">this</span>]() { onFlashingTimerCallback(); })</div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Register timers</span></div>
 <div class="line">        m_eventThread.timerManager().registerTimer(m_flashingTimer);</div>
@@ -208,24 +226,33 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> THREAD_STACK_SIZE = 512;</div>
 <div class="line">    K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);</div>
 <div class="line">    <a class="code hl_class" href="classzct_1_1EventThread.html">zct::EventThread&lt;Events::Generic&gt;</a> m_eventThread;</div>
-<div class="line">    <a class="code hl_class" href="classzct_1_1Timer.html">zct::Timer&lt;Events::Generic&gt;</a> m_flashingTimer;</div>
+<div class="line">    <a class="code hl_class" href="classzct_1_1Timer.html">zct::Timer</a> m_flashingTimer;</div>
 <div class="line">    <span class="keywordtype">bool</span> m_ledIsOn = <span class="keyword">false</span>;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordtype">void</span> threadMain() {</div>
-<div class="line">        <span class="keywordflow">while</span> (1) {</div>
-<div class="line">            Events::Generic <span class="keyword">event</span> = m_eventThread.<a class="code hl_function" href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">waitForEvent</a>();</div>
-<div class="line">            <span class="keywordflow">if</span> (std::holds_alternative&lt;Events::MyTimerExpiry&gt;(event)) {</div>
-<div class="line">                LOG_INF(<span class="stringliteral">&quot;Toggling LED to %d.&quot;</span>, !m_ledIsOn);</div>
-<div class="line">                m_ledIsOn = !m_ledIsOn;</div>
-<div class="line">            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::holds_alternative&lt;Events::LedFlashing&gt;(event)) {</div>
-<div class="line">                <span class="comment">// Start the timer to flash the LED</span></div>
-<div class="line">                m_flashingTimer.<a class="code hl_function" href="classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be">start</a>(1000, 1000);</div>
-<div class="line">                LOG_INF(<span class="stringliteral">&quot;Starting flashing. Turning LED on...&quot;</span>);</div>
-<div class="line">                m_ledIsOn = <span class="keyword">true</span>;</div>
-<div class="line">            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::holds_alternative&lt;Events::Exit&gt;(event)) {</div>
-<div class="line">                <span class="keywordflow">break</span>;</div>
-<div class="line">            }</div>
+<div class="line">    <span class="keywordtype">void</span> onFlashingTimerCallback() {</div>
+<div class="line">        LOG_INF(<span class="stringliteral">&quot;Toggling LED to %d.&quot;</span>, !m_ledIsOn);</div>
+<div class="line">        m_ledIsOn = !m_ledIsOn;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> handleEvent(<span class="keyword">const</span> Events::Generic&amp; event) {</div>
+<div class="line">        <span class="keywordflow">if</span> (std::holds_alternative&lt;Events::LedFlashing&gt;(event)) {</div>
+<div class="line">            <span class="comment">// Start the timer to flash the LED</span></div>
+<div class="line">            m_flashingTimer.<a class="code hl_function" href="classzct_1_1Timer.html#ac98b8c2905ad49b083265b9da5b8a750">start</a>(1000, 1000);</div>
+<div class="line">            LOG_INF(<span class="stringliteral">&quot;Starting flashing. Turning LED on...&quot;</span>);</div>
+<div class="line">            m_ledIsOn = <span class="keyword">true</span>;</div>
+<div class="line">        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (std::holds_alternative&lt;Events::Exit&gt;(event)) {</div>
+<div class="line">            m_eventThread.<a class="code hl_function" href="classzct_1_1EventThread.html#a491f2b0619e3db842d9f40f1b268f892">exitEventLoop</a>();</div>
 <div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> threadMain() {</div>
+<div class="line">        <span class="comment">// Register external event callback</span></div>
+<div class="line">        m_eventThread.<a class="code hl_function" href="classzct_1_1EventThread.html#a466b293455fda762c63357549025d8af">onExternalEvent</a>([<span class="keyword">this</span>](<span class="keyword">const</span> Events::Generic&amp; event) {</div>
+<div class="line">            handleEvent(event);</div>
+<div class="line">        });</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Start the event loop (this never returns unless exitEventLoop is called)</span></div>
+<div class="line">        m_eventThread.<a class="code hl_function" href="classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68">runEventLoop</a>();</div>
 <div class="line">    }</div>
 <div class="line">};</div>
 <div class="line"> </div>
@@ -241,9 +268,11 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="line">}</div>
 <div class="ttc" id="aEventThread_8hpp_html"><div class="ttname"><a href="EventThread_8hpp.html">EventThread.hpp</a></div></div>
 <div class="ttc" id="aclasszct_1_1EventThread_html"><div class="ttname"><a href="classzct_1_1EventThread.html">zct::EventThread</a></div><div class="ttdoc">Use this class in your objects to create a thread that can wait for events.</div><div class="ttdef"><b>Definition</b> EventThread.hpp:34</div></div>
-<div class="ttc" id="aclasszct_1_1EventThread_html_a2607651cb659eb7d0c1beb81a7690293"><div class="ttname"><a href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">zct::EventThread::waitForEvent</a></div><div class="ttdeci">EventType waitForEvent()</div><div class="ttdef"><b>Definition</b> EventThread.hpp:113</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html"><div class="ttname"><a href="classzct_1_1Timer.html">zct::Timer</a></div><div class="ttdoc">A timer that can be used to fire events at a regular interval in an event driven application.</div><div class="ttdef"><b>Definition</b> Timer.hpp:39</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html_ac2642b147eeb4ebbe126ac70f10ac7be"><div class="ttname"><a href="classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be">zct::Timer::start</a></div><div class="ttdeci">void start(int64_t period_ms)</div><div class="ttdef"><b>Definition</b> Timer.hpp:62</div></div>
+<div class="ttc" id="aclasszct_1_1EventThread_html_a466b293455fda762c63357549025d8af"><div class="ttname"><a href="classzct_1_1EventThread.html#a466b293455fda762c63357549025d8af">zct::EventThread::onExternalEvent</a></div><div class="ttdeci">void onExternalEvent(std::function&lt; void(const EventType &amp;)&gt; callback)</div><div class="ttdef"><b>Definition</b> EventThread.hpp:108</div></div>
+<div class="ttc" id="aclasszct_1_1EventThread_html_a491f2b0619e3db842d9f40f1b268f892"><div class="ttname"><a href="classzct_1_1EventThread.html#a491f2b0619e3db842d9f40f1b268f892">zct::EventThread::exitEventLoop</a></div><div class="ttdeci">void exitEventLoop()</div><div class="ttdef"><b>Definition</b> EventThread.hpp:227</div></div>
+<div class="ttc" id="aclasszct_1_1EventThread_html_a7edd0a4e156e57bf8f3c6832ae3bde68"><div class="ttname"><a href="classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68">zct::EventThread::runEventLoop</a></div><div class="ttdeci">void runEventLoop()</div><div class="ttdef"><b>Definition</b> EventThread.hpp:122</div></div>
+<div class="ttc" id="aclasszct_1_1Timer_html"><div class="ttname"><a href="classzct_1_1Timer.html">zct::Timer</a></div><div class="ttdoc">A timer that can be used to execute callbacks at regular intervals in an event driven application.</div><div class="ttdef"><b>Definition</b> Timer.hpp:39</div></div>
+<div class="ttc" id="aclasszct_1_1Timer_html_ac98b8c2905ad49b083265b9da5b8a750"><div class="ttname"><a href="classzct_1_1Timer.html#ac98b8c2905ad49b083265b9da5b8a750">zct::Timer::start</a></div><div class="ttdeci">void start(int64_t period_ms)</div><div class="ttdef"><b>Definition</b> Timer.hpp:63</div></div>
 <div class="ttc" id="anamespacezct_html_a03e785beb455af4012d3a57e19c99d13"><div class="ttname"><a href="namespacezct.html#a03e785beb455af4012d3a57e19c99d13">zct::LOG_MODULE_REGISTER</a></div><div class="ttdeci">LOG_MODULE_REGISTER(EventThread, LOG_LEVEL_DBG)</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae5fff68f935d3dc1b0a7043232b54eeb" name="ae5fff68f935d3dc1b0a7043232b54eeb"></a>
@@ -312,7 +341,7 @@ template&lt;typename EventType &gt; </div>
     <tr><td class="paramname">name</td><td>The name of the this event thread. Used for logging purposes. The Zephyr thread name will also be set to this name. </td></tr>
     <tr><td class="paramname">threadStack</td><td>The stack to use for the thread. You can use <code>K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);</code> to declare a stack member in the parent class that encloses this event thread. </td></tr>
     <tr><td class="paramname">threadStackSize</td><td>The size of the stack provided. </td></tr>
-    <tr><td class="paramname">threadFunction</td><td>The function to call when the thread is started. This should do whatever setup you need and then call <a class="el" href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">waitForEvent()</a>. </td></tr>
+    <tr><td class="paramname">threadFunction</td><td>The function to call when the thread is started. This should do whatever setup you need and then call waitForEvent(). </td></tr>
     <tr><td class="paramname">threadPriority</td><td>The priority to assign to the thread. </td></tr>
     <tr><td class="paramname">eventQueueBufferNumItems</td><td>The number of items in the event queue. </td></tr>
   </table>
@@ -351,6 +380,104 @@ template&lt;typename EventType &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a491f2b0619e3db842d9f40f1b268f892" name="a491f2b0619e3db842d9f40f1b268f892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a491f2b0619e3db842d9f40f1b268f892">&#9670;&#160;</a></span>exitEventLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::exitEventLoop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Exit the event loop. This will cause <a class="el" href="classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68">runEventLoop()</a> to return. This function must be called from the event thread context (i.e. from a timer callback or from an external event handler).</p>
+<p>This will make the event loop return from <a class="el" href="classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68">runEventLoop()</a> as soon as the timer callback or external event handler returns.</p>
+<p>Use this in tests to cleanly exit from the event loop and it's corresponding thread. </p>
+
+</div>
+</div>
+<a id="a466b293455fda762c63357549025d8af" name="a466b293455fda762c63357549025d8af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a466b293455fda762c63357549025d8af">&#9670;&#160;</a></span>onExternalEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::onExternalEvent </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const EventType &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the callback function to be called when external events are received.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>The callback function to call when an external event is received. The callback will be passed the received event. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7edd0a4e156e57bf8f3c6832ae3bde68" name="a7edd0a4e156e57bf8f3c6832ae3bde68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7edd0a4e156e57bf8f3c6832ae3bde68">&#9670;&#160;</a></span>runEventLoop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::runEventLoop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Start the event loop. This function never returns and should be called from the thread function that is passed in to the constructor.</p>
+<p>This function will:</p><ul>
+<li>Handle expired timers by calling their callbacks</li>
+<li>Handle external events by calling the registered external event callback (call <a class="el" href="classzct_1_1EventThread.html#a466b293455fda762c63357549025d8af">onExternalEvent()</a> to register a callback).</li>
+</ul>
+<p>This should be called from the thread function that is passed in to the constructor, once any initialisation you want done (e.g. setup some timers) has been done. </p>
+
+</div>
+</div>
 <a id="a6eda66c2494c12922204a368786dfb73" name="a6eda66c2494c12922204a368786dfb73"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6eda66c2494c12922204a368786dfb73">&#9670;&#160;</a></span>sendEvent()</h2>
 
@@ -432,8 +559,8 @@ template&lt;typename EventType &gt; </div>
 
 </div>
 </div>
-<a id="a62e7cf1cb3a1fe3fb0fd531d35493287" name="a62e7cf1cb3a1fe3fb0fd531d35493287"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62e7cf1cb3a1fe3fb0fd531d35493287">&#9670;&#160;</a></span>timerManager()</h2>
+<a id="aa5461d18e52c82257da77a557f173e24" name="aa5461d18e52c82257da77a557f173e24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5461d18e52c82257da77a557f173e24">&#9670;&#160;</a></span>timerManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -444,7 +571,7 @@ template&lt;typename EventType &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a>&lt; EventType &gt; &amp; <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::timerManager </td>
+          <td class="memname"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a> &amp; <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::timerManager </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -463,39 +590,6 @@ template&lt;typename EventType &gt; </div>
 
 </div>
 </div>
-<a id="a2607651cb659eb7d0c1beb81a7690293" name="a2607651cb659eb7d0c1beb81a7690293"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2607651cb659eb7d0c1beb81a7690293">&#9670;&#160;</a></span>waitForEvent()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename EventType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">EventType <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::waitForEvent </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Call to block and wait for an event. An event can either be:</p><ul>
-<li>A internal timer timeout event.</li>
-<li>An external event (sent from another thread).</li>
-</ul>
-<p>This should be called from the thread function that is passed in to the constructor, once any initialisation you want done (e.g. setup some timers) has been done.</p>
-<dl class="section return"><dt>Returns</dt><dd>The event that was received. This should be handled in your thread function and then loop back to <code><a class="el" href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">waitForEvent()</a></code> to wait for the next event. </dd></dl>
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a63d260fa7951c1731953b2f89cb8c794" name="a63d260fa7951c1731953b2f89cb8c794"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a63d260fa7951c1731953b2f89cb8c794">&#9670;&#160;</a></span>m_eventQueueBuffer</h2>
@@ -510,6 +604,55 @@ template&lt;typename EventType &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void* <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::m_eventQueueBuffer = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afdfe877db96d4deef20cc96f6673c84a" name="afdfe877db96d4deef20cc96f6673c84a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdfe877db96d4deef20cc96f6673c84a">&#9670;&#160;</a></span>m_exitEventLoop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::m_exitEventLoop = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Used to signal from <a class="el" href="classzct_1_1EventThread.html#a491f2b0619e3db842d9f40f1b268f892">exitEventLoop()</a> to the code in the <a class="el" href="classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68">runEventLoop()</a> function to exit. </p>
+
+</div>
+</div>
+<a id="aec687dd8872426f1aad685703922a2e0" name="aec687dd8872426f1aad685703922a2e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec687dd8872426f1aad685703922a2e0">&#9670;&#160;</a></span>m_externalEventCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EventType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void(const EventType&amp;)&gt; <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::m_externalEventCallback = nullptr</td>
         </tr>
       </table>
   </td>
@@ -581,7 +724,7 @@ template&lt;typename EventType &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::function&lt;void()&gt; <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::m_threadFunction</td>
+          <td class="memname">std::function&lt;void()&gt; <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::m_threadFunction = nullptr</td>
         </tr>
       </table>
   </td>
@@ -617,8 +760,8 @@ template&lt;typename EventType &gt; </div>
 
 </div>
 </div>
-<a id="ac7f6b59b51793ee17b868ea32a3ae63d" name="ac7f6b59b51793ee17b868ea32a3ae63d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7f6b59b51793ee17b868ea32a3ae63d">&#9670;&#160;</a></span>m_timerManager</h2>
+<a id="af22edf13ee45ca97df31199cdd089f7a" name="af22edf13ee45ca97df31199cdd089f7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af22edf13ee45ca97df31199cdd089f7a">&#9670;&#160;</a></span>m_timerManager</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -629,7 +772,7 @@ template&lt;typename EventType &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a>&lt;EventType&gt; <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::m_timerManager</td>
+          <td class="memname"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a> <a class="el" href="classzct_1_1EventThread.html">zct::EventThread</a>&lt; EventType &gt;::m_timerManager</td>
         </tr>
       </table>
   </td>

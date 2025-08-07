@@ -117,6 +117,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
 <li>EventThread()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#ae5fff68f935d3dc1b0a7043232b54eeb">zct::EventThread&lt; EventType &gt;</a></li>
+<li>exitEventLoop()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a491f2b0619e3db842d9f40f1b268f892">zct::EventThread&lt; EventType &gt;</a></li>
 </ul>
 
 
@@ -128,11 +129,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_g" name="index_g"></a>- g -</h3><ul>
 <li>get()&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#a8b53638c90fb8f0bd5d5e8608775436b">zct::IGpio</a></li>
-<li>getEvent()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#aba740daadf6150547a8704a57d5bcd92">zct::Timer&lt; EventType &gt;</a></li>
-<li>getIsRegistered()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#ad43282ff100f909aa76e315b052143b0">zct::Timer&lt; EventType &gt;</a></li>
+<li>getExpiryCallback()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a086c1eefecf02223ca9d2424d59692c8">zct::Timer</a></li>
+<li>getIsRegistered()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a35c7906a045b2fd2c4aadd5e7bd050a4">zct::Timer</a></li>
 <li>getName()&#160;:&#160;<a class="el" href="classzct_1_1IWatchdog.html#a5ab0e7e592c9a2ded783d24f3b81bb80">zct::IWatchdog</a></li>
-<li>getNextExpiringTimer()&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a8de14b3ba770157083af1bb2cafae86e">zct::TimerManager&lt; EventType &gt;</a></li>
-<li>getNextExpiryTimeTicks()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a0ac28656c9426876c597728f66a2cbdc">zct::Timer&lt; EventType &gt;</a></li>
+<li>getNextExpiringTimer()&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a50bc8a2752c2bf56cd3420d0db09e0d2">zct::TimerManager</a></li>
+<li>getNextExpiryTimeTicks()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a863fb0c8b80f6b444eecee69fe4622e2">zct::Timer</a></li>
 <li>getPhysical()&#160;:&#160;<a class="el" href="classzct_1_1GpioMock.html#a91f0b529fbd4e0ba543f591581c35133">zct::GpioMock</a>, <a class="el" href="classzct_1_1GpioReal.html#a9c95f439b7469b45ca8cbb8e94cc6ee2">zct::GpioReal</a>, <a class="el" href="classzct_1_1IGpio.html#a001870bd58daa2dc70cbeb28af06c00a">zct::IGpio</a></li>
 <li>getRawDevice()&#160;:&#160;<a class="el" href="classzct_1_1IWatchdog.html#a980aa7da00a3083832ca076440ebaf1b">zct::IWatchdog</a>, <a class="el" href="classzct_1_1WatchdogMock.html#a3b75b6a6182943ce4d0e87333a7686ea">zct::WatchdogMock</a>, <a class="el" href="classzct_1_1WatchdogReal.html#a08a87dd8c7b7c5f826b41812123df7fe">zct::WatchdogReal</a></li>
 <li>getZephyrMutex()&#160;:&#160;<a class="el" href="classzct_1_1Mutex.html#a50bd814d4db1cc8d41c8a556c5c0064e">zct::Mutex</a></li>
@@ -149,7 +150,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>InterruptMode&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#aed909482c3a37fab36bbd543617543ae">zct::IGpio</a></li>
 <li>IPwm()&#160;:&#160;<a class="el" href="classzct_1_1IPwm.html#a3cf9817f0b0c38839c49fa7c781d03f9">zct::IPwm</a></li>
 <li>isActive&#160;:&#160;<a class="el" href="structzct_1_1WatchdogMock_1_1TimeoutChannel.html#a99ec88fe1152c7fb1ef291d6e700809f">zct::WatchdogMock::TimeoutChannel</a></li>
-<li>isRunning()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#af9d7393aec6f58883189dc57c8e9f6c2">zct::Timer&lt; EventType &gt;</a></li>
+<li>isRunning()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#af9f6a3111b752f1b8837eb1318378228">zct::Timer</a></li>
 <li>IWatchdog()&#160;:&#160;<a class="el" href="classzct_1_1IWatchdog.html#a90a501bd3ad62d063b7235e0f3548d5e">zct::IWatchdog</a></li>
 </ul>
 
@@ -168,9 +169,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_device&#160;:&#160;<a class="el" href="classzct_1_1WatchdogReal.html#ab5748c013f6f8458383ca4546edda2a3">zct::WatchdogReal</a></li>
 <li>m_didGetLock&#160;:&#160;<a class="el" href="classzct_1_1MutexLockGuard.html#a0dda7073c7ac76bce9dd47af10c0f768">zct::MutexLockGuard</a></li>
 <li>m_direction&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#a0a1e2dc8194f44707a8e7e2acf352882">zct::IGpio</a></li>
-<li>m_durationToWaitUs&#160;:&#160;<a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ad67353393614ccbcadcbd7108b93f089">zct::TimerManager&lt; EventType &gt;::TimerExpiryInfo</a></li>
-<li>m_event&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a8729cce9b0c456d3e14eef3d9333ab75">zct::Timer&lt; EventType &gt;</a></li>
+<li>m_durationToWaitUs&#160;:&#160;<a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">zct::TimerManager::TimerExpiryInfo</a></li>
 <li>m_eventQueueBuffer&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a63d260fa7951c1731953b2f89cb8c794">zct::EventThread&lt; EventType &gt;</a></li>
+<li>m_exitEventLoop&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#afdfe877db96d4deef20cc96f6673c84a">zct::EventThread&lt; EventType &gt;</a></li>
+<li>m_expiryCallback&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a61fd51b066e873a1a192455782b9b7d8">zct::Timer</a></li>
+<li>m_externalEventCallback&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#aec687dd8872426f1aad685703922a2e0">zct::EventThread&lt; EventType &gt;</a></li>
 <li>m_feedCounts&#160;:&#160;<a class="el" href="classzct_1_1WatchdogMock.html#a653d7d2be76ddc3fa858458c11da5408">zct::WatchdogMock</a></li>
 <li>m_globalOptions&#160;:&#160;<a class="el" href="classzct_1_1WatchdogMock.html#a172a57aab1e63bdb1e70001a3c66554e">zct::WatchdogMock</a></li>
 <li>m_gpioCallbackData&#160;:&#160;<a class="el" href="structzct_1_1GpioCallbackDataAndObject.html#a661b07b46cd0dddaa7ec70665816bd69">zct::GpioCallbackDataAndObject</a></li>
@@ -178,17 +181,17 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_interruptMode&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#a99072812037174cabc81d35c590f3665">zct::IGpio</a></li>
 <li>m_interruptUserCallback&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#aca8c97958d54cbae7125ab6834b8f5d1">zct::IGpio</a></li>
 <li>m_isDisabled&#160;:&#160;<a class="el" href="classzct_1_1WatchdogMock.html#ad3d40bdbba10b825ffcf6f54e9b97652">zct::WatchdogMock</a></li>
-<li>m_isRegistered&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a9d680964ebe923a190efa66345f19071">zct::Timer&lt; EventType &gt;</a></li>
-<li>m_isRunning&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a0cc2340d053d72a2c764bc287f5e463c">zct::Timer&lt; EventType &gt;</a></li>
+<li>m_isRegistered&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a523476fda81240be3246e365c74e94d3">zct::Timer</a></li>
+<li>m_isRunning&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a94e27678d7e899132fa4b69dec1d43ee">zct::Timer</a></li>
 <li>m_isSetup&#160;:&#160;<a class="el" href="classzct_1_1WatchdogMock.html#a04d3583fc95d10a04f609d65a74c6005">zct::WatchdogMock</a>, <a class="el" href="classzct_1_1WatchdogReal.html#a30a80feace30c65032eef414effbbfda">zct::WatchdogReal</a></li>
 <li>m_logicalValue&#160;:&#160;<a class="el" href="classzct_1_1GpioMock.html#aea45f19b728987c028aa8f54999e3339">zct::GpioMock</a></li>
 <li>m_logicMode&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#a90073d05d1212e013d8ff66ac840072c">zct::IGpio</a></li>
-<li>m_maxNumTimers&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a5fdccca5dff86f3821cf14aede0c40ee">zct::TimerManager&lt; EventType &gt;</a></li>
+<li>m_maxNumTimers&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">zct::TimerManager</a></li>
 <li>m_mockMv&#160;:&#160;<a class="el" href="classzct_1_1AdcMock.html#a1500315d151591b7600163baffd09df0">zct::AdcMock</a></li>
 <li>m_mutex&#160;:&#160;<a class="el" href="classzct_1_1MutexLockGuard.html#a5f9b42de1cf5916106cbcfdccb9c9aac">zct::MutexLockGuard</a></li>
-<li>m_name&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a2445c0ef143d1ecece52db6354c1a3c6">zct::EventThread&lt; EventType &gt;</a>, <a class="el" href="classzct_1_1IAdc.html#a8ba555e39dc55fd99f0b12971200a65b">zct::IAdc</a>, <a class="el" href="classzct_1_1IGpio.html#a4d3ab3322c42084b2934ad3bd9c393a3">zct::IGpio</a>, <a class="el" href="classzct_1_1IPwm.html#afb5f93fd6a85c651d5525f2564acff75">zct::IPwm</a>, <a class="el" href="classzct_1_1IWatchdog.html#aaa60b6582ebcbbe6359adc8cc5fb8f2d">zct::IWatchdog</a>, <a class="el" href="classzct_1_1Timer.html#addd731a2ad0221858a2e28c37e6e7776">zct::Timer&lt; EventType &gt;</a></li>
+<li>m_name&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a2445c0ef143d1ecece52db6354c1a3c6">zct::EventThread&lt; EventType &gt;</a>, <a class="el" href="classzct_1_1IAdc.html#a8ba555e39dc55fd99f0b12971200a65b">zct::IAdc</a>, <a class="el" href="classzct_1_1IGpio.html#a4d3ab3322c42084b2934ad3bd9c393a3">zct::IGpio</a>, <a class="el" href="classzct_1_1IPwm.html#afb5f93fd6a85c651d5525f2564acff75">zct::IPwm</a>, <a class="el" href="classzct_1_1IWatchdog.html#aaa60b6582ebcbbe6359adc8cc5fb8f2d">zct::IWatchdog</a>, <a class="el" href="classzct_1_1Timer.html#a7965a7a0b20f111aca41d4465e926a67">zct::Timer</a></li>
 <li>m_nextChannelId&#160;:&#160;<a class="el" href="classzct_1_1WatchdogMock.html#a7cb53c6f5a6cf93a7c5bc29b638d58fd">zct::WatchdogMock</a></li>
-<li>m_numTimers&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a3739ee26d5c713b1a7bba282c3893266">zct::TimerManager&lt; EventType &gt;</a></li>
+<li>m_numTimers&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">zct::TimerManager</a></li>
 <li>m_obj&#160;:&#160;<a class="el" href="structzct_1_1GpioCallbackDataAndObject.html#a1fc6b409fabc890a0b3eb19d8eaa06b0">zct::GpioCallbackDataAndObject</a></li>
 <li>m_pullMode&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#a9f4980b7ee08fffc3389cf86bf49bd68">zct::IGpio</a></li>
 <li>m_pwmDtSpec&#160;:&#160;<a class="el" href="classzct_1_1PwmReal.html#a9dd8fc9cf12dcc76b4ba9395acd0b7a5">zct::PwmReal</a></li>
@@ -196,9 +199,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_thread&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#ae99f50e4328cdd741e63e379fbe7de6a">zct::EventThread&lt; EventType &gt;</a></li>
 <li>m_threadFunction&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#af82899498638998526e3118fded52e0c">zct::EventThread&lt; EventType &gt;</a></li>
 <li>m_threadMsgQueue&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#aeac1a315e79be599f6c6c8e275c7286a">zct::EventThread&lt; EventType &gt;</a></li>
-<li>m_timer&#160;:&#160;<a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#afd6db8d29ae9cb346f4389bb874ef4bf">zct::TimerManager&lt; EventType &gt;::TimerExpiryInfo</a></li>
-<li>m_timerManager&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#ac7f6b59b51793ee17b868ea32a3ae63d">zct::EventThread&lt; EventType &gt;</a></li>
-<li>m_timers&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#acfa07451d5454f3162bc0b5812d3675c">zct::TimerManager&lt; EventType &gt;</a></li>
+<li>m_timer&#160;:&#160;<a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">zct::TimerManager::TimerExpiryInfo</a></li>
+<li>m_timerManager&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#af22edf13ee45ca97df31199cdd089f7a">zct::EventThread&lt; EventType &gt;</a></li>
+<li>m_timers&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">zct::TimerManager</a></li>
 <li>m_userData&#160;:&#160;<a class="el" href="classzct_1_1WatchdogReal.html#a3900589fc41de42ff9680099d3a4cd27">zct::WatchdogReal</a></li>
 <li>m_zephyrMutex&#160;:&#160;<a class="el" href="classzct_1_1Mutex.html#a943f7abb30c6cc14af4d4b856c738a9d">zct::Mutex</a></li>
 <li>mockGetChannelCount()&#160;:&#160;<a class="el" href="classzct_1_1WatchdogMock.html#a64304e259eafc2b875400882744ede28">zct::WatchdogMock</a></li>
@@ -219,18 +222,19 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
-<li>nextExpiryTime_ticks&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a8092783d4bdfb93d721012228d41d205">zct::Timer&lt; EventType &gt;</a></li>
+<li>nextExpiryTime_ticks&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#ac83e60ac68c62cfdb6731df6409ac277">zct::Timer</a></li>
 </ul>
 
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>onExternalEvent()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a466b293455fda762c63357549025d8af">zct::EventThread&lt; EventType &gt;</a></li>
 <li>operator=()&#160;:&#160;<a class="el" href="classzct_1_1MutexLockGuard.html#a48285d5709dc5f89e207360f4289a61a">zct::MutexLockGuard</a></li>
 <li>Option&#160;:&#160;<a class="el" href="classzct_1_1IWatchdog.html#a738cc7d23713ae816bcdad28613d7baf">zct::IWatchdog</a></li>
 </ul>
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
-<li>period_ticks&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a95bb9224c4269cf011d4f656f1083a2d">zct::Timer&lt; EventType &gt;</a></li>
+<li>period_ticks&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#ad59df18accad8b7987eea780b2e03681">zct::Timer</a></li>
 <li>PullMode&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#af51051ceff73e1c65426e7002900b2af">zct::IGpio</a></li>
 <li>PwmMock()&#160;:&#160;<a class="el" href="classzct_1_1PwmMock.html#aedfba68f866eb0fc4527ba4df4b14702">zct::PwmMock</a></li>
 <li>PwmReal()&#160;:&#160;<a class="el" href="classzct_1_1PwmReal.html#a010264b1cd91834e51bb73ea15ac290d">zct::PwmReal</a></li>
@@ -239,8 +243,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_r" name="index_r"></a>- r -</h3><ul>
 <li>readMv()&#160;:&#160;<a class="el" href="classzct_1_1AdcMock.html#a53991ca180c30382d1c68e9195a80d74">zct::AdcMock</a>, <a class="el" href="classzct_1_1AdcReal.html#a00b06667da09cdcc068a7908c7766d76">zct::AdcReal</a>, <a class="el" href="classzct_1_1IAdc.html#a85c8e51786e4a9c2e4ce88918c89953d">zct::IAdc</a></li>
-<li>registerTimer()&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a0273876163c7411b2ecde92140412239">zct::TimerManager&lt; EventType &gt;</a></li>
+<li>registerTimer()&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#acfba157073213fc36b40c8b58be017f3">zct::TimerManager</a></li>
 <li>ResetFlag&#160;:&#160;<a class="el" href="classzct_1_1IWatchdog.html#acb4badf10cdf36a819d2f0acf61615e1">zct::IWatchdog</a></li>
+<li>runEventLoop()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68">zct::EventThread&lt; EventType &gt;</a></li>
 </ul>
 
 
@@ -248,37 +253,37 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>sendEvent()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a6eda66c2494c12922204a368786dfb73">zct::EventThread&lt; EventType &gt;</a></li>
 <li>set()&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#a842346ef624df42aedb51646b8f10588">zct::IGpio</a>, <a class="el" href="classzct_1_1IPwm.html#aca00b94ac3ddf92dfeee1dcff0ee0ac1">zct::IPwm</a>, <a class="el" href="classzct_1_1PwmMock.html#a1bd47a42c4ebf2d2d126089c595f9ec9">zct::PwmMock</a>, <a class="el" href="classzct_1_1PwmReal.html#aaefa783908bb0ca5bbd39c954d0d1f08">zct::PwmReal</a></li>
 <li>setDirection()&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#a0405bb3fa9638b69cc0d5fee38a8c18d">zct::IGpio</a></li>
-<li>setIsRegistered()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a1ce3b5751d0e93503233d23106da5f0d">zct::Timer&lt; EventType &gt;</a></li>
+<li>setExpiryCallback()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a34c526f469797c56ea8ea080308eeedc">zct::Timer</a></li>
+<li>setIsRegistered()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a6701738d9815e1270882c1dd207a8890">zct::Timer</a></li>
 <li>setLogicMode()&#160;:&#160;<a class="el" href="classzct_1_1GpioMock.html#a4a0ecd4aa0b2c355ceb57f862a059c78">zct::GpioMock</a>, <a class="el" href="classzct_1_1IGpio.html#aede6f2be760508b9d178b8f126dda251">zct::IGpio</a></li>
 <li>setPhysical()&#160;:&#160;<a class="el" href="classzct_1_1GpioMock.html#ad4e19640bafe02ce0f8b9dafa4899ec3">zct::GpioMock</a>, <a class="el" href="classzct_1_1GpioReal.html#a3b84410f890ce9e7f30636d14256a62e">zct::GpioReal</a>, <a class="el" href="classzct_1_1IGpio.html#a977d3b9cd95539d77642f911e7ca510d">zct::IGpio</a></li>
 <li>setPullMode()&#160;:&#160;<a class="el" href="classzct_1_1IGpio.html#a3cfaadb3f1518837f22be571e81b368d">zct::IGpio</a></li>
 <li>setup()&#160;:&#160;<a class="el" href="classzct_1_1IWatchdog.html#ab36e7a53806dfb268d8dbbb3953adca5">zct::IWatchdog</a>, <a class="el" href="classzct_1_1WatchdogMock.html#acd301df660d8d595b44b9f87fd7436b3">zct::WatchdogMock</a>, <a class="el" href="classzct_1_1WatchdogReal.html#ac4b7f2a99f1623809750250fea67e2d2">zct::WatchdogReal</a></li>
 <li>sleepUntilSystemTime()&#160;:&#160;<a class="el" href="classzct_1_1Util.html#ad1b12d57e515f088951c840dc7072f10">zct::Util</a></li>
-<li>start()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#ac2642b147eeb4ebbe126ac70f10ac7be">zct::Timer&lt; EventType &gt;</a></li>
-<li>startTime_ticks&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a2793f618e9ee0c2efa1cd7a70c2dc1a5">zct::Timer&lt; EventType &gt;</a></li>
+<li>start()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#ac98b8c2905ad49b083265b9da5b8a750">zct::Timer</a></li>
+<li>startTime_ticks&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#aea6344e1e2f4780409ac6fab119e50ab">zct::Timer</a></li>
 <li>staticCallback()&#160;:&#160;<a class="el" href="classzct_1_1WatchdogReal.html#ac1ac63098eed2fcbedafcdc73e64471d">zct::WatchdogReal</a></li>
 <li>staticThreadFunction()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#ad9ef1d2f6b589be97f8a27c632278d2b">zct::EventThread&lt; EventType &gt;</a></li>
-<li>stop()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#aaf970a68d8eeac56c760313eced4a721">zct::Timer&lt; EventType &gt;</a></li>
+<li>stop()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#ae0b1e80350596a948566ce453d0fed48">zct::Timer</a></li>
 </ul>
 
 
 <h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
 <li>timeoutMs&#160;:&#160;<a class="el" href="structzct_1_1WatchdogMock_1_1TimeoutChannel.html#ac64b0594f8b3bffd9769ba54c3aca274">zct::WatchdogMock::TimeoutChannel</a></li>
-<li>Timer()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a9bac1213595d2ae6d3f2373eb5787ec7">zct::Timer&lt; EventType &gt;</a></li>
-<li>TimerExpiryInfo()&#160;:&#160;<a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a92867a78c76135e6faa43e4be1d460c5">zct::TimerManager&lt; EventType &gt;::TimerExpiryInfo</a></li>
-<li>timerManager()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a62e7cf1cb3a1fe3fb0fd531d35493287">zct::EventThread&lt; EventType &gt;</a></li>
-<li>TimerManager()&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a01ef01927e0a0b58211fb0355a6f47a9">zct::TimerManager&lt; EventType &gt;</a></li>
+<li>Timer()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a5629cbeab8b919bd96ed3371404c6547">zct::Timer</a></li>
+<li>TimerExpiryInfo()&#160;:&#160;<a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#aaab3e3f3d2706a7507d3bdf5b7e4d415">zct::TimerManager::TimerExpiryInfo</a></li>
+<li>timerManager()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#aa5461d18e52c82257da77a557f173e24">zct::EventThread&lt; EventType &gt;</a></li>
+<li>TimerManager()&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#aacc401bff13094f859a68d53adc6bc2e">zct::TimerManager</a></li>
 </ul>
 
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
-<li>updateAfterExpiry()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#abaf35854363b0076f582174780b92b95">zct::Timer&lt; EventType &gt;</a></li>
+<li>updateAfterExpiry()&#160;:&#160;<a class="el" href="classzct_1_1Timer.html#a541f0bde7e703bb26dbc4c766b36d251">zct::Timer</a></li>
 <li>userData&#160;:&#160;<a class="el" href="structzct_1_1WatchdogMock_1_1TimeoutChannel.html#af5617feb6722fffb43ab940e2d4e4dc7">zct::WatchdogMock::TimeoutChannel</a></li>
 </ul>
 
 
 <h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
-<li>waitForEvent()&#160;:&#160;<a class="el" href="classzct_1_1EventThread.html#a2607651cb659eb7d0c1beb81a7690293">zct::EventThread&lt; EventType &gt;</a></li>
 <li>WatchdogMock()&#160;:&#160;<a class="el" href="classzct_1_1WatchdogMock.html#a4d4af682f9c8f554d018833a83ae6724">zct::WatchdogMock</a></li>
 <li>WatchdogReal()&#160;:&#160;<a class="el" href="classzct_1_1WatchdogReal.html#abd73f739ef5217e66c81027612a74d48">zct::WatchdogReal</a></li>
 </ul>
@@ -298,7 +303,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>~MutexLockGuard()&#160;:&#160;<a class="el" href="classzct_1_1MutexLockGuard.html#adf75f621c477e7d62c025156bc19f264">zct::MutexLockGuard</a></li>
 <li>~PwmMock()&#160;:&#160;<a class="el" href="classzct_1_1PwmMock.html#aa4c615fe8ac00fcc66dd71a7fc9208df">zct::PwmMock</a></li>
 <li>~PwmReal()&#160;:&#160;<a class="el" href="classzct_1_1PwmReal.html#a5ccb7ab9576a2585f7aa0bd0b02f7a0e">zct::PwmReal</a></li>
-<li>~TimerManager()&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a994c5c91135dd8565d82f754cdd51c46">zct::TimerManager&lt; EventType &gt;</a></li>
+<li>~TimerManager()&#160;:&#160;<a class="el" href="classzct_1_1TimerManager.html#a9fb870a3d8439d760c406942f272a040">zct::TimerManager</a></li>
 <li>~WatchdogMock()&#160;:&#160;<a class="el" href="classzct_1_1WatchdogMock.html#aae9e76369281632a15db4cf2e9483e17">zct::WatchdogMock</a></li>
 <li>~WatchdogReal()&#160;:&#160;<a class="el" href="classzct_1_1WatchdogReal.html#ac143b8f79534fc8d5bc20878f9dc7722">zct::WatchdogReal</a></li>
 </ul>
