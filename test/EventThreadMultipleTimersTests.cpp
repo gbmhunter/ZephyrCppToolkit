@@ -22,7 +22,11 @@ ZTEST_SUITE(EventThreadMultipleTimersTests, NULL, NULL, NULL, NULL, NULL);
 namespace MyEvents {
     struct ExitEvent {};
 
-    using Generic = std::variant<ExitEvent>;
+    struct Timer1ExpiredEvent {};
+    struct Timer2ExpiredEvent {};
+    struct Timer3ExpiredEvent {};
+
+    using Generic = std::variant<ExitEvent, Timer1ExpiredEvent, Timer2ExpiredEvent, Timer3ExpiredEvent>;
 } // namespace MyEvents
 
 class TestClass {
@@ -32,18 +36,38 @@ class TestClass {
                 "TestClass",
                 m_threadStack,
                 THREAD_STACK_SIZE,
-                [this]() { threadMain(); },
                 7,
                 EVENT_QUEUE_NUM_ITEMS
             ),
-            m_timer1("Timer1", [this]() { onTimer1Callback(); }),
-            m_timer2("Timer2", [this]() { onTimer2Callback(); }),
-            m_timer3("Timer3", [this]() { onTimer3Callback(); })
+            m_timer1("Timer1", [this]() {
+                MyEvents::Timer1ExpiredEvent timerEvent;
+                handleEvent(timerEvent);
+            }),
+            m_timer2("Timer2", [this]() {
+                MyEvents::Timer2ExpiredEvent timerEvent;
+                handleEvent(timerEvent);
+            }),
+            m_timer3("Timer3", [this]() {
+                MyEvents::Timer3ExpiredEvent timerEvent;
+                handleEvent(timerEvent);
+            })
         {
             // Register timers
             m_eventThread.timerManager().registerTimer(m_timer1);
             m_eventThread.timerManager().registerTimer(m_timer2);
             m_eventThread.timerManager().registerTimer(m_timer3);
+            
+            // Register external event callback
+            m_eventThread.onExternalEvent([this](const MyEvents::Generic& event) {
+                handleEvent(event);
+            });
+            
+            // Start the timers and the event thread
+            m_timer1.start(1000, 1000);
+            m_timer2.start(2000, 2000);
+            m_timer3.start(3000, 3000);
+            
+            m_eventThread.start();
         }
 
         uint32_t getTimer1Count() {
@@ -80,50 +104,33 @@ class TestClass {
 
         zct::Mutex m_accessMutex;
 
-        void onTimer1Callback() {
-            zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
-            __ASSERT_NO_MSG(lockGuard.didGetLock());
-            m_timer1Count++;
-            LOG_DBG("Timer1 callback. Count: %d.", m_timer1Count);
-        }
-
-        void onTimer2Callback() {
-            zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
-            __ASSERT_NO_MSG(lockGuard.didGetLock());
-            m_timer2Count++;
-            LOG_DBG("Timer2 callback. Count: %d.", m_timer2Count);
-        }
-
-        void onTimer3Callback() {
-            zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
-            __ASSERT_NO_MSG(lockGuard.didGetLock());
-            m_timer3Count++;
-            LOG_DBG("Timer3 callback. Count: %d.", m_timer3Count);
-        }
-
         void handleEvent(const MyEvents::Generic& event) {
             LOG_DBG("Event received: %d.", event.index());
             if (std::holds_alternative<MyEvents::ExitEvent>(event)) {
                 LOG_DBG("Got ExitEvent.");
                 // Exit the event loop
                 m_eventThread.exitEventLoop();
+            } else if (std::holds_alternative<MyEvents::Timer1ExpiredEvent>(event)) {
+                LOG_DBG("Got Timer1ExpiredEvent.");
+                zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
+                __ASSERT_NO_MSG(lockGuard.didGetLock());
+                m_timer1Count++;
+                LOG_DBG("Timer1 callback. Count: %d.", m_timer1Count);
+            } else if (std::holds_alternative<MyEvents::Timer2ExpiredEvent>(event)) {
+                LOG_DBG("Got Timer2ExpiredEvent.");
+                zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
+                __ASSERT_NO_MSG(lockGuard.didGetLock());
+                m_timer2Count++;
+                LOG_DBG("Timer2 callback. Count: %d.", m_timer2Count);
+            } else if (std::holds_alternative<MyEvents::Timer3ExpiredEvent>(event)) {
+                LOG_DBG("Got Timer3ExpiredEvent.");
+                zct::MutexLockGuard lockGuard = m_accessMutex.lockGuard(K_FOREVER);
+                __ASSERT_NO_MSG(lockGuard.didGetLock());
+                m_timer3Count++;
+                LOG_DBG("Timer3 callback. Count: %d.", m_timer3Count);
             }
         }
 
-        void threadMain() {
-            // Start the timers
-            m_timer1.start(1000, 1000);
-            m_timer2.start(2000, 2000);
-            m_timer3.start(3000, 3000);
-
-            // Register external event callback
-            m_eventThread.onExternalEvent([this](const MyEvents::Generic& event) {
-                handleEvent(event);
-            });
-
-            // Start the event loop (this never returns)
-            m_eventThread.runEventLoop();
-        }
 };
 
 ZTEST(EventThreadMultipleTimersTests, testEventThreadCreate)

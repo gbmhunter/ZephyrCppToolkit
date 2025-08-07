@@ -26,13 +26,19 @@ public:
             "CallbackTest",
             m_threadStack,
             THREAD_STACK_SIZE,
-            [this]() { threadMain(); },
             7,
             EVENT_QUEUE_NUM_ITEMS
         ),
         m_timer("CallbackTimer", [this]() { onTimerCallback(); })
     {
         m_eventThread.timerManager().registerTimer(m_timer);
+        
+        // Register external event callback
+        m_eventThread.onExternalEvent([this](const MyEvents::Generic& event) {
+            handleEvent(event);
+        });
+        
+        m_eventThread.start();
     }
 
     void startTimer() {
@@ -86,15 +92,6 @@ private:
         }
     }
 
-    void threadMain() {
-        // Register external event callback
-        m_eventThread.onExternalEvent([this](const MyEvents::Generic& event) {
-            handleEvent(event);
-        });
-
-        // Start the event loop (this never returns)
-        m_eventThread.runEventLoop();
-    }
 };
 
 ZTEST(TimerCallbackTests, test_timer_callback_is_called)
@@ -128,13 +125,19 @@ public:
             "RecurringCallbackTest", 
             m_threadStack,
             THREAD_STACK_SIZE,
-            [this]() { threadMain(); },
             7,
             EVENT_QUEUE_NUM_ITEMS
         ),
         m_timer("RecurringTimer", [this]() { onTimerCallback(); })
     {
         m_eventThread.timerManager().registerTimer(m_timer);
+        
+        // Register external event callback
+        m_eventThread.onExternalEvent([this](const MyEvents::Generic& event) {
+            handleEvent(event);
+        });
+        
+        m_eventThread.start();
     }
 
     void startTimer() {
@@ -188,15 +191,6 @@ private:
         }
     }
 
-    void threadMain() {
-        // Register external event callback
-        m_eventThread.onExternalEvent([this](const MyEvents::Generic& event) {
-            handleEvent(event);
-        });
-
-        // Start the event loop (this never returns)
-        m_eventThread.runEventLoop();
-    }
 };
 
 ZTEST(TimerCallbackTests, test_recurring_timer_callback)

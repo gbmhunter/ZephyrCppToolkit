@@ -28,14 +28,13 @@ namespace MyEvents {
     using Generic = std::variant<TimerExpiredEvent, LedFlashingEvent, ExitEvent>;
 } // namespace MyEvents
 
-class Led : public zct::EventThread<MyEvents::Generic> {
+class Led {
     public:
         Led() :
-            zct::EventThread<MyEvents::Generic>(
+            m_eventThread(
                 "Led",
                 m_threadStack,
                 THREAD_STACK_SIZE,
-                [this]() { threadMain(); },
                 7,
                 EVENT_QUEUE_NUM_ITEMS
             ),
@@ -46,7 +45,18 @@ class Led : public zct::EventThread<MyEvents::Generic> {
              })
         {
             // Register timers
-            m_timerManager.registerTimer(m_flashingTimer);
+            m_eventThread.timerManager().registerTimer(m_flashingTimer);
+            
+            // Register external event callback and start the event thread
+            m_eventThread.onExternalEvent([this](const MyEvents::Generic& event) {
+                handleEvent(event);
+            });
+            
+            m_eventThread.start();
+        }
+
+        zct::EventThread<MyEvents::Generic>& eventThread() {
+            return m_eventThread;
         }
 
         bool getLedIsOn() {
@@ -66,6 +76,7 @@ class Led : public zct::EventThread<MyEvents::Generic> {
         static constexpr size_t EVENT_QUEUE_NUM_ITEMS = 10;
         static constexpr size_t THREAD_STACK_SIZE = 512;
         K_KERNEL_STACK_MEMBER(m_threadStack, THREAD_STACK_SIZE);
+        zct::EventThread<MyEvents::Generic> m_eventThread;
         zct::Timer m_flashingTimer;
         bool m_ledIsOn = false;
         zct::Mutex m_ledIsOnMutex;
@@ -85,45 +96,36 @@ class Led : public zct::EventThread<MyEvents::Generic> {
             } else if (std::holds_alternative<MyEvents::ExitEvent>(event)) {
                 LOG_DBG("Got ExitEvent.");
                 // Exit the event loop
-                exitEventLoop();
+                m_eventThread.exitEventLoop();
             }
         }
 
-        void threadMain() {
-            // Register external event callback
-            onExternalEvent([this](const MyEvents::Generic& event) {
-                handleEvent(event);
-            });
-
-            // Start the event loop (this never returns)
-            runEventLoop();
-        }
 };
 
 ZTEST(EventThreadLedTests, testEventThreadCreate)
 {
-    Led eventThread;
+    Led led;
     zassert_true(true, "Event thread created");
 
     // Send a LED on event
     MyEvents::LedFlashingEvent ledFlashingEvent = { .flashRateMs = 1000 }; // Create an Event lvalue directly
-    eventThread.sendEvent(ledFlashingEvent);
+    led.eventThread().sendEvent(ledFlashingEvent);
 
     k_sleep(K_MSEC(500));
 
     // Time is now 0.5s. Led should be on
     LOG_DBG("Checking that LED is on...");
-    zassert_true(eventThread.getLedIsOn(), "Led should be on");
+    zassert_true(led.getLedIsOn(), "Led should be on");
     LOG_DBG("Check finished.");
 
     k_sleep(K_MSEC(1000));
 
     // Time is now 1.5s. Led should be off
     LOG_DBG("Checking that LED is off...");
-    zassert_false(eventThread.getLedIsOn(), "Led should be off");
+    zassert_false(led.getLedIsOn(), "Led should be off");
     LOG_DBG("Check finished.");
 
     // Send an exit event
     MyEvents::ExitEvent exitEvent;
-    eventThread.sendEvent(exitEvent);
+    led.eventThread().sendEvent(exitEvent);
 }

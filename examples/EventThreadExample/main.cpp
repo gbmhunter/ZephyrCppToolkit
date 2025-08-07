@@ -35,7 +35,6 @@ public:
             "Led",
             m_threadStack,
             THREAD_STACK_SIZE,
-            [this]() { threadMain(); },
             7,
             EVENT_QUEUE_NUM_ITEMS
         ),
@@ -43,6 +42,13 @@ public:
     {
         // Register timers
         m_eventThread.timerManager().registerTimer(m_flashingTimer);
+        
+        // Register external event callback
+        m_eventThread.onExternalEvent([this](const Events::Generic& event) {
+            handleEvent(event);
+        });
+        
+        m_eventThread.start();
     }
 
     ~Led() {
@@ -87,15 +93,6 @@ private:
         }
     }
 
-    void threadMain() {
-        // Register external event callback
-        m_eventThread.onExternalEvent([this](const Events::Generic& event) {
-            handleEvent(event);
-        });
-
-        // Start the event loop (this never returns unless exitEventLoop is called)
-        m_eventThread.runEventLoop();
-    }
 };
 
 int main() {
