@@ -18,174 +18,174 @@
 \DoxyCodeLine{00014\ \textcolor{comment}{//\ static\ constexpr\ int\ LOG\_LEVEL\ =\ LOG\_LEVEL\_DBG;}}
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ ZCT\_EVENT\_THREAD\_LOG\_LEVEL\ LOG\_LEVEL\_WRN}}
 \DoxyCodeLine{00016\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ EventType>}
-\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}\ \{}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ EventType>}
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}\ \{}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a4751223fb4a4b628988433c0f415892f}{EventThread}}(}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ k\_thread\_stack\_t*\ threadStack,}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ threadStackSize,}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ threadPriority,}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ eventQueueBufferNumItems}
-\DoxyCodeLine{00058\ \ \ \ \ )\ :}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_afb9f2928abd9d6ec21353c13828ec800}{m\_threadStack}}(threadStack),}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a35d26c4ac62b589f1fbd63fb43e95728}{m\_threadStackSize}}(threadStackSize),}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a601678c8b320abfdb4670c914880556c}{m\_threadPriority}}(threadPriority),}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}(10)}
-\DoxyCodeLine{00063\ \ \ \ \ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}EventThread\ constructor\ called."{}});}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}}\ =\ name;}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ event\ queue\ buffer\ and\ then\ init\ queue\ with\ it}}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}}\ =\ \textcolor{keyword}{new}\ EventType[eventQueueBufferNumItems];}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \_\_ASSERT\_NO\_MSG(\mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}}\ !=\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ k\_msgq\_init(\&\mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}},\ (\textcolor{keywordtype}{char}*)\mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}},\ \textcolor{keyword}{sizeof}(EventType),\ eventQueueBufferNumItems);}
-\DoxyCodeLine{00072\ \ \ \ \ \};}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a904626047be03e08a6563cdafb3582c0}{\string~EventThread}}()\ \{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}\%s()\ called."{}},\ \_\_FUNCTION\_\_);}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ k\_thread\_join(\&\mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}},\ K\_FOREVER);}
-\DoxyCodeLine{00085\ \ \ \ \ \}}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_aab7247827f4989207fc613d8b4495219}{start}}()\ \{}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}EventThread\ start()\ called."{}});}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ the\ thread}}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ k\_thread\_create(}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}},}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_afb9f2928abd9d6ec21353c13828ec800}{m\_threadStack}},}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a35d26c4ac62b589f1fbd63fb43e95728}{m\_threadStackSize}},}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_ad9ef1d2f6b589be97f8a27c632278d2b}{staticThreadFunction}},}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},\ \textcolor{comment}{//\ Pass\ in\ the\ instance\ of\ the\ class}}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a601678c8b320abfdb4670c914880556c}{m\_threadPriority}},}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ K\_NO\_WAIT);}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Name\ the\ thread\ for\ easier\ debugging/logging}}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ k\_thread\_name\_set(\&\mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}},\ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}});}
-\DoxyCodeLine{00112\ \ \ \ \ \}}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_a466b293455fda762c63357549025d8af}{onExternalEvent}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ EventType\&)>\ callback)\ \{}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_aec687dd8872426f1aad685703922a2e0}{m\_externalEventCallback}}\ =\ callback;}
-\DoxyCodeLine{00127\ \ \ \ \ \}}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73}{sendEvent}}(\textcolor{keyword}{const}\ EventType\&\ event)\ \{}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ k\_msgq\_put(\&\mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}},\ \&event,\ K\_NO\_WAIT);}
-\DoxyCodeLine{00138\ \ \ \ \ \}}
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}}\&\ \mbox{\hyperlink{classzct_1_1EventThread_aa5461d18e52c82257da77a557f173e24}{timerManager}}()\ \{}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}};}
-\DoxyCodeLine{00154\ \ \ \ \ \}}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_a491f2b0619e3db842d9f40f1b268f892}{exitEventLoop}}()\ \{}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00168\ \ \ \ \ \}}
-\DoxyCodeLine{00169\ }
-\DoxyCodeLine{00170\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a4751223fb4a4b628988433c0f415892f}{EventThread}}(}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ k\_thread\_stack\_t*\ threadStack,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ threadStackSize,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ threadPriority,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ eventQueueBufferNumItems}
+\DoxyCodeLine{00060\ \ \ \ \ )\ :}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_afb9f2928abd9d6ec21353c13828ec800}{m\_threadStack}}(threadStack),}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a35d26c4ac62b589f1fbd63fb43e95728}{m\_threadStackSize}}(threadStackSize),}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a601678c8b320abfdb4670c914880556c}{m\_threadPriority}}(threadPriority),}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}(10)}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}EventThread\ constructor\ called."{}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}}\ =\ name;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ event\ queue\ buffer\ and\ then\ init\ queue\ with\ it}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}}\ =\ \textcolor{keyword}{new}\ EventType[eventQueueBufferNumItems];}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \_\_ASSERT\_NO\_MSG(\mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}}\ !=\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ k\_msgq\_init(\&\mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}},\ (\textcolor{keywordtype}{char}*)\mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}},\ \textcolor{keyword}{sizeof}(EventType),\ eventQueueBufferNumItems);}
+\DoxyCodeLine{00074\ \ \ \ \ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a904626047be03e08a6563cdafb3582c0}{\string~EventThread}}()\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}\%s()\ called."{}},\ \_\_FUNCTION\_\_);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ k\_thread\_join(\&\mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}},\ K\_FOREVER);}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_aab7247827f4989207fc613d8b4495219}{start}}()\ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}EventThread\ start()\ called."{}});}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ the\ thread}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ k\_thread\_create(}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \&\mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}},}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_afb9f2928abd9d6ec21353c13828ec800}{m\_threadStack}},}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a35d26c4ac62b589f1fbd63fb43e95728}{m\_threadStackSize}},}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_ad9ef1d2f6b589be97f8a27c632278d2b}{staticThreadFunction}},}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{this},\ \textcolor{comment}{//\ Pass\ in\ the\ instance\ of\ the\ class}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_a601678c8b320abfdb4670c914880556c}{m\_threadPriority}},}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ 0,}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ K\_NO\_WAIT);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Name\ the\ thread\ for\ easier\ debugging/logging}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ k\_thread\_name\_set(\&\mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}},\ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}});}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_a466b293455fda762c63357549025d8af}{onExternalEvent}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ EventType\&)>\ callback)\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_aec687dd8872426f1aad685703922a2e0}{m\_externalEventCallback}}\ =\ callback;}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73}{sendEvent}}(\textcolor{keyword}{const}\ EventType\&\ event)\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ k\_msgq\_put(\&\mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}},\ \&event,\ K\_NO\_WAIT);}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}}\&\ \mbox{\hyperlink{classzct_1_1EventThread_aa5461d18e52c82257da77a557f173e24}{timerManager}}()\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}};}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_a491f2b0619e3db842d9f40f1b268f892}{exitEventLoop}}()\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
 \DoxyCodeLine{00171\ }
-\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_ad9ef1d2f6b589be97f8a27c632278d2b}{staticThreadFunction}}(\textcolor{keywordtype}{void}*\ arg1,\ \textcolor{keywordtype}{void}*\ arg2,\ \textcolor{keywordtype}{void}*\ arg3)}
-\DoxyCodeLine{00174\ \ \ \ \ \{}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ ARG\_UNUSED(arg2);}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ ARG\_UNUSED(arg3);}
-\DoxyCodeLine{00178\ }
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First\ passed\ in\ argument\ is\ the\ instance\ of\ the\ class}}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}*\ obj\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}*\textcolor{keyword}{>}(arg1);}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Run\ the\ event\ loop.\ This\ should\ not\ return\ unless\ the\ user\ calls\ exitEventLoop().}}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ obj-\/>\mbox{\hyperlink{classzct_1_1EventThread_a7edd0a4e156e57bf8f3c6832ae3bde68}{runEventLoop}}();}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ get\ here,\ the\ user\ decided\ to\ exit\ the\ thread}}
-\DoxyCodeLine{00184\ \ \ \ \ \}}
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_a7edd0a4e156e57bf8f3c6832ae3bde68}{runEventLoop}}()\ \{}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}\%s()\ called."{}},\ \_\_FUNCTION\_\_);}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}})\ \{}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ next\ timer\ to\ expire}}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ nextTimerInfo\ =\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}.\mbox{\hyperlink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{getNextExpiringTimer}}();}
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ expired\ timers\ and\ call\ their\ callbacks}}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (nextTimerInfo.m\_timer\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ nextTimerInfo.m\_durationToWaitUs\ ==\ 0)\ \{}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Timer\ expired.\ Timer:\ \%p."{}},\ nextTimerInfo.m\_timer);}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ the\ timer\ after\ expiry}}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ nextTimerInfo.m\_timer-\/>updateAfterExpiry();}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Call\ the\ callback}}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ callback\ =\ nextTimerInfo.m\_timer-\/>getExpiryCallback();}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (callback)\ \{}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ callback();}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ callback\ calls\ exitEventLoop(),\ we\ will\ exit\ the\ event\ loop}}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ return\ from\ runEventLoop().}}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}})\ \{}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ the\ next\ expired\ timer}}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ nextTimerInfo\ =\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}.\mbox{\hyperlink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{getNextExpiringTimer}}();}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00224\ }
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ get\ here,\ we\ have\ handled\ all\ expired\ timers.}}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ k\_timeout\_t\ timeout;}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nextTimerInfo.m\_timer\ !=\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ timeout\ =\ Z\_TIMEOUT\_US(nextTimerInfo.m\_durationToWaitUs);}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ timeout\ =\ K\_FOREVER;}
-\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00232\ }
-\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Block\ on\ message\ queue\ until\ next\ timer\ expiry}}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ storage\ in\ the\ case\ we\ receive\ an\ external\ event}}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ EventType\ rxEvent;}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ queueRc\ =\ k\_msgq\_get(\&\mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}},\ \&rxEvent,\ timeout);}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (queueRc\ ==\ 0)\ \{}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ got\ a\ message\ from\ the\ queue,\ call\ the\ external\ event\ callback}}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classzct_1_1EventThread_aec687dd8872426f1aad685703922a2e0}{m\_externalEventCallback}})\ \{}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_aec687dd8872426f1aad685703922a2e0}{m\_externalEventCallback}}(rxEvent);}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ callback\ calls\ exitEventLoop(),\ we\ will\ exit\ the\ event\ loop}}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ return\ from\ runEventLoop().}}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}})\ \{}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_WRN(\textcolor{stringliteral}{"{}Received\ external\ event\ in\ event\ thread\ \(\backslash\)"{}\%s\(\backslash\)"{}\ but\ no\ external\ event\ callback\ is\ registered."{}},\ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}});}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (queueRc\ ==\ -\/EAGAIN)\ \{}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Queue\ timed\ out,\ which\ means\ we\ need\ to\ handle\ the\ timer\ expiry,}}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ jump\ back\ to\ start\ of\ while\ loop\ to\ handle\ the\ timer\ expiry}}
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Queue\ timed\ out,\ which\ means\ we\ need\ to\ handle\ timer\ expiry."{}});}
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (queueRc\ ==\ -\/ENOMSG)\ \{}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ means\ the\ queue\ must\ have\ been\ purged}}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_ASSERT(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Got\ -\/ENOMSG\ from\ queue,\ was\ not\ expecting\ this."{}});}
-\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_ASSERT(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Got\ unexpected\ return\ code\ from\ queue:\ \%d."{}},\ queueRc);}
-\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ End\ of\ while\ (true)\ loop}}
-\DoxyCodeLine{00262\ \ \ \ \ \}}
-\DoxyCodeLine{00263\ }
-\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00266\ }
-\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keyword}{struct\ }k\_thread\ \mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}};}
-\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keyword}{struct\ }k\_msgq\ \mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}};}
-\DoxyCodeLine{00269\ }
-\DoxyCodeLine{00270\ \ \ \ \ k\_thread\_stack\_t*\ \mbox{\hyperlink{classzct_1_1EventThread_afb9f2928abd9d6ec21353c13828ec800}{m\_threadStack}};}
-\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classzct_1_1EventThread_a35d26c4ac62b589f1fbd63fb43e95728}{m\_threadStackSize}};}
-\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1EventThread_a601678c8b320abfdb4670c914880556c}{m\_threadPriority}};}
-\DoxyCodeLine{00273\ }
-\DoxyCodeLine{00274\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}}\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}};}
-\DoxyCodeLine{00275\ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ EventType\&)>\ \mbox{\hyperlink{classzct_1_1EventThread_aec687dd8872426f1aad685703922a2e0}{m\_externalEventCallback}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00276\ }
-\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00281\ \};}
-\DoxyCodeLine{00282\ }
-\DoxyCodeLine{00288\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+\DoxyCodeLine{00172\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_ad9ef1d2f6b589be97f8a27c632278d2b}{staticThreadFunction}}(\textcolor{keywordtype}{void}*\ arg1,\ \textcolor{keywordtype}{void}*\ arg2,\ \textcolor{keywordtype}{void}*\ arg3)}
+\DoxyCodeLine{00176\ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ ARG\_UNUSED(arg2);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ ARG\_UNUSED(arg3);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ First\ passed\ in\ argument\ is\ the\ instance\ of\ the\ class}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}*\ obj\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}}*\textcolor{keyword}{>}(arg1);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Run\ the\ event\ loop.\ This\ should\ not\ return\ unless\ the\ user\ calls\ exitEventLoop().}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ obj-\/>\mbox{\hyperlink{classzct_1_1EventThread_a7edd0a4e156e57bf8f3c6832ae3bde68}{runEventLoop}}();}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ get\ here,\ the\ user\ decided\ to\ exit\ the\ thread}}
+\DoxyCodeLine{00186\ \ \ \ \ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1EventThread_a7edd0a4e156e57bf8f3c6832ae3bde68}{runEventLoop}}()\ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1EventThread}{EventThread}},\ \mbox{\hyperlink{EventThread_8hpp_aa93682f51f170feb5e257b4aa70327ea}{ZCT\_EVENT\_THREAD\_LOG\_LEVEL}});}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}\%s()\ called."{}},\ \_\_FUNCTION\_\_);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}})\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ next\ timer\ to\ expire}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ nextTimerInfo\ =\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}.\mbox{\hyperlink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{getNextExpiringTimer}}();}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ expired\ timers\ and\ call\ their\ callbacks}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (nextTimerInfo.m\_timer\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ nextTimerInfo.m\_durationToWaitUs\ ==\ 0)\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Timer\ expired.\ Timer:\ \%p."{}},\ nextTimerInfo.m\_timer);}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ the\ timer\ after\ expiry}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ nextTimerInfo.m\_timer-\/>updateAfterExpiry();}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Call\ the\ callback}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ callback\ =\ nextTimerInfo.m\_timer-\/>getExpiryCallback();}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (callback)\ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ callback();}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ callback\ calls\ exitEventLoop(),\ we\ will\ exit\ the\ event\ loop}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ return\ from\ runEventLoop().}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}})\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ the\ next\ expired\ timer}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ nextTimerInfo\ =\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}.\mbox{\hyperlink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{getNextExpiringTimer}}();}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ get\ here,\ we\ have\ handled\ all\ expired\ timers.}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ k\_timeout\_t\ timeout;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nextTimerInfo.m\_timer\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ timeout\ =\ Z\_TIMEOUT\_US(nextTimerInfo.m\_durationToWaitUs);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ timeout\ =\ K\_FOREVER;}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Block\ on\ message\ queue\ until\ next\ timer\ expiry}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ storage\ in\ the\ case\ we\ receive\ an\ external\ event}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ EventType\ rxEvent;}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ queueRc\ =\ k\_msgq\_get(\&\mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}},\ \&rxEvent,\ timeout);}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (queueRc\ ==\ 0)\ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ got\ a\ message\ from\ the\ queue,\ call\ the\ external\ event\ callback}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classzct_1_1EventThread_aec687dd8872426f1aad685703922a2e0}{m\_externalEventCallback}})\ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1EventThread_aec687dd8872426f1aad685703922a2e0}{m\_externalEventCallback}}(rxEvent);}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ callback\ calls\ exitEventLoop(),\ we\ will\ exit\ the\ event\ loop}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ return\ from\ runEventLoop().}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}})\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_WRN(\textcolor{stringliteral}{"{}Received\ external\ event\ in\ event\ thread\ \(\backslash\)"{}\%s\(\backslash\)"{}\ but\ no\ external\ event\ callback\ is\ registered."{}},\ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}});}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (queueRc\ ==\ -\/EAGAIN)\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Queue\ timed\ out,\ which\ means\ we\ need\ to\ handle\ the\ timer\ expiry,}}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ jump\ back\ to\ start\ of\ while\ loop\ to\ handle\ the\ timer\ expiry}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Queue\ timed\ out,\ which\ means\ we\ need\ to\ handle\ timer\ expiry."{}});}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (queueRc\ ==\ -\/ENOMSG)\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ means\ the\ queue\ must\ have\ been\ purged}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_ASSERT(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Got\ -\/ENOMSG\ from\ queue,\ was\ not\ expecting\ this."{}});}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_ASSERT(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}Got\ unexpected\ return\ code\ from\ queue:\ \%d."{}},\ queueRc);}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \}\ \textcolor{comment}{//\ End\ of\ while\ (true)\ loop}}
+\DoxyCodeLine{00264\ \ \ \ \ \}}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\_name}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\_eventQueueBuffer}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keyword}{struct\ }k\_thread\ \mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\_thread}};}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keyword}{struct\ }k\_msgq\ \mbox{\hyperlink{classzct_1_1EventThread_aeac1a315e79be599f6c6c8e275c7286a}{m\_threadMsgQueue}};}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \ \ \ k\_thread\_stack\_t*\ \mbox{\hyperlink{classzct_1_1EventThread_afb9f2928abd9d6ec21353c13828ec800}{m\_threadStack}};}
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classzct_1_1EventThread_a35d26c4ac62b589f1fbd63fb43e95728}{m\_threadStackSize}};}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classzct_1_1EventThread_a601678c8b320abfdb4670c914880556c}{m\_threadPriority}};}
+\DoxyCodeLine{00275\ }
+\DoxyCodeLine{00276\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}}\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}};}
+\DoxyCodeLine{00277\ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ EventType\&)>\ \mbox{\hyperlink{classzct_1_1EventThread_aec687dd8872426f1aad685703922a2e0}{m\_externalEventCallback}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00283\ \};}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00290\ \}\ \textcolor{comment}{//\ namespace\ zct}}
 
 \end{DoxyCode}

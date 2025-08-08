@@ -172,6 +172,7 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <p>This class spawns a new Zephyr thread.</p>
 <p>The user is responsible for making sure the thread function returns if you want to destroy this object. This is because the destructor blocks until the thread is complete. The best way to do this is to implement a exit event and send it to the event thread. The event thread returns when it receives the exit event.</p>
 <p>Making sure to return from the thread function is only important if you are destroying the object, e.g. in testing.</p>
+<p>This class works really well with event driven programming and hierarchical state machines (HSM) like NinjaHSM.</p>
 <p>Below is an example of how to use this class.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;variant&gt;</span></div>
 <div class="line"> </div>
@@ -282,8 +283,8 @@ class zct::EventThread&lt; EventType &gt;</div><p>Use this class in your objects
 <div class="line">    k_sleep(K_MSEC(2500));</div>
 <div class="line">}</div>
 <div class="ttc" id="aEventThread_8hpp_html"><div class="ttname"><a href="EventThread_8hpp.html">EventThread.hpp</a></div></div>
-<div class="ttc" id="aclasszct_1_1EventThread_html"><div class="ttname"><a href="classzct_1_1EventThread.html">zct::EventThread</a></div><div class="ttdoc">Use this class in your objects to create a thread that can wait for events.</div><div class="ttdef"><b>Definition</b> EventThread.hpp:34</div></div>
-<div class="ttc" id="aclasszct_1_1EventThread_html_a491f2b0619e3db842d9f40f1b268f892"><div class="ttname"><a href="classzct_1_1EventThread.html#a491f2b0619e3db842d9f40f1b268f892">zct::EventThread::exitEventLoop</a></div><div class="ttdeci">void exitEventLoop()</div><div class="ttdef"><b>Definition</b> EventThread.hpp:166</div></div>
+<div class="ttc" id="aclasszct_1_1EventThread_html"><div class="ttname"><a href="classzct_1_1EventThread.html">zct::EventThread</a></div><div class="ttdoc">Use this class in your objects to create a thread that can wait for events.</div><div class="ttdef"><b>Definition</b> EventThread.hpp:36</div></div>
+<div class="ttc" id="aclasszct_1_1EventThread_html_a491f2b0619e3db842d9f40f1b268f892"><div class="ttname"><a href="classzct_1_1EventThread.html#a491f2b0619e3db842d9f40f1b268f892">zct::EventThread::exitEventLoop</a></div><div class="ttdeci">void exitEventLoop()</div><div class="ttdef"><b>Definition</b> EventThread.hpp:168</div></div>
 <div class="ttc" id="aclasszct_1_1Timer_html"><div class="ttname"><a href="classzct_1_1Timer.html">zct::Timer</a></div><div class="ttdoc">A timer that can be used to execute callbacks at regular intervals in an event driven application.</div><div class="ttdef"><b>Definition</b> Timer.hpp:39</div></div>
 <div class="ttc" id="aclasszct_1_1Timer_html_ac98b8c2905ad49b083265b9da5b8a750"><div class="ttname"><a href="classzct_1_1Timer.html#ac98b8c2905ad49b083265b9da5b8a750">zct::Timer::start</a></div><div class="ttdeci">void start(int64_t period_ms)</div><div class="ttdef"><b>Definition</b> Timer.hpp:63</div></div>
 <div class="ttc" id="anamespacezct_html_a03e785beb455af4012d3a57e19c99d13"><div class="ttname"><a href="namespacezct.html#a03e785beb455af4012d3a57e19c99d13">zct::LOG_MODULE_REGISTER</a></div><div class="ttdeci">LOG_MODULE_REGISTER(EventThread, LOG_LEVEL_DBG)</div></div>
