@@ -11,14 +11,14 @@ Design goals:
 * Leverage C++ features to make Zephyr applications easier and safer to write (e.g. RAII based mutex guard, stronger typing with `enum class`, typed unions with `std::variant`).
 * Provide an easy way to mock peripherals for testing using `native_sim` and `ztest`.
 * Provide a C++ interface over Zephyr peripherals.
-* Provide extra functionality on top of what is provided by Zephyr (e.g. event driven threads, timers).
+* Provide extra functionality on top of what is provided by Zephyr (e.g. event driven threads, timers, utility functions).
 
 This toolkit uses dynamic memory allocation, but only for initialization. This allows the clean and flexible use of library classes. This means you don't have to
 
 * Pass in pointers to buffers to library classes, they can make their own.
 * Use templating to allocate the memory for the buffers.
 
-This should be acceptable for many firmware projects, since once initialization is complete you are safe from the fragmentation and non-determinisitic issues of dynamic memory allocation.
+This should be acceptable for many firmware projects, since once initialization is complete you are safe from the fragmentation and non-determinisitic issues of dynamic memory allocation. If standards mean you cannot use dynamic memory allocation at all, it should be easy to port this library to make it work.
 
 Read the [documentation](https://gbmhunter.github.io/ZephyrCppToolkit/) for more information.
 
@@ -115,22 +115,22 @@ See the following documentation for more information:
 
 ## Event Thread
 
-EventThread is a base class for easily creating threads following a specific event driven pattern with timers.
+EventThread is a base class for easily creating threads following a specific event driven pattern with timers and external events.
 
 One benefit of using this over Zephyrs native timers is that these timers run synchronous with this thread. In Zephyr, timers are run in the system thread, meaning two things:
 
 1. If you want them to interact with other threads, you need to synchonize them (typically by posting of the threads event queue).
 1. You can get race conditions in where you receive timer expiry events from another thread after you have apparently stopped it (due to the timer timeout occuring before it was stopped, yet the stopping thread has not processed the item on it's event queue).
 
-Each event thread requires a event type to be defined which is a container of all the possible events that can be sent to the thread via it's internal message queue. All passing of events is done by copy, so you don't have to worry about lifetime issues.
+Each event thread requires a event type to be defined which is a container of all the possible events that can be sent to the thread via it's internal message queue (`std::variant` is great for this). All passing of events is done by copy, so you don't have to worry about lifetime issues.
 
-Rather than post to the message queue directly from other modules, it's recommended to create wrapper functions (like the `flash` function below) which do the work of creating the event and posting it to the queue. These functions will be inherently thread safe.
+Rather than post to the message queue directly from other modules, it's recommended to create wrapper functions belonging to the module which do the work of creating the event and posting it to the queue (i.e. the queue is kept as an implementation detail of the module). These functions will be inherently thread safe.
 
-See the [EventThread class documentation](https://gbmhunter.github.io/ZephyrCppToolkit/classzct_1_1EventThread.html) for more information.
+See the [EventThread class documentation](https://gbmhunter.github.io/ZephyrCppToolkit/classzct_1_1EventThread.html) for more information, including an example.
 
 ## Examples
 
-The `examples/` directory contains some examples of how to use the library.
+The `examples/` directory contains some examples of how to use the library. NOTE: These are extra examples. There are already examples in the class documentation.
 
 * `examples/IntegrationTest`: An example of how to use this library to perform integration testing. This tests essentially the entire application, including multiple threads. Mock peripherals are passed into the application. This example also demonstrates the folder structure, with most of the application code in the `src/` directory setup as a CMake `INTERFACE` library, and then two executables defined in the `real/` and the `test/` directories.
 

@@ -26,6 +26,8 @@ namespace zct {
  * 
  * Making sure to return from the thread function is only important if you are destroying the object, e.g. in testing.
  * 
+ * This class works really well with event driven programming and hierarchical state machines (HSM) like NinjaHSM.
+ * 
  * Below is an example of how to use this class.
  * 
  * \include EventThreadExample/main.cpp
