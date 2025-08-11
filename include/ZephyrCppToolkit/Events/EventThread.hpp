@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <variant>
 
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -38,6 +39,13 @@ class EventThread {
 public:
 
     /**
+     * The type of items that can be sent to the event thread. Can either be an event or a function to run in the context of the event thread.
+     * 
+     * This is a variant of the event type and a function to run in the context of the event thread.
+     */
+    using MsgQueueItem = std::variant<EventType, std::function<void()>>;
+
+    /**
      * Create a new event thread.
      * 
      * Dynamically allocates memory for the event queue buffer. At the moment, you have to allocate
@@ -68,9 +76,9 @@ public:
         m_name = name;
 
         // Create event queue buffer and then init queue with it
-        m_eventQueueBuffer = new EventType[eventQueueBufferNumItems];
-        __ASSERT_NO_MSG(m_eventQueueBuffer != nullptr);
-        k_msgq_init(&m_threadMsgQueue, (char*)m_eventQueueBuffer, sizeof(EventType), eventQueueBufferNumItems);
+        m_msgQueueBuffer = new MsgQueueItem[eventQueueBufferNumItems];
+        __ASSERT_NO_MSG(m_msgQueueBuffer != nullptr);
+        k_msgq_init(&m_threadMsgQueue, (char*)m_msgQueueBuffer, sizeof(MsgQueueItem), eventQueueBufferNumItems);
     };
 
     /**
@@ -136,7 +144,8 @@ public:
      * \param event The event to send. It is copied into the event queue so it's lifetime only needs to be as long as this function call.
      */
     void sendEvent(const EventType& event) {
-        k_msgq_put(&m_threadMsgQueue, &event, K_NO_WAIT);
+        MsgQueueItem item = event;
+        k_msgq_put(&m_threadMsgQueue, &item, K_NO_WAIT);
     }
 
     /**
@@ -167,6 +176,17 @@ public:
      */
     void exitEventLoop() {
         m_exitEventLoop = true;
+    }
+
+    /**
+     * Run a function in the context of the event thread. This passes the function through the message queue.
+     * When the event loop thread receives it, it runs the function. 
+     * 
+     * \param func The function to run. This will be run in the context of the event thread.
+     */
+    void runInLoop(std::function<void()> func) {
+        MsgQueueItem item = func;
+        k_msgq_put(&m_threadMsgQueue, &item, K_NO_WAIT);
     }
 
 protected:
@@ -234,19 +254,26 @@ protected:
 
         // Block on message queue until next timer expiry
         // Create storage in the case we receive an external event
-        EventType rxEvent;
-        int queueRc = k_msgq_get(&m_threadMsgQueue, &rxEvent, timeout);
+        MsgQueueItem msgQueueItem;
+        int queueRc = k_msgq_get(&m_threadMsgQueue, &msgQueueItem, timeout);
         if (queueRc == 0) {
-            // We got a message from the queue, call the external event callback
-            if (m_externalEventCallback) {
-                m_externalEventCallback(rxEvent);
-                // If the callback calls exitEventLoop(), we will exit the event loop
-                // and return from runEventLoop().
-                if (m_exitEventLoop) {
-                    return;
+            // We got a message from the queue, it will either be an event or a function to run in the context of the event thread.
+            if (std::holds_alternative<EventType>(msgQueueItem)) {
+                // It's an event, call the external event callback
+                const auto& event = std::get<EventType>(msgQueueItem);
+                if (m_externalEventCallback) {
+                    m_externalEventCallback(event);
+                    // If the callback calls exitEventLoop(), we will exit the event loop
+                    // and return from runEventLoop().
+                    if (m_exitEventLoop) {
+                        return;
+                    }
+                } else {
+                    LOG_WRN("Received external event in event thread \"%s\" but no external event callback is registered.", m_name);
                 }
             } else {
-                LOG_WRN("Received external event in event thread \"%s\" but no external event callback is registered.", m_name);
+                // It's a function to run in the context of the event thread, run it
+                std::get<std::function<void()>>(msgQueueItem)();
             }
             continue;
         } else if (queueRc == -EAGAIN) {
@@ -264,7 +291,7 @@ protected:
     }
 
     const char* m_name = nullptr;
-    void* m_eventQueueBuffer = nullptr;
+    void* m_msgQueueBuffer = nullptr;
 
     struct k_thread m_thread;
     struct k_msgq m_threadMsgQueue;

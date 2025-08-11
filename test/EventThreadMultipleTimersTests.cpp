@@ -180,4 +180,26 @@ ZTEST(EventThreadMultipleTimersTests, testEventThreadCreate)
     testClass.m_eventThread.sendEvent(exitEvent);
 }
 
+ZTEST(EventThreadMultipleTimersTests, testRunInLoopWorks)
+{
+    TestClass testClass;
+
+    // Create atomic variable to count how many times our function has been called. We need an atomic variable
+    // as runInLoop() will call the function in the context of the event thread, which is different to the thread
+    // we are in now.
+    atomic_t count = 0;
+    testClass.m_eventThread.runInLoop([&count]() {
+        atomic_inc(&count);
+    });
+
+    k_sleep(K_MSEC(100));
+
+    // Check the count
+    zassert_equal(atomic_get(&count), 1, "Count should be 1. count: %d.", atomic_get(&count));
+
+    // Send exit event
+    MyEvents::ExitEvent exitEvent;
+    testClass.m_eventThread.sendEvent(exitEvent);
+}
+
 } // namespace
