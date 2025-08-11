@@ -27,53 +27,53 @@ Collaboration diagram for zct\+::Gpio\+Mock\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classzct_1_1GpioMock_a0771a24ddde1d289ad9ca6a05a8d9f37}{Gpio\+Mock}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} direction=\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}})
+\mbox{\hyperlink{classzct_1_1GpioMock_a0771a24ddde1d289ad9ca6a05a8d9f37}{Gpio\+Mock}} (\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{const}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{name}}, \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{direction}}=\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}})
 \begin{DoxyCompactList}\small\item\em Create a new mock GPIO pin. Default direction is input. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classzct_1_1GpioMock_acebf98f7ba4814c1cc5c698cfb9fc009}{\texorpdfstring{$\sim$}{\string~}\+Gpio\+Mock}} ()
 \begin{DoxyCompactList}\small\item\em Destroy the GPIO. Does nothing. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classzct_1_1GpioMock_ad4e19640bafe02ce0f8b9dafa4899ec3}{set\+Physical}} (bool value) override
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1GpioMock_ad4e19640bafe02ce0f8b9dafa4899ec3}{set\+Physical}} (\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{value}}) \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{override}}
 \begin{DoxyCompactList}\small\item\em Set the physical value of the GPIO. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classzct_1_1GpioMock_a91f0b529fbd4e0ba543f591581c35133}{get\+Physical}} () const override
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1GpioMock_a91f0b529fbd4e0ba543f591581c35133}{get\+Physical}} () \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{const}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{override}}
 \begin{DoxyCompactList}\small\item\em Get the physical value of the GPIO. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classzct_1_1GpioMock_acff562446a20169f8e197757a205b77b}{configure\+Interrupt}} (\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}} interrupt\+Mode, std\+::function$<$ void()$>$ callback) override
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1GpioMock_acff562446a20169f8e197757a205b77b}{configure\+Interrupt}} (\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{interrupt\+Mode}}, std\+::function$<$ \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}}()$>$ callback) \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{override}}
 \begin{DoxyCompactList}\small\item\em Configure an interrupt on the GPIO. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classzct_1_1GpioMock_a4a0ecd4aa0b2c355ceb57f862a059c78}{set\+Logic\+Mode}} (\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} logic\+Mode) override
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1GpioMock_a4a0ecd4aa0b2c355ceb57f862a059c78}{set\+Logic\+Mode}} (\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{logic\+Mode}}) \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{override}}
 \begin{DoxyCompactList}\small\item\em Set the logic mode of the GPIO. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classzct_1_1GpioMock_a678ce17833ba6a9726c2d8aaa9e6ec48}{mock\+Set\+Input}} (bool logical\+Value)
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1GpioMock_a678ce17833ba6a9726c2d8aaa9e6ec48}{mock\+Set\+Input}} (\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{logical\+Value}})
 \begin{DoxyCompactList}\small\item\em Use this to pretend to be an external signal changing the state of an input GPIO. This sets the logical value of the GPIO. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classzct_1_1GpioMock_a1f16a29e060d2319936c106db0018c84}{mock\+Set\+Input\+Physical}} (bool physical\+Value)
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1GpioMock_a1f16a29e060d2319936c106db0018c84}{mock\+Set\+Input\+Physical}} (\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{physical\+Value}})
 \begin{DoxyCompactList}\small\item\em Use this to pretend to be an external signal changing the state of an input GPIO. This sets the physical value of the GPIO. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classzct_1_1IGpio}{zct\+::\+IGpio}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classzct_1_1IGpio_af21982880070ece386916ac3f36b69dc}{IGpio}} (const char \texorpdfstring{$\ast$}{*}name, \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} direction=\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}}, \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} logic\+Mode=\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9a5d51eb090a6bb620cf3aa90c6e5b0797}{Logic\+Mode\+::\+Active\+High}}, \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} pull\+Mode=\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754}{Pull\+Mode\+::\+None}})
+\mbox{\hyperlink{classzct_1_1IGpio_af21982880070ece386916ac3f36b69dc}{IGpio}} (\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{const}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{char}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{name}}, \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{direction}}=\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}}, \mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{logic\+Mode}}=\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9a5d51eb090a6bb620cf3aa90c6e5b0797}{Logic\+Mode\+::\+Active\+High}}, \mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{pull\+Mode}}=\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2afa6adf97f83acf6453d4a6a4b1070f3754}{Pull\+Mode\+::\+None}})
 \begin{DoxyCompactList}\small\item\em Create a new GPIO. \end{DoxyCompactList}\item 
-virtual \mbox{\hyperlink{classzct_1_1IGpio_af81a56a2a58a6010618e872b267b3b08}{\texorpdfstring{$\sim$}{\string~}\+IGpio}} ()=default
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{virtual}} \mbox{\hyperlink{classzct_1_1IGpio_af81a56a2a58a6010618e872b267b3b08}{\texorpdfstring{$\sim$}{\string~}\+IGpio}} ()=\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{default}}
 \begin{DoxyCompactList}\small\item\em Destroy the GPIO. \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classzct_1_1IGpio_a842346ef624df42aedb51646b8f10588}{set}} (bool value)
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{virtual}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1IGpio_a842346ef624df42aedb51646b8f10588}{set}} (\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{value}})
 \item 
 virtual bool \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{get}} () const
 \item 
-virtual void \mbox{\hyperlink{classzct_1_1IGpio_a0405bb3fa9638b69cc0d5fee38a8c18d}{set\+Direction}} (\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} direction)
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{virtual}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1IGpio_a0405bb3fa9638b69cc0d5fee38a8c18d}{set\+Direction}} (\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{direction}})
 \item 
-virtual void \mbox{\hyperlink{classzct_1_1IGpio_a3cfaadb3f1518837f22be571e81b368d}{set\+Pull\+Mode}} (\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} pull\+Mode)
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{virtual}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1IGpio_a3cfaadb3f1518837f22be571e81b368d}{set\+Pull\+Mode}} (\mbox{\hyperlink{classzct_1_1IGpio_af51051ceff73e1c65426e7002900b2af}{Pull\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{pull\+Mode}})
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classzct_1_1GpioMock_a36b0a65afcd2c3e448de6b145c5f3eeb}{configure\+Pin\+Based\+On\+Settings}} () override
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1GpioMock_a36b0a65afcd2c3e448de6b145c5f3eeb}{configure\+Pin\+Based\+On\+Settings}} () \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{override}}
 \begin{DoxyCompactList}\small\item\em Configure the pin based on the current settings. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classzct_1_1GpioMock_a51d8773f28db55c7fdedc2345564df34}{call\+Interrupt\+Handler\+If\+Needed}} (bool old\+Logical\+Value, bool old\+Physical\+Value, bool new\+Logical\+Value, bool new\+Physical\+Value)
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} \mbox{\hyperlink{classzct_1_1GpioMock_a51d8773f28db55c7fdedc2345564df34}{call\+Interrupt\+Handler\+If\+Needed}} (\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{old\+Logical\+Value}}, \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{old\+Physical\+Value}}, \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{new\+Logical\+Value}}, \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{new\+Physical\+Value}})
 \begin{DoxyCompactList}\small\item\em Helper function to determine and call the interrupt handler if needed. Calculates if it needs to be called based on the old and new GPIO values. In the real GPIO this would be done by the Zephyr GPIO driver. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{classzct_1_1GpioMock_aea45f19b728987c028aa8f54999e3339}{m\+\_\+logical\+Value}}
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} \mbox{\hyperlink{classzct_1_1GpioMock_aea45f19b728987c028aa8f54999e3339}{m\+\_\+logical\+Value}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classzct_1_1IGpio}{zct\+::\+IGpio}}}
 \begin{DoxyCompactItemize}
 \item 
-const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IGpio_a4d3ab3322c42084b2934ad3bd9c393a3}{m\+\_\+name}}
+\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{const}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{char}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IGpio_a4d3ab3322c42084b2934ad3bd9c393a3}{m\+\_\+name}}
 \item 
 \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}} \mbox{\hyperlink{classzct_1_1IGpio_a0a1e2dc8194f44707a8e7e2acf352882}{m\+\_\+direction}}
 \item 
@@ -83,7 +83,7 @@ const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1IGpio_a4d3ab3
 \item 
 \mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}} \mbox{\hyperlink{classzct_1_1IGpio_a99072812037174cabc81d35c590f3665}{m\+\_\+interrupt\+Mode}}
 \item 
-std\+::function$<$ void()$>$ \mbox{\hyperlink{classzct_1_1IGpio_aca8c97958d54cbae7125ab6834b8f5d1}{m\+\_\+interrupt\+User\+Callback}}
+std\+::function$<$ \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}}()$>$ \mbox{\hyperlink{classzct_1_1IGpio_aca8c97958d54cbae7125ab6834b8f5d1}{m\+\_\+interrupt\+User\+Callback}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Types inherited from \mbox{\hyperlink{classzct_1_1IGpio}{zct\+::\+IGpio}}}
@@ -127,7 +127,7 @@ Implements a mock GPIO pin.
 \index{zct::GpioMock@{zct::GpioMock}!GpioMock@{GpioMock}}
 \index{GpioMock@{GpioMock}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{GpioMock()}{GpioMock()}}
-{\footnotesize\ttfamily zct\+::\+Gpio\+Mock\+::\+Gpio\+Mock (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}}}]{direction = {\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily zct\+::\+Gpio\+Mock\+::\+Gpio\+Mock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{const}} \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{char}} \texorpdfstring{$\ast$}{*}}]{name,  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2}{Direction}}}]{direction = {\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_af8c2b6d47d04aa64950a2b4467653ff2a324118a6721dd6b8a9b9f4e327df2bf5}{Direction\+::\+Input}}} }\end{DoxyParamCaption})}
 
 
 
@@ -157,7 +157,7 @@ Destroy the GPIO. Does nothing.
 \index{zct::GpioMock@{zct::GpioMock}!callInterruptHandlerIfNeeded@{callInterruptHandlerIfNeeded}}
 \index{callInterruptHandlerIfNeeded@{callInterruptHandlerIfNeeded}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{callInterruptHandlerIfNeeded()}{callInterruptHandlerIfNeeded()}}
-{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::call\+Interrupt\+Handler\+If\+Needed (\begin{DoxyParamCaption}\item[{bool}]{old\+Logical\+Value,  }\item[{bool}]{old\+Physical\+Value,  }\item[{bool}]{new\+Logical\+Value,  }\item[{bool}]{new\+Physical\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} zct\+::\+Gpio\+Mock\+::call\+Interrupt\+Handler\+If\+Needed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}}}]{old\+Logical\+Value,  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}}}]{old\+Physical\+Value,  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}}}]{new\+Logical\+Value,  }\item[{\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}}}]{new\+Physical\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
@@ -178,7 +178,7 @@ Helper function to determine and call the interrupt handler if needed. Calculate
 \index{zct::GpioMock@{zct::GpioMock}!configureInterrupt@{configureInterrupt}}
 \index{configureInterrupt@{configureInterrupt}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{configureInterrupt()}{configureInterrupt()}}
-{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::configure\+Interrupt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}}}]{interrupt\+Mode,  }\item[{std\+::function$<$ void()$>$}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} zct\+::\+Gpio\+Mock\+::configure\+Interrupt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_aed909482c3a37fab36bbd543617543ae}{Interrupt\+Mode}}}]{interrupt\+Mode,  }\item[{std\+::function$<$ \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}}()$>$}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -203,13 +203,13 @@ Implements \mbox{\hyperlink{classzct_1_1IGpio_a8532a63ce41b6a92324c06d045d2f456}
 \index{zct::GpioMock@{zct::GpioMock}!configurePinBasedOnSettings@{configurePinBasedOnSettings}}
 \index{configurePinBasedOnSettings@{configurePinBasedOnSettings}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{configurePinBasedOnSettings()}{configurePinBasedOnSettings()}}
-{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::configure\+Pin\+Based\+On\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} zct\+::\+Gpio\+Mock\+::configure\+Pin\+Based\+On\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 
 
 Configure the pin based on the current settings. 
 
-The real GPIO will call the Zephyr gpio\+\_\+pin\+\_\+configure\+\_\+dt() function. The mock GPIO will do nothing. 
+The real GPIO will call the Zephyr \doxylink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{gpio\+\_\+pin\+\_\+configure\+\_\+dt()} function. The mock GPIO will do nothing. 
 
 Implements \mbox{\hyperlink{classzct_1_1IGpio_a9d062bbdcfc45f1edb5c36d8acfc021d}{zct\+::\+IGpio}}.
 
@@ -217,7 +217,7 @@ Implements \mbox{\hyperlink{classzct_1_1IGpio_a9d062bbdcfc45f1edb5c36d8acfc021d}
 \index{zct::GpioMock@{zct::GpioMock}!getPhysical@{getPhysical}}
 \index{getPhysical@{getPhysical}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{getPhysical()}{getPhysical()}}
-{\footnotesize\ttfamily bool zct\+::\+Gpio\+Mock\+::get\+Physical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} zct\+::\+Gpio\+Mock\+::get\+Physical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -236,7 +236,7 @@ Implements \mbox{\hyperlink{classzct_1_1IGpio_a001870bd58daa2dc70cbeb28af06c00a}
 \index{zct::GpioMock@{zct::GpioMock}!mockSetInput@{mockSetInput}}
 \index{mockSetInput@{mockSetInput}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{mockSetInput()}{mockSetInput()}}
-{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::mock\+Set\+Input (\begin{DoxyParamCaption}\item[{bool}]{logical\+Value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} zct\+::\+Gpio\+Mock\+::mock\+Set\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}}}]{logical\+Value }\end{DoxyParamCaption})}
 
 
 
@@ -256,7 +256,7 @@ Has no effect if the GPIO is configured as an output.
 \index{zct::GpioMock@{zct::GpioMock}!mockSetInputPhysical@{mockSetInputPhysical}}
 \index{mockSetInputPhysical@{mockSetInputPhysical}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{mockSetInputPhysical()}{mockSetInputPhysical()}}
-{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::mock\+Set\+Input\+Physical (\begin{DoxyParamCaption}\item[{bool}]{physical\+Value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} zct\+::\+Gpio\+Mock\+::mock\+Set\+Input\+Physical (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}}}]{physical\+Value }\end{DoxyParamCaption})}
 
 
 
@@ -276,7 +276,7 @@ Has no effect if the GPIO is configured as an output.
 \index{zct::GpioMock@{zct::GpioMock}!setLogicMode@{setLogicMode}}
 \index{setLogicMode@{setLogicMode}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{setLogicMode()}{setLogicMode()}}
-{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::set\+Logic\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}}}]{logic\+Mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} zct\+::\+Gpio\+Mock\+::set\+Logic\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_a112864a4ffeaa64d9eb16aae4a437fe9}{Logic\+Mode}}}]{logic\+Mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -299,7 +299,7 @@ Reimplemented from \mbox{\hyperlink{classzct_1_1IGpio_aede6f2be760508b9d178b8f12
 \index{zct::GpioMock@{zct::GpioMock}!setPhysical@{setPhysical}}
 \index{setPhysical@{setPhysical}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{setPhysical()}{setPhysical()}}
-{\footnotesize\ttfamily void zct\+::\+Gpio\+Mock\+::set\+Physical (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{void}} zct\+::\+Gpio\+Mock\+::set\+Physical (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -323,7 +323,7 @@ Implements \mbox{\hyperlink{classzct_1_1IGpio_a977d3b9cd95539d77642f911e7ca510d}
 \index{zct::GpioMock@{zct::GpioMock}!m\_logicalValue@{m\_logicalValue}}
 \index{m\_logicalValue@{m\_logicalValue}!zct::GpioMock@{zct::GpioMock}}
 \doxysubsubsection{\texorpdfstring{m\_logicalValue}{m\_logicalValue}}
-{\footnotesize\ttfamily bool zct\+::\+Gpio\+Mock\+::m\+\_\+logical\+Value\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classzct_1_1IGpio_a8b53638c90fb8f0bd5d5e8608775436b}{bool}} zct\+::\+Gpio\+Mock\+::m\+\_\+logical\+Value\hspace{0.3cm}{\ttfamily [protected]}}
 
 Because it is a mock GPIO, we store the value of the GPIO here. 
 

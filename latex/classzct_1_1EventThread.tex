@@ -19,6 +19,11 @@ Collaboration diagram for zct\+::Event\+Thread\texorpdfstring{$<$}{<} Event\+Typ
 \includegraphics[width=254pt]{classzct_1_1EventThread__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classzct_1_1EventThread_a77eb243229fad898f029acfa56c24cb9}{Msg\+Queue\+Item}} = std\+::variant$<$ Event\+Type, std\+::function$<$ void()$>$ $>$
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,6 +40,8 @@ void \mbox{\hyperlink{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73}
 \mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}} \& \mbox{\hyperlink{classzct_1_1EventThread_aa5461d18e52c82257da77a557f173e24}{timer\+Manager}} ()
 \item 
 void \mbox{\hyperlink{classzct_1_1EventThread_a491f2b0619e3db842d9f40f1b268f892}{exit\+Event\+Loop}} ()
+\item 
+void \mbox{\hyperlink{classzct_1_1EventThread_af7694a12e45b5ddfe832fe03353cce2b}{run\+In\+Loop}} (std\+::function$<$ void()$>$ func)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -51,7 +58,7 @@ static void \mbox{\hyperlink{classzct_1_1EventThread_ad9ef1d2f6b589be97f8a27c632
 \item 
 const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}{m\+\_\+name}} = nullptr
 \item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}{m\+\_\+event\+Queue\+Buffer}} = nullptr
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread_aa1841a2f7b242d13d18fbd2d1e83739b}{m\+\_\+msg\+Queue\+Buffer}} = nullptr
 \item 
 struct k\+\_\+thread \mbox{\hyperlink{classzct_1_1EventThread_ae99f50e4328cdd741e63e379fbe7de6a}{m\+\_\+thread}}
 \item 
@@ -200,6 +207,18 @@ Below is an example of how to use this class.
 \end{DoxyCodeInclude}
  
 
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classzct_1_1EventThread_a77eb243229fad898f029acfa56c24cb9}\label{classzct_1_1EventThread_a77eb243229fad898f029acfa56c24cb9} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!MsgQueueItem@{MsgQueueItem}}
+\index{MsgQueueItem@{MsgQueueItem}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{MsgQueueItem}{MsgQueueItem}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+using \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::\+Msg\+Queue\+Item =  std\+::variant$<$Event\+Type, std\+::function$<$void()$>$ $>$}
+
+The type of items that can be sent to the event thread. Can either be an event or a function to run in the context of the event thread.
+
+This is a variant of the event type and a function to run in the context of the event thread. 
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classzct_1_1EventThread_a4751223fb4a4b628988433c0f415892f}\label{classzct_1_1EventThread_a4751223fb4a4b628988433c0f415892f} 
 \index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!EventThread@{EventThread}}
@@ -281,7 +300,21 @@ This function will\+:
 \item Handle external events by calling the registered external event callback (call \doxylink{classzct_1_1EventThread_a466b293455fda762c63357549025d8af}{on\+External\+Event()} to register a callback).
 \end{DoxyItemize}
 
-This should be called from the thread function that is passed in to the constructor, once any initialisation you want done (e.\+g. setup some timers) has been done. \Hypertarget{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73}\label{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73} 
+This should be called from the thread function that is passed in to the constructor, once any initialisation you want done (e.\+g. setup some timers) has been done. \Hypertarget{classzct_1_1EventThread_af7694a12e45b5ddfe832fe03353cce2b}\label{classzct_1_1EventThread_af7694a12e45b5ddfe832fe03353cce2b} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!runInLoop@{runInLoop}}
+\index{runInLoop@{runInLoop}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{runInLoop()}{runInLoop()}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::run\+In\+Loop (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Run a function in the context of the event thread. This passes the function through the message queue. When the event loop thread receives it, it runs the function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & The function to run. This will be run in the context of the event thread. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73}\label{classzct_1_1EventThread_a6eda66c2494c12922204a368786dfb73} 
 \index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!sendEvent@{sendEvent}}
 \index{sendEvent@{sendEvent}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
 \doxysubsubsection{\texorpdfstring{sendEvent()}{sendEvent()}}
@@ -338,13 +371,6 @@ A reference to the timer manager for this event thread.
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794}\label{classzct_1_1EventThread_a63d260fa7951c1731953b2f89cb8c794} 
-\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_eventQueueBuffer@{m\_eventQueueBuffer}}
-\index{m\_eventQueueBuffer@{m\_eventQueueBuffer}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
-\doxysubsubsection{\texorpdfstring{m\_eventQueueBuffer}{m\_eventQueueBuffer}}
-{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
-void\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::m\+\_\+event\+Queue\+Buffer = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
-
 \Hypertarget{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}\label{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a} 
 \index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_exitEventLoop@{m\_exitEventLoop}}
 \index{m\_exitEventLoop@{m\_exitEventLoop}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
@@ -358,6 +384,13 @@ Used to signal from \doxylink{classzct_1_1EventThread_a491f2b0619e3db842d9f40f1b
 \doxysubsubsection{\texorpdfstring{m\_externalEventCallback}{m\_externalEventCallback}}
 {\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
 std\+::function$<$void(const Event\+Type\&)$>$ \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::m\+\_\+external\+Event\+Callback = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classzct_1_1EventThread_aa1841a2f7b242d13d18fbd2d1e83739b}\label{classzct_1_1EventThread_aa1841a2f7b242d13d18fbd2d1e83739b} 
+\index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_msgQueueBuffer@{m\_msgQueueBuffer}}
+\index{m\_msgQueueBuffer@{m\_msgQueueBuffer}!zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_msgQueueBuffer}{m\_msgQueueBuffer}}
+{\footnotesize\ttfamily template$<$typename Event\+Type $>$ \\
+void\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classzct_1_1EventThread}{zct\+::\+Event\+Thread}}$<$ Event\+Type $>$\+::m\+\_\+msg\+Queue\+Buffer = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
 
 \Hypertarget{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6}\label{classzct_1_1EventThread_a2445c0ef143d1ecece52db6354c1a3c6} 
 \index{zct::EventThread$<$ EventType $>$@{zct::EventThread$<$ EventType $>$}!m\_name@{m\_name}}

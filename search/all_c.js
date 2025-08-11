@@ -5,5 +5,6 @@ var searchData=
   ['resetcpucore_2',['ResetCpuCore',['../classzct_1_1IWatchdog.html#acb4badf10cdf36a819d2f0acf61615e1a1bb26b705f0cfeec95f6da12e2bbc135',1,'zct::IWatchdog']]],
   ['resetflag_3',['ResetFlag',['../classzct_1_1IWatchdog.html#acb4badf10cdf36a819d2f0acf61615e1',1,'zct::IWatchdog']]],
   ['resetsoc_4',['ResetSoc',['../classzct_1_1IWatchdog.html#acb4badf10cdf36a819d2f0acf61615e1a356616c9a98b1800495c99aff6603c51',1,'zct::IWatchdog']]],
-  ['runeventloop_5',['runEventLoop',['../classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68',1,'zct::EventThread']]]
+  ['runeventloop_5',['runEventLoop',['../classzct_1_1EventThread.html#a7edd0a4e156e57bf8f3c6832ae3bde68',1,'zct::EventThread']]],
+  ['runinloop_6',['runInLoop',['../classzct_1_1EventThread.html#af7694a12e45b5ddfe832fe03353cce2b',1,'zct::EventThread']]]
 ];
