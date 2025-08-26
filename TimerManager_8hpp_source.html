@@ -100,158 +100,77 @@ $(document).ready(function(){initNavTree('TimerManager_8hpp_source.html',''); in
 <a href="TimerManager_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//================================================================================================//</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// FORWARD DECLARATIONS</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// INCLUDES</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">//================================================================================================//</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//================================================================================================//</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// INCLUDES</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">//================================================================================================//</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// System includes</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// 3rd party includes</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;zephyr/kernel.h&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// Local includes</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="Timer_8hpp.html">Timer.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// System includes</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// 3rd party includes</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;zephyr/kernel.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">//================================================================================================//</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// MACROS</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">//================================================================================================//</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// Don&#39;t use constexpr here, it seg faults!</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="TimerManager_8hpp.html#a1b66bcf1f98236da946bb0bef4378387">   19</a></span><span class="preprocessor">#define ZCT_TIMER_MANAGER_LOG_LEVEL LOG_LEVEL_WRN</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//================================================================================================//</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// MACROS</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// CLASS DECLARATION</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//================================================================================================//</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// Don&#39;t use constexpr here, it seg faults!</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// static constexpr int LOG_LEVEL = LOG_LEVEL_DBG;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="TimerManager_8hpp.html#a1b66bcf1f98236da946bb0bef4378387">   27</a></span><span class="preprocessor">#define ZCT_TIMER_MANAGER_LOG_LEVEL LOG_LEVEL_WRN</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">//================================================================================================//</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// CLASS DECLARATION</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">//================================================================================================//</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacezct.html">zct</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// Forward declarations</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">class </span>Timer;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html">   30</a></span><span class="keyword">class </span><a class="code hl_class" href="classzct_1_1TimerManager.html">TimerManager</a> {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacezct.html">zct</a> {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html">   35</a></span><span class="keyword">class </span><a class="code hl_class" href="classzct_1_1TimerManager.html">TimerManager</a> {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#aacc401bff13094f859a68d53adc6bc2e">   46</a></span>    <a class="code hl_function" href="classzct_1_1TimerManager.html#aacc401bff13094f859a68d53adc6bc2e">TimerManager</a>(uint32_t maxNumTimers) {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        LOG_MODULE_DECLARE(<a class="code hl_class" href="classzct_1_1TimerManager.html">TimerManager</a>, <a class="code hl_define" href="TimerManager_8hpp.html#a1b66bcf1f98236da946bb0bef4378387">ZCT_TIMER_MANAGER_LOG_LEVEL</a>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        LOG_DBG(<span class="stringliteral">&quot;TimerManager constructor called.&quot;</span>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_variable" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">m_timers</a> = <span class="keyword">new</span> <a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>*[maxNumTimers];</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; maxNumTimers; i++) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <a class="code hl_variable" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">m_timers</a>[i] = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_variable" href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">m_maxNumTimers</a> = maxNumTimers;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        LOG_DBG(<span class="stringliteral">&quot;TimerManager constructor finished.&quot;</span>);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_class" href="classzct_1_1TimerManager.html">TimerManager</a>(uint32_t maxNumTimers);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="classzct_1_1TimerManager.html#a9fb870a3d8439d760c406942f272a040">~TimerManager</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">   46</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">TimerExpiryInfo</a> {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">   47</a></span>        <a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>* <a class="code hl_variable" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">m_timer</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">   48</a></span>        uint64_t <a class="code hl_variable" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">m_durationToWaitUs</a> = 0;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">// Explicit constructor</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#aaab3e3f3d2706a7507d3bdf5b7e4d415">   51</a></span>        <a class="code hl_function" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#aaab3e3f3d2706a7507d3bdf5b7e4d415">TimerExpiryInfo</a>(<a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>* timer, uint64_t durationToWaitUs) : <a class="code hl_variable" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">m_timer</a>(timer), <a class="code hl_variable" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">m_durationToWaitUs</a>(durationToWaitUs) {}</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    };</div>
 </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#a9fb870a3d8439d760c406942f272a040">   57</a></span>    <a class="code hl_function" href="classzct_1_1TimerManager.html#a9fb870a3d8439d760c406942f272a040">~TimerManager</a>() {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="comment">// Free the memory allocated in constructor.</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">delete</span>[] <a class="code hl_variable" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">m_timers</a>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
-</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="foldopen" id="foldopen00063" data-start="{" data-end="};">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">   63</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">TimerExpiryInfo</a> {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">   64</a></span>        <a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>* <a class="code hl_variable" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">m_timer</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">   65</a></span>        uint64_t <a class="code hl_variable" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">m_durationToWaitUs</a> = 0;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="comment">// Explicit constructor</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#aaab3e3f3d2706a7507d3bdf5b7e4d415">   68</a></span>        <a class="code hl_function" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#aaab3e3f3d2706a7507d3bdf5b7e4d415">TimerExpiryInfo</a>(<a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>* timer, uint64_t durationToWaitUs) : <a class="code hl_variable" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">m_timer</a>(timer), <a class="code hl_variable" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">m_durationToWaitUs</a>(durationToWaitUs) {}</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    };</div>
-</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classzct_1_1TimerManager.html#acfba157073213fc36b40c8b58be017f3">registerTimer</a>(<a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>&amp; timer);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    TimerExpiryInfo <a class="code hl_function" href="classzct_1_1TimerManager.html#a9e683802f1fa45d9d916a9c1f8460002">getNextExpiringTimer</a>();</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#acfba157073213fc36b40c8b58be017f3">   76</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classzct_1_1TimerManager.html#acfba157073213fc36b40c8b58be017f3">registerTimer</a>(<a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>&amp; timer) {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        __ASSERT(<a class="code hl_variable" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">m_numTimers</a> &lt; <a class="code hl_variable" href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">m_maxNumTimers</a>, <span class="stringliteral">&quot;Max number of timers of %u reached.&quot;</span>, <a class="code hl_variable" href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">m_maxNumTimers</a>);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_variable" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">m_timers</a>[<a class="code hl_variable" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">m_numTimers</a>] = &amp;timer;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_variable" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">m_numTimers</a>++;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="comment">// Make sure to set the isRegistered flag to true. This will prevent log warnings</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// if the timer is started when it is not registered with any timer managers.</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        timer.<a class="code hl_function" href="classzct_1_1Timer.html#a6701738d9815e1270882c1dd207a8890">setIsRegistered</a>(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">   74</a></span>    <a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>** <a class="code hl_variable" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">m_timers</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">   75</a></span>    uint32_t <a class="code hl_variable" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">m_numTimers</a> = 0;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">   76</a></span>    uint32_t <a class="code hl_variable" href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">m_maxNumTimers</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>};</div>
 </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#a50bc8a2752c2bf56cd3420d0db09e0d2">   94</a></span>    <a class="code hl_struct" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">TimerExpiryInfo</a> <a class="code hl_function" href="classzct_1_1TimerManager.html#a50bc8a2752c2bf56cd3420d0db09e0d2">getNextExpiringTimer</a>() {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        LOG_MODULE_DECLARE(<a class="code hl_class" href="classzct_1_1TimerManager.html">TimerManager</a>, <a class="code hl_define" href="TimerManager_8hpp.html#a1b66bcf1f98236da946bb0bef4378387">ZCT_TIMER_MANAGER_LOG_LEVEL</a>);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        LOG_DBG(<span class="stringliteral">&quot;getNextExpiringTimer() called. this: %p, m_numTimers: %u.&quot;</span>, <span class="keyword">this</span>, <a class="code hl_variable" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">m_numTimers</a>);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="comment">// Set output to null in case no timer expired</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>* expiredTimer = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        uint64_t durationToWaitUs = 0;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="comment">// Iterate through all registered timers, and find the one that is expiring next (if any)</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">for</span>(uint32_t i = 0; i &lt; this-&gt;<a class="code hl_variable" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">m_numTimers</a>; i++) {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>* timer = this-&gt;<a class="code hl_variable" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">m_timers</a>[i];</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <span class="keywordflow">if</span> (timer-&gt;<a class="code hl_function" href="classzct_1_1Timer.html#af9f6a3111b752f1b8837eb1318378228">isRunning</a>()) {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                <span class="keywordflow">if</span> (expiredTimer == <span class="keyword">nullptr</span> || timer-&gt;<a class="code hl_function" href="classzct_1_1Timer.html#a863fb0c8b80f6b444eecee69fe4622e2">getNextExpiryTimeTicks</a>() &lt; expiredTimer-&gt;<a class="code hl_function" href="classzct_1_1Timer.html#a863fb0c8b80f6b444eecee69fe4622e2">getNextExpiryTimeTicks</a>()) {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                    <span class="comment">// LOG_DBG(&quot;Setting expired timer to %p.&quot;, timer);</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                    expiredTimer = timer;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                }</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            }</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        LOG_DBG(<span class="stringliteral">&quot;Expired timer: %p.\n&quot;</span>, expiredTimer);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="comment">// Convert the expiry time to a duration from now</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="comment">// Calculate time to wait for next timeout event</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        durationToWaitUs = 0;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="comment">// Ticks is the fundemental resolution that the kernel does operations at</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        int64_t uptime_ticks = k_uptime_ticks();</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">if</span> (expiredTimer != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="keywordflow">if</span> (expiredTimer-&gt;<a class="code hl_function" href="classzct_1_1Timer.html#a863fb0c8b80f6b444eecee69fe4622e2">getNextExpiryTimeTicks</a>() &lt;= uptime_ticks) {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                durationToWaitUs = 0;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                LOG_DBG(<span class="stringliteral">&quot;Timer expired.&quot;</span>);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                <span class="comment">// Need to update the timer now that we have detected it has expired.</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                <span class="comment">// This will either stop the timer if it is a one-shot, or update the next expiry time</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                <span class="comment">// expiredTimer-&gt;updateAfterExpiry();</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                durationToWaitUs = k_ticks_to_us_ceil64(expiredTimer-&gt;<a class="code hl_function" href="classzct_1_1Timer.html#a863fb0c8b80f6b444eecee69fe4622e2">getNextExpiryTimeTicks</a>() - uptime_ticks);</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                LOG_DBG(<span class="stringliteral">&quot;Time to wait in us: %llu.&quot;</span>, durationToWaitUs);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            }</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            LOG_DBG(<span class="stringliteral">&quot;No timers running.&quot;</span>);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        }</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="comment">// Save outputs</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordflow">return</span> <a class="code hl_struct" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">TimerManager::TimerExpiryInfo</a>{expiredTimer, durationToWaitUs};</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    }</div>
-</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">  141</a></span>    <a class="code hl_class" href="classzct_1_1Timer.html">Timer</a>** <a class="code hl_variable" href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">m_timers</a>;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">  142</a></span>    uint32_t <a class="code hl_variable" href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">m_numTimers</a> = 0;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">  143</a></span>    uint32_t <a class="code hl_variable" href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">m_maxNumTimers</a>;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>};</div>
-</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>} <span class="comment">// namespace zct</span></div>
-<div class="ttc" id="aTimerManager_8hpp_html_a1b66bcf1f98236da946bb0bef4378387"><div class="ttname"><a href="TimerManager_8hpp.html#a1b66bcf1f98236da946bb0bef4378387">ZCT_TIMER_MANAGER_LOG_LEVEL</a></div><div class="ttdeci">#define ZCT_TIMER_MANAGER_LOG_LEVEL</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:27</div></div>
-<div class="ttc" id="aTimer_8hpp_html"><div class="ttname"><a href="Timer_8hpp.html">Timer.hpp</a></div></div>
-<div class="ttc" id="aclasszct_1_1TimerManager_html"><div class="ttname"><a href="classzct_1_1TimerManager.html">zct::TimerManager</a></div><div class="ttdef"><b>Definition</b> TimerManager.hpp:35</div></div>
-<div class="ttc" id="aclasszct_1_1TimerManager_html_a31d7600b1f72cbeb306382d7c9276ca6"><div class="ttname"><a href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">zct::TimerManager::m_maxNumTimers</a></div><div class="ttdeci">uint32_t m_maxNumTimers</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:143</div></div>
-<div class="ttc" id="aclasszct_1_1TimerManager_html_a50bc8a2752c2bf56cd3420d0db09e0d2"><div class="ttname"><a href="classzct_1_1TimerManager.html#a50bc8a2752c2bf56cd3420d0db09e0d2">zct::TimerManager::getNextExpiringTimer</a></div><div class="ttdeci">TimerExpiryInfo getNextExpiringTimer()</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:94</div></div>
-<div class="ttc" id="aclasszct_1_1TimerManager_html_a55bd52cb5c4b89ec8982fae4127b6fe1"><div class="ttname"><a href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">zct::TimerManager::m_timers</a></div><div class="ttdeci">Timer ** m_timers</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:141</div></div>
-<div class="ttc" id="aclasszct_1_1TimerManager_html_a9fb870a3d8439d760c406942f272a040"><div class="ttname"><a href="classzct_1_1TimerManager.html#a9fb870a3d8439d760c406942f272a040">zct::TimerManager::~TimerManager</a></div><div class="ttdeci">~TimerManager()</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:57</div></div>
-<div class="ttc" id="aclasszct_1_1TimerManager_html_aacc401bff13094f859a68d53adc6bc2e"><div class="ttname"><a href="classzct_1_1TimerManager.html#aacc401bff13094f859a68d53adc6bc2e">zct::TimerManager::TimerManager</a></div><div class="ttdeci">TimerManager(uint32_t maxNumTimers)</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:46</div></div>
-<div class="ttc" id="aclasszct_1_1TimerManager_html_acfba157073213fc36b40c8b58be017f3"><div class="ttname"><a href="classzct_1_1TimerManager.html#acfba157073213fc36b40c8b58be017f3">zct::TimerManager::registerTimer</a></div><div class="ttdeci">void registerTimer(Timer &amp;timer)</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:76</div></div>
-<div class="ttc" id="aclasszct_1_1TimerManager_html_ad87e032cbff27d51035795f611edd656"><div class="ttname"><a href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">zct::TimerManager::m_numTimers</a></div><div class="ttdeci">uint32_t m_numTimers</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:142</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html"><div class="ttname"><a href="classzct_1_1Timer.html">zct::Timer</a></div><div class="ttdoc">A timer that can be used to execute callbacks at regular intervals in an event driven application.</div><div class="ttdef"><b>Definition</b> Timer.hpp:39</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html_a6701738d9815e1270882c1dd207a8890"><div class="ttname"><a href="classzct_1_1Timer.html#a6701738d9815e1270882c1dd207a8890">zct::Timer::setIsRegistered</a></div><div class="ttdeci">void setIsRegistered(bool isRegistered)</div><div class="ttdef"><b>Definition</b> Timer.hpp:152</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html_a863fb0c8b80f6b444eecee69fe4622e2"><div class="ttname"><a href="classzct_1_1Timer.html#a863fb0c8b80f6b444eecee69fe4622e2">zct::Timer::getNextExpiryTimeTicks</a></div><div class="ttdeci">int64_t getNextExpiryTimeTicks() const</div><div class="ttdef"><b>Definition</b> Timer.hpp:144</div></div>
-<div class="ttc" id="aclasszct_1_1Timer_html_af9f6a3111b752f1b8837eb1318378228"><div class="ttname"><a href="classzct_1_1Timer.html#af9f6a3111b752f1b8837eb1318378228">zct::Timer::isRunning</a></div><div class="ttdeci">bool isRunning() const</div><div class="ttdef"><b>Definition</b> Timer.hpp:113</div></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>} <span class="comment">// namespace zct</span></div>
+<div class="ttc" id="aclasszct_1_1TimerManager_html"><div class="ttname"><a href="classzct_1_1TimerManager.html">zct::TimerManager</a></div><div class="ttdef"><b>Definition</b> TimerManager.hpp:30</div></div>
+<div class="ttc" id="aclasszct_1_1TimerManager_html_a31d7600b1f72cbeb306382d7c9276ca6"><div class="ttname"><a href="classzct_1_1TimerManager.html#a31d7600b1f72cbeb306382d7c9276ca6">zct::TimerManager::m_maxNumTimers</a></div><div class="ttdeci">uint32_t m_maxNumTimers</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:76</div></div>
+<div class="ttc" id="aclasszct_1_1TimerManager_html_a55bd52cb5c4b89ec8982fae4127b6fe1"><div class="ttname"><a href="classzct_1_1TimerManager.html#a55bd52cb5c4b89ec8982fae4127b6fe1">zct::TimerManager::m_timers</a></div><div class="ttdeci">Timer ** m_timers</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:74</div></div>
+<div class="ttc" id="aclasszct_1_1TimerManager_html_a9e683802f1fa45d9d916a9c1f8460002"><div class="ttname"><a href="classzct_1_1TimerManager.html#a9e683802f1fa45d9d916a9c1f8460002">zct::TimerManager::getNextExpiringTimer</a></div><div class="ttdeci">TimerExpiryInfo getNextExpiringTimer()</div><div class="ttdef"><b>Definition</b> TimerManager.cpp:45</div></div>
+<div class="ttc" id="aclasszct_1_1TimerManager_html_a9fb870a3d8439d760c406942f272a040"><div class="ttname"><a href="classzct_1_1TimerManager.html#a9fb870a3d8439d760c406942f272a040">zct::TimerManager::~TimerManager</a></div><div class="ttdeci">~TimerManager()</div><div class="ttdef"><b>Definition</b> TimerManager.cpp:31</div></div>
+<div class="ttc" id="aclasszct_1_1TimerManager_html_acfba157073213fc36b40c8b58be017f3"><div class="ttname"><a href="classzct_1_1TimerManager.html#acfba157073213fc36b40c8b58be017f3">zct::TimerManager::registerTimer</a></div><div class="ttdeci">void registerTimer(Timer &amp;timer)</div><div class="ttdef"><b>Definition</b> TimerManager.cpp:36</div></div>
+<div class="ttc" id="aclasszct_1_1TimerManager_html_ad87e032cbff27d51035795f611edd656"><div class="ttname"><a href="classzct_1_1TimerManager.html#ad87e032cbff27d51035795f611edd656">zct::TimerManager::m_numTimers</a></div><div class="ttdeci">uint32_t m_numTimers</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:75</div></div>
+<div class="ttc" id="aclasszct_1_1Timer_html"><div class="ttname"><a href="classzct_1_1Timer.html">zct::Timer</a></div><div class="ttdoc">A timer that can be used to execute callbacks at regular intervals in an event driven application.</div><div class="ttdef"><b>Definition</b> Timer.hpp:40</div></div>
 <div class="ttc" id="anamespacezct_html"><div class="ttname"><a href="namespacezct.html">zct</a></div><div class="ttdef"><b>Definition</b> Mutex.hpp:6</div></div>
-<div class="ttc" id="astructzct_1_1TimerManager_1_1TimerExpiryInfo_html"><div class="ttname"><a href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">zct::TimerManager::TimerExpiryInfo</a></div><div class="ttdef"><b>Definition</b> TimerManager.hpp:63</div></div>
-<div class="ttc" id="astructzct_1_1TimerManager_1_1TimerExpiryInfo_html_a7c71fc3fce0a51a212760d9118f7bac7"><div class="ttname"><a href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">zct::TimerManager::TimerExpiryInfo::m_durationToWaitUs</a></div><div class="ttdeci">uint64_t m_durationToWaitUs</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:65</div></div>
-<div class="ttc" id="astructzct_1_1TimerManager_1_1TimerExpiryInfo_html_aaab3e3f3d2706a7507d3bdf5b7e4d415"><div class="ttname"><a href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#aaab3e3f3d2706a7507d3bdf5b7e4d415">zct::TimerManager::TimerExpiryInfo::TimerExpiryInfo</a></div><div class="ttdeci">TimerExpiryInfo(Timer *timer, uint64_t durationToWaitUs)</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:68</div></div>
-<div class="ttc" id="astructzct_1_1TimerManager_1_1TimerExpiryInfo_html_ac4b8647a526e29fd0f97ba7b524fc7a2"><div class="ttname"><a href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">zct::TimerManager::TimerExpiryInfo::m_timer</a></div><div class="ttdeci">Timer * m_timer</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:64</div></div>
+<div class="ttc" id="astructzct_1_1TimerManager_1_1TimerExpiryInfo_html"><div class="ttname"><a href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">zct::TimerManager::TimerExpiryInfo</a></div><div class="ttdef"><b>Definition</b> TimerManager.hpp:46</div></div>
+<div class="ttc" id="astructzct_1_1TimerManager_1_1TimerExpiryInfo_html_a7c71fc3fce0a51a212760d9118f7bac7"><div class="ttname"><a href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#a7c71fc3fce0a51a212760d9118f7bac7">zct::TimerManager::TimerExpiryInfo::m_durationToWaitUs</a></div><div class="ttdeci">uint64_t m_durationToWaitUs</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:48</div></div>
+<div class="ttc" id="astructzct_1_1TimerManager_1_1TimerExpiryInfo_html_aaab3e3f3d2706a7507d3bdf5b7e4d415"><div class="ttname"><a href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#aaab3e3f3d2706a7507d3bdf5b7e4d415">zct::TimerManager::TimerExpiryInfo::TimerExpiryInfo</a></div><div class="ttdeci">TimerExpiryInfo(Timer *timer, uint64_t durationToWaitUs)</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:51</div></div>
+<div class="ttc" id="astructzct_1_1TimerManager_1_1TimerExpiryInfo_html_ac4b8647a526e29fd0f97ba7b524fc7a2"><div class="ttname"><a href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html#ac4b8647a526e29fd0f97ba7b524fc7a2">zct::TimerManager::TimerExpiryInfo::m_timer</a></div><div class="ttdeci">Timer * m_timer</div><div class="ttdef"><b>Definition</b> TimerManager.hpp:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

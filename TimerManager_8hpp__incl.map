@@ -1,18 +1,7 @@
 <map id="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Events/TimerManager.hpp" name="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Events/TimerManager.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="10,5,218,75"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,76,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,76,60,113,56,110,85,73"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="34,196,157,221"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="113,75,101,183,95,182,108,75"/>
-<area shape="rect" id="Node000004" href="$Timer_8hpp.html" title=" " alt="" coords="217,123,304,148"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="168,73,232,113,229,117,166,77"/>
-<area shape="poly" id="edge7_Node000004_Node000003" title=" " alt="" coords="235,150,136,193,134,188,233,146"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="181,196,247,221"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="255,150,231,186,227,183,251,147"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="272,196,343,221"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="271,147,294,183,290,186,266,150"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="367,196,453,221"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="286,146,374,188,372,192,284,150"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="478,196,633,221"/>
-<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="305,145,495,190,494,195,304,150"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,213,75"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="14,123,85,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,76,67,112,62,109,85,73"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="109,123,232,148"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,73,158,110,153,113,129,76"/>
 </map>

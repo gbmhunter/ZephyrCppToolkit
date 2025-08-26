@@ -123,8 +123,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9fb870a3d8439d760c406942f272a040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfba157073213fc36b40c8b58be017f3" id="r_acfba157073213fc36b40c8b58be017f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1TimerManager.html#acfba157073213fc36b40c8b58be017f3">registerTimer</a> (<a class="el" href="classzct_1_1Timer.html">Timer</a> &amp;timer)</td></tr>
 <tr class="separator:acfba157073213fc36b40c8b58be017f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50bc8a2752c2bf56cd3420d0db09e0d2" id="r_a50bc8a2752c2bf56cd3420d0db09e0d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">TimerExpiryInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1TimerManager.html#a50bc8a2752c2bf56cd3420d0db09e0d2">getNextExpiringTimer</a> ()</td></tr>
-<tr class="separator:a50bc8a2752c2bf56cd3420d0db09e0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e683802f1fa45d9d916a9c1f8460002" id="r_a9e683802f1fa45d9d916a9c1f8460002"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">TimerExpiryInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1TimerManager.html#a9e683802f1fa45d9d916a9c1f8460002">getNextExpiringTimer</a> ()</td></tr>
+<tr class="separator:a9e683802f1fa45d9d916a9c1f8460002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -141,9 +141,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">zct::TimerManager::TimerManager </td>
@@ -153,11 +150,6 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Create a new timer manager.</p>
 <p>Dynamically allocates memory for maxNumTimers pointers to timers.</p>
@@ -175,9 +167,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">zct::TimerManager::~TimerManager </td>
@@ -186,37 +175,24 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a50bc8a2752c2bf56cd3420d0db09e0d2" name="a50bc8a2752c2bf56cd3420d0db09e0d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50bc8a2752c2bf56cd3420d0db09e0d2">&#9670;&#160;</a></span>getNextExpiringTimer()</h2>
+<a id="a9e683802f1fa45d9d916a9c1f8460002" name="a9e683802f1fa45d9d916a9c1f8460002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e683802f1fa45d9d916a9c1f8460002">&#9670;&#160;</a></span>getNextExpiringTimer()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">TimerExpiryInfo</a> zct::TimerManager::getNextExpiringTimer </td>
+          <td class="memname"><a class="el" href="structzct_1_1TimerManager_1_1TimerExpiryInfo.html">TimerManager::TimerExpiryInfo</a> zct::TimerManager::getNextExpiringTimer </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Iterates over all registered timers and returns the expiry time of the timer that expires next. If no timer is found, the 'timer' member of the returned struct will be nullptr. timer is guaranteed to not be nullptr if durationToWaitUs is not UINT64_MAX.</p>
 <p>This function does not update the timer's next expiry time if it finds an expired timer. It is up to the caller to do this when it decides that the timer expiry has been "handled".</p>
@@ -229,9 +205,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void zct::TimerManager::registerTimer </td>
@@ -241,11 +214,6 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Registers a timer with the timer manager. The provided timer needs to exist for the duration of the registration. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -323,8 +291,9 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Events/<a class="el" href="TimerManager_8hpp_source.html">TimerManager.hpp</a></li>
+<li>/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src/Events/<a class="el" href="TimerManager_8cpp.html">TimerManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

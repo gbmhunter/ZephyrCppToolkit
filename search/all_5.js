@@ -4,7 +4,7 @@ var searchData=
   ['getexpirycallback_1',['getExpiryCallback',['../classzct_1_1Timer.html#a086c1eefecf02223ca9d2424d59692c8',1,'zct::Timer']]],
   ['getisregistered_2',['getIsRegistered',['../classzct_1_1Timer.html#a35c7906a045b2fd2c4aadd5e7bd050a4',1,'zct::Timer']]],
   ['getname_3',['getName',['../classzct_1_1IWatchdog.html#a5ab0e7e592c9a2ded783d24f3b81bb80',1,'zct::IWatchdog']]],
-  ['getnextexpiringtimer_4',['getNextExpiringTimer',['../classzct_1_1TimerManager.html#a50bc8a2752c2bf56cd3420d0db09e0d2',1,'zct::TimerManager']]],
+  ['getnextexpiringtimer_4',['getNextExpiringTimer',['../classzct_1_1TimerManager.html#a9e683802f1fa45d9d916a9c1f8460002',1,'zct::TimerManager']]],
   ['getnextexpirytimeticks_5',['getNextExpiryTimeTicks',['../classzct_1_1Timer.html#a863fb0c8b80f6b444eecee69fe4622e2',1,'zct::Timer']]],
   ['getphysical_6',['getphysical',['../classzct_1_1GpioMock.html#a91f0b529fbd4e0ba543f591581c35133',1,'zct::GpioMock::getPhysical()'],['../classzct_1_1GpioReal.html#a9c95f439b7469b45ca8cbb8e94cc6ee2',1,'zct::GpioReal::getPhysical()'],['../classzct_1_1IGpio.html#a001870bd58daa2dc70cbeb28af06c00a',1,'zct::IGpio::getPhysical()']]],
   ['getrawdevice_7',['getrawdevice',['../classzct_1_1WatchdogReal.html#a08a87dd8c7b7c5f826b41812123df7fe',1,'zct::WatchdogReal::getRawDevice()'],['../classzct_1_1WatchdogMock.html#a3b75b6a6182943ce4d0e87333a7686ea',1,'zct::WatchdogMock::getRawDevice()'],['../classzct_1_1IWatchdog.html#a980aa7da00a3083832ca076440ebaf1b',1,'zct::IWatchdog::getRawDevice()']]],

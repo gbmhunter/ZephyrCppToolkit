@@ -106,6 +106,8 @@ $(document).ready(function(){initNavTree('classzct_1_1Timer.html',''); initResiz
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5629cbeab8b919bd96ed3371404c6547" id="r_a5629cbeab8b919bd96ed3371404c6547"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#a5629cbeab8b919bd96ed3371404c6547">Timer</a> (const char *name, std::function&lt; void()&gt; expiryCallback)</td></tr>
 <tr class="separator:a5629cbeab8b919bd96ed3371404c6547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfe8591c8514d02a071e26db94809b61" id="r_adfe8591c8514d02a071e26db94809b61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#adfe8591c8514d02a071e26db94809b61">Timer</a> (const char *name, std::function&lt; void()&gt; expiryCallback, <a class="el" href="classzct_1_1TimerManager.html">TimerManager</a> &amp;timerManager)</td></tr>
+<tr class="separator:adfe8591c8514d02a071e26db94809b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac98b8c2905ad49b083265b9da5b8a750" id="r_ac98b8c2905ad49b083265b9da5b8a750"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#ac98b8c2905ad49b083265b9da5b8a750">start</a> (int64_t period_ms)</td></tr>
 <tr class="separator:ac98b8c2905ad49b083265b9da5b8a750"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba24924ed33fdfd888a587b7e119a3d0" id="r_aba24924ed33fdfd888a587b7e119a3d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classzct_1_1Timer.html#aba24924ed33fdfd888a587b7e119a3d0">start</a> (int64_t startDuration_ms, int64_t period_ms)</td></tr>
@@ -150,13 +152,10 @@ Protected Attributes</h2></td></tr>
 <p>This class is also designed to be used with the <a class="el" href="classzct_1_1EventThread.html" title="Use this class in your objects to create a thread that can wait for events.">zct::EventThread</a> class. The event thread can block until either a timer expires or an external event is received. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5629cbeab8b919bd96ed3371404c6547" name="a5629cbeab8b919bd96ed3371404c6547"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5629cbeab8b919bd96ed3371404c6547">&#9670;&#160;</a></span>Timer()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5629cbeab8b919bd96ed3371404c6547">&#9670;&#160;</a></span>Timer() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">zct::Timer::Timer </td>
@@ -176,11 +175,6 @@ Protected Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Create a new timer with a callback function.</p>
 <p>The timer will not be running after creation.</p>
@@ -194,15 +188,57 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="adfe8591c8514d02a071e26db94809b61" name="adfe8591c8514d02a071e26db94809b61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe8591c8514d02a071e26db94809b61">&#9670;&#160;</a></span>Timer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">zct::Timer::Timer </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>expiryCallback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classzct_1_1TimerManager.html">TimerManager</a> &amp;&#160;</td>
+          <td class="paramname"><em>timerManager</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a new timer with a callback function and automatically register it with a timer manager.</p>
+<p>This is the recommended way to create a timer, as there is no chance to forget to register the timer with a timer manager.</p>
+<p>The timer will not be running after creation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the timer, used for logging purposes. </td></tr>
+    <tr><td class="paramname">expiryCallback</td><td>Callback function to call when the timer expires. This will be called by the <a class="el" href="classzct_1_1EventThread.html" title="Use this class in your objects to create a thread that can wait for events.">EventThread</a> when the timer expires. </td></tr>
+    <tr><td class="paramname">timerManager</td><td>The timer manager to register the timer with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a086c1eefecf02223ca9d2424d59692c8" name="a086c1eefecf02223ca9d2424d59692c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a086c1eefecf02223ca9d2424d59692c8">&#9670;&#160;</a></span>getExpiryCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">const std::function&lt; void()&gt; &amp; zct::Timer::getExpiryCallback </td>
@@ -211,11 +247,6 @@ Protected Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Get the expiry callback function.</p>
 <dl class="section return"><dt>Returns</dt><dd>The expiry callback function, or nullptr if no callback is set. </dd></dl>
@@ -227,9 +258,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool zct::Timer::getIsRegistered </td>
@@ -238,11 +266,6 @@ Protected Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Get the isRegistered flag.</p>
 <dl class="section return"><dt>Returns</dt><dd>The value of the isRegistered flag. </dd></dl>
@@ -254,9 +277,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int64_t zct::Timer::getNextExpiryTimeTicks </td>
@@ -265,11 +285,6 @@ Protected Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Get the next expiry time of the timer.</p>
 <dl class="section return"><dt>Returns</dt><dd>The next expiry time of the timer in ticks. </dd></dl>
@@ -281,9 +296,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool zct::Timer::isRunning </td>
@@ -292,11 +304,6 @@ Protected Attributes</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Check if the timer is running.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if the timer is running, false otherwise. </dd></dl>
@@ -308,9 +315,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void zct::Timer::setExpiryCallback </td>
@@ -320,11 +324,6 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Set the expiry callback function.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -341,9 +340,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void zct::Timer::setIsRegistered </td>
@@ -353,11 +349,6 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Set the isRegistered flag. Used to log warnings if a timer is started when it is not registered with any timer managers.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -374,9 +365,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void zct::Timer::start </td>
@@ -386,11 +374,6 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Start the timer in reoccurring mode. The timer will expire for the first time after period_ms from when this is called, and then period_ms after that.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -407,9 +390,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void zct::Timer::start </td>
@@ -429,11 +409,6 @@ Protected Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Start the timer in either one-shot or reoccurring mode.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -451,9 +426,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void zct::Timer::stop </td>
@@ -462,11 +434,6 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Stop the timer. This will prevent the timer from expiring until <a class="el" href="classzct_1_1Timer.html#ac98b8c2905ad49b083265b9da5b8a750">start()</a> is called again.</p>
 <p>This does not deregister the timer from the timer manager (if registered), nor does this clear the event that is saved in the timer for when it expires. </p>
@@ -478,9 +445,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void zct::Timer::updateAfterExpiry </td>
@@ -489,11 +453,6 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Designed to be called by the state machine when the timer expires.</p>
 <p>This will either:</p><ol type="1">
@@ -658,8 +617,9 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/include/ZephyrCppToolkit/Events/<a class="el" href="Timer_8hpp_source.html">Timer.hpp</a></li>
+<li>/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src/Events/<a class="el" href="Timer_8cpp.html">Timer.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

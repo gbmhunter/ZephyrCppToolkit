@@ -117,7 +117,7 @@
 \DoxyCodeLine{00221\ }
 \DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{classzct_1_1EventThread_afdfe877db96d4deef20cc96f6673c84a}{m\_exitEventLoop}})\ \{}
 \DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ next\ timer\ to\ expire}}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ nextTimerInfo\ =\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}.\mbox{\hyperlink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{getNextExpiringTimer}}();}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ nextTimerInfo\ =\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}.\mbox{\hyperlink{classzct_1_1TimerManager_a9e683802f1fa45d9d916a9c1f8460002}{getNextExpiringTimer}}();}
 \DoxyCodeLine{00225\ }
 \DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ expired\ timers\ and\ call\ their\ callbacks}}
 \DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (nextTimerInfo.m\_timer\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ nextTimerInfo.m\_durationToWaitUs\ ==\ 0)\ \{}
@@ -137,7 +137,7 @@
 \DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ the\ next\ expired\ timer}}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ nextTimerInfo\ =\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}.\mbox{\hyperlink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{getNextExpiringTimer}}();}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ nextTimerInfo\ =\ \mbox{\hyperlink{classzct_1_1EventThread_af22edf13ee45ca97df31199cdd089f7a}{m\_timerManager}}.\mbox{\hyperlink{classzct_1_1TimerManager_a9e683802f1fa45d9d916a9c1f8460002}{getNextExpiringTimer}}();}
 \DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00246\ }
 \DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ get\ here,\ we\ have\ handled\ all\ expired\ timers.}}

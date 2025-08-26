@@ -1,5 +1,22 @@
 <map id="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src/Events/Timer.cpp" name="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src/Events/Timer.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,213,60"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="32,108,187,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,60,112,94,107,94,107,60"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="283,5,491,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,196,160,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="319,63,270,84,220,110,159,151,108,189,105,185,155,146,217,106,268,80,317,58"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="481,196,604,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="408,59,479,146,520,185,516,189,475,150,404,62"/>
+<area shape="rect" id="Node000004" href="$Timer_8hpp.html" title=" " alt="" coords="231,108,415,148"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="371,62,345,98,341,95,366,59"/>
+<area shape="rect" id="Node000008" href="$TimerManager_8hpp.html" title=" " alt="" coords="489,108,673,148"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="443,58,531,100,528,104,440,62"/>
+<area shape="poly" id="edge8_Node000004_Node000002" title=" " alt="" coords="266,151,132,194,130,189,264,145"/>
+<area shape="poly" id="edge7_Node000004_Node000003" title=" " alt="" coords="376,146,498,189,496,194,374,151"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="391,196,457,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="349,146,399,185,396,189,346,150"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="185,196,255,221"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="299,150,248,190,244,185,296,146"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="279,196,366,221"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="325,148,325,182,320,182,320,148"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="574,149,557,185,552,182,570,147"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="629,196,699,221"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="603,146,644,185,640,188,600,150"/>
 </map>

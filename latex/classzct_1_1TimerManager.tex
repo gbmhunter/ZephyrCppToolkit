@@ -28,7 +28,7 @@ struct \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Exp
 \item 
 void \mbox{\hyperlink{classzct_1_1TimerManager_acfba157073213fc36b40c8b58be017f3}{register\+Timer}} (\mbox{\hyperlink{classzct_1_1Timer}{Timer}} \&timer)
 \item 
-\mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Expiry\+Info}} \mbox{\hyperlink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{get\+Next\+Expiring\+Timer}} ()
+\mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Expiry\+Info}} \mbox{\hyperlink{classzct_1_1TimerManager_a9e683802f1fa45d9d916a9c1f8460002}{get\+Next\+Expiring\+Timer}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -46,7 +46,7 @@ uint32\+\_\+t \mbox{\hyperlink{classzct_1_1TimerManager_a31d7600b1f72cbeb306382d
 \index{zct::TimerManager@{zct::TimerManager}!TimerManager@{TimerManager}}
 \index{TimerManager@{TimerManager}!zct::TimerManager@{zct::TimerManager}}
 \doxysubsubsection{\texorpdfstring{TimerManager()}{TimerManager()}}
-{\footnotesize\ttfamily zct\+::\+Timer\+Manager\+::\+Timer\+Manager (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{max\+Num\+Timers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily zct\+::\+Timer\+Manager\+::\+Timer\+Manager (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{max\+Num\+Timers }\end{DoxyParamCaption})}
 
 Create a new timer manager.
 
@@ -61,16 +61,16 @@ Dynamically allocates memory for max\+Num\+Timers pointers to timers.
 \index{zct::TimerManager@{zct::TimerManager}!````~TimerManager@{\texorpdfstring{$\sim$}{\string~}TimerManager}}
 \index{````~TimerManager@{\texorpdfstring{$\sim$}{\string~}TimerManager}!zct::TimerManager@{zct::TimerManager}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TimerManager()}{\string~TimerManager()}}
-{\footnotesize\ttfamily zct\+::\+Timer\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Timer\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily zct\+::\+Timer\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Timer\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}\label{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2} 
+\Hypertarget{classzct_1_1TimerManager_a9e683802f1fa45d9d916a9c1f8460002}\label{classzct_1_1TimerManager_a9e683802f1fa45d9d916a9c1f8460002} 
 \index{zct::TimerManager@{zct::TimerManager}!getNextExpiringTimer@{getNextExpiringTimer}}
 \index{getNextExpiringTimer@{getNextExpiringTimer}!zct::TimerManager@{zct::TimerManager}}
 \doxysubsubsection{\texorpdfstring{getNextExpiringTimer()}{getNextExpiringTimer()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Expiry\+Info}} zct\+::\+Timer\+Manager\+::get\+Next\+Expiring\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{Timer\+Manager\+::\+Timer\+Expiry\+Info}} zct\+::\+Timer\+Manager\+::get\+Next\+Expiring\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Iterates over all registered timers and returns the expiry time of the timer that expires next. If no timer is found, the \textquotesingle{}timer\textquotesingle{} member of the returned struct will be nullptr. timer is guaranteed to not be nullptr if duration\+To\+Wait\+Us is not UINT64\+\_\+\+MAX.
 
@@ -83,7 +83,7 @@ A struct containing the timer that expires next and the duration to wait until t
 \index{zct::TimerManager@{zct::TimerManager}!registerTimer@{registerTimer}}
 \index{registerTimer@{registerTimer}!zct::TimerManager@{zct::TimerManager}}
 \doxysubsubsection{\texorpdfstring{registerTimer()}{registerTimer()}}
-{\footnotesize\ttfamily void zct\+::\+Timer\+Manager\+::register\+Timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1Timer}{Timer}} \&}]{timer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void zct\+::\+Timer\+Manager\+::register\+Timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classzct_1_1Timer}{Timer}} \&}]{timer }\end{DoxyParamCaption})}
 
 Registers a timer with the timer manager. The provided timer needs to exist for the duration of the registration. 
 \begin{DoxyParams}{Parameters}
@@ -113,6 +113,7 @@ Registers a timer with the timer manager. The provided timer needs to exist for 
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Events/\mbox{\hyperlink{TimerManager_8hpp}{Timer\+Manager.\+hpp}}\end{DoxyCompactItemize}
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Events/\mbox{\hyperlink{TimerManager_8hpp}{Timer\+Manager.\+hpp}}\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/src/\+Events/\mbox{\hyperlink{TimerManager_8cpp}{Timer\+Manager.\+cpp}}\end{DoxyCompactItemize}

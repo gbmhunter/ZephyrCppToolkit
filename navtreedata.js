@@ -61,7 +61,7 @@ var NAVTREEINDEX =
 [
 "AdcMock_8cpp.html",
 "classzct_1_1IGpio.html#af51051ceff73e1c65426e7002900b2af",
-"examples.html"
+"dir_bd76d1414112395fa5633d782b50bdbb.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

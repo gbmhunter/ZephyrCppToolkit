@@ -1,11 +1,13 @@
 <map id="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src" name="/home/runner/work/ZephyrCppToolkit/ZephyrCppToolkit/src">
 <area shape="rect" id="node2" href="dir_a2f0e5642e47e7ed59fe0f0829eafb5f.html" title="Core" alt="" coords="238,27,290,52"/>
-<area shape="rect" id="node5" href="dir_d44c64559bbebec7f509842c48db8b23.html" title="include" alt="" coords="135,100,204,125"/>
-<area shape="poly" id="edge1" href="dir_000001_000004.html" alt="" coords="250,54,197,94,194,89,247,50"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000001_000004.html" title="1" alt="" coords="200,88,209,103"/>
+<area shape="rect" id="node5" href="dir_d44c64559bbebec7f509842c48db8b23.html" title="include" alt="" coords="145,100,215,125"/>
+<area shape="poly" id="edge1" href="dir_000001_000004.html" alt="" coords="252,54,206,93,203,89,249,50"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000001_000004.html" title="1" alt="" coords="208,87,218,102"/>
 <area shape="rect" id="node3" href="dir_1ff81008302cb45769f1dab653ab23f8.html" title="Events" alt="" coords="147,27,213,52"/>
+<area shape="poly" id="edge2" href="dir_000003_000004.html" alt="" coords="183,52,183,86,177,86,177,52"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000003_000004.html" title="4" alt="" coords="184,74,193,89"/>
 <area shape="rect" id="node4" href="dir_2ef109e2e66c4c5c8ec05e153579b6ca.html" title="Peripherals" alt="" coords="27,27,122,52"/>
-<area shape="poly" id="edge2" href="dir_000006_000004.html" alt="" coords="91,50,144,89,141,94,88,54"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000006_000004.html" title="12" alt="" coords="136,75,153,89"/>
+<area shape="poly" id="edge3" href="dir_000006_000004.html" alt="" coords="93,50,153,90,150,95,90,54"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000006_000004.html" title="12" alt="" coords="144,75,161,90"/>
 <area shape="rect" id="clust1" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" alt="" coords="16,16,367,63"/>
 </map>

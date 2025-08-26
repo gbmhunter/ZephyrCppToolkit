@@ -5,126 +5,59 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
 \DoxyCodeLine{00003\ \textcolor{comment}{//================================================================================================//}}
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ FORWARD\ DECLARATIONS}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ INCLUDES}}
 \DoxyCodeLine{00005\ \textcolor{comment}{//================================================================================================//}}
 \DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{comment}{//================================================================================================//}}
-\DoxyCodeLine{00009\ \textcolor{comment}{//\ INCLUDES}}
-\DoxyCodeLine{00010\ \textcolor{comment}{//================================================================================================//}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{comment}{//\ System\ includes}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \textcolor{comment}{//\ 3rd\ party\ includes}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{comment}{//\ Local\ includes}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Timer_8hpp}{Timer.hpp}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ System\ includes}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ 3rd\ party\ includes}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//================================================================================================//}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ MACROS}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//================================================================================================//}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Don't\ use\ constexpr\ here,\ it\ seg\ faults!}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ static\ constexpr\ int\ LOG\_LEVEL\ =\ LOG\_LEVEL\_DBG;}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ ZCT\_TIMER\_MANAGER\_LOG\_LEVEL\ LOG\_LEVEL\_WRN}}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ \textcolor{comment}{//================================================================================================//}}
-\DoxyCodeLine{00022\ \textcolor{comment}{//\ MACROS}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ CLASS\ DECLARATION}}
 \DoxyCodeLine{00023\ \textcolor{comment}{//================================================================================================//}}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{comment}{//\ Don't\ use\ constexpr\ here,\ it\ seg\ faults!}}
-\DoxyCodeLine{00026\ \textcolor{comment}{//\ static\ constexpr\ int\ LOG\_LEVEL\ =\ LOG\_LEVEL\_DBG;}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ ZCT\_TIMER\_MANAGER\_LOG\_LEVEL\ LOG\_LEVEL\_WRN}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{comment}{//================================================================================================//}}
-\DoxyCodeLine{00030\ \textcolor{comment}{//\ CLASS\ DECLARATION}}
-\DoxyCodeLine{00031\ \textcolor{comment}{//================================================================================================//}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ Forward\ declarations}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }Timer;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacezct}{zct}}\ \{}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}}\ \{}
-\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager_aacc401bff13094f859a68d53adc6bc2e}{TimerManager}}(uint32\_t\ maxNumTimers)\ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}},\ \mbox{\hyperlink{TimerManager_8hpp_a1b66bcf1f98236da946bb0bef4378387}{ZCT\_TIMER\_MANAGER\_LOG\_LEVEL}});}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}TimerManager\ constructor\ called."{}});}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager_a55bd52cb5c4b89ec8982fae4127b6fe1}{m\_timers}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classzct_1_1Timer}{Timer}}*[maxNumTimers];}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ maxNumTimers;\ i++)\ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager_a55bd52cb5c4b89ec8982fae4127b6fe1}{m\_timers}}[i]\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager_a31d7600b1f72cbeb306382d7c9276ca6}{m\_maxNumTimers}}\ =\ maxNumTimers;}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}TimerManager\ constructor\ finished."{}});}
-\DoxyCodeLine{00055\ \ \ \ \ \}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager_a9fb870a3d8439d760c406942f272a040}{\string~TimerManager}}()\ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Free\ the\ memory\ allocated\ in\ constructor.}}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ \mbox{\hyperlink{classzct_1_1TimerManager_a55bd52cb5c4b89ec8982fae4127b6fe1}{m\_timers}};}
-\DoxyCodeLine{00060\ \ \ \ \ \}}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{TimerExpiryInfo}}\ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer}{Timer}}*\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_ac4b8647a526e29fd0f97ba7b524fc7a2}{m\_timer}}\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_a7c71fc3fce0a51a212760d9118f7bac7}{m\_durationToWaitUs}}\ =\ 0;}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Explicit\ constructor}}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_aaab3e3f3d2706a7507d3bdf5b7e4d415}{TimerExpiryInfo}}(\mbox{\hyperlink{classzct_1_1Timer}{Timer}}*\ timer,\ uint64\_t\ durationToWaitUs)\ :\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_ac4b8647a526e29fd0f97ba7b524fc7a2}{m\_timer}}(timer),\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_a7c71fc3fce0a51a212760d9118f7bac7}{m\_durationToWaitUs}}(durationToWaitUs)\ \{\}}
-\DoxyCodeLine{00069\ \ \ \ \ \};}
-\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}}(uint32\_t\ maxNumTimers);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager_a9fb870a3d8439d760c406942f272a040}{\string~TimerManager}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{TimerExpiryInfo}}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer}{Timer}}*\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_ac4b8647a526e29fd0f97ba7b524fc7a2}{m\_timer}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_a7c71fc3fce0a51a212760d9118f7bac7}{m\_durationToWaitUs}}\ =\ 0;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Explicit\ constructor}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_aaab3e3f3d2706a7507d3bdf5b7e4d415}{TimerExpiryInfo}}(\mbox{\hyperlink{classzct_1_1Timer}{Timer}}*\ timer,\ uint64\_t\ durationToWaitUs)\ :\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_ac4b8647a526e29fd0f97ba7b524fc7a2}{m\_timer}}(timer),\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo_a7c71fc3fce0a51a212760d9118f7bac7}{m\_durationToWaitUs}}(durationToWaitUs)\ \{\}}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1TimerManager_acfba157073213fc36b40c8b58be017f3}{registerTimer}}(\mbox{\hyperlink{classzct_1_1Timer}{Timer}}\&\ timer);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00070\ \ \ \ \ TimerExpiryInfo\ \mbox{\hyperlink{classzct_1_1TimerManager_a9e683802f1fa45d9d916a9c1f8460002}{getNextExpiringTimer}}();}
 \DoxyCodeLine{00071\ }
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classzct_1_1TimerManager_acfba157073213fc36b40c8b58be017f3}{registerTimer}}(\mbox{\hyperlink{classzct_1_1Timer}{Timer}}\&\ timer)\ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \_\_ASSERT(\mbox{\hyperlink{classzct_1_1TimerManager_ad87e032cbff27d51035795f611edd656}{m\_numTimers}}\ <\ \mbox{\hyperlink{classzct_1_1TimerManager_a31d7600b1f72cbeb306382d7c9276ca6}{m\_maxNumTimers}},\ \textcolor{stringliteral}{"{}Max\ number\ of\ timers\ of\ \%u\ reached."{}},\ \mbox{\hyperlink{classzct_1_1TimerManager_a31d7600b1f72cbeb306382d7c9276ca6}{m\_maxNumTimers}});}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager_a55bd52cb5c4b89ec8982fae4127b6fe1}{m\_timers}}[\mbox{\hyperlink{classzct_1_1TimerManager_ad87e032cbff27d51035795f611edd656}{m\_numTimers}}]\ =\ \&timer;}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1TimerManager_ad87e032cbff27d51035795f611edd656}{m\_numTimers}}++;}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Make\ sure\ to\ set\ the\ isRegistered\ flag\ to\ true.\ This\ will\ prevent\ log\ warnings}}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ timer\ is\ started\ when\ it\ is\ not\ registered\ with\ any\ timer\ managers.}}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ timer.\mbox{\hyperlink{classzct_1_1Timer_a6701738d9815e1270882c1dd207a8890}{setIsRegistered}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00083\ \ \ \ \ \}}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{TimerExpiryInfo}}\ \mbox{\hyperlink{classzct_1_1TimerManager_a50bc8a2752c2bf56cd3420d0db09e0d2}{getNextExpiringTimer}}()\ \{}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ LOG\_MODULE\_DECLARE(\mbox{\hyperlink{classzct_1_1TimerManager}{TimerManager}},\ \mbox{\hyperlink{TimerManager_8hpp_a1b66bcf1f98236da946bb0bef4378387}{ZCT\_TIMER\_MANAGER\_LOG\_LEVEL}});}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}getNextExpiringTimer()\ called.\ this:\ \%p,\ m\_numTimers:\ \%u."{}},\ \textcolor{keyword}{this},\ \mbox{\hyperlink{classzct_1_1TimerManager_ad87e032cbff27d51035795f611edd656}{m\_numTimers}});}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ output\ to\ null\ in\ case\ no\ timer\ expired}}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer}{Timer}}*\ expiredTimer\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ uint64\_t\ durationToWaitUs\ =\ 0;}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ through\ all\ registered\ timers,\ and\ find\ the\ one\ that\ is\ expiring\ next\ (if\ any)}}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(uint32\_t\ i\ =\ 0;\ i\ <\ this-\/>\mbox{\hyperlink{classzct_1_1TimerManager_ad87e032cbff27d51035795f611edd656}{m\_numTimers}};\ i++)\ \{}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer}{Timer}}*\ timer\ =\ this-\/>\mbox{\hyperlink{classzct_1_1TimerManager_a55bd52cb5c4b89ec8982fae4127b6fe1}{m\_timers}}[i];}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer-\/>\mbox{\hyperlink{classzct_1_1Timer_af9f6a3111b752f1b8837eb1318378228}{isRunning}}())\ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (expiredTimer\ ==\ \textcolor{keyword}{nullptr}\ ||\ timer-\/>\mbox{\hyperlink{classzct_1_1Timer_a863fb0c8b80f6b444eecee69fe4622e2}{getNextExpiryTimeTicks}}()\ <\ expiredTimer-\/>\mbox{\hyperlink{classzct_1_1Timer_a863fb0c8b80f6b444eecee69fe4622e2}{getNextExpiryTimeTicks}}())\ \{}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ LOG\_DBG("{}Setting\ expired\ timer\ to\ \%p."{},\ timer);}}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ expiredTimer\ =\ timer;}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Expired\ timer:\ \%p.\(\backslash\)n"{}},\ expiredTimer);}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ expiry\ time\ to\ a\ duration\ from\ now}}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ time\ to\ wait\ for\ next\ timeout\ event}}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ durationToWaitUs\ =\ 0;}
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ticks\ is\ the\ fundemental\ resolution\ that\ the\ kernel\ does\ operations\ at}}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ int64\_t\ uptime\_ticks\ =\ k\_uptime\_ticks();}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (expiredTimer\ !=\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (expiredTimer-\/>\mbox{\hyperlink{classzct_1_1Timer_a863fb0c8b80f6b444eecee69fe4622e2}{getNextExpiryTimeTicks}}()\ <=\ uptime\_ticks)\ \{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ durationToWaitUs\ =\ 0;}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Timer\ expired."{}});}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Need\ to\ update\ the\ timer\ now\ that\ we\ have\ detected\ it\ has\ expired.}}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ will\ either\ stop\ the\ timer\ if\ it\ is\ a\ one-\/shot,\ or\ update\ the\ next\ expiry\ time}}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ expiredTimer-\/>updateAfterExpiry();}}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ durationToWaitUs\ =\ k\_ticks\_to\_us\_ceil64(expiredTimer-\/>\mbox{\hyperlink{classzct_1_1Timer_a863fb0c8b80f6b444eecee69fe4622e2}{getNextExpiryTimeTicks}}()\ -\/\ uptime\_ticks);}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}Time\ to\ wait\ in\ us:\ \%llu."{}},\ durationToWaitUs);}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_DBG(\textcolor{stringliteral}{"{}No\ timers\ running."{}});}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ outputs}}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structzct_1_1TimerManager_1_1TimerExpiryInfo}{TimerManager::TimerExpiryInfo}}\{expiredTimer,\ durationToWaitUs\};}
-\DoxyCodeLine{00137\ \ \ \ \ \}}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00141\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer}{Timer}}**\ \mbox{\hyperlink{classzct_1_1TimerManager_a55bd52cb5c4b89ec8982fae4127b6fe1}{m\_timers}};}
-\DoxyCodeLine{00142\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classzct_1_1TimerManager_ad87e032cbff27d51035795f611edd656}{m\_numTimers}}\ =\ 0;}
-\DoxyCodeLine{00143\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classzct_1_1TimerManager_a31d7600b1f72cbeb306382d7c9276ca6}{m\_maxNumTimers}};}
-\DoxyCodeLine{00144\ \};}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00146\ \}\ \textcolor{comment}{//\ namespace\ zct}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classzct_1_1Timer}{Timer}}**\ \mbox{\hyperlink{classzct_1_1TimerManager_a55bd52cb5c4b89ec8982fae4127b6fe1}{m\_timers}};}
+\DoxyCodeLine{00075\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classzct_1_1TimerManager_ad87e032cbff27d51035795f611edd656}{m\_numTimers}}\ =\ 0;}
+\DoxyCodeLine{00076\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{classzct_1_1TimerManager_a31d7600b1f72cbeb306382d7c9276ca6}{m\_maxNumTimers}};}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \}\ \textcolor{comment}{//\ namespace\ zct}}
 
 \end{DoxyCode}

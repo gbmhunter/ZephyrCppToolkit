@@ -14,6 +14,8 @@ A timer that can be used to execute callbacks at regular intervals in an event d
 \item 
 \mbox{\hyperlink{classzct_1_1Timer_a5629cbeab8b919bd96ed3371404c6547}{Timer}} (const char \texorpdfstring{$\ast$}{*}name, std\+::function$<$ void()$>$ expiry\+Callback)
 \item 
+\mbox{\hyperlink{classzct_1_1Timer_adfe8591c8514d02a071e26db94809b61}{Timer}} (const char \texorpdfstring{$\ast$}{*}name, std\+::function$<$ void()$>$ expiry\+Callback, \mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}} \&timer\+Manager)
+\item 
 void \mbox{\hyperlink{classzct_1_1Timer_ac98b8c2905ad49b083265b9da5b8a750}{start}} (int64\+\_\+t period\+\_\+ms)
 \item 
 void \mbox{\hyperlink{classzct_1_1Timer_aba24924ed33fdfd888a587b7e119a3d0}{start}} (int64\+\_\+t start\+Duration\+\_\+ms, int64\+\_\+t period\+\_\+ms)
@@ -64,8 +66,8 @@ This class is also designed to be used with the \doxylink{classzct_1_1EventThrea
 \Hypertarget{classzct_1_1Timer_a5629cbeab8b919bd96ed3371404c6547}\label{classzct_1_1Timer_a5629cbeab8b919bd96ed3371404c6547} 
 \index{zct::Timer@{zct::Timer}!Timer@{Timer}}
 \index{Timer@{Timer}!zct::Timer@{zct::Timer}}
-\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}}
-{\footnotesize\ttfamily zct\+::\+Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{std\+::function$<$ void()$>$}]{expiry\+Callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily zct\+::\+Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{std\+::function$<$ void()$>$}]{expiry\+Callback }\end{DoxyParamCaption})}
 
 Create a new timer with a callback function.
 
@@ -78,6 +80,27 @@ The timer will not be running after creation.
 {\em expiry\+Callback} & Callback function to call when the timer expires. This will be called by the \doxylink{classzct_1_1EventThread}{Event\+Thread} when the timer expires. \\
 \hline
 \end{DoxyParams}
+\Hypertarget{classzct_1_1Timer_adfe8591c8514d02a071e26db94809b61}\label{classzct_1_1Timer_adfe8591c8514d02a071e26db94809b61} 
+\index{zct::Timer@{zct::Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!zct::Timer@{zct::Timer}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily zct\+::\+Timer\+::\+Timer (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{std\+::function$<$ void()$>$}]{expiry\+Callback,  }\item[{\mbox{\hyperlink{classzct_1_1TimerManager}{Timer\+Manager}} \&}]{timer\+Manager }\end{DoxyParamCaption})}
+
+Create a new timer with a callback function and automatically register it with a timer manager.
+
+This is the recommended way to create a timer, as there is no chance to forget to register the timer with a timer manager.
+
+The timer will not be running after creation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the timer, used for logging purposes. \\
+\hline
+{\em expiry\+Callback} & Callback function to call when the timer expires. This will be called by the \doxylink{classzct_1_1EventThread}{Event\+Thread} when the timer expires. \\
+\hline
+{\em timer\+Manager} & The timer manager to register the timer with. \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -85,7 +108,7 @@ The timer will not be running after creation.
 \index{zct::Timer@{zct::Timer}!getExpiryCallback@{getExpiryCallback}}
 \index{getExpiryCallback@{getExpiryCallback}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{getExpiryCallback()}{getExpiryCallback()}}
-{\footnotesize\ttfamily const std\+::function$<$ void()$>$ \& zct\+::\+Timer\+::get\+Expiry\+Callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily const std\+::function$<$ void()$>$ \& zct\+::\+Timer\+::get\+Expiry\+Callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Get the expiry callback function.
 
@@ -96,7 +119,7 @@ The expiry callback function, or nullptr if no callback is set.
 \index{zct::Timer@{zct::Timer}!getIsRegistered@{getIsRegistered}}
 \index{getIsRegistered@{getIsRegistered}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{getIsRegistered()}{getIsRegistered()}}
-{\footnotesize\ttfamily bool zct\+::\+Timer\+::get\+Is\+Registered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily bool zct\+::\+Timer\+::get\+Is\+Registered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Get the is\+Registered flag.
 
@@ -107,7 +130,7 @@ The value of the is\+Registered flag.
 \index{zct::Timer@{zct::Timer}!getNextExpiryTimeTicks@{getNextExpiryTimeTicks}}
 \index{getNextExpiryTimeTicks@{getNextExpiryTimeTicks}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{getNextExpiryTimeTicks()}{getNextExpiryTimeTicks()}}
-{\footnotesize\ttfamily int64\+\_\+t zct\+::\+Timer\+::get\+Next\+Expiry\+Time\+Ticks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily int64\+\_\+t zct\+::\+Timer\+::get\+Next\+Expiry\+Time\+Ticks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Get the next expiry time of the timer.
 
@@ -118,7 +141,7 @@ The next expiry time of the timer in ticks.
 \index{zct::Timer@{zct::Timer}!isRunning@{isRunning}}
 \index{isRunning@{isRunning}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{isRunning()}{isRunning()}}
-{\footnotesize\ttfamily bool zct\+::\+Timer\+::is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily bool zct\+::\+Timer\+::is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 Check if the timer is running.
 
@@ -129,7 +152,7 @@ true if the timer is running, false otherwise.
 \index{zct::Timer@{zct::Timer}!setExpiryCallback@{setExpiryCallback}}
 \index{setExpiryCallback@{setExpiryCallback}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{setExpiryCallback()}{setExpiryCallback()}}
-{\footnotesize\ttfamily void zct\+::\+Timer\+::set\+Expiry\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void zct\+::\+Timer\+::set\+Expiry\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{callback }\end{DoxyParamCaption})}
 
 Set the expiry callback function.
 
@@ -142,7 +165,7 @@ Set the expiry callback function.
 \index{zct::Timer@{zct::Timer}!setIsRegistered@{setIsRegistered}}
 \index{setIsRegistered@{setIsRegistered}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{setIsRegistered()}{setIsRegistered()}}
-{\footnotesize\ttfamily void zct\+::\+Timer\+::set\+Is\+Registered (\begin{DoxyParamCaption}\item[{bool}]{is\+Registered }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void zct\+::\+Timer\+::set\+Is\+Registered (\begin{DoxyParamCaption}\item[{bool}]{is\+Registered }\end{DoxyParamCaption})}
 
 Set the is\+Registered flag. Used to log warnings if a timer is started when it is not registered with any timer managers.
 
@@ -155,7 +178,7 @@ Set the is\+Registered flag. Used to log warnings if a timer is started when it 
 \index{zct::Timer@{zct::Timer}!start@{start}}
 \index{start@{start}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void zct\+::\+Timer\+::start (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{period\+\_\+ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void zct\+::\+Timer\+::start (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{period\+\_\+ms }\end{DoxyParamCaption})}
 
 Start the timer in reoccurring mode. The timer will expire for the first time after period\+\_\+ms from when this is called, and then period\+\_\+ms after that.
 
@@ -168,7 +191,7 @@ Start the timer in reoccurring mode. The timer will expire for the first time af
 \index{zct::Timer@{zct::Timer}!start@{start}}
 \index{start@{start}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void zct\+::\+Timer\+::start (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{start\+Duration\+\_\+ms,  }\item[{int64\+\_\+t}]{period\+\_\+ms }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void zct\+::\+Timer\+::start (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{start\+Duration\+\_\+ms,  }\item[{int64\+\_\+t}]{period\+\_\+ms }\end{DoxyParamCaption})}
 
 Start the timer in either one-\/shot or reoccurring mode.
 
@@ -183,7 +206,7 @@ Start the timer in either one-\/shot or reoccurring mode.
 \index{zct::Timer@{zct::Timer}!stop@{stop}}
 \index{stop@{stop}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{stop()}{stop()}}
-{\footnotesize\ttfamily void zct\+::\+Timer\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void zct\+::\+Timer\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Stop the timer. This will prevent the timer from expiring until \doxylink{classzct_1_1Timer_ac98b8c2905ad49b083265b9da5b8a750}{start()} is called again.
 
@@ -191,7 +214,7 @@ This does not deregister the timer from the timer manager (if registered), nor d
 \index{zct::Timer@{zct::Timer}!updateAfterExpiry@{updateAfterExpiry}}
 \index{updateAfterExpiry@{updateAfterExpiry}!zct::Timer@{zct::Timer}}
 \doxysubsubsection{\texorpdfstring{updateAfterExpiry()}{updateAfterExpiry()}}
-{\footnotesize\ttfamily void zct\+::\+Timer\+::update\+After\+Expiry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily void zct\+::\+Timer\+::update\+After\+Expiry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Designed to be called by the state machine when the timer expires.
 
@@ -246,6 +269,7 @@ This will either\+:
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Events/\mbox{\hyperlink{Timer_8hpp}{Timer.\+hpp}}\end{DoxyCompactItemize}
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/include/\+Zephyr\+Cpp\+Toolkit/\+Events/\mbox{\hyperlink{Timer_8hpp}{Timer.\+hpp}}\item 
+/home/runner/work/\+Zephyr\+Cpp\+Toolkit/\+Zephyr\+Cpp\+Toolkit/src/\+Events/\mbox{\hyperlink{Timer_8cpp}{Timer.\+cpp}}\end{DoxyCompactItemize}

@@ -1,6 +1,7 @@
 var classzct_1_1Timer =
 [
     [ "Timer", "classzct_1_1Timer.html#a5629cbeab8b919bd96ed3371404c6547", null ],
+    [ "Timer", "classzct_1_1Timer.html#adfe8591c8514d02a071e26db94809b61", null ],
     [ "getExpiryCallback", "classzct_1_1Timer.html#a086c1eefecf02223ca9d2424d59692c8", null ],
     [ "getIsRegistered", "classzct_1_1Timer.html#a35c7906a045b2fd2c4aadd5e7bd050a4", null ],
     [ "getNextExpiryTimeTicks", "classzct_1_1Timer.html#a863fb0c8b80f6b444eecee69fe4622e2", null ],
