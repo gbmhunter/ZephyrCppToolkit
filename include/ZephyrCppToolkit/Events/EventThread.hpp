@@ -180,7 +180,14 @@ public:
 
     /**
      * Run a function in the context of the event thread. This passes the function through the message queue.
-     * When the event loop thread receives it, it runs the function. 
+     * When the event loop thread receives it, it runs the function.
+     * 
+     * This is useful when you are in an interrupt context and want "signal" back to the event thread so it can do something.
+     * The std::function could call an onInterrupt() function in the event thread. This can be called from both other threads and ISRs.
+     * 
+     * This lets you do things in the event thread without having to define global events for the event thread and have the event thread know about the event and how to handle it. Instead, a generic std::function is used. This reduces unneeded coupling between modules.
+     * 
+     * THREAD SAFE. INTERRUPT SAFE.
      * 
      * \param func The function to run. This will be run in the context of the event thread.
      */
