@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added EventThread::runInLoop() to run a function in the context of the event thread.
+- Added a Timer constructor that accepts a TimerManager reference and automatically registers the timer with the timer manager.
+
+### Changed
+
+- Moved function definitions from the Timer and TimerManager header files to the .cpp files.
 
 ## [1.1.0] - 2025-08-06
 
